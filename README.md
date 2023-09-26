@@ -1,7 +1,7 @@
 # icl_lectures
 ## info
 ### description
-Lecture notes from all courses taken during 2023/24 entry Msci Mathematics at Imperial College London.
+Lecture notes from all courses taken during 2023/24 entry Msci Mathematics at Imperial College London. Most of the clever formatting and latex was lifted from https://github.com/Multramate/IC-GANT
 ### contact info
 yu.coughlin23@imperial.ac.uk
 
