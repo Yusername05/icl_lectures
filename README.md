@@ -6,8 +6,8 @@ Lecture notes from all courses taken during 2023/24 entry Msci Mathematics at Im
 yu.coughlin23@imperial.ac.uk
 
 ## contents
-### Year 1
-[MATH40001 Introduction to University Mathematics]
+### Year 1 (September 2023 - March 2024)
+[MATH40001 Introduction to University Mathematics](https://github.com/Yusername05/icl_lectures/tree/main/MATH40001%20Introduction%20to%20University%20Mathematics)
 [MATH40002 Analysis 1]
 [MATH40003 Linear Algebra and Groups]
 [MATH40004 Calculus and Applications]
