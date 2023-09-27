@@ -1,0 +1,46 @@
+\def\module{MATH40003 Linear Algebra and Groups}
+\def\lecturer{Dr Charlotte Kestner}
+\def\term{Autumn 2023}
+\def\cover{\vspace{1in}
+$$
+\begin{tikzcd}[ampersand replacement=\&, column sep=tiny]
+\& \qquad \& \& \& L \arrow[dash, dashed]{dddd} \& \& \& \& \& \& \\
+K\br{\alpha} \arrow[dash]{urrrr} \arrow[dash, dashed]{dddd} \& \& K\br{\alpha'} \arrow[dash]{urr} \arrow[dash, dashed]{dddd} \& \& \& K\br{\beta, \gamma} \arrow[dash]{ul} \arrow[dash, dashed]{dddd} \& \& \& K\br{\delta} \arrow[dash]{ullll} \arrow[dash, dashed]{dddd} \& \& K\br{\delta'} \arrow[dash]{ullllll} \arrow[dash, dashed]{dddd} \\
+\& \& \& K\br{\beta} \arrow[crossing over, dash]{ulll} \arrow[dash]{ul} \arrow[crossing over, dash]{urr} \arrow[dash, dashed]{dddd} \& \& \& K\br{\beta\gamma} \arrow[crossing over, dash]{ul} \arrow[dash, dashed]{dddd} \& \& \& K\br{\gamma} \arrow[crossing over, dash]{ullll} \arrow[crossing over, dash]{ul} \arrow[crossing over, dash]{ur} \arrow[dash, dashed]{dddd} \& \\
+\& \& \& \& \& \& \& K \arrow[crossing over, dash]{ullll} \arrow[crossing over, dash]{ul} \arrow[crossing over, dash]{urr} \arrow[dash, dashed]{dddd} \& \& \& \\
+\& \qquad \& \& \& \abr{e} \& \& \& \& \& \& \\
+\abr{\tau} \arrow[dash]{urrrr} \& \& \abr{\sigma^2\tau} \arrow[dash]{urr} \& \& \& \abr{\sigma^2} \arrow[dash]{ul} \& \& \& \abr{\sigma\tau} \arrow[dash]{ullll} \& \& \abr{\sigma^3\tau} \arrow[dash]{ullllll} \\
+\& \& \& \abr{\sigma^2, \tau} \arrow[dash]{ulll} \arrow[dash]{ul} \arrow[dash]{urr} \& \& \& \abr{\sigma} \arrow[dash]{ul} \& \& \& \abr{\sigma^2, \sigma\tau} \arrow[dash]{ullll} \arrow[dash]{ul} \arrow[dash]{ur} \& \\
+\& \& \& \& \& \& \& G \arrow[dash]{ullll} \arrow[dash]{ul} \arrow[dash]{urr} \& \& \&
+\end{tikzcd}
+$$
+$$ G = \Gal\br{L / K} \cong \DDD_8 $$
+}
+\def\syllabus{This module provides a transition towards the way you will be thinking about, and doing, Mathematics during your degree. It will stress the importance of precise definitions and rigorous proofs, but also discuss their relationship to more informal styles of reasoning which are often encountered in applications of Mathematics. Topics to be covered will include an introduction to abstract sets, functions and relations, common proof strategies, the naturals, rationals and reals, and elementary vector operations and geometry.}
+\def\thm{section}
+
+\input{../style/header}
+
+\begin{document}
+
+\input{../style/cover}
+
+\section{Introduction}
+
+\lecture{1}{Thursday}{10/01/19}
+
+The following are references.
+\begin{itemize}
+\item E Artin, Galois theory, 1994
+\item A Grothendieck and M Raynaud, Rev\^etements \'etales et groupe fondamental, 2002
+\item I N Herstein, Topics in algebra, 1975
+\item M Reid, Galois theory, 2014
+\end{itemize}
+
+\begin{notation*}
+If $ K $ is a field, or a ring, I denote
+$$ K\sbr{X} = \cbr{a_0 + \dots + a_nX^n \st a_i \in K}, $$
+the \textbf{ring of polynomials} with coefficients in $ K $.
+\end{notation*}
+
+\end{document}
