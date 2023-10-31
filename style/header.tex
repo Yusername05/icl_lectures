@@ -27,6 +27,8 @@
 \usepackage{csquotes}
 \usepackage{nicematrix,tikz}
 \usetikzlibrary{fit}
+\usepackage{color}
+\usepackage{xcolor}
 
 % Formatting
 
@@ -36,6 +38,10 @@
 \newcommand\from{\leftarrow}
 \newcommand\newoperator[1]{\ifcsdef{#1}{\cslet{#1}{\relax}}{}\csdef{#1}{\operatorname{#1}}}
 \setlength{\parindent}{0cm}
+
+\makeatletter  \def\m@th{\mathsurround\z@\color{red}} \makeatother
+\everymath{\color{red}}
+\everydisplay{\color{red}}
 
 % Environments
 
@@ -123,6 +129,9 @@
 \newtheorem{remark}[n]{Remark}
 \newtheorem*{remark*}{Remark}
 \newtheorem{remark**}{Remark}
+\newtheorem{examples}[n]{Examples}
+\newtheorem*{examples*}{Examples}
+\newtheorem{examples**}{Examples}
 
 % Lectures
 
