@@ -16,8 +16,8 @@ K\br{\alpha} \arrow[dash]{urrrr} \arrow[dash, dashed]{dddd} \& \& K\br{\alpha'} 
 $$
 $$ G = \Gal\br{L / K} \cong \DDD_8 $$
 }
-\def\syllabus{This module provides a transition towards the way you will be thinking about, and doing, Mathematics during your degree. It will stress the importance of precise definitions and rigorous proofs, but also discuss their relationship to more informal styles of reasoning which are often encountered in applications of Mathematics. Topics to be covered will include an introduction to abstract sets, functions and relations, common proof strategies, the naturals, rationals and reals, and elementary vector operations and geometry.}
-\def\thm{section}
+\def\syllabus{This module offers an introduction to probability and statistics. The first term will focus on probability concepts, within an axiomatic framework. In the second term, there will be a strong emphasis on principles of modelling and data analysis. You will learn to use the formal language of probability to express ideas of uncertainty and variability. Using data sets from varied scientific contexts, you will fit and criticize statistical models with statistical packages such as R.}
+\def\thm{subsection}
 
 \input{../style/header}
 
@@ -27,20 +27,100 @@ $$ G = \Gal\br{L / K} \cong \DDD_8 $$
 
 \section{Introduction}
 
-\lecture{1}{Thursday}{10/01/19}
+\lecture{1}{Monday}{30/10/2023}
 
-The following are references.
+The following are complementary reading for the course.
 \begin{itemize}
-\item E Artin, Galois theory, 1994
-\item A Grothendieck and M Raynaud, Rev\^etements \'etales et groupe fondamental, 2002
-\item I N Herstein, Topics in algebra, 1975
-\item M Reid, Galois theory, 2014
+\item G. Grimmett and D. J. A. Welsh, Probability: An Introduction, 1986
+\item J. K. Blitzstein and J. Hwang, Introduction to Probability, 2019
+\item D. F. Anderson et al, Introduction to Probability, 2018
+\item S. M. Ross, Introduction to Proability Models, 2014
 \end{itemize}
 
 \begin{notation*}
-If $ K $ is a field, or a ring, I denote
-$$ K\sbr{X} = \cbr{a_0 + \dots + a_nX^n \st a_i \in K}, $$
-the \textbf{ring of polynomials} with coefficients in $ K $.
+    Denote the natural numbers by $\NN = \{1,2,...\}$ and define $\NN_0 := \NN \cup \{0\}$. Moreover, denote the integers by $\ZZ = \{...,-2,-1,0,1,2,...\}$ and the reals by $\RR$. For real numbers $a < b$ write $[a,b]$ and $(a,b)$ for closed and open intervals respectively.
 \end{notation*}
+
+\section{Sample spaces and interpretations of probability}
+
+\subsection{Sample spaces and set theory}
+
+\begin{definition}
+    The \textbf{sample space} $\Omega$ is the set of all possible outcomes of an experiment. An element of the sample space $\omega \in \Omega$ is a \textbf{sample point}.
+\end{definition}
+
+\begin{examples}
+    When flipping a coin $\Omega  = \{H,T\}$. When rolling a standard die $\Omega = \{1,2,3,4,5,6\}$.
+\end{examples}
+
+\begin{definition}
+    Subsets of $\Omega$ are collections of sample points and called \textbf{events}.
+\end{definition}
+
+Suppose events $A,B\subseteq\Omega$:
+\begin{itemize}
+    \item $A\cup B$ is the event that $A$ or $B$ or both occur.
+    \item $A\cap B$ is the event that $A$ and $B$ both occur.
+    \item $A^c = \bar{A}$ is the event that occurs iff $A$ does not occur.
+\end{itemize}
+
+
+Let $\III$ be a general index set with $A_i \subseteq\Omega,\; \forall i \in\III$ and $B \subseteq \Omega$. The following identities hold.
+\[
+\left( \bigcup_{i\in\III}A_i \right)^c = \bigcap_{i\in\III}A_i^c \textcolor{black}{,} \quad
+\left( \bigcap_{i\in\III}A_i \right)^c = \bigcup_{i\in\III}A_i^c \textcolor{black}{,} \qquad
+B \cap \left( \bigcup_{i\in\III}A_i \right) = \bigcap_{i\in\III}(A_i\cup B) \textcolor{black}{,} \quad
+B \cup \left( \bigcap_{i\in\III}A_i \right) = \bigcup_{i\in\III}(A_i\cap B) \textcolor{black}{.}
+\]
+These are \textbf{De Morgan's Laws} and \textbf{Distributivity} respectively.
+
+\lecture{2}{Tuesday}{31/10/2023}
+
+\subsection{Interpretation of probability}
+\begin{definition}
+    The \textbf{Cardinality} of a set, denoted $\text{card}(A)$ or $|A|$ is the number of elements in the set $A$.
+\end{definition}
+
+\begin{definition}
+    Two sets have the same cardinality iff there exists a bijection between the them.
+\end{definition}
+
+\begin{definition}
+    $A$ is \textbf{finite} if it has as finite numbers of elements, $A$ is \textbf{countably infinite} if there exists a bijection $f: A \to \NN$, $A$ if \textbf{countable} if it is finite or countable infinite, $A$ is \textbf{uncountable} or \textbf{uncountable infinite} if it isn't countable.
+\end{definition}
+
+Samples spaces can be countable or uncountable.
+
+\begin{definition}[Naive probability]
+    Suppose $\text{card}(A) < \infty$ and we want to assign a probability to $A \subseteq \Omega$.
+    \[
+    \PP_{Naive}(A) := \frac{\text{card}(A)}{\text{card}(\Omega)} \implies \PP(A^c) = 1 - \PP(A)  \textcolor{black}{.}
+    \]
+\end{definition}
+This Naive example does not consider when $\text{card}(A)$ is infinite but of finite area.
+\begin{example}
+    Let $\Omega = \{(x,y) \in \RR^2, x^2+y^2=1\}$ and $A\subseteq\Omega$. Define: 
+    \[
+    \PP(A) := \frac{\text{area of } A}{\text{area of } \Omega}
+    \]
+    In the case where $A = \{(x,y) \in \RR^2, x^2+y^2=0.5^2\}$ we have $\PP(A) = 0.25$
+\end{example}
+\begin{remark}
+    For classical / naive propbability we require $\text{card}(\Omega) < \infty$ or the "area" of $\Omega$ be finite. 
+\end{remark}
+
+\begin{definition}[Limitting frequency]
+    Consider $n_{total}$ repetitions of an experiment and $n_A$ the number of time $A$ occurs.
+    \[\PP(A) := \lim_{n_{total} \to \infty} \frac{n_A}{n_{total}}\]
+    Unfortunately, $n_{total} \to \infty$ is often hard to conceive with finite representations not necessarily being representative.
+\end{definition}
+
+\begin{definition}[Subjective probability]
+    For an event $A$ assign the probability $\PP(A)$ based on our own personal beliefs. The subjective probability need not be the same for different individuals, and despite its appearance it remains a valid interpretation of probability.
+\end{definition}
+
+\begin{remark}
+    All three interpretations of probability depend of assumptions about the experiement.
+\end{remark}
 
 \end{document}
