@@ -140,16 +140,16 @@ Samples spaces can be countable or uncountable.
 \begin{definition}[Naive probability]
     Suppose $|A| < \infty$ and we want to assign a probability to $A \subseteq \Omega$.
     \[
-    \PP_{Naive}(A) := \frac{|A|}{|\Omega|} \implies \PP(A^c) = 1 - \PP(A)  \textcolor{black}{.}
+    \text{P}_{Naive}(A) := \frac{|A|}{|\Omega|} \implies \text{P}(A^c) = 1 - \text{P}(A)  \textcolor{black}{.}
     \]
     This Naive example does not consider when $|A|$ is infinite but of finite area.
 \end{definition}
 \begin{example}
     Let $\Omega = \{(x,y) \in \RR^2, x^2+y^2=1\}$ and $A\subseteq\Omega$. Define: 
     \[
-    \PP(A) := \frac{\text{area of } A}{\text{area of } \Omega}
+    \text{P}(A) := \frac{\text{area of } A}{\text{area of } \Omega}
     \]
-    In the case where $A = \{(x,y) \in \RR^2, x^2+y^2=0.5^2\}$ we have $\PP(A) = 0.25$
+    In the case where $A = \{(x,y) \in \RR^2, x^2+y^2=0.5^2\}$ we have $\text{P}(A) = 0.25$
 \end{example}
 \begin{remark}
     For classical / naive probability we require $|\Omega| < \infty$ or the ``area" of $\Omega$ be finite. 
@@ -157,12 +157,12 @@ Samples spaces can be countable or uncountable.
 
 \begin{definition}[Limiting frequency]
     Consider $n_{total}$ repetitions of an experiment and $n_A$ the number of time $A$ occurs.
-    \[\PP(A) := \lim_{n_{total} \to \infty} \frac{n_A}{n_{total}}\]
+    \[\text{P}(A) := \lim_{n_{total} \to \infty} \frac{n_A}{n_{total}}\]
     Unfortunately, $n_{total} \to \infty$ is often hard to conceive with finite representations not necessarily being representative.
 \end{definition}
 
 \begin{definition}[Subjective probability]
-    For an event $A$ assign the probability $\PP(A)$ based on our own personal beliefs. The subjective probability need not be the same for different individuals, and despite its appearance it remains a valid interpretation of probability.
+    For an event $A$ assign the probability $\text{P}(A)$ based on our own personal beliefs. The subjective probability need not be the same for different individuals, and despite its appearance it remains a valid interpretation of probability.
 \end{definition}
 
 \begin{remark}
@@ -224,12 +224,12 @@ Computing naive probabilities often requires some combinatorics.
 \begingroup\belowdisplayskip=-10pt
     \begin{definition}[Binomial coefficient]
         Let $k,n\in\NN\cup \{0\}$ the \textbf{binomial coefficient} is the number of subsets of size $k$ of a set $n$:
-        \[
-        \binom{n}{k} := 
-        \begin{dcases}
+        \[ 
+            \binom{n}{k} := 
+            \begin{dcases}
             \frac{n(n-1)\ldots(n-(k-1))}{k!} = \frac{(n)_k}{k!} = \frac{n!}{(n-k)!k!} & \textcolor{black}{\text{if }} k\leq n \\
-            \omit\hfil$0$\hfil & \textcolor{black}{\text{otherwise.}}
-        \end{dcases}
+            \omit\hfil0\hfil & \textcolor{black}{\text{otherwise.}}
+            \end{dcases}
         \]
     \end{definition}
 \endgroup
@@ -238,8 +238,90 @@ Computing naive probabilities often requires some combinatorics.
 ``Definitions" given in the context of drawing balls from an urn, $S=\{1,2,\ldots,n\}$.
 \begin{definition}[Ordered sampling with replacement]
     Take out a ball from $S$, note its number, put it back; repeat this $k$ times. The sample space for this experiment is $\Omega = S^k$.
+\end{definition}
+
 \begin{definition}[Ordered sampling without replacement]
-    Take out a ball form $S$, note its number but \textbf{do not} put it back; repeat $k<n$ times.
+    Take out a ball form $S$, note its number but \textbf{do not} put it back; repeat $k<n$ times. There are $|\Omega| = (n)_k$ possible outcomes.
 \end{definition}
+
+\begin{definition}[Unordered sampling without replacement]
+    We take $k$ balls out of the urn, there are $\binom{n}{k}$ possibilities.
 \end{definition}
+
+\begingroup\belowdisplayskip=-10pt
+    \begin{definition}
+        We take $k$ balls out of the urn, with the stars and bars argument: there must be $k$ stars divided by $n-1$ bars giving us:
+        \[
+        |\Omega| = \binom{n+k-1}{k} = \binom{n+k-1}{n-1}\textcolor{black}{.}
+        \]
+    \end{definition}
+\endgroup
+
+\section{Axiomatic probability}
+\subsection{Event space}
+We do not always want to consider all subsets of $\Omega$ so denote $\FFF \subseteq \PPP(\Omega)$ the \textbf{event space}, which contains the events we are allowed to consider. $\FFF$ must always be a $\sigma$-algebra.
+
+\begin{definition}[Algebra]
+    $\FFF$ is an \textbf{algebra} (or a field) on $\Omega$ iff:\\
+    \begin{enumerate*}
+        \item $\emptyset \in \FFF$. \hspace{100pt}
+        \item $A \in \FFF \implies A \in \FFF^c$. \hspace{100pt}
+        \item $A,B \in \FFF \implies A\cup B \in \FFF$.
+    \end{enumerate*}
+\end{definition}
+
+\begin{definition}[$\sigma$-algebra]
+    $\FFF$ is a \textbf{$\sigma$-algebra} (or a $\sigma$-field) on $\Omega$ iff:\\
+    \begin{enumerate*}
+        \item $\emptyset \in \FFF$. \hspace{15pt}
+        \item $A \in \FFF \implies A \in \FFF^c$. \hspace{15pt}
+        \item For all $i$ in some countable indexing set $\III$, $A_i \in \FFF \implies \bigcup\limits_{i\in \III}A_i \in \FFF$.
+    \end{enumerate*}
+\end{definition}
+
+\begin{remark}
+    \begin{enumerate}
+        \item Any algebra is closed under finite unions and finite intersections.
+        \item Any $\sigma$-algebra is closed under countable intersections.
+        \item Any ($\sigma$-)algebra on $\Omega$ contains $\Omega$.
+    \end{enumerate}
+\end{remark}
+
+\begin{definition}[Trivial sigma algebra]
+    The \textbf{trivial sigma algebra} on $\Omega$ is defined as $\FFF_{trivial} := \{ \emptyset, \Omega \}$.
+\end{definition}
+
+\begin{example}[Smallest $\sigma$-algebra of an element]
+    For some $A \subseteq \Omega$, the sigma algebra $\{\emptyset, A, A^c , \Omega \}$ is the smallest $\sigma$-algebra on $\Omega$ (smallest cardinality) that contains $A$.
+\end{example}
+
+\subsection{Probability measure}
+
+\begingroup\belowdisplayskip=-10pt
+    \begin{definition}[Probability measure]
+        A mapping $\text{P}: \FFF \to \RR$ is a \textbf{probability measure} on $(\Omega, \FFF)$ iff:\\
+        \begin{enumerate*}
+            \item $\text{P}(A)\geq0$ for all $A\in\FFF$.
+            \item $\text{P}(\Omega) = 1$.
+            \item For a countable, disjoint sequence of events $(A_i)_{i\in\III}$ on and indexing set $\III$: \\
+        \end{enumerate*}
+        \[
+        \text{P}\left(\bigcup_{i\in\III}A_i\right) = \sum_{i\in\III}\text{P}(A_i)\textcolor{black}{.}
+        \]
+    \end{definition}
+\endgroup
+
+\subsection{Probability space}
+\begin{definition}[Probability space]
+    A \textbf{probability space} is a triple $(\Omega, \FFF, \text{P})$, with $\Omega$ a sample space, $\FFF$ a $\sigma$-algebra on $\Omega$, and $\text{P}$ a probability measure on $(\Omega, \FFF)$.
+\end{definition}
+
+\begin{corollary} For $A,B \in \FFF$: \newline
+    \begin{enumerate*}
+        \item $\text{P}(A^c) = 1 - \text{P}(A)$. \hspace{25pt}
+        \item $A \subseteq B \implies \text{P}(A) \leq \text{P}(B)$. \hspace{25pt}
+        \item $\text{P}(A\cup B) = \text{P}(A) + \text{P}(B) - \text{P}(A\cap B)$.
+    \end{enumerate*}
+\end{corollary}
+
 \end{document}
