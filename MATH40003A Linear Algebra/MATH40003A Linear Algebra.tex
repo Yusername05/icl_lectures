@@ -1,4 +1,4 @@
-\def\module{MATH40003 Linear Algebra and Groups}
+\def\module{MATH40003A Linear Algebra}
 \def\lecturer{Dr Charlotte Kestner}
 \def\term{Autumn 2023}
 \def\cover{\vspace{1in}
@@ -16,14 +16,15 @@ K\br{\alpha} \arrow[dash]{urrrr} \arrow[dash, dashed]{dddd} \& \& K\br{\alpha'} 
 $$
 $$ G = \Gal\br{L / K} \cong \DDD_8 $$
 }
-\def\syllabus{This module provides a transition towards the way you will be thinking about, and doing, Mathematics during your degree. It will stress the importance of precise definitions and rigorous proofs, but also discuss their relationship to more informal styles of reasoning which are often encountered in applications of Mathematics. Topics to be covered will include an introduction to abstract sets, functions and relations, common proof strategies, the naturals, rationals and reals, and elementary vector operations and geometry.}
-\def\thm{section}
+\def\syllabus{Systems of linear equations, Matrices, Augmented matrices, Elementary matrices, EROs, REF \& rREF, Linear maps, Fields, Vector Spaces, Subspaces, Spanning, Linear independence, Bases, Rank Nullity, Representations}
+\def\thm{subsection}
 
 \input{../style/header}
 
 \begin{document}
 
 \input{../style/cover}
+
 
 \section{Introduction}
 
@@ -42,5 +43,137 @@ If $ K $ is a field, or a ring, I denote
 $$ K\sbr{X} = \cbr{a_0 + \dots + a_nX^n \st a_i \in K}, $$
 the \textbf{ring of polynomials} with coefficients in $ K $.
 \end{notation*}
+
+\section{Linear Systems and matrices}
+\subsection{Linear systems}
+\begin{definition}[Linear system]
+    A \textbf{linear system} is a set of linear equations in the same variables.
+\end{definition}
+
+\begin{notation}
+    The follow are all equivalent notation for the same linear system:
+    \[
+        \begin{matrix}
+        a_{11}x_1 & + & a_{12}x_2 & + & \dots & + & a_{1n}x_n & = & b_1\\
+        a_{21}x_1 & + & a_{22}x_2 & + & \dots & + & a_{2n}x_n & = & b_2\\
+        \vdots & & \vdots & & \ddots & & \vdots & & \vdots\\
+        a_{m1}x_1 & + & a_{m2}x_2 & + & \dots & + & a_{mn}x_n & = & b_m\\
+        \end{matrix}
+        \iff
+        \begin{pmatrix}
+        a_{11} & a_{12} & \dots & a_{1n}\\
+        a_{21} & a_{22} & \dots & a_{2n}\\
+        \vdots & \vdots & \ddots & \vdots\\
+        a_{m1} & a_{m2} & \dots & a_{mn}\\
+        \end{pmatrix}
+        \begin{pmatrix}
+            x_1 \\
+            x_2 \\
+            \vdots \\
+            x_n \\
+        \end{pmatrix} = 
+        \begin{pmatrix}
+            b_1 \\
+            b_2 \\
+            \vdots \\
+            b_m \\
+        \end{pmatrix}
+    \]
+    \[
+        \iff
+        \begin{amatrix}{4}
+        a_{11} & a_{12} & \dots & a_{1n} & b_{1}\\
+        a_{21} & a_{22} & \dots & a_{2n} & b_{2}\\
+        \vdots & \vdots & \ddots & \vdots & \vdots\\
+        a_{m1} & a_{m2} & \dots & a_{mn} & b_{m}\\
+        \end{amatrix}
+        \textcolor{black}{.}
+    \]
+\end{notation}
+
+\subsection{Matrix algebra}
+\begin{definition}[Matrix by elements]
+    An $m\times n$ matrix written as $\textbf{A} = [a_{ij}]_{m\times n}$ has the element $a_{ij}$ in the $i$th row and $j$th column.
+\end{definition}
+
+\begin{definition}[Matrix addition]
+    If $\textbf{A} = [a_{ij}]_{m\times n}$ and $\textbf{B} = [b_{ij}]_{m\times n}$ then $\textbf{A + B} := [a_{ij} + b_{ij}]_{m\times n}$.
+\end{definition}
+
+\begin{definition}[Scalar multiplication]
+    If $\textbf{A} = [a_{ij}]_{m\times n}$ then $\lambda\textbf{A} := [\lambda a_{ij}]_{m\times n}$.
+\end{definition}
+
+\begin{definition}[Matrix multiplication]
+    If $\textbf{A} = [a_{ij}]_{p\times q}$ and $\textbf{B} = [b_{ij}]_{q\times r}$ then $\textbf{AB} := \textbf{C} = [c_{ij}]_{p\times r}$ where $c_{ij} = \sum\limits_{k=1}^qa_{ik}b_{kj}$.
+\end{definition}
+
+\begin{remark}
+    Matrix multiplication is not commutative.
+\end{remark}
+
+\subsection{EROs}
+\begin{definition}[Elementary row operations]
+    The three \textbf{elementary row operations (EROs)} that can be performed on augmented matrixes are as follows:
+    \begin{enumerate}
+        \item Multiply a row by a non-zero scalar.
+        \item Swap two rows.
+        \item Add a scalar multiple of a row to another row.
+    \end{enumerate}
+\end{definition}
+
+\begin{remark}
+    EROs preserve the set of solutions of a linear system. Each ERO has an inverse.
+\end{remark}
+
+\begin{definition}[Equivalence of linear systems]
+    Two systems of linear equations are equivalent iff either:
+    \begin{enumerate}
+        \item They are both inconsistent.
+        \item (wlog) The augmented matrix of the first system can be transformed to the augmented matrix of the second system with just EROs.
+    \end{enumerate}
+\end{definition}
+
+\begin{definition}[Row echelon form / Echelon form/ REF]
+    
+\end{definition}
+
+\begin{definition}[Reduced row echelon form / Row reduced echelon form / rREF]
+    
+\end{definition}
+
+\subsection{Matirces of note}
+
+\begin{definition}[Square matirx]
+    A matrix is \textbf{square} iff it has the same number of rows and columns.
+\end{definition}
+
+\begin{definition}
+    A square matrix ($\textbf{A} = [a_{ij}]_{n\times n}$) is: \begin{enumerate*}
+        \item \textbf{Upper triangular} iff $i>j \implies a_{ij}=0$.
+        \item \textbf{Lower triangular} iff $i<j \implies a_{ij}=0$.
+        \item \textbf{Diagonal} iff $i\neq j \implies a_{ij}=0$ .
+    \end{enumerate*}
+\end{definition}
+
+\begin{definition}[Identity matrix]
+    The \textbf{identity matrix} of size $n$ written $\textbf{I}_{n}$, is the square diagonal matrix of size $n$ with all diagonal entries equal $1$.
+\end{definition}
+
+\begin{definition}[Elementary matrix]
+    An \textbf{elementary matrix} is a matrix that can be achieved by appling a single ERO to the identity matrix.
+\end{definition}
+
+\begin{definition}[Inverse]
+    For a square matrix $\textbf{B}$ if there exists a matrix $\textbf{B}^{-1}$ such that $\textbf{BB}^{-1} = I = \textbf{B}^{-1}\textbf{B}$ then $\textbf{B}^{-1}$ is the \textbf{inverse} of $\textbf{B}$ and vice versa.
+\end{definition}
+
+\begin{definition}[Singular]
+    A matrix without an inverse is \textbf{singular}.
+\end{definition}
+
+\begin{theorem}
+    The inverse of a matrix is unique
+\end{theorem}
 
 \end{document}

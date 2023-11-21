@@ -1,3 +1,4 @@
+
 \def\module{MATH40005A Probability}
 \def\lecturer{Professor Almut Veraart}
 \def\term{Autumn 2023}
@@ -62,7 +63,7 @@ $$
     A minimum vertex 5-Venn diagram.
 \end{center}
 }
-\def\syllabus{Basic set theory and combinatorics, Kolmogorov probability axioms, DRVs, CRVs, Transformations, Expectaction, Variance, Multivariate calculus, Joint Distributions, LOTUS, pgfs, mgfs, conditional distribution}
+\def\syllabus{Basic set theory and combinatorics, Kolmogorov probability axioms, Conditional probability and independence, DRVs, CRVs, Transformations, Expectaction, Variance, Multivariate calculus, Joint Distributions, LOTUS, pgfs, mgfs, conditional distribution}
 \def\thm{subsection}
 
 \input{../style/header}
@@ -81,6 +82,8 @@ The following are complementary reading for the course.
 \item J. K. Blitzstein and J. Hwang, Introduction to Probability, 2019
 \item D. F. Anderson et al, Introduction to Probability, 2018
 \item S. M. Ross, Introduction to Pro ability Models, 2014
+\item G. Grimmett and D. Stirzaker, Probability and Random Processes, 2001
+\item G. Grimmett and D. Stirzaker, One Thousand Exercises in Probability, 2009
 \end{itemize}
 
 \begin{notation*}
@@ -249,7 +252,7 @@ Computing naive probabilities often requires some combinatorics.
 \end{definition}
 
 \begingroup\belowdisplayskip=-10pt
-    \begin{definition}
+    \begin{definition}[Unordered sampling with replacement]
         We take $k$ balls out of the urn, with the stars and bars argument: there must be $k$ stars divided by $n-1$ bars giving us:
         \[
         |\Omega| = \binom{n+k-1}{k} = \binom{n+k-1}{n-1}\textcolor{black}{.}
@@ -265,7 +268,7 @@ We do not always want to consider all subsets of $\Omega$ so denote $\FFF \subse
     $\FFF$ is an \textbf{algebra} (or a field) on $\Omega$ iff:\\
     \begin{enumerate*}
         \item $\emptyset \in \FFF$. \hspace{100pt}
-        \item $A \in \FFF \implies A \in \FFF^c$. \hspace{100pt}
+        \item $A \in \FFF \implies A^c \in \FFF$. \hspace{100pt}
         \item $A,B \in \FFF \implies A\cup B \in \FFF$.
     \end{enumerate*}
 \end{definition}
@@ -274,7 +277,7 @@ We do not always want to consider all subsets of $\Omega$ so denote $\FFF \subse
     $\FFF$ is a \textbf{$\sigma$-algebra} (or a $\sigma$-field) on $\Omega$ iff:\\
     \begin{enumerate*}
         \item $\emptyset \in \FFF$. \hspace{15pt}
-        \item $A \in \FFF \implies A \in \FFF^c$. \hspace{15pt}
+        \item $A \in \FFF \implies A^c \in \FFF$. \hspace{15pt}
         \item For all $i$ in some countable indexing set $\III$, $A_i \in \FFF \implies \bigcup\limits_{i\in \III}A_i \in \FFF$.
     \end{enumerate*}
 \end{definition}
@@ -292,7 +295,7 @@ We do not always want to consider all subsets of $\Omega$ so denote $\FFF \subse
 \end{definition}
 
 \begin{example}[Smallest $\sigma$-algebra of an element]
-    For some $A \subseteq \Omega$, the sigma algebra $\{\emptyset, A, A^c , \Omega \}$ is the smallest $\sigma$-algebra on $\Omega$ (smallest cardinality) that contains $A$.
+    For some $A \subseteq \Omega$, the sigma algebra $\FFF_A := \{\emptyset, A, A^c , \Omega \}$ is the smallest $\sigma$-algebra on $\Omega$ (smallest cardinality) that contains $A$.
 \end{example}
 
 \subsection{Probability measure}
@@ -303,7 +306,7 @@ We do not always want to consider all subsets of $\Omega$ so denote $\FFF \subse
         \begin{enumerate*}
             \item $\text{P}(A)\geq0$ for all $A\in\FFF$.
             \item $\text{P}(\Omega) = 1$.
-            \item For a countable, disjoint sequence of events $(A_i)_{i\in\III}$ on and indexing set $\III$: \\
+            \item For a countable, disjoint sequence of events $(A_i)_{i\in\III}$ on an indexing set $\III$: \\
         \end{enumerate*}
         \[
         \text{P}\left(\bigcup_{i\in\III}A_i\right) = \sum_{i\in\III}\text{P}(A_i)\textcolor{black}{.}
@@ -311,7 +314,9 @@ We do not always want to consider all subsets of $\Omega$ so denote $\FFF \subse
     \end{definition}
 \endgroup
 
+\begingroup\abovedisplayskip=-10pt 
 \subsection{Probability space}
+\endgroup
 \begin{definition}[Probability space]
     A \textbf{probability space} is a triple $(\Omega, \FFF, \text{P})$, with $\Omega$ a sample space, $\FFF$ a $\sigma$-algebra on $\Omega$, and $\text{P}$ a probability measure on $(\Omega, \FFF)$.
 \end{definition}
@@ -323,5 +328,80 @@ We do not always want to consider all subsets of $\Omega$ so denote $\FFF \subse
         \item $\text{P}(A\cup B) = \text{P}(A) + \text{P}(B) - \text{P}(A\cap B)$.
     \end{enumerate*}
 \end{corollary}
+
+\section{Conditional probability}
+\begin{definition}[Conditional probability measure]
+    Consider the probability space $(\Omega, \FFF, \text{P})$ and some event $B \in \FFF$ with $\text{P}(B) > 0$, we construct the probability measure $\text{Q}$ on $(\Omega, \FFF)$ by \[
+        \text{Q}(A):=\frac{P(A\cap B)}{P(B)}\textcolor{black}{.}
+    \]
+    Denote the \textbf{conditional probability} of $A$ given $B$ by $P(A|B) = Q(B)$.
+\end{definition}
+
+\subsection{Bayes' rule and total probability}
+
+\begingroup\belowdisplayskip=-10pt
+\begin{theorem}[Bayes' rule]
+    For $A,B \in \FFF$ with $\text{P}(A) >0, \text{P}(B) > 0$ we have, \[
+        \text{P}(A|B) = \frac{\text{P}(B|A)\text{P}(A)}{\text{P}(B)}
+        \textcolor{black}{.}
+        \]
+\end{theorem}
+\endgroup
+
+\begin{definition}[Partition of a set]
+    A partition of some set $\Omega$ is a collection $\{B_i, i \in \III\}$ for some countable index set $\III$ with $B_i \cap B_j = \emptyset$ for all $i,j\in\III$ with $i\neq j$ and $\bigcup\limits_{i\in\III}B_i = \Omega$.
+\end{definition}
+
+\begingroup\belowdisplayskip=-10pt
+\begin{theorem}[Total probability]
+    Given some partition $\{B_i, i\in\III\}$ of $\Omega$ with $\text{P}(B_i)>0$ for all $i\in\III$ and some event $A\in\FFF$,\[
+        \text{P}(A)=\sum_{i\in\III}\text{P}(A\cap B_i)=\sum_{i\in\III}\text{P}(A|B_i)\text{P}(B_i)\textcolor{black}{.}
+    \]
+\end{theorem}
+\endgroup
+
+These two theorems can then be combined to form the following.
+\begingroup\belowdisplayskip=-10pt
+\begin{theorem}[Bayes' rule with extra conditioning]
+    For events $A,B,E \in \FFF$ with $\text{P}(A\cap E)>0, P(B\cap E) > 0$ we have \[
+    \text{P}(A|B\cap E) = \frac{\text{P}(B|A\cap E)\text{P}(A|E)}{\text{P}(B|E)}
+    \textcolor{black}{.}
+    \]
+\end{theorem}
+\endgroup
+
+\begingroup\belowdisplayskip=-10pt
+\begin{theorem}[Total probability with extra conditioning]
+    Given events $A,E\in\III$  with $\text{P}(E)>0$ and some partition $\{B_i, i\in\III\}$ of $\Omega$ with $\text{P}(B_i\cap E)>0$ for all $i\in\III$,
+    \[
+        \text{P}(A|E)=\sum_{i\in\III}\frac{\text{P}(A\cap B_i\cap E)}{\text{P}(E)}
+        =\sum_{i\in\III}\text{P}(A|B_i\cap E)\text{P}(B_i| E)
+        \textcolor{black}{.}
+    \]
+\end{theorem}
+\endgroup
+
+\section{Independence}
+\subsection{Event independence}
+Two events $A,B\in\FFF$ will be independent iff the occurrence of one does not effect the probability the other occurs, i.e $\text{P}(A|B) = \text{P}(A)$ and vice versa.
+
+\begin{definition}[Independent events]
+    Two events $A,B \in \FFF$ are said to be \textbf{independent} iff\[
+    \text{P}(A\cap B) = \text{P}(A)\text{P}(B) \textcolor{black}{,}
+    \] and \textbf{dependent} otherwise.
+\end{definition}
+
+\begin{corollary}
+    If $A$ and $B$ are independent then so are all pairs of their complements.
+\end{corollary}
+
+\begin{definition}[General independence]
+    A finite collection of events $\{A_1,A_2,\dots ,A_n\}$ is independent iff \[
+    \text{P}(A_1\cap A_2\cap \dots \cap A_n) = \text{P}(A_1)\text{P}(A_2)\dots \text{P}(A_n)\textcolor{black}{,}
+    \]
+    and similarly a countably or uncountably infinite collection of events is independent iff each finite subcollection is independent.
+\end{definition}
+
+\subsection{Conditional indepence}
 
 \end{document}
