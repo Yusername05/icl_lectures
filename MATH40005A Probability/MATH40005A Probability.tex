@@ -86,6 +86,8 @@ The following are complementary reading for the course.
 \item G. Grimmett and D. Stirzaker, One Thousand Exercises in Probability, 2009
 \end{itemize}
 
+These notes are written assuming all material covered in ICL's \textbf{MATH40001}, \textbf{MATH40002} and \textbf{MATH40004}.
+
 \begin{notation*}
     Denote the natural numbers by $\NN = \{1,2,...\}$ and define $\NN_0 := \NN \cup \{0\}$. Moreover, denote the integers by $\ZZ = \{...,-2,-1,0,1,2,...\}$ and the reals by $\RR$. For real numbers $a < b$ write $[a,b]$ and $(a,b)$ for closed and open intervals respectively.
 \end{notation*}
@@ -226,7 +228,7 @@ Computing naive probabilities often requires some combinatorics.
 
 \begingroup\belowdisplayskip=-10pt
     \begin{definition}[Binomial coefficient]
-        Let $k,n\in\NN\cup \{0\}$ the \textbf{binomial coefficient} is the number of subsets of size $k$ of a set $n$:
+        Let $k,n\in\NN_0$ the \textbf{binomial coefficient} is the number of subsets of size $k$ of a set $n$:
         \[ 
             \binom{n}{k} := 
             \begin{dcases}
@@ -504,7 +506,7 @@ Despite the similar notation to the inverse function of $f$ they are not the sam
 
 \section{Common DRVs}
 \subsection{Bernoulli distribution}
-All DRVs will be considered over the probability space $(\Omega, \FFF, \P)$
+All DRVs within this section will be considered over the probability space $(\Omega, \FFF, \P)$.
 \begin{definition}[Bernoulli distribution]
     A DRV $X$ is said to have \textbf{Bernoulli distribtuion} with parameter $p\in(0,1)$ if $\text{Im}X = \{0,1\}$ with $p_X(1)=p$. This is denoted by $X \sim \text{Bern}(p)$.
 \end{definition}
@@ -528,20 +530,92 @@ All DRVs will be considered over the probability space $(\Omega, \FFF, \P)$
 \subsection{Binomial distribution}
 \begin{definition}[Binomial distribution]
     Consider a sequence of $n\in\NN$ iid Bernoulli trials with parameter $p$, count the number of successes and denote this by the random variable $X$ then $\text{Im}X = [0,n]$ and, \[p_X(x) = \binom{n}{x}p^x(1-p)^{n-x} \quad \text{\textcolor{black}{for }$x\in[0,n]$}\textcolor{black}{.}\]
-We say $X$ follows a \textbf{binomial distribution} and this is denoted by $X \sim \text{Bin}(x,p)$.
+We say $X$ follows a \textbf{binomial distribution} and this is denoted by $X \sim \text{Bin}(n,p)$.
 \end{definition}
 
 \subsection{Hypergeometric distribution}
 As we have done previously, consider of urn of $N\in\NN$ balls with $K\in\NN$ of these being white and the remainder being black from which we will draw $n\in\NN$ balls and want to consider the DRV ($X$) for the number of white balls drawn. When drawing with replacement we have $X \sim \text{Bin}(n,K/N)$. However, when drawing without replacement X follows the hypergeometric distribution.
 
+\begingroup\belowdisplayskip=0pt
 \begin{definition}[Hypergeometric distribution]
-    A DRV $X$ follows the \textbf{hypergeometric distribution} with three parameters $N\in\NN\cup\{0\}, K\in\NN,n\in[0,N]$ if $\text{Im}X = [0,\text{min}(n,K)]$ and, \[
+    A DRV $X$ follows the \textbf{hypergeometric distribution} with three parameters $N\in\NN_0, K\in\NN,n\in[0,N]$ if $\text{Im}X = [0,\text{min}(n,K)]$ and, \[
         p_X(x) = \frac{\binom{K}{x}\binom{N-K}{n-x}}{\binom{N}{n}} \quad \text{\textcolor{black}{for }$x\in[0,K]$}\textcolor{black}{.}
     \]
 \end{definition}
+\endgroup
 
+\begingroup\belowdisplayskip=-10pt
 \begin{lemma}[Vandemonde's identity]
-    
+    \textbf{Vandemonde's identity} is an important tool in the derivation of the pmf for the hypergeometric distribution and so is included here. The identity is as follows, for $k,m,n \in \NN$ with $k\leq m+n$, we have:
+     \[
+        \binom{m+n}{k} = \sum_{i=0}^k\binom{m}{i}\binom{n}{k-i}\textcolor{black}{.}
+     \]
 \end{lemma}
+\endgroup
+
+\subsection{Discrete uniform distribution}
+\begingroup\belowdisplayskip=-10pt
+\begin{definition}[Discrete uniform distribution]
+    A DRV $X$ follows the \textbf{discrete uniform distribution} over a nonempty set of numbers $C$, denoted $X \sim \text{DUnif}(C)$, if $\text{Im}X = C$ and,
+    \[
+        p_X(x)=
+        \begin{dcases}
+            \frac{1}{\text{card}(C)} & \text{\textcolor{black}{for }$x\in C$} \\
+            \omit\hfil0\hfil & \text{\textcolor{black}{otherwise}}
+        \end{dcases}\textcolor{black}{.}
+    \]
+\end{definition}
+\endgroup
+
+\subsection{Poisson distribution}
+The poisson distribution is commonly used for modelling the number of events occurring in a certain time period. Its pdf is derived by taking the $\lim\limits_{n\rightarrow\infty}p_X(x)$ where $X \sim \text{Bin}(n,\frac{\lambda}{n})$ for some $\lambda \in \RR$.
+
+\begingroup\belowdisplayskip=-10pt
+\begin{definition}[Poisson distribution]
+    A DRV $X$ follows the \textbf{poisson distribution} with parameter $\lambda > 0$, denoted $X \sim \text{Poi}(\lambda)$, if $\text{Im}X = \NN_0$ and, \[
+        p_X(x) = \frac{\lambda^x}{x!}e^{-\lambda} \quad \text{\textcolor{black}{for }$x\in\NN_0$}\textcolor{black}{.}
+    \]
+\end{definition}
+\endgroup
+
+\subsection{Geometric distribution}
+\begin{definition}[Geometric distribution]
+    A DRV $X$ follows the \textbf{geometric distribution} with parameter $p \in (0,1)$, denoted $X \sim \text{Geom}(p)$, if $\text{Im}X = \NN$ and, \[
+        p_X(x) = (1-p)^xp \quad \text{\textcolor{black}{for }$x\in\NN$}\textcolor{black}{.}
+    \]
+This can be seen as counting the number of Bernoulli trials with parameter $p$ that occur before a failure.
+\end{definition}
+
+\subsection{Negative binomial distribution}
+\begingroup\belowdisplayskip=-20pt
+\begin{definition}[Generalised binomial coefficient]
+    Let $\alpha\in\CC$ and $k\in\NN$ and define the \textbf{generalised binomial coefficient} by,\[
+    \binom{\alpha}{k} := \frac{\alpha(\alpha-1)\ldots(\alpha-k+1)}{k!}\textcolor{black}{.}
+    \]
+\end{definition}
+\endgroup
+
+\begin{lemma}
+    For $x\in\NN_0$ and $\r\in\NN$ the following identity holds,
+    \[
+    \binom{x+r-1}{r-1} = (-1)^x\binom{-r}{x}\textcolor{black}{.}
+    \]
+The generalised binomial coefficient as well as this lemma are necessary to have a well defined and valid pdf for the negative binomial distribution.
+\end{lemma}
+
+\begin{definition}[Negative binomial distribution]
+    A DRV $X$ follows the \textbf{negative binomial distribution} with parameters $r\in\NN$ and $p \in (0,1)$, denoted $X \sim \text{NBin}(r,p)$, if $\text{Im}X = \NN_0$ and, \[
+        p_X(x) = \binom{x+r-1}{r-1}p^r(1-p)^x \quad \text{\textcolor{black}{for }$x\in\NN_0$}\textcolor{black}{.}
+    \]
+This is the distribution of the number of failed ii Bernoulli trials with parameter $p$ before $r$ successes have occurred.
+\end{definition}
+
+\section{Continuous random variables}
+\section{Common CRVs}
+\section{Transformations of random variables}
+\section{Expectation of random variables}
+\section{Multivariate random variables}
+\section{Generating functions}
+\section{Conditional distribution and expectation}
 
 \end{document}
