@@ -144,7 +144,14 @@
     #2 \\
     #3
   }
-  }
+  \addtocontents{toc}{%
+  \let\protect\mtnumberline\protect\numberline%
+  \def\protect\numberline{%
+  \hskip-\parindent%
+  \global\let\protect\numberline\protect\mtnumberline%
+  \protect\llap{\normalfont\normalsize Lecture #1 }%
+  \hskip\parindent\protect\mtnumberline}}%
+}
 
 % Blackboard
 

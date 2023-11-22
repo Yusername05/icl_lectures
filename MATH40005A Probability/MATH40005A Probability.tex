@@ -110,8 +110,8 @@ These notes are written assuming all material covered in ICL's \textbf{MATH40001
 
 Suppose events $A,B\subseteq\Omega$:
 \begin{itemize}
-    \item $A\cup B$ is the event that $A$ or $B$ or both occur.
-    \item $A\cap B$ is the event that $A$ and $B$ both occur.
+    \item $A\cup B$ is the event that $A$ or $B$ or both occur,
+    \item $A\cap B$ is the event that $A$ and $B$ both occur,
     \item $A^c = \bar{A}$ is the event that occurs iff $A$ does not occur.
 \end{itemize}
 
@@ -239,6 +239,8 @@ Computing naive probabilities often requires some combinatorics.
     \end{definition}
 \endgroup
 
+\lecture{4}{Monday}{06/11/2023}
+
 \subsection{Sampling with and without replacement}
 ``Definitions" given in the context of drawing balls from an urn, $S=\{1,2,\ldots,n\}$.
 \begin{definition}[Ordered sampling with replacement]
@@ -248,6 +250,7 @@ Computing naive probabilities often requires some combinatorics.
 \begin{definition}[Ordered sampling without replacement]
     Take out a ball form $S$, note its number but \textbf{do not} put it back; repeat $k<n$ times. There are $|\Omega| = (n)_k$ possible outcomes.
 \end{definition}
+
 
 \begin{definition}[Unordered sampling without replacement]
     We take $k$ balls out of the urn, there are $\binom{n}{k}$ possibilities.
@@ -262,6 +265,8 @@ Computing naive probabilities often requires some combinatorics.
     \end{definition}
 \endgroup
 
+\lecture{5}{Tuesday}{07/11/2023}
+
 \section{Axiomatic probability}
 \subsection{Event space}
 We do not always want to consider all subsets of $\Omega$ so denote $\FFF \subseteq \PPP(\Omega)$ the \textbf{event space}, which contains the events we are allowed to consider. $\FFF$ must always be a $\sigma$-algebra.
@@ -269,8 +274,8 @@ We do not always want to consider all subsets of $\Omega$ so denote $\FFF \subse
 \begin{definition}[Algebra]
     $\FFF$ is an \textbf{algebra} (or a field) on $\Omega$ iff:\\
     \begin{enumerate*}
-        \item $\emptyset \in \FFF$. \hspace{100pt}
-        \item $A \in \FFF \implies A^c \in \FFF$. \hspace{100pt}
+        \item $\emptyset \in \FFF$, \hspace{100pt}
+        \item $A \in \FFF \implies A^c \in \FFF$, \hspace{100pt}
         \item $A,B \in \FFF \implies A\cup B \in \FFF$.
     \end{enumerate*}
 \end{definition}
@@ -278,16 +283,16 @@ We do not always want to consider all subsets of $\Omega$ so denote $\FFF \subse
 \begin{definition}[$\sigma$-algebra]
     $\FFF$ is a \textbf{$\sigma$-algebra} (or a $\sigma$-field) on $\Omega$ iff:\\
     \begin{enumerate*}
-        \item $\emptyset \in \FFF$. \hspace{15pt}
-        \item $A \in \FFF \implies A^c \in \FFF$. \hspace{15pt}
+        \item $\emptyset \in \FFF$; \hspace{15pt}
+        \item $A \in \FFF \implies A^c \in \FFF$, \hspace{15pt}
         \item For all $i$ in some countable indexing set $\III$, $A_i \in \FFF \implies \bigcup\limits_{i\in \III}A_i \in \FFF$.
     \end{enumerate*}
 \end{definition}
 
 \begin{remark}
     \begin{enumerate}
-        \item Any algebra is closed under finite unions and finite intersections.
-        \item Any $\sigma$-algebra is closed under countable intersections.
+        \item Any algebra is closed under finite unions and finite intersections,
+        \item Any $\sigma$-algebra is closed under countable intersections,
         \item Any ($\sigma$-)algebra on $\Omega$ contains $\Omega$.
     \end{enumerate}
 \end{remark}
@@ -300,15 +305,17 @@ We do not always want to consider all subsets of $\Omega$ so denote $\FFF \subse
     For some $A \subseteq \Omega$, the sigma algebra $\FFF_A := \{\emptyset, A, A^c , \Omega \}$ is the smallest $\sigma$-algebra on $\Omega$ (smallest cardinality) that contains $A$.
 \end{example}
 
+\lecture{6}{Friday}{10/11/2023}
+
 \subsection{Probability measure}
 
 \begingroup\belowdisplayskip=-10pt
     \begin{definition}[Probability measure]
         A mapping $\P: \FFF \to \RR$ is a \textbf{probability measure} on $(\Omega, \FFF)$ iff:\\
         \begin{enumerate*}
-            \item $\P(A)\geq0$ for all $A\in\FFF$.
-            \item $\P(\Omega) = 1$.
-            \item For a countable, disjoint sequence of events $(A_i)_{i\in\III}$ on an indexing set $\III$: \\
+            \item $\P(A)\geq0$ for all $A\in\FFF$;
+            \item $\P(\Omega) = 1$;
+            \item for a countable, disjoint sequence of events $(A_i)_{i\in\III}$ on an indexing set $\III$: \\
         \end{enumerate*}
         \[
         \P\left(\bigcup_{i\in\III}A_i\right) = \sum_{i\in\III}\P(A_i)\textcolor{black}{.}
@@ -325,12 +332,13 @@ We do not always want to consider all subsets of $\Omega$ so denote $\FFF \subse
 
 \begin{corollary} For $A,B \in \FFF$: \newline
     \begin{enumerate*}
-        \item $\P(A^c) = 1 - \P(A)$. \hspace{25pt}
-        \item $A \subseteq B \implies \P(A) \leq \P(B)$. \hspace{25pt}
+        \item $\P(A^c) = 1 - \P(A)$, \hspace{25pt}
+        \item $A \subseteq B \implies \P(A) \leq \P(B)$, \hspace{25pt}
         \item $\P(A\cup B) = \P(A) + \P(B) - \P(A\cap B)$.
     \end{enumerate*}
 \end{corollary}
 
+\lecture{7}{Monday}{13/11/2023}
 \section{Conditional probability}
 \begin{definition}[Conditional probability measure]
     Consider the probability space $(\Omega, \FFF, \P)$ and some event $B \in \FFF$ with $\P(B) > 0$, we construct the probability measure $\Q$ on $(\Omega, \FFF)$ by \[
@@ -339,6 +347,7 @@ We do not always want to consider all subsets of $\Omega$ so denote $\FFF \subse
     Denote the \textbf{conditional probability} of $A$ given $B$ by $P(A|B) = Q(B)$.
 \end{definition}
 
+\lecture{8}{Tuesday}{14/11/2023}
 \subsection{Bayes' rule and total probability}
 
 \begingroup\belowdisplayskip=-10pt
@@ -383,6 +392,7 @@ These two theorems can then be combined to form the following.
 \end{theorem}
 \endgroup
 
+\lecture{9}{Friday}{17/11/2023}
 \section{Independence}
 \subsection{Event independence}
 Two events $A,B\in\FFF$ will be independent iff the occurrence of one does not effect the probability the other occurs, i.e $\P(A|B) = \P(A)$ and vice versa.
@@ -404,6 +414,7 @@ Two events $A,B\in\FFF$ will be independent iff the occurrence of one does not e
     and similarly a countably or uncountably infinite collection of events is independent iff each finite subcollection is independent.
 \end{definition}
 
+\lecture{10}{Monday}{20/11/2023}
 \subsection{Conditional independence}
 
 \begingroup\belowdisplayskip=-20pt
@@ -445,7 +456,7 @@ The upcoming subsection may seem disparate, they are however necessary parts to 
 \endgroup
 
 \section{Discrete random variables}
-
+\lecture{11}{Tuesday}{21/11/2023}
 \subsection{Images and their properties}
 throughout this subsection we will be considering the function $f:\XXX \rightarrow \YYY$.
 \begin{definition}[Image]
@@ -475,7 +486,7 @@ Despite the similar notation to the inverse function of $f$ they are not the sam
 \begin{definition}[Discrete random variable]
     A \textbf{discrete random variable} (\textbf{DRV}) on the probability space $(\Omega, \FFF, \P)$ is a function $X: \Omega \rightarrow \RR$ that satisfies the following properties:
     \begin{itemize}
-        \item $\text{Im}X = \{X(\omega): \omega \in \Omega\}$ must be a countable subset of $\RR$.
+        \item $\text{Im}X = \{X(\omega): \omega \in \Omega\}$ must be a countable subset of $\RR$,
         \item $X^{-1}(x) \in \FFF$ for all $x \in \RR$.
     \end{itemize}
 \end{definition}
@@ -494,8 +505,8 @@ Despite the similar notation to the inverse function of $f$ they are not the sam
 \begin{remark}
     Some useful propoerties of the pmf extending from the definition are:
     \begin{itemize}
-        \item $x \not\in \text{Im}X \implies p_X(x) = 0$.
-        \item For $x_1, x_2 \in \text{Im}X$ with $x_1 \neq x_2$, $X^{-1}(x_1) \cap X^{-1}(x_2) = \emptyset$.
+        \item $x \not\in \text{Im}X \implies p_X(x) = 0$,
+        \item For $x_1, x_2 \in \text{Im}X$ with $x_1 \neq x_2$, $X^{-1}(x_1) \cap X^{-1}(x_2) = \emptyset$,
         \item $\sum\limits_{x\in\text{Im}X}p_X(x) = \sum\limits_{x\in\RR}p_X(x) = 1$.
     \end{itemize}
 \end{remark}
@@ -505,8 +516,8 @@ Despite the similar notation to the inverse function of $f$ they are not the sam
 \end{theorem}
 
 \section{Common DRVs}
-\subsection{Bernoulli distribution}
 All DRVs within this section will be considered over the probability space $(\Omega, \FFF, \P)$.
+\subsection{Bernoulli distribution}
 \begin{definition}[Bernoulli distribution]
     A DRV $X$ is said to have \textbf{Bernoulli distribtuion} with parameter $p\in(0,1)$ if $\text{Im}X = \{0,1\}$ with $p_X(1)=p$. This is denoted by $X \sim \text{Bern}(p)$.
 \end{definition}
@@ -611,11 +622,225 @@ This is the distribution of the number of failed ii Bernoulli trials with parame
 \end{definition}
 
 \section{Continuous random variables}
+
+\subsection{General random variables and their distributions}
+\begin{definition}[Random variable]
+    A \textbf{random variable} (\textbf{RV}) on the probability space $(\Omega,\FFF,\P)$ is a mapping $X:\Omega\rightarrow\RR$ such that $X^{-1}((-\infty,x]) = \{\omega\in\Omega:X(\omega)\leq x\}\in\FFF$ for all $x\in\RR$. By taking the countable union of pre-images of all $\omega\leq x$ in $\FFF$, it can be seen that a DRV satisfies this condition.
+\end{definition}
+
+\begin{definition}[Cumulative distribution function]
+    For some RV $X$ on the probability space $(\Omega,\FFF,\P)$, the \textbf{cumulative distribution function} (\textbf{CDF}) of $X$ is defined as the mapping $F_X:\RR\rightarrow[0,1]$ given by, \[
+        F_X(x) = \P(X^{-1}((-\infty,x]))\textcolor{black}{,}
+    \]
+    often denoted $F_X(x)=\P(X\leq x)$.
+\end{definition}
+
+\begin{theorem}[cdf properties]
+    For some RV $X$ on the probability space $(\Omega,\FFF,\P)$ the following properties hold:
+    \begin{enumerate}
+        \item $F_X$ is monotonically non-decreasing,
+        \item $F_X$ is right-continuous ($(x_n)\downarrow x \implies F_X(x_n)\rightarrow F_X(x)$ as $n\rightarrow\infty$),
+        \item $\lim\limits_{x\rightarrow -\infty}F_X(x) = 0$ and $\lim\limits_{x\rightarrow \infty}F_X(x) = 1$.
+    \end{enumerate}
+\end{theorem}
+
+\begin{theorem}
+    If $a<b$, then $\P(a<X\leq b) = F_X(b)-F_X(a)$.
+\end{theorem}
+
+\begin{remark}
+    In general the cdf of an RV is not left continuous.
+\end{remark}
+
+\subsection{CRVs and pdfs}
+\begingroup\belowdisplayskip=-2pt
+\begin{definition}[Continuous random variable]
+    A random variable $X$ on the probability space $(\Omega,\FFF,\P)$ is called a \textbf{continuous random variable} (\textbf{CRV}) iff its cdf can be written as: \[
+        F_X(x) = \int_{-\infty}^xf_X(u)du \quad \text{\textcolor{black}{for all }$x\in\RR$}\textcolor{black}{,}
+    \]
+    where $f_X:\RR\rightarrow\RR$ satisfies: 
+$f_X(u)\geq 0$ for all $u\in\RR$ and ${\displaystyle\int_{-\infty}^{\infty}f_X(u)du=1}$. We call $f_X$ the \textbf{probability density function} (\textbf{pdf}) of $X$.
+\end{definition}
+\endgroup
+
+\begin{theorem}
+    If $X$ is a CRV on the probability space $(\Omega,\FFF,\P)$ with pdf $f_X$, $\P(X=x)=0$ for all $x\in\RR$.
+\end{theorem}
+
+\begin{theorem}
+    With the same conditions, $\P(a\leq X\leq b)={\displaystyle\int_a^bf_X(u)du}$ for all $a,b\in\RR$ with $a\leq b$.
+\end{theorem}
+
+\begin{remark}
+    Combining the results from this section leads to the conclusion that the cdf or a CRV is continuous.
+\end{remark}
+
 \section{Common CRVs}
+All CRVs $X$ within this section will be considered over the probability space $(\Omega, \FFF, \P)$ with the natural notation for their pdf and cdf. These distribution will be uniquely identified by their pdfs.
+\subsection{Uniform distribution}
+\begingroup\belowdisplayskip=-10pt
+\begin{definition}[Uniform distribution]
+    A CRV $X$ follows the \textbf{uniform distribution} on the interval $(a,b)$ for $a,b\in\RR$ with $a<b$, denoted $X\sim \text{U}(a,b)$ if it satisfies: \[
+        f_X(x) = \begin{dcases}
+            \frac{1}{b-a} & \text{\textcolor{black}{if }$a<x<b$} \\
+            \omit\hfil0\hfil & \text{\textcolor{black}{otherwise}}
+        \end{dcases}\textcolor{black}{,}
+        \qquad
+        F_X(x) = \begin{dcases}
+            \omit\hfil0\hfil & \text{\textcolor{black}{if }$x\leq a$} \\
+            \frac{1}{b-a} & \text{\textcolor{black}{if }$a<x<b$} \\
+            \omit\hfil1\hfil & \text{\textcolor{black}{if }$x\geq b$}
+        \end{dcases}\textcolor{black}{.}
+    \]
+\end{definition}
+\endgroup
+
+\subsection{Exponential distribution}
+
+\begingroup\belowdisplayskip=-10pt
+\begin{definition}[Exponential distribution]
+    A CRV $X$ follows the \textbf{exponential distribution} with parameter $\lambda\in\RR$ with $\lambda>0$, denoted $X\sim \text{Exp}(\lambda)$ if it satisfies: \[
+        f_X(x) = \begin{dcases}
+            \lambda e^{-\lambda x} & \text{\textcolor{black}{if }$x>0$} \\
+            \omit\hfil0\hfil & \text{\textcolor{black}{otherwise}}
+        \end{dcases}\textcolor{black}{,}
+        \qquad
+        F_X(x) = \begin{dcases}
+            \omit\hfil0\hfil & \text{\textcolor{black}{if }$x\leq0$} \\
+            1-e^{-\lambda x} & \text{\textcolor{black}{if }$x>0$}
+        \end{dcases}\textcolor{black}{.}
+    \]
+\end{definition}
+\endgroup
+
+\subsection{Gamma distribution}
+
+\begin{definition}[Gamma function]
+    For $t\in\RR$ with $t>0$ we define the \textbf{gamma function} by, \[
+    \Gamma(t) := \int_0^\infty x^{t-1}e^{-x}dx
+    \textcolor{black}{.}\]
+    One of the gamma function's many interesting properties is that $\Gamma(t) = (t-1)\Gamma(t-1)$ for $t>1$.
+\end{definition}
+
+\begin{definition}[Gamma distribution]
+    A CRV $X$ follows the \textbf{gamma distribution} with shape parameter $\alpha\in\RR$ and rate parameter $\beta\in\RR$ with $\alpha,\beta>0$, denoted $X\sim \text{Gamma}(\alpha,\beta)$ if it satisfies: \[
+        f_X(x) = \begin{dcases}
+            \frac{\beta^\alpha}{\Gamma(\alpha)}x^{\alpha-1}e^{-\beta x} & \text{\textcolor{black}{if }$x>0$} \\
+            \omit\hfil0\hfil & \text{\textcolor{black}{otherwise}}
+        \end{dcases}\textcolor{black}{.}
+    \]
+    Its cdf cannot be written in a closed form so must be left as an integral of the pdf or approximated.
+\end{definition}
+\subsection{Chi-squared distribution}
+\begin{definition}[Chi-squared distribution]
+    A CRV $X$ follows the \textbf{chi-squared distribution} with $n\in\NN$ degrees of freedom, denoted $X\sim \chi^2(n)$ if it satisfies: \[
+        f_X(x) = \begin{dcases}
+            \frac{1}{2\Gamma(n/2)}{\left(\frac{x}{2}\right)}^{n/2-1}e^{-x/2} & \text{\textcolor{black}{if }$x>0$} \\
+            \omit\hfil0\hfil & \text{\textcolor{black}{otherwise}}
+        \end{dcases}\textcolor{black}{.}
+    \]
+    Its cdf can also not be written in a closed form. The $\chi^2(n)$ distribution is the same as the $\text{Gamma}(\frac{n}{2},\frac{1}{2})$ distribution.
+\end{definition}
+\subsection{F-distribution}
+These pdfs are getting tough.
+\begin{definition}[F-distribution]
+    A CRV $X$ follows the \textbf{f-distribution} with $d_1,d_2\in\RR^{>0}$ degrees of freedom, denoted $X\sim \text{F}(d_1,d_2)$ if it satisfies: \[
+        f_X(x) = \begin{dcases}
+            \frac
+            {\Gamma\left(\frac{d_1+d_2}{2_\empty}\right)\left(\frac{d_1}{d_2}\right)^{d_1/2}x^{d_1/2-1}}
+            {\Gamma\left(\frac{d_1}{2_\empty}\right)\Gamma\left(\frac{d_2}{2_}\right)\left(1+\frac{d_1}{d_2}x\right)^{(d_1+d_2)/2}}
+            & \text{\textcolor{black}{if }$x>0$} \\
+            \omit\hfil0\hfil & \text{\textcolor{black}{otherwise}}
+        \end{dcases}\textcolor{black}{.}
+    \]
+    Its cdf can also not be written in a closed form. It is important to note that $d_1,d_2$ are not restricted to integer values, and that $X = \frac{X_1/d_1}{X_2/d_2}$ where $X_1\sim \chi^2(d_1)$ and $X_2\sim \chi^2(d_2)$.
+\end{definition}
+\subsection{Beta distribution}
+
+\begingroup\belowdisplayskip=-0pt
+\begin{definition}[Beta function]
+    For $\alpha,\beta\in\RR^{>0}$ we define the \textbf{beta function} by, \[
+    B(\alpha,\beta) := \int_0^1 x^{\alpha-1}(1-x)^{\beta-1}dx = \frac{\Gamma(\alpha)\Gamma(\beta)}{\Gamma(\alpha+\beta)}
+    \textcolor{black}{.}\]
+\end{definition}
+\endgroup
+
+\begin{definition}[Beta distribution]
+    A CRV $X$ follows the \textbf{beta distribution} with parameters $\alpha,\beta\in\RR^{>0}$, denoted $X\sim \text{Beta}(\alpha,\beta)$ if it satisfies: \[
+        f_X(x) = \begin{dcases}
+            \frac{1}{B(\alpha,\beta)}x^{\alpha-1}(1-x)^{\beta-1} & \text{\textcolor{black}{if }$0\leq x\leq 1$} \\
+            \omit\hfil0\hfil & \text{\textcolor{black}{otherwise}}
+        \end{dcases}\textcolor{black}{.}
+    \]
+    Its cdf can also not be written in a closed form.
+\end{definition}
+\subsection{Normal distribution}
+\begin{definition}[Standard normal distribution]
+    A CRV $X$ follows the \textbf{standard normal distribution} or \textbf{Gaussian distribution}, denoted $X\sim\text{N}(0,1)$ if it satisfies, \[
+        f_X(x) = \phi(x) := \frac{1}{\sqrt{2\pi}}e^{-x^2/2} \quad
+        \text{\textcolor{black}{for }$x\in\RR$}\textcolor{black}{,}
+        \qquad
+        F_X(x) = \frac{1}{\sqrt{2\pi}}\int_{-\infty}^xe^{-t^2/2}dt \quad
+        \text{\textcolor{black}{for }$x\in\RR$}\textcolor{black}{.}
+    \]
+    Where, once again, there is no explicit formula for the cdf.
+\end{definition}
+
+\begingroup\belowdisplayskip=-10pt
+\begin{definition}[Normal distribution]
+    A CRV $X$ follows the \textbf{normal distribution} with mean $\mu\in\RR$ and variance $\sigma^2$ for $\sigma\in\RR^{>0}$ denoted $X\sim\text{N}(\mu,\sigma^2)$ if it satisfies, \[
+        f_X(x) = \phi(x) := \frac{1}{\sqrt{2\pi\sigma^2}}e^{-\frac{(x-\mu)^2}{2\sigma^2}} \quad
+        \text{\textcolor{black}{for }$x\in\RR$}\textcolor{black}{.}
+    \]
+\end{definition}
+\endgroup
+\subsection{Cauchy distribution}
+\begin{definition}[Cauchy distribution]
+    A CRV $X$ follows the \textbf{Cauchy distribution} if it satisfies, \[
+        f_X(x) = \frac{1}{\pi(1+x^2)} \quad
+        \text{\textcolor{black}{for }$x\in\RR$}\textcolor{black}{,}
+        \qquad
+        F_X(x) = \frac{1}{\pi}\text{arctan}(x)+\frac{1}{2} \quad
+        \text{\textcolor{black}{for }$x\in\RR$}\textcolor{black}{.}
+    \]
+    If $X,Y\sim \text{N}(0,1)$, then $Z=X/Y$ follows the Cauchy distribution.
+\end{definition}
+\subsection{Student t-distribution}
+\begin{definition}[(Student's) t-distribution]
+    A CRV $X$ follows the \textbf{Student t-distribution} with $\nu\in\RR^{>0}$ degrees of freedom if it satisfies, \[
+        f_X(x) = \frac
+        {\Gamma\left(\frac{\nu+1}{2}\right)}
+        {\sqrt{\nu\pi}\Gamma\left(\frac{\nu}{2}\right)}
+        \left(1 + \frac{x^2}{\nu}\right)^{-\frac{\nu+1}{2}}
+        \quad
+        \text{\textcolor{black}{for }$x\in\RR$}\textcolor{black}{.}
+    \]
+    Its cdf cannot be written in a closed form.
+\end{definition}
+\begin{remark}
+    Not all RVs are either discrete or continuous.
+\end{remark}
 \section{Transformations of random variables}
+\subsection{DRVs}
+\subsection{CRVs}
 \section{Expectation of random variables}
+\subsection{Definition}
+\subsection{LOTUS}
+\subsection{Variance}
 \section{Multivariate random variables}
+\subsection{Multivariate distributions}
+\subsection{Independence}
+\subsection{Multivariate DRVs}
+\subsection{Multivariate CRVs}
+\subsection{Transformations of random 2-vectors}
+\subsection{2D LOTUS}
+\subsection{Covariance}
 \section{Generating functions}
+\subsection{Probability generating functions}
+\subsection{Moment generating functions}
+\subsection{Characteristic functions}
 \section{Conditional distribution and expectation}
+\subsection{Discrete: Conditional expectation and total expectation}
+\subsection{Continuous: Conditional density, distribution and expectation}
 
 \end{document}
