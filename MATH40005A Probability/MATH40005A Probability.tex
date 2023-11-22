@@ -89,7 +89,7 @@ The following are complementary reading for the course.
 These notes are written assuming all material covered in ICL's \textbf{MATH40001}, \textbf{MATH40002} and \textbf{MATH40004}.
 
 \begin{notation*}
-    Denote the natural numbers by $\NN = \{1,2,...\}$ and define $\NN_0 := \NN \cup \{0\}$. Moreover, denote the integers by $\ZZ = \{...,-2,-1,0,1,2,...\}$ and the reals by $\RR$. For real numbers $a < b$ write $[a,b]$ and $(a,b)$ for closed and open intervals respectively.
+    Common notation is all defined precisely in the aforementioned. The controversial and additional things are defined as such: $\NN = \{1,2,3,...\}$, $\NN_0 := \NN \cup \{0\}$, $\RR^{>0} := (0,\infty)$.
 \end{notation*}
 
 \section{Sample spaces and interpretations of probability}
@@ -583,7 +583,7 @@ The poisson distribution is commonly used for modelling the number of events occ
 
 \begingroup\belowdisplayskip=-10pt
 \begin{definition}[Poisson distribution]
-    A DRV $X$ follows the \textbf{poisson distribution} with parameter $\lambda > 0$, denoted $X \sim \text{Poi}(\lambda)$, if $\text{Im}X = \NN_0$ and, \[
+    A DRV $X$ follows the \textbf{poisson distribution} with parameter $\lambda\in\RR^{>0}$, denoted $X \sim \text{Poi}(\lambda)$, if $\text{Im}X = \NN_0$ and, \[
         p_X(x) = \frac{\lambda^x}{x!}e^{-\lambda} \quad \text{\textcolor{black}{for }$x\in\NN_0$}\textcolor{black}{.}
     \]
 \end{definition}
@@ -645,7 +645,7 @@ This is the distribution of the number of failed ii Bernoulli trials with parame
 \end{theorem}
 
 \begin{theorem}
-    If $a<b$, then $\P(a<X\leq b) = F_X(b)-F_X(a)$.
+    For $a,b\in\RR$ if $a<b$, then $\P(a<X\leq b) = F_X(b)-F_X(a)$.
 \end{theorem}
 
 \begin{remark}
@@ -699,7 +699,7 @@ All CRVs $X$ within this section will be considered over the probability space $
 
 \begingroup\belowdisplayskip=-10pt
 \begin{definition}[Exponential distribution]
-    A CRV $X$ follows the \textbf{exponential distribution} with parameter $\lambda\in\RR$ with $\lambda>0$, denoted $X\sim \text{Exp}(\lambda)$ if it satisfies: \[
+    A CRV $X$ follows the \textbf{exponential distribution} with parameter $\lambda\in\RR^{>0}$, denoted $X\sim \text{Exp}(\lambda)$ if it satisfies: \[
         f_X(x) = \begin{dcases}
             \lambda e^{-\lambda x} & \text{\textcolor{black}{if }$x>0$} \\
             \omit\hfil0\hfil & \text{\textcolor{black}{otherwise}}
@@ -723,7 +723,7 @@ All CRVs $X$ within this section will be considered over the probability space $
 \end{definition}
 
 \begin{definition}[Gamma distribution]
-    A CRV $X$ follows the \textbf{gamma distribution} with shape parameter $\alpha\in\RR$ and rate parameter $\beta\in\RR$ with $\alpha,\beta>0$, denoted $X\sim \text{Gamma}(\alpha,\beta)$ if it satisfies: \[
+    A CRV $X$ follows the \textbf{gamma distribution} with shape and rate parameter $\alpha,\beta\in\RR^{>0}$ respectively, denoted $X\sim \text{Gamma}(\alpha,\beta)$ if it satisfies: \[
         f_X(x) = \begin{dcases}
             \frac{\beta^\alpha}{\Gamma(\alpha)}x^{\alpha-1}e^{-\beta x} & \text{\textcolor{black}{if }$x>0$} \\
             \omit\hfil0\hfil & \text{\textcolor{black}{otherwise}}
@@ -822,21 +822,245 @@ These pdfs are getting tough.
 \end{remark}
 \section{Transformations of random variables}
 \subsection{DRVs}
+\begingroup\belowdisplayskip=-10pt
+\begin{theorem}
+    Let $X$ be a DRV on $(\Omega,\FFF,\P)$ and let $g:\RR\rightarrow\RR$ be a deterministic function, then $Y=g(X)$ is a DRV with pmf: \[
+    p_Y(y)=\sum_{\{x\in\text{Im}X:g(x)=y\}}p_X(x) \quad \text{\textcolor{black}{if }$y\in\text{Im}Y$ \textcolor{black}{and }0 \textcolor{black}{ otherwise.}}
+    \]
+\end{theorem}
+\endgroup
 \subsection{CRVs}
+\begingroup\belowdisplayskip=-10pt
+\begin{theorem}
+    Let $X$ be a CRV on $(\Omega,\FFF,\P)$ and let $g:\RR\rightarrow\RR$ be a strictly monotonis and differentiable function with inverse $g^{-1}:\RR\rightarrow\RR$, then $Y=g(X)$ is a CRV with pdf: \[
+    f_Y(y)=f_X(g^{-1}(y))\left|\frac{d}{dy}\left[g^{-1}(y)\right]\right| \quad \text{\textcolor{black}{for all }$y\in\RR$ \textcolor{black}{.}}
+    \]
+\end{theorem}
+\endgroup
+\begin{remark}
+    The term ${\displaystyle\left|\frac{d}{dy}\left[g^{-1}(y)\right]\right|}$ is often called the \textbf{Jacobian} of the transformation.
+\end{remark}
 \section{Expectation of random variables}
+Throughout this section, unless otherwise specified, all infinite sums will be assumed to converge absolutely and all integrals will be assumed to be $<\infty$.
 \subsection{Definition}
+
+\begingroup\belowdisplayskip=-10pt
+\begin{definition}[Expectation of a DRV]
+    Let $X$ be a DRV on $(\Omega,\FFF,\P)$ then the \textbf{expectation} of $X$ is defined by, \[
+        \text{E}(X) := \sum_{x\in\text{Im}X}xp_X(x) \textcolor{black}{.}
+    \]
+\end{definition}
+\endgroup
+
+\begingroup\belowdisplayskip=-10pt
+\begin{definition}[Expectation of a CRV]
+    Let $X$ be a CRV on $(\Omega,\FFF,\P)$ then the \textbf{expectation} of $X$ is defined by, \[
+        \text{E}(X) := \int_{-\infty}^{\infty}xf_X(x)dx \textcolor{black}{.}
+    \]
+\end{definition}
+\endgroup
 \subsection{LOTUS}
+
+\begingroup\belowdisplayskip=-10pt
+\begin{theorem}[Discrete LOTUS]
+    Let $X$ be a DRV on $(\Omega,\FFF,\P)$ and $g:\RR\rightarrow\RR$, we have, \[
+        \text{E}(g(X)) = \sum_{x\in\text{Im}X}g(x)p_X(x) \textcolor{black}{.}
+    \]
+\end{theorem}
+\endgroup
+
+\begin{theorem}[Continuous LOTUS]
+    Let $X$ be a CRV on $(\Omega,\FFF,\P)$ and $g:\RR\rightarrow\RR$, we have, \[
+        \text{E}(g(X)) = \int_{-\infty}^{\infty}g(x)f_X(x)dx \textcolor{black}{.}
+    \]
+    Note that this is one of the few theorems throughout the course given without proof.
+\end{theorem}
+
+\begin{theorem}
+    If $X$ is non-negative then $\text{E}(X)\geq0$.
+\end{theorem}
+
 \subsection{Variance}
+\begingroup\belowdisplayskip=-10pt
+\begin{definition}[Variance]
+    Let $X$ be a discrete/continuous random variable, then the \textbf{variance} of $X$ is defined by, \[
+        \text{Var}(X) := \text{E}\left[X-\text{E}(X))^2\right]\textcolor{black}{.}
+    \]
+\end{definition}
+\endgroup
+
+\begin{theorem}
+    For a discrete/continuous random variable with finite variance, \[
+    \text{Var}(X) = \text{E}\left(X^2\right)-\left[E(X)^2\right]\textcolor{black}{.}
+    \]
+\end{theorem}
 \section{Multivariate random variables}
 \subsection{Multivariate distributions}
+
+\begingroup\belowdisplayskip=-10pt
+\begin{definition}[Join distribution function]
+    Consider the sequence of random variables $X_1,X_2,\ldots,X_n$ all on $(\Omega,\FFF,\P)$ and write $\textbf{X}=(X_1,X_2,\ldots,X_n)$ and $\textbf{x}=(x_1,x_2,\ldots,x_n)\in\RR^n$. Then the \textbf{joint distribution function} of $\textbf{X}$ is  $F_\textbf{X}:\RR^n\rightarrow[0,1]$ defined by: \[
+        F_\textbf{X}(\textbf{x}) := \P(X_1\leq x_1,X_2\leq x_2, \ldots, X_n \leq x_n) \quad \text{\textcolor{black}{for all }$\textbf{x}\in\RR^n$\textcolor{black}{.}}
+    \]
+\end{definition}
+\endgroup
 \subsection{Independence}
+
+\begingroup\belowdisplayskip=-10pt
+\begin{definition}[Pairwise independence for $n$ random variables]
+    We call the sequence of RVs, $X_1, X_2, \ldots, X_n$, \textbf{pairwise independent} iff, \[
+        F_{X_i,X_j}(x_i,x_j) = F_{X_i}(x_i)F_{X_j}(x_j) \quad \text{\textcolor{black}{for all }$x_i,x_j\in\RR$ \textcolor{black} { with }$i\neq j$\textcolor{black}{.}}
+    \]
+\end{definition}
+\endgroup
+
+\begin{definition}[Independence of a family of random variables]
+    Given some indexing set $\III \subset \RR$, a family of random variables $\{X_i: i\in\III\}$ is \textbf{independent} iff for all finite $\JJJ\subseteq\III$: \[
+        \P\left(\bigcap_{j\in\JJJ}\{X_j\leq x_j\}\right) = \prod_{j\in\JJJ}\P(\{X_j\leq x_j\}) \quad 
+    \text{\textcolor{black}{for all }$(x_j)_{j\in\JJJ}$ \textcolor{black} { with }$x_j\in\RR$\textcolor{black}{.}}
+    \]
+    (All finite subfamilies of the family of random variables is independent by the natural definition)
+\end{definition}
+
 \subsection{Multivariate DRVs}
+\begin{definition}[Joint probability mass functions]
+    Let $X_1,X_2,\ldots,X_n$ all be DRVs on $(\Omega,\FFF,\P)$ that form the random vector $\textbf{X}$, their \textbf{joint probability mass function}, $p_{\textbf{X}}:\RR^n\rightarrow[0,1]$ is defined as, \[
+        p_{\textbf{X}}(x_1,x_2,\ldots,x_n) := 
+        \P(\{\omega\in\Omega:X_1(\omega)=x_1,X_2(\omega)=x_2,\ldots,X_n(\omega)=x_n\})
+        = \P(X_1=x_1,X_2=x_2,\ldots,X_n=x_n) \textcolor{black}{.}
+    \]
+    The \textbf{marginal probability mass function} of $X_i\in\textbf{X}$ is given by, \[
+        \p_{X_i}(x)= {\left(\sum_{x_j\in\text{Im}X_j}\right)}_{j\in[1,n]\setminus\{i\}} p_{\textbf{X}}(x_1,x_2,\ldots,x_{i-1},x,x_{i+1},\ldots,x_n)\text{\textcolor{black}{.}}
+    \]
+    \begingroup\belowdisplayskip=-0pt
+    It can be obtained that for any sufficiently ''nice" set $A\in\RR^n$, \[
+        \P(\textbf{X}\in A) = \mathop{\sum\dots\sum}_{(x_1,x_2,\ldots,x_n)\in A}\P(X_1=x_1,X_2=x_2,\ldots,X_n=x_n)\textcolor{black}{.}
+    \]
+    \endgroup
+\end{definition}
+
+\begin{definition}[Independence of DRVs]
+    Given some indexing set $\III\in\RR$ a family of DRVs, $\{X_i:i\in\III\}$ with joint pmf $p_\textbf{X}$, is \textbf{independent} iff for all finite $\JJJ\in\III$: \[
+        p_{\textbf{X}}(\textbf{x}) = \prod_{i=1}^np_{X_i}(x_i) \quad \text{\textcolor{black}{for all }$\textbf{x}=(x_1,x_2,\ldots,x_n)\in\RR^n$}
+    \textcolor{black}{.}\]
+\end{definition}
 \subsection{Multivariate CRVs}
-\subsection{Transformations of random 2-vectors}
-\subsection{2D LOTUS}
+
+\begin{definition}[Continuous random vector]
+    The random vector $\textbf{X}=(X_1,X_2,\ldots X_n)$ is a \textbf{continuous random vector} iff, \[
+    F_\textbf{X}(\textbf{x}) = 
+    {\displaystyle\int\dots\int_{B}}
+    f_{\textbf{X}} (\textbf{x})dx_1dx_2\cdots dx_n
+    \quad \text{\textcolor{black}{with }$B = (\infty,x_1]\times(\infty,x_2]\times\dots\times(\infty,x_n]$}\textcolor{black}{,}
+    \quad \text{\textcolor{black}{for all }$\textbf{x}\in\RR^n$}
+    \textcolor{black}{.}\]
+    For some $f_\textbf{X}:\RR^n\rightarrow\RR$ satisfying: $f_\textbf{X}(\textbf{x})\geq0$ for all $\textbf{x}\in\RR^n$ and ${\displaystyle\int\dots\int_{\RR^n}f_\textbf{X}(\textbf{x})dx_1dx_2\cdots dx_n}=1$.\\
+    Note that $\displaystyle f_\textbf{X}(\textbf{x})=\frac{\partial^n}{\partial x_1\partial x_2\cdots\partial x_n}F_\textbf{X}(\textbf{x})$ and ${\displaystyle \P(\textbf{X}\in A)=\int\dots\int_Af_\textbf{X}(\textbf{x})d^n\textbf{x}}$.
+\end{definition}
+
+\begin{definition}[Independence of CRVs]
+    Given some indexing set $\III\in\RR$ a family of CRVs, $\{X_i:i\in\III\}$ with joint pdf $f_\textbf{X}$, is \textbf{independent} iff for all finite $\JJJ\in\III$: \[
+        f_{\textbf{X}}(\textbf{x}) = \prod_{i=1}^nf_{X_i}(x_i) \quad \text{\textcolor{black}{for all }$\textbf{x}=(x_1,x_2,\ldots,x_n)\in\RR^n$}
+    \textcolor{black}{.}\]
+\end{definition}
+
+\subsection{Transformations of random vectors ******** }
+\begin{definition}[Transformation]
+    To \textbf{transform} the random vector $\textbf{X}$ with joint pdf $f_\textbf{X}$ to $\textbf{U}$ with $U_i=u_i(\textbf{X})$ with $u_i: \RR^n \rightarrow \RR^n$ for all $i\in[1,n]$ define $T(\textbf{x})=(u_1(\textbf{x}),u_2(\textbf{x}),\ldots,u_n(\textbf{x}))$.
+\end{definition}
+\subsection{Multivariate LOTUS}
+\begingroup\belowdisplayskip=-10pt
+\begin{theorem}[Discrete multivariate LOTUS]
+    If $X_1,X_2,\ldots,X_n$ are DRVs on $(\Omega,\FFF,\P)$ and form the random vector $\textbf{X}$ with $g:\RR^n\rightarrow\RR$, then $Y=g(\textbf{X})$ is a DRV on $(\Omega,\FFF,\P)$ with expectation, \[
+    \text{E}(g(\textbf{X}))=\mathop{\sum\dots\sum}_{x_i\in\text{Im}X_i}g(\textbf{X})\P(\textbf{X}=\textbf{x})
+    \quad \text{\textcolor{black}{for all }$\textbf{x}=(x_1,x_2,\ldots,x_n)\in\RR^n$}
+    \textcolor{black}{.}
+    \]
+\end{theorem}
+
+\begin{theorem}[Continuous multivariate LOTUS]
+    If $X_1,X_2,\ldots,X_n$ are DRVs on $(\Omega,\FFF,\P)$ and form the random vector $\textbf{X}$ with $h:\RR^n\rightarrow\RR$ we have, \[
+    \text{E}(h(\textbf{X}))=\int\dots\int_{\RR^n}g(\textbf{x})f_\textbf{X}(\textbf{x})dx_1dx_2\cdots dx_n
+    \quad \text{\textcolor{black}{for all }$\textbf{x}=(x_1,x_2,\ldots,x_n)\in\RR^n$}
+    \textcolor{black}{.}
+    \]
+\end{theorem}
+\endgroup
 \subsection{Covariance}
+
+\begingroup\belowdisplayskip=-10pt
+\begin{definition}[Covariance]
+    Given two random variable $X$ and $Y$ on the same probability space with expectations $\mu_X$ and $\mu_Y$ respectively. The \textbf{covariance} of $X$ and $Y$ is defined as, \[
+        \text{Cov}(X,Y) := \text{E}\left[(X-\mu_X)(Y-\mu_Y)\right] \quad \text{\textcolor{black}{assuming both expectation take finite values.}}
+    \]
+\end{definition}
+\endgroup
+
+\begingroup\belowdisplayskip=-0pt
+\begin{definition}[Correlation]
+    Given the same $X$ and $Y$ the \textbf{correlation} of $X$ and $Y$ is defined as, \[
+    \text{Cor}(X,Y) := \frac{\text{Cov}(X,Y)}{\sqrt{\text{Var}(X)\text{Var}(Y)}}
+    \textcolor{black}{.}
+    \]
+\end{definition}
+
+\begin{theorem}
+    For jointly discrete/continuous RVs with finite expectations the following hold:\begin{enumerate}
+        \item when $X=Y$, $\text{Cov}(X,Y)=\text{E}\left[(X-\mu_X)^2\right] = \text{Var}(X)$,
+        \item $\text{Cov}(X,Y)=\text{E}(XY)-\text{E}(X)\text{E}(Y)$,
+        \item when $X$ and $Y$ are independent, $\text{E}(XY)=\text{E}(X)\text{E}(Y)$,
+        \item when variances are also finite, $\text{Var}(X+Y)=\text{Var}(X)+\text{Var}(Y)+2\text{Cov}(X,Y)$.
+    \end{enumerate}
+\end{theorem}
+\endgroup
+
 \section{Generating functions}
 \subsection{Probability generating functions}
+\begin{definition}{Probability generating functions}
+    Given a DRV $X$ with $\text{Im}(X)=\NN_0$, denote, \[
+        \SSS_X := \left\{s\in\RR:  \sum_{x=0}^\infty|s|^x\P(X=x)<\infty\right\}
+        \textcolor{black}{,}
+    \]
+    and define the \textbf{probability generating function} (\textbf{pgf}) of $X$ as the function $G_X:\SSS_X\rightarrow\RR$ given by, \[
+        G_X(s) = \text{E}(s^X)=\sum_{x=0}^\infty s^x\P(X=x)\textcolor{black}{,}
+    \]
+    noting that the pgf is well defined for $|s|<1$ and $G_X(0)=\P(X=0)$ and $G_X(1)=1$.
+\end{definition}
+
+\begin{theorem}{Uniqueness of pgfs}
+    Given two DRVs $X$ and $Y$ with pgfs $G_X$ and $G_Y$ respectively, 
+    \[G_X(s)=G_Y(s) \quad\text{\textcolor{black}{for all }}s\in \SSS_X\cap\SSS_Y \iff
+    p_X(x)=p_Y(x) \quad\text{\textcolor{black}{for all }}x\in\NN_0
+    \textcolor{black}{.}
+    \]
+\end{theorem}
+
+\begin{theorem}
+    Let $X,Y$ be independent DRVs with $\text{Im}X,\text{Im}Y\in\NN_0$, then \[
+    G_{X+Y}(s)=G_X(s)G_Y(s) \quad
+    \text{\textcolor{black}{ for all }}s\in\SSS_X\cap\SSS_Y\textcolor{black}{.}
+    \]
+\end{theorem}
+
+\begin{theorem}[Pgs of sum of independent DRVs]
+    Given a collection of $n$ independent DRVs $X_1,X_2,\ldots,X_n$, \[
+        G_{\sum_{i=1}^nX_i}(s)=\prod_{i=1}^nG_{X_i}(s)\quad
+        \text{\textcolor{black}{ for all }}s\in\bigcap_{i=1}^n\SSS_{X_i}\textcolor{black}{.}
+    \]
+\end{theorem}
+
+\subsection{Common pgfs}
+\begin{example}[Bernoulli distribution]
+    Let $X\sim\text{Bern}(p)$, then $G_X(s) = 1-p + sp$ for all $s\in\RR$.
+\end{example}
+
+\begin{example}[Binomial distribution]
+    Let $X\sim\text{Bin}(n,p)$, then $G_X(s) = (1-p+sp)^n$ for all $s\in\RR$.
+\end{example}
+
+\begin{example}[Poisson distribution]
+    Let $X\sim\text{Poi}(\lambda)$, then $G_X(s) = \text{exp}(\lambda(s-1))$ for all $s\in\RR$.
+\end{example}
 \subsection{Moment generating functions}
 \subsection{Characteristic functions}
 \section{Conditional distribution and expectation}
