@@ -143,16 +143,16 @@ Samples spaces can be countable or uncountable.
 \begin{definition}[Naive probability]
     Suppose $|A| < \infty$ and we want to assign a probability to $A \subseteq \Omega$.
     \[
-    \text{P}_{Naive}(A) := \frac{|A|}{|\Omega|} \implies \text{P}(A^c) = 1 - \text{P}(A)  \textcolor{black}{.}
+    \P_{Naive}(A) := \frac{|A|}{|\Omega|} \implies \P(A^c) = 1 - \P(A)  \textcolor{black}{.}
     \]
     This Naive example does not consider when $|A|$ is infinite but of finite area.
 \end{definition}
 \begin{example}
     Let $\Omega = \{(x,y) \in \RR^2, x^2+y^2=1\}$ and $A\subseteq\Omega$. Define: 
     \[
-    \text{P}(A) := \frac{\text{area of } A}{\text{area of } \Omega}
+    \P(A) := \frac{\text{area of } A}{\text{area of } \Omega}
     \]
-    In the case where $A = \{(x,y) \in \RR^2, x^2+y^2=0.5^2\}$ we have $\text{P}(A) = 0.25$
+    In the case where $A = \{(x,y) \in \RR^2, x^2+y^2=0.5^2\}$ we have $\P(A) = 0.25$
 \end{example}
 \begin{remark}
     For classical / naive probability we require $|\Omega| < \infty$ or the ``area" of $\Omega$ be finite. 
@@ -160,12 +160,12 @@ Samples spaces can be countable or uncountable.
 
 \begin{definition}[Limiting frequency]
     Consider $n_{total}$ repetitions of an experiment and $n_A$ the number of time $A$ occurs.
-    \[\text{P}(A) := \lim_{n_{total} \to \infty} \frac{n_A}{n_{total}}\]
+    \[\P(A) := \lim_{n_{total} \to \infty} \frac{n_A}{n_{total}}\]
     Unfortunately, $n_{total} \to \infty$ is often hard to conceive with finite representations not necessarily being representative.
 \end{definition}
 
 \begin{definition}[Subjective probability]
-    For an event $A$ assign the probability $\text{P}(A)$ based on our own personal beliefs. The subjective probability need not be the same for different individuals, and despite its appearance it remains a valid interpretation of probability.
+    For an event $A$ assign the probability $\P(A)$ based on our own personal beliefs. The subjective probability need not be the same for different individuals, and despite its appearance it remains a valid interpretation of probability.
 \end{definition}
 
 \begin{remark}
@@ -195,7 +195,7 @@ Computing naive probabilities often requires some combinatorics.
     \begin{definition}[Power Set]
         Given a set $A$ its \textbf{power set} is defined as:
         \[
-            \PPP(A) := \{X,X\subseteq A\}\textcolor{black}{.}
+            \PPP(A) := \{X:X\subseteq A\}\textcolor{black}{.}
         \]
     \end{definition}
 \endgroup
@@ -302,14 +302,14 @@ We do not always want to consider all subsets of $\Omega$ so denote $\FFF \subse
 
 \begingroup\belowdisplayskip=-10pt
     \begin{definition}[Probability measure]
-        A mapping $\text{P}: \FFF \to \RR$ is a \textbf{probability measure} on $(\Omega, \FFF)$ iff:\\
+        A mapping $\P: \FFF \to \RR$ is a \textbf{probability measure} on $(\Omega, \FFF)$ iff:\\
         \begin{enumerate*}
-            \item $\text{P}(A)\geq0$ for all $A\in\FFF$.
-            \item $\text{P}(\Omega) = 1$.
+            \item $\P(A)\geq0$ for all $A\in\FFF$.
+            \item $\P(\Omega) = 1$.
             \item For a countable, disjoint sequence of events $(A_i)_{i\in\III}$ on an indexing set $\III$: \\
         \end{enumerate*}
         \[
-        \text{P}\left(\bigcup_{i\in\III}A_i\right) = \sum_{i\in\III}\text{P}(A_i)\textcolor{black}{.}
+        \P\left(\bigcup_{i\in\III}A_i\right) = \sum_{i\in\III}\P(A_i)\textcolor{black}{.}
         \]
     \end{definition}
 \endgroup
@@ -318,21 +318,21 @@ We do not always want to consider all subsets of $\Omega$ so denote $\FFF \subse
 \subsection{Probability space}
 \endgroup
 \begin{definition}[Probability space]
-    A \textbf{probability space} is a triple $(\Omega, \FFF, \text{P})$, with $\Omega$ a sample space, $\FFF$ a $\sigma$-algebra on $\Omega$, and $\text{P}$ a probability measure on $(\Omega, \FFF)$.
+    A \textbf{probability space} is a triple $(\Omega, \FFF, \P)$, with $\Omega$ a sample space, $\FFF$ a $\sigma$-algebra on $\Omega$, and $\P$ a probability measure on $(\Omega, \FFF)$.
 \end{definition}
 
 \begin{corollary} For $A,B \in \FFF$: \newline
     \begin{enumerate*}
-        \item $\text{P}(A^c) = 1 - \text{P}(A)$. \hspace{25pt}
-        \item $A \subseteq B \implies \text{P}(A) \leq \text{P}(B)$. \hspace{25pt}
-        \item $\text{P}(A\cup B) = \text{P}(A) + \text{P}(B) - \text{P}(A\cap B)$.
+        \item $\P(A^c) = 1 - \P(A)$. \hspace{25pt}
+        \item $A \subseteq B \implies \P(A) \leq \P(B)$. \hspace{25pt}
+        \item $\P(A\cup B) = \P(A) + \P(B) - \P(A\cap B)$.
     \end{enumerate*}
 \end{corollary}
 
 \section{Conditional probability}
 \begin{definition}[Conditional probability measure]
-    Consider the probability space $(\Omega, \FFF, \text{P})$ and some event $B \in \FFF$ with $\text{P}(B) > 0$, we construct the probability measure $\text{Q}$ on $(\Omega, \FFF)$ by \[
-        \text{Q}(A):=\frac{P(A\cap B)}{P(B)}\textcolor{black}{.}
+    Consider the probability space $(\Omega, \FFF, \P)$ and some event $B \in \FFF$ with $\P(B) > 0$, we construct the probability measure $\Q$ on $(\Omega, \FFF)$ by \[
+        \Q(A):=\frac{P(A\cap B)}{P(B)}\textcolor{black}{.}
     \]
     Denote the \textbf{conditional probability} of $A$ given $B$ by $P(A|B) = Q(B)$.
 \end{definition}
@@ -341,8 +341,8 @@ We do not always want to consider all subsets of $\Omega$ so denote $\FFF \subse
 
 \begingroup\belowdisplayskip=-10pt
 \begin{theorem}[Bayes' rule]
-    For $A,B \in \FFF$ with $\text{P}(A) >0, \text{P}(B) > 0$ we have, \[
-        \text{P}(A|B) = \frac{\text{P}(B|A)\text{P}(A)}{\text{P}(B)}
+    For $A,B \in \FFF$ with $\P(A) >0, \P(B) > 0$ we have, \[
+        \P(A|B) = \frac{\P(B|A)\P(A)}{\P(B)}
         \textcolor{black}{.}
         \]
 \end{theorem}
@@ -354,8 +354,8 @@ We do not always want to consider all subsets of $\Omega$ so denote $\FFF \subse
 
 \begingroup\belowdisplayskip=-10pt
 \begin{theorem}[Total probability]
-    Given some partition $\{B_i, i\in\III\}$ of $\Omega$ with $\text{P}(B_i)>0$ for all $i\in\III$ and some event $A\in\FFF$,\[
-        \text{P}(A)=\sum_{i\in\III}\text{P}(A\cap B_i)=\sum_{i\in\III}\text{P}(A|B_i)\text{P}(B_i)\textcolor{black}{.}
+    Given some partition $\{B_i, i\in\III\}$ of $\Omega$ with $\P(B_i)>0$ for all $i\in\III$ and some event $A\in\FFF$,\[
+        \P(A)=\sum_{i\in\III}\P(A\cap B_i)=\sum_{i\in\III}\P(A|B_i)\P(B_i)\textcolor{black}{.}
     \]
 \end{theorem}
 \endgroup
@@ -363,8 +363,8 @@ We do not always want to consider all subsets of $\Omega$ so denote $\FFF \subse
 These two theorems can then be combined to form the following.
 \begingroup\belowdisplayskip=-10pt
 \begin{theorem}[Bayes' rule with extra conditioning]
-    For events $A,B,E \in \FFF$ with $\text{P}(A\cap E)>0, P(B\cap E) > 0$ we have \[
-    \text{P}(A|B\cap E) = \frac{\text{P}(B|A\cap E)\text{P}(A|E)}{\text{P}(B|E)}
+    For events $A,B,E \in \FFF$ with $\P(A\cap E)>0, P(B\cap E) > 0$ we have \[
+    \P(A|B\cap E) = \frac{\P(B|A\cap E)\P(A|E)}{\P(B|E)}
     \textcolor{black}{.}
     \]
 \end{theorem}
@@ -372,10 +372,10 @@ These two theorems can then be combined to form the following.
 
 \begingroup\belowdisplayskip=-10pt
 \begin{theorem}[Total probability with extra conditioning]
-    Given events $A,E\in\III$  with $\text{P}(E)>0$ and some partition $\{B_i, i\in\III\}$ of $\Omega$ with $\text{P}(B_i\cap E)>0$ for all $i\in\III$,
+    Given events $A,E\in\III$  with $\P(E)>0$ and some partition $\{B_i, i\in\III\}$ of $\Omega$ with $\P(B_i\cap E)>0$ for all $i\in\III$,
     \[
-        \text{P}(A|E)=\sum_{i\in\III}\frac{\text{P}(A\cap B_i\cap E)}{\text{P}(E)}
-        =\sum_{i\in\III}\text{P}(A|B_i\cap E)\text{P}(B_i| E)
+        \P(A|E)=\sum_{i\in\III}\frac{\P(A\cap B_i\cap E)}{\P(E)}
+        =\sum_{i\in\III}\P(A|B_i\cap E)\P(B_i| E)
         \textcolor{black}{.}
     \]
 \end{theorem}
@@ -383,11 +383,11 @@ These two theorems can then be combined to form the following.
 
 \section{Independence}
 \subsection{Event independence}
-Two events $A,B\in\FFF$ will be independent iff the occurrence of one does not effect the probability the other occurs, i.e $\text{P}(A|B) = \text{P}(A)$ and vice versa.
+Two events $A,B\in\FFF$ will be independent iff the occurrence of one does not effect the probability the other occurs, i.e $\P(A|B) = \P(A)$ and vice versa.
 
 \begin{definition}[Independent events]
     Two events $A,B \in \FFF$ are said to be \textbf{independent} iff\[
-    \text{P}(A\cap B) = \text{P}(A)\text{P}(B) \textcolor{black}{,}
+    \P(A\cap B) = \P(A)\P(B) \textcolor{black}{,}
     \] and \textbf{dependent} otherwise.
 \end{definition}
 
@@ -396,12 +396,152 @@ Two events $A,B\in\FFF$ will be independent iff the occurrence of one does not e
 \end{corollary}
 
 \begin{definition}[General independence]
-    A finite collection of events $\{A_1,A_2,\dots ,A_n\}$ is independent iff \[
-    \text{P}(A_1\cap A_2\cap \dots \cap A_n) = \text{P}(A_1)\text{P}(A_2)\dots \text{P}(A_n)\textcolor{black}{,}
+    A finite collection of events $\{A_1,A_2,\ldots ,A_n\}$ is independent iff \[
+    \P(A_1\cap A_2\cap \ldots \cap A_n) = \P(A_1)\P(A_2)\ldots \P(A_n)\textcolor{black}{,}
     \]
     and similarly a countably or uncountably infinite collection of events is independent iff each finite subcollection is independent.
 \end{definition}
 
-\subsection{Conditional indepence}
+\subsection{Conditional independence}
+
+\begingroup\belowdisplayskip=-20pt
+\begin{definition}[Conditional independence]
+    Given the events $A,B,C \in \FFF$ with $\P(C)>0$ we say $A$ and $B$ are \textbf{conditional independent} given $C$ iff, \[
+        \P(A\cap B|C) = \P(A|C)\P(B|C) \textcolor{black}{.}
+    \]
+\end{definition}
+\endgroup
+
+\subsection{Product rule for general independence}
+The upcoming subsection may seem disparate, they are however necessary parts to the omitted proof of the product rule for general independence and therefore deemed relevant.
+\begin{definition}[Set difference]
+        Given two set $A,B\in\Omega$ the \textbf{set difference} of $A$ and $B$ is defined as, $A\setminus B := A \cap B^c$.
+\end{definition}
+
+\begin{lemma}
+    Any countable union of sets can be written as a countable union of disjoint sets.
+\end{lemma}
+
+\begin{definition}[Increasing and decreasing sets]
+    A sequence of sets $(A_i)_{i=1}^\infty$ is said to \textbf{increase} to $A$ (written $A_i \uparrow A$) iff $A_1 \subseteq A_2 \subseteq \ldots$ and $\bigcup\limits_{i=1}^\infty = A$. The definition for a sequence of sets $(B_i)_{i=1}^\infty$ to \textbf{decrease} to a set $B$ ($B_1 \downarrow B$) is defined similarly.
+\end{definition}
+
+\begingroup\belowdisplayskip=-10pt
+\begin{theorem}[Continuity property of probability measures]
+    If $A_1, A_2, \ldots \in \FFF$ with $A_i \uparrow A$ or $A_i \downarrow A$ for some $A \in \FFF$, \[
+        \lim_{i\rightarrow\infty}\P(A_i) = \P(\lim_{i\rightarrow\infty}A_i) = \P(A)
+    \textcolor{black}{.}\]
+\end{theorem}
+\endgroup
+
+\begingroup\belowdisplayskip=-20pt\abovedisplayskip=-10pt
+\begin{theorem}[Product rule for general independence]
+    Given a countably infinite set of independent events $A_1, A_2, \ldots \in \FFF$, \[
+     \P\left(\bigcap_{i=1}^\infty{A_i}\right) = \prod_{i=1}^\infty\P(A_i)\textcolor{black}{.}
+    \]
+\end{theorem}
+\endgroup
+
+\section{Discrete random variables}
+
+\subsection{Images and their properties}
+throughout this subsection we will be considering the function $f:\XXX \rightarrow \YYY$.
+\begin{definition}[Image]
+    For some subset $A \subseteq \XXX$ we define the \textbf{image} of $A$ under $f$ by, \[
+        f(A) := \{y \in \YYY: \exists x \in A, y = f(x)\} = \{f(x): x \in A\} \textcolor{black}{.}
+    \]
+When $A = \XXX$, $f(\XXX) = \text{Im}f$.
+\end{definition}
+
+\begin{definition}[Pre-image]
+    For some subset $B \subseteq \YYY$ we now define the \textbf{pre-image} of $B$ under $f$ by, \[
+    f^{-1}(B) := \{x\in\XXX: f(x) \in B\} \textcolor{black}{.}
+    \]
+Despite the similar notation to the inverse function of $f$ they are not the same thing. Notably, the pre-image under $f$ always exists while the inverse function need not exist.
+\end{definition}
+
+\begingroup\belowdisplayskip=-10pt
+\begin{lemma}
+    For a collection of subsets $B_i \in \FFF$ for $i$ in some indexing set $\III$ we have, \[
+        f^{-1}\left(\bigcup_{i\in\III} B_i \right) = \bigcup_{i\in\III} f(B_i) \textcolor{black}{.}
+    \]
+\end{lemma}
+\endgroup
+
+\subsection{DRVs and their distributions}
+
+\begin{definition}[Discrete random variable]
+    A \textbf{discrete random variable} (\textbf{DRV}) on the probability space $(\Omega, \FFF, \P)$ is a function $X: \Omega \rightarrow \RR$ that satisfies the following properties:
+    \begin{itemize}
+        \item $\text{Im}X = \{X(\omega): \omega \in \Omega\}$ must be a countable subset of $\RR$.
+        \item $X^{-1}(x) \in \FFF$ for all $x \in \RR$.
+    \end{itemize}
+\end{definition}
+
+\begin{remark}
+    The nomenclature of $X$ being discrete stems from the fact that its image is a countable subset of $\RR$ and so can be mapped to $\NN$ which we see as being discrete.
+\end{remark}
+
+\begin{definition}[Probability mass function]
+    The \textbf{probability mass function} (\textbf{pmf}) of a DRV $X$ is defined as a function $p_X: \RR \rightarrow [0,1]$ such that, \[
+        p_X(x) := \P(X^{-1}(x))\textcolor{black}{.}
+    \]
+    This is commonly denoted by $p_X(x) = \P(X=x)$.
+\end{definition}
+
+\begin{remark}
+    Some useful propoerties of the pmf extending from the definition are:
+    \begin{itemize}
+        \item $x \not\in \text{Im}X \implies p_X(x) = 0$.
+        \item For $x_1, x_2 \in \text{Im}X$ with $x_1 \neq x_2$, $X^{-1}(x_1) \cap X^{-1}(x_2) = \emptyset$.
+        \item $\sum\limits_{x\in\text{Im}X}p_X(x) = \sum\limits_{x\in\RR}p_X(x) = 1$.
+    \end{itemize}
+\end{remark}
+
+\begin{theorem}
+    Suppose $\III$ is some indexing set and $S = \{s_i \in \RR: i\in\III\}$ is countable and $\{\pi_i:\i \in \III\}$ is a collection such that $\pi_i \geq 0$ for all $i \in \III$ and $\sum\limits_{i\in\III}\pi_i = 1$. Then there exists some probability space $(\Omega,\FFF,\P)$ and a DRV $X$ on said probability space such that $p_X(s_i)=\pi_i$ for all $i\in\III$ and $p_X(s)=0$ otherwise.
+\end{theorem}
+
+\section{Common DRVs}
+\subsection{Bernoulli distribution}
+All DRVs will be considered over the probability space $(\Omega, \FFF, \P)$
+\begin{definition}[Bernoulli distribution]
+    A DRV $X$ is said to have \textbf{Bernoulli distribtuion} with parameter $p\in(0,1)$ if $\text{Im}X = \{0,1\}$ with $p_X(1)=p$. This is denoted by $X \sim \text{Bern}(p)$.
+\end{definition}
+
+\begingroup\belowdisplayskip = -10pt
+\begin{definition}[Indicator variable]
+    Given some event $A\in\FFF$ the \textbf{indicator variable} of the event $A$ is given by,\[
+    \II_A(\omega) := \begin{dcases}
+        1 & \text{\textcolor{black}{if }} \omega \in A \\
+        0 & \text{\textcolor{black}{if }} \omega \not\in A
+    \end{dcases}
+    \textcolor{black}{.}
+    \]
+\end{definition}
+\endgroup
+
+\begin{remark}
+    $\II_A \sim \text{Bern}(\P(A))$.
+\end{remark}
+
+\subsection{Binomial distribution}
+\begin{definition}[Binomial distribution]
+    Consider a sequence of $n\in\NN$ iid Bernoulli trials with parameter $p$, count the number of successes and denote this by the random variable $X$ then $\text{Im}X = [0,n]$ and, \[p_X(x) = \binom{n}{x}p^x(1-p)^{n-x} \quad \text{\textcolor{black}{for }$x\in[0,n]$}\textcolor{black}{.}\]
+We say $X$ follows a \textbf{binomial distribution} and this is denoted by $X \sim \text{Bin}(x,p)$.
+\end{definition}
+
+\subsection{Hypergeometric distribution}
+As we have done previously, consider of urn of $N\in\NN$ balls with $K\in\NN$ of these being white and the remainder being black from which we will draw $n\in\NN$ balls and want to consider the DRV ($X$) for the number of white balls drawn. When drawing with replacement we have $X \sim \text{Bin}(n,K/N)$. However, when drawing without replacement X follows the hypergeometric distribution.
+
+\begin{definition}[Hypergeometric distribution]
+    A DRV $X$ follows the \textbf{hypergeometric distribution} with three parameters $N\in\NN\cup\{0\}, K\in\NN,n\in[0,N]$ if $\text{Im}X = [0,\text{min}(n,K)]$ and, \[
+        p_X(x) = \frac{\binom{K}{x}\binom{N-K}{n-x}}{\binom{N}{n}} \quad \text{\textcolor{black}{for }$x\in[0,K]$}\textcolor{black}{.}
+    \]
+\end{definition}
+
+\begin{lemma}[Vandemonde's identity]
+    
+\end{lemma}
 
 \end{document}
