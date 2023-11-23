@@ -847,7 +847,7 @@ Throughout this section, unless otherwise specified, all infinite sums will be a
 \begingroup\belowdisplayskip=-10pt
 \begin{definition}[Expectation of a DRV]
     Let $X$ be a DRV on $(\Omega,\FFF,\P)$ then the \textbf{expectation} of $X$ is defined by, \[
-        \text{E}(X) := \sum_{x\in\text{Im}X}xp_X(x) \textcolor{black}{.}
+        \E(X) := \sum_{x\in\text{Im}X}xp_X(x) \textcolor{black}{.}
     \]
 \end{definition}
 \endgroup
@@ -855,7 +855,7 @@ Throughout this section, unless otherwise specified, all infinite sums will be a
 \begingroup\belowdisplayskip=-10pt
 \begin{definition}[Expectation of a CRV]
     Let $X$ be a CRV on $(\Omega,\FFF,\P)$ then the \textbf{expectation} of $X$ is defined by, \[
-        \text{E}(X) := \int_{-\infty}^{\infty}xf_X(x)dx \textcolor{black}{.}
+        \E(X) := \int_{-\infty}^{\infty}xf_X(x)dx \textcolor{black}{.}
     \]
 \end{definition}
 \endgroup
@@ -864,34 +864,34 @@ Throughout this section, unless otherwise specified, all infinite sums will be a
 \begingroup\belowdisplayskip=-10pt
 \begin{theorem}[Discrete LOTUS]
     Let $X$ be a DRV on $(\Omega,\FFF,\P)$ and $g:\RR\rightarrow\RR$, we have, \[
-        \text{E}(g(X)) = \sum_{x\in\text{Im}X}g(x)p_X(x) \textcolor{black}{.}
+        \E(g(X)) = \sum_{x\in\text{Im}X}g(x)p_X(x) \textcolor{black}{.}
     \]
 \end{theorem}
 \endgroup
 
 \begin{theorem}[Continuous LOTUS]
     Let $X$ be a CRV on $(\Omega,\FFF,\P)$ and $g:\RR\rightarrow\RR$, we have, \[
-        \text{E}(g(X)) = \int_{-\infty}^{\infty}g(x)f_X(x)dx \textcolor{black}{.}
+        \E(g(X)) = \int_{-\infty}^{\infty}g(x)f_X(x)dx \textcolor{black}{.}
     \]
     Note that this is one of the few theorems throughout the course given without proof.
 \end{theorem}
 
 \begin{theorem}
-    If $X$ is non-negative then $\text{E}(X)\geq0$.
+    If $X$ is non-negative then $\E(X)\geq0$.
 \end{theorem}
 
 \subsection{Variance}
 \begingroup\belowdisplayskip=-10pt
 \begin{definition}[Variance]
     Let $X$ be a discrete/continuous random variable, then the \textbf{variance} of $X$ is defined by, \[
-        \text{Var}(X) := \text{E}\left[X-\text{E}(X))^2\right]\textcolor{black}{.}
+        \text{Var}(X) := \E\left[X-\E(X))^2\right]\textcolor{black}{.}
     \]
 \end{definition}
 \endgroup
 
 \begin{theorem}
     For a discrete/continuous random variable with finite variance, \[
-    \text{Var}(X) = \text{E}\left(X^2\right)-\left[E(X)^2\right]\textcolor{black}{.}
+    \text{Var}(X) = \E\left(X^2\right)-\left[E(X)^2\right]\textcolor{black}{.}
     \]
 \end{theorem}
 \section{Multivariate random variables}
@@ -964,7 +964,7 @@ Throughout this section, unless otherwise specified, all infinite sums will be a
     \textcolor{black}{.}\]
 \end{definition}
 
-\subsection{Transformations of random vectors ******** }
+\subsection{Transformations of random vectors ******** incomplete bc im lazy }
 \begin{definition}[Transformation]
     To \textbf{transform} the random vector $\textbf{X}$ with joint pdf $f_\textbf{X}$ to $\textbf{U}$ with $U_i=u_i(\textbf{X})$ with $u_i: \RR^n \rightarrow \RR^n$ for all $i\in[1,n]$ define $T(\textbf{x})=(u_1(\textbf{x}),u_2(\textbf{x}),\ldots,u_n(\textbf{x}))$.
 \end{definition}
@@ -972,7 +972,7 @@ Throughout this section, unless otherwise specified, all infinite sums will be a
 \begingroup\belowdisplayskip=-10pt
 \begin{theorem}[Discrete multivariate LOTUS]
     If $X_1,X_2,\ldots,X_n$ are DRVs on $(\Omega,\FFF,\P)$ and form the random vector $\textbf{X}$ with $g:\RR^n\rightarrow\RR$, then $Y=g(\textbf{X})$ is a DRV on $(\Omega,\FFF,\P)$ with expectation, \[
-    \text{E}(g(\textbf{X}))=\mathop{\sum\dots\sum}_{x_i\in\text{Im}X_i}g(\textbf{X})\P(\textbf{X}=\textbf{x})
+    \E(g(\textbf{X}))=\mathop{\sum\dots\sum}_{x_i\in\text{Im}X_i}g(\textbf{X})\P(\textbf{X}=\textbf{x})
     \quad \text{\textcolor{black}{for all }$\textbf{x}=(x_1,x_2,\ldots,x_n)\in\RR^n$}
     \textcolor{black}{.}
     \]
@@ -980,7 +980,7 @@ Throughout this section, unless otherwise specified, all infinite sums will be a
 
 \begin{theorem}[Continuous multivariate LOTUS]
     If $X_1,X_2,\ldots,X_n$ are DRVs on $(\Omega,\FFF,\P)$ and form the random vector $\textbf{X}$ with $h:\RR^n\rightarrow\RR$ we have, \[
-    \text{E}(h(\textbf{X}))=\int\dots\int_{\RR^n}g(\textbf{x})f_\textbf{X}(\textbf{x})dx_1dx_2\cdots dx_n
+    \E(h(\textbf{X}))=\int\dots\int_{\RR^n}g(\textbf{x})f_\textbf{X}(\textbf{x})dx_1dx_2\cdots dx_n
     \quad \text{\textcolor{black}{for all }$\textbf{x}=(x_1,x_2,\ldots,x_n)\in\RR^n$}
     \textcolor{black}{.}
     \]
@@ -991,7 +991,7 @@ Throughout this section, unless otherwise specified, all infinite sums will be a
 \begingroup\belowdisplayskip=-10pt
 \begin{definition}[Covariance]
     Given two random variable $X$ and $Y$ on the same probability space with expectations $\mu_X$ and $\mu_Y$ respectively. The \textbf{covariance} of $X$ and $Y$ is defined as, \[
-        \text{Cov}(X,Y) := \text{E}\left[(X-\mu_X)(Y-\mu_Y)\right] \quad \text{\textcolor{black}{assuming both expectation take finite values.}}
+        \text{Cov}(X,Y) := \E\left[(X-\mu_X)(Y-\mu_Y)\right] \quad \text{\textcolor{black}{assuming both expectation take finite values.}}
     \]
 \end{definition}
 \endgroup
@@ -1006,9 +1006,9 @@ Throughout this section, unless otherwise specified, all infinite sums will be a
 
 \begin{theorem}
     For jointly discrete/continuous RVs with finite expectations the following hold:\begin{enumerate}
-        \item when $X=Y$, $\text{Cov}(X,Y)=\text{E}\left[(X-\mu_X)^2\right] = \text{Var}(X)$,
-        \item $\text{Cov}(X,Y)=\text{E}(XY)-\text{E}(X)\text{E}(Y)$,
-        \item when $X$ and $Y$ are independent, $\text{E}(XY)=\text{E}(X)\text{E}(Y)$,
+        \item when $X=Y$, $\text{Cov}(X,Y)=\E\left[(X-\mu_X)^2\right] = \text{Var}(X)$,
+        \item $\text{Cov}(X,Y)=\E(XY)-\E(X)\E(Y)$,
+        \item when $X$ and $Y$ are independent, $\E(XY)=\E(X)\E(Y)$,
         \item when variances are also finite, $\text{Var}(X+Y)=\text{Var}(X)+\text{Var}(Y)+2\text{Cov}(X,Y)$.
     \end{enumerate}
 \end{theorem}
@@ -1017,15 +1017,17 @@ Throughout this section, unless otherwise specified, all infinite sums will be a
 \section{Generating functions}
 \subsection{Probability generating functions}
 \begin{definition}{Probability generating functions}
-    Given a DRV $X$ with $\text{Im}(X)=\NN_0$, denote, \[
+    Given a DRV $X$ with $\text{Im}(X)\subseteq\NN_0$, denote, \[
         \SSS_X := \left\{s\in\RR:  \sum_{x=0}^\infty|s|^x\P(X=x)<\infty\right\}
         \textcolor{black}{,}
     \]
     and define the \textbf{probability generating function} (\textbf{pgf}) of $X$ as the function $G_X:\SSS_X\rightarrow\RR$ given by, \[
-        G_X(s) = \text{E}(s^X)=\sum_{x=0}^\infty s^x\P(X=x)\textcolor{black}{,}
+        G_X(s) = \E(s^X)=\sum_{x=0}^\infty s^x\P(X=x)\textcolor{black}{,}
     \]
     noting that the pgf is well defined for $|s|<1$ and $G_X(0)=\P(X=0)$ and $G_X(1)=1$.
 \end{definition}
+
+\begingroup\belowdisplayskip=-10pt
 
 \begin{theorem}{Uniqueness of pgfs}
     Given two DRVs $X$ and $Y$ with pgfs $G_X$ and $G_Y$ respectively, 
@@ -1041,13 +1043,24 @@ Throughout this section, unless otherwise specified, all infinite sums will be a
     \text{\textcolor{black}{ for all }}s\in\SSS_X\cap\SSS_Y\textcolor{black}{.}
     \]
 \end{theorem}
-
-\begin{theorem}[Pgs of sum of independent DRVs]
+\endgroup
+\begingroup\belowdisplayskip=-0pt
+\begin{theorem}[Pgfs of sum of independent DRVs]
     Given a collection of $n$ independent DRVs $X_1,X_2,\ldots,X_n$, \[
         G_{\sum_{i=1}^nX_i}(s)=\prod_{i=1}^nG_{X_i}(s)\quad
         \text{\textcolor{black}{ for all }}s\in\bigcap_{i=1}^n\SSS_{X_i}\textcolor{black}{.}
     \]
 \end{theorem}
+\endgroup
+\begingroup\belowdisplayskip=-10pt
+\begin{theorem}{Moments}
+    Given a DRV $X$ with $\text{Im}X\subseteq\NN_0$, t he $k$th derivative of $X$, for $k\in\NN$ is given by, \[
+        \frac{d^k}{ds^k}G_X(s)\bigg|_{s=1}
+        =G_X^{(s)}(1)=\E[X(X-1)\ldots(X-k+1)]
+        \textcolor{black}{.}
+    \]
+\end{theorem}
+\endgroup
 
 \subsection{Common pgfs}
 \begin{example}[Bernoulli distribution]
@@ -1062,9 +1075,95 @@ Throughout this section, unless otherwise specified, all infinite sums will be a
     Let $X\sim\text{Poi}(\lambda)$, then $G_X(s) = \text{exp}(\lambda(s-1))$ for all $s\in\RR$.
 \end{example}
 \subsection{Moment generating functions}
-\subsection{Characteristic functions}
+\begin{definition}[Moment generating function]
+    Let $X$ be a RV, its \textbf{moment generating function} (\textbf{mgf}) is defined as, \[
+        M_X(t)=\E(e^{tX})\textcolor{black}{,}
+    \]
+    assuming the expectation exists in some neighbourhood of zero.
+\end{definition}
+
+\begin{remark}
+    For a DRV $X$ with a moment generating function, $M_X(t)=\E(e^{tX})=G_X(e^t)$
+\end{remark}
+
+\begin{theorem}
+    If $X$ is a RV with an mgf, the $k$th moment of $X$ is $\E(X^k)=M_X^{(k)}(0)$.
+\end{theorem}
+
+\begin{theorem}
+    If $X_1,X_2,\ldots,X_n$ are a family of independent RVs on the same probability space with mgfs $M_{X_1},M_{X_2},\ldots,M_{X_n}$ respectively, we have, \[
+        M_{\sum_{i=1}^nX_i}(t)=\prod_{i=1}^nM_{X_i}(t)\textcolor{black}{.}
+    \]
+\end{theorem}
+
+\begin{theorem}[Characterisation by mgf]
+    If the RVs $X,Y$ have existent mgfs $M_X,M_Y$ respectively such that $M_X(t)=M_Y(t)$ for all $t$ in some neighbourhood of $0$, we have, \[
+        F_X(u)=F_Y(u) \quad
+        \text{\textcolor{black}{ for all }}u\textcolor{black}{.}
+    \]
+\end{theorem}
+
 \section{Conditional distribution and expectation}
 \subsection{Discrete: Conditional expectation and total expectation}
+\begin{definition}[Condition distribution and expectation of a DRV]
+    Given a DRV $Y$ on $(\Omega,\FFF,\P)$ and some event $B\in\FFF$ with $\P(B)>0$, the \textbf{conditional distribution} of $Y$ given $B$ is defined as, \[
+        \P(Y=y|B):=\frac{P(\{Y=y\}\cap B)}{\P(B)} \quad
+        \text{\textcolor{black}{ for }}y\in\RR\textcolor{black}{;}
+    \]
+    with the \textbf{conditional expectation} of $Y$ given $B$ defined as, \[
+    \E(Y|B) := \sum_{i\in\text{Im}Y}e\P(Y=y|B) \textcolor{black}{.}
+    \]
+\end{definition}
+
+\begin{theorem}[Discrete law of total expectation]
+    Given a DRV $Y$ on $(\Omega,\FFF,\P)$ and some parition $\{B_i:i\in\III\}$ of $\Omega$ with $\P(B_1)>0$ for all $i\in\III$ we have, \[
+    \E(Y)=\sum_{i\in\III}\E(Y|B_i)\P(B_i)\textcolor{black}{.}
+    \]
+\end{theorem}
+
+\subsection{Conditioning on a DRV}
+
+\begin{definition} [Conditional probability mass function]
+    Given two joint DRVs $(X,Y)$, the \textbf{conditional probability mass function} of $Y$ given $X=x$ is given by, \[
+        p_{Y|X}(y|x):=\frac{p_{X,Y}(x,y)}{p_X(x)} \quad
+        \text{\textcolor{black}{ for }}y\in\RR\textcolor{black}{.}
+    \]
+\end{definition}
+
+\begin{theorem}[Conditional expectation]
+    Given two joint DRVs $(X,Y)$, the \textbf{conditional expectation} of $Y$ given $X=x$ is given by, \[
+        \E(Y|X=x)=\sum_{y\in\text{Im}Y}yp_{Y|X}(y|x)
+        \textcolor{black}{.}
+    \]
+    Independence, LOTUS and a Bayes' rule formulation all follow naturally from this as they do for the non-distribution settings.
+\end{theorem} 
+
 \subsection{Continuous: Conditional density, distribution and expectation}
+
+\begin{definition}[Conditional distribution and conditional density]
+    For two joint CRVs $(X,Y)$ the \textbf{conditional density} of $Y$ given $X=x$ is define as, \[
+        f_{Y|X}(y|x):=\frac{f_{X,Y}(x,y)}{f_X(x)} \quad
+        \text{\textcolor{black}{ for all }}y,x\in\RR \;\text{\textcolor{black}{ with }} f_X(x)>0\textcolor{black}{;}
+    \]
+    with the corresponding \textbf{conditional distribution} of $Y$ given $X=x$ defined as, \[
+        F_{Y|X=x}(y|x):=\frac{1}{f_X(x)}\int_{-\infty}^yf_{X,Y}(x,t)dt \quad
+        \text{\textcolor{black}{ for all }}y,x\in\RR \;\text{\textcolor{black}{ with }} f_X(x)>0\textcolor{black}{.}
+    \]
+    Where, once again, familiar formulations for independence and Bayes' rule can be easily derived.
+\end{definition}
+
+\begin{definition}[Conditional expectation]
+    Given two joint CRVs $(X,Y)$, the \textbf{conditional expectation} of $Y$ given $X=x$ is defined as, \[
+        \E(Y|X=x):=\int_{-infty}^{infty}yf_{Y|X}(y|x)dy \quad
+        \text{\textcolor{black}{ provided }}f_X(x)>0 \textcolor{black}{.}
+    \]
+\end{definition}
+
+\begin{theorem}[Continuous law of total expectation]
+    Given two joint CRVs $(X,Y)$ with $\E|Y|<\infty$, we have, \[
+        \E(Y)=
+        \int_{\{x:f_X(x)>0\}}\E(Y|X=x)f_X(x)dx\textcolor{black}{.}
+    \]
+\end{theorem}
 
 \end{document}
