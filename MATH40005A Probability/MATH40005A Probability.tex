@@ -86,7 +86,7 @@ The following are complementary reading for the course.
 \item G. Grimmett and D. Stirzaker, One Thousand Exercises in Probability, 2009
 \end{itemize}
 
-These notes are written assuming all material covered in ICL's \textbf{MATH40001}, \textbf{MATH40002} and \textbf{MATH40004}.
+These notes are written assuming all material covered in ICL's \textbf{MATH40001}, \textbf{MATH40002}, \textbf{MATH40003A} and \textbf{MATH40004}.
 
 \begin{notation*}
     Common notation is all defined precisely in the aforementioned. The controversial and additional things are defined as such: $\NN = \{1,2,3,...\}$, $\NN_0 := \NN \cup \{0\}$, $\RR^{>0} := (0,\infty)$.
@@ -747,8 +747,8 @@ These pdfs are getting tough.
     A CRV $X$ follows the \textbf{f-distribution} with $d_1,d_2\in\RR^{>0}$ degrees of freedom, denoted $X\sim \text{F}(d_1,d_2)$ if it satisfies: \[
         f_X(x) = \begin{dcases}
             \frac
-            {\Gamma\left(\frac{d_1+d_2}{2_\empty}\right)\left(\frac{d_1}{d_2}\right)^{d_1/2}x^{d_1/2-1}}
-            {\Gamma\left(\frac{d_1}{2_\empty}\right)\Gamma\left(\frac{d_2}{2_}\right)\left(1+\frac{d_1}{d_2}x\right)^{(d_1+d_2)/2}}
+            {\Gamma\left(\frac{d_1+d_2}{2_{}}\right)\left(\frac{d_1}{d_2}\right)^{d_1/2}x^{d_1/2-1}}
+            {\Gamma\left(\frac{d_1}{2_{}}\right)\Gamma\left(\frac{d_2}{2_{}}\right)\left(1+\frac{d_1}{d_2}x\right)^{(d_1+d_2)/2}}
             & \text{\textcolor{black}{if }$x>0$} \\
             \omit\hfil0\hfil & \text{\textcolor{black}{otherwise}}
         \end{dcases}\textcolor{black}{.}
@@ -881,19 +881,19 @@ Throughout this section, unless otherwise specified, all infinite sums will be a
 \end{theorem}
 
 \subsection{Variance}
-\begingroup\belowdisplayskip=-10pt
+\begingroup\belowdisplayskip=-20pt
 \begin{definition}[Variance]
     Let $X$ be a discrete/continuous random variable, then the \textbf{variance} of $X$ is defined by, \[
         \text{Var}(X) := \E\left[X-\E(X))^2\right]\textcolor{black}{.}
     \]
 \end{definition}
-\endgroup
 
 \begin{theorem}
     For a discrete/continuous random variable with finite variance, \[
     \text{Var}(X) = \E\left(X^2\right)-\left[E(X)^2\right]\textcolor{black}{.}
     \]
 \end{theorem}
+\endgroup
 \section{Multivariate random variables}
 \subsection{Multivariate distributions}
 
@@ -930,7 +930,8 @@ Throughout this section, unless otherwise specified, all infinite sums will be a
         = \P(X_1=x_1,X_2=x_2,\ldots,X_n=x_n) \textcolor{black}{.}
     \]
     The \textbf{marginal probability mass function} of $X_i\in\textbf{X}$ is given by, \[
-        \p_{X_i}(x)= {\left(\sum_{x_j\in\text{Im}X_j}\right)}_{j\in[1,n]\setminus\{i\}} p_{\textbf{X}}(x_1,x_2,\ldots,x_{i-1},x,x_{i+1},\ldots,x_n)\text{\textcolor{black}{.}}
+        \p_{X_i}(k)= \mathop{\sum\dots\sum}_{(x_1,x_2,\ldots,x_n)\in \RR^n} 
+        p_{\textbf{X}}(x_1,x_2,\ldots,x_{i-1},k,x_{i+1},\ldots,x_n)\text{\textcolor{black}{.}}
     \]
     \begingroup\belowdisplayskip=-0pt
     It can be obtained that for any sufficiently ''nice" set $A\in\RR^n$, \[
@@ -939,11 +940,13 @@ Throughout this section, unless otherwise specified, all infinite sums will be a
     \endgroup
 \end{definition}
 
+\begingroup\belowdisplayskip=-10pt
 \begin{definition}[Independence of DRVs]
     Given some indexing set $\III\in\RR$ a family of DRVs, $\{X_i:i\in\III\}$ with joint pmf $p_\textbf{X}$, is \textbf{independent} iff for all finite $\JJJ\in\III$: \[
         p_{\textbf{X}}(\textbf{x}) = \prod_{i=1}^np_{X_i}(x_i) \quad \text{\textcolor{black}{for all }$\textbf{x}=(x_1,x_2,\ldots,x_n)\in\RR^n$}
     \textcolor{black}{.}\]
 \end{definition}
+\endgroup
 \subsection{Multivariate CRVs}
 
 \begin{definition}[Continuous random vector]
@@ -953,20 +956,27 @@ Throughout this section, unless otherwise specified, all infinite sums will be a
     f_{\textbf{X}} (\textbf{x})dx_1dx_2\cdots dx_n
     \quad \text{\textcolor{black}{with }$B = (\infty,x_1]\times(\infty,x_2]\times\dots\times(\infty,x_n]$}\textcolor{black}{,}
     \quad \text{\textcolor{black}{for all }$\textbf{x}\in\RR^n$}
-    \textcolor{black}{.}\]
-    For some $f_\textbf{X}:\RR^n\rightarrow\RR$ satisfying: $f_\textbf{X}(\textbf{x})\geq0$ for all $\textbf{x}\in\RR^n$ and ${\displaystyle\int\dots\int_{\RR^n}f_\textbf{X}(\textbf{x})dx_1dx_2\cdots dx_n}=1$.\\
+    \textcolor{black}{;}\]
+    for some $f_\textbf{X}:\RR^n\rightarrow\RR$ satisfying: $f_\textbf{X}(\textbf{x})\geq0$ for all $\textbf{x}\in\RR^n$ and ${\displaystyle\int\dots\int_{\RR^n}f_\textbf{X}(\textbf{x})dx_1dx_2\cdots dx_n}=1$.\\
     Note that $\displaystyle f_\textbf{X}(\textbf{x})=\frac{\partial^n}{\partial x_1\partial x_2\cdots\partial x_n}F_\textbf{X}(\textbf{x})$ and ${\displaystyle \P(\textbf{X}\in A)=\int\dots\int_Af_\textbf{X}(\textbf{x})d^n\textbf{x}}$.
 \end{definition}
 
+\begingroup\belowdisplayskip=-10pt
 \begin{definition}[Independence of CRVs]
     Given some indexing set $\III\in\RR$ a family of CRVs, $\{X_i:i\in\III\}$ with joint pdf $f_\textbf{X}$, is \textbf{independent} iff for all finite $\JJJ\in\III$: \[
         f_{\textbf{X}}(\textbf{x}) = \prod_{i=1}^nf_{X_i}(x_i) \quad \text{\textcolor{black}{for all }$\textbf{x}=(x_1,x_2,\ldots,x_n)\in\RR^n$}
     \textcolor{black}{.}\]
 \end{definition}
+\endgroup
 
-\subsection{Transformations of random vectors ******** incomplete bc im lazy }
+\subsection{Transformations of random vector}
 \begin{definition}[Transformation]
-    To \textbf{transform} the random vector $\textbf{X}$ with joint pdf $f_\textbf{X}$ to $\textbf{U}$ with $U_i=u_i(\textbf{X})$ with $u_i: \RR^n \rightarrow \RR^n$ for all $i\in[1,n]$ define $T(\textbf{x})=(u_1(\textbf{x}),u_2(\textbf{x}),\ldots,u_n(\textbf{x}))$.
+    We are going to \textbf{transform} the random vector $\textbf{X}$ with joint pdf $f_\textbf{X}$ to $\textbf{U}=(u_1(\textbf{X}),u_2(\textbf{X}),\ldots,u_n(\textbf{X}))$ with $u_i: \RR^n \rightarrow \RR^n$ for all $i\in[1,n]$. Firstly, define $T:\RR^n\rightarrow\RR^n$ by $T(\textbf{x})=(u_1(\textbf{x}),u_2(\textbf{x}),\ldots,u_n(\textbf{x}))$ and assume $T$ is bijective on $D=\{\textbf{x}\in\RR^n:f_\textbf{X}(\textbf{x})>0\}$ with range $S\subseteq\RR^n$. Secondly, have the Jacobian determinant of $T^{-1}:S\rightarrow D$, $J(\textbf{u})=\text{det}([a_{ij}]_{m\times n})$ with $a_{ij}=\frac{\partial x_i}{\partial u_j}$. Finally, define: \[
+        f_\textbf{U}(\textbf{u}) := \begin{dcases}
+            f_\textbf{X}(T^{-1}(\textbf{u}))|J(\textbf{u})| & \text{\textcolor{black}{if }$\textbf{u}\in S$} \\
+            \omit\hfil0\hfil & \text{\textcolor{black}{otherwise}}
+        \end{dcases}\textcolor{black}{.}
+    \]
 \end{definition}
 \subsection{Multivariate LOTUS}
 \begingroup\belowdisplayskip=-10pt
@@ -1016,7 +1026,7 @@ Throughout this section, unless otherwise specified, all infinite sums will be a
 
 \section{Generating functions}
 \subsection{Probability generating functions}
-\begin{definition}{Probability generating functions}
+\begin{definition}[Probability generating functions]
     Given a DRV $X$ with $\text{Im}(X)\subseteq\NN_0$, denote, \[
         \SSS_X := \left\{s\in\RR:  \sum_{x=0}^\infty|s|^x\P(X=x)<\infty\right\}
         \textcolor{black}{,}
@@ -1029,7 +1039,7 @@ Throughout this section, unless otherwise specified, all infinite sums will be a
 
 \begingroup\belowdisplayskip=-10pt
 
-\begin{theorem}{Uniqueness of pgfs}
+\begin{theorem}[Uniqueness of pgfs]
     Given two DRVs $X$ and $Y$ with pgfs $G_X$ and $G_Y$ respectively, 
     \[G_X(s)=G_Y(s) \quad\text{\textcolor{black}{for all }}s\in \SSS_X\cap\SSS_Y \iff
     p_X(x)=p_Y(x) \quad\text{\textcolor{black}{for all }}x\in\NN_0
@@ -1053,7 +1063,7 @@ Throughout this section, unless otherwise specified, all infinite sums will be a
 \end{theorem}
 \endgroup
 \begingroup\belowdisplayskip=-10pt
-\begin{theorem}{Moments}
+\begin{theorem}[Moments]
     Given a DRV $X$ with $\text{Im}X\subseteq\NN_0$, t he $k$th derivative of $X$, for $k\in\NN$ is given by, \[
         \frac{d^k}{ds^k}G_X(s)\bigg|_{s=1}
         =G_X^{(s)}(1)=\E[X(X-1)\ldots(X-k+1)]
@@ -1090,18 +1100,21 @@ Throughout this section, unless otherwise specified, all infinite sums will be a
     If $X$ is a RV with an mgf, the $k$th moment of $X$ is $\E(X^k)=M_X^{(k)}(0)$.
 \end{theorem}
 
+\begingroup\belowdisplayskip=-00pt
 \begin{theorem}
     If $X_1,X_2,\ldots,X_n$ are a family of independent RVs on the same probability space with mgfs $M_{X_1},M_{X_2},\ldots,M_{X_n}$ respectively, we have, \[
         M_{\sum_{i=1}^nX_i}(t)=\prod_{i=1}^nM_{X_i}(t)\textcolor{black}{.}
     \]
 \end{theorem}
-
+\endgroup
+\begingroup\belowdisplayskip=-20pt
 \begin{theorem}[Characterisation by mgf]
     If the RVs $X,Y$ have existent mgfs $M_X,M_Y$ respectively such that $M_X(t)=M_Y(t)$ for all $t$ in some neighbourhood of $0$, we have, \[
         F_X(u)=F_Y(u) \quad
         \text{\textcolor{black}{ for all }}u\textcolor{black}{.}
     \]
 \end{theorem}
+\endgroup
 
 \section{Conditional distribution and expectation}
 \subsection{Discrete: Conditional expectation and total expectation}
@@ -1110,25 +1123,31 @@ Throughout this section, unless otherwise specified, all infinite sums will be a
         \P(Y=y|B):=\frac{P(\{Y=y\}\cap B)}{\P(B)} \quad
         \text{\textcolor{black}{ for }}y\in\RR\textcolor{black}{;}
     \]
+    \begingroup\belowdisplayskip=-0pt
     with the \textbf{conditional expectation} of $Y$ given $B$ defined as, \[
     \E(Y|B) := \sum_{i\in\text{Im}Y}e\P(Y=y|B) \textcolor{black}{.}
     \]
+    \endgroup
 \end{definition}
 
+\begingroup\belowdisplayskip=-10pt
 \begin{theorem}[Discrete law of total expectation]
     Given a DRV $Y$ on $(\Omega,\FFF,\P)$ and some parition $\{B_i:i\in\III\}$ of $\Omega$ with $\P(B_1)>0$ for all $i\in\III$ we have, \[
     \E(Y)=\sum_{i\in\III}\E(Y|B_i)\P(B_i)\textcolor{black}{.}
     \]
 \end{theorem}
+\endgroup
 
 \subsection{Conditioning on a DRV}
 
+\begingroup\belowdisplayskip=-0pt
 \begin{definition} [Conditional probability mass function]
     Given two joint DRVs $(X,Y)$, the \textbf{conditional probability mass function} of $Y$ given $X=x$ is given by, \[
         p_{Y|X}(y|x):=\frac{p_{X,Y}(x,y)}{p_X(x)} \quad
         \text{\textcolor{black}{ for }}y\in\RR\textcolor{black}{.}
     \]
 \end{definition}
+\endgroup
 
 \begin{theorem}[Conditional expectation]
     Given two joint DRVs $(X,Y)$, the \textbf{conditional expectation} of $Y$ given $X=x$ is given by, \[
@@ -1152,6 +1171,7 @@ Throughout this section, unless otherwise specified, all infinite sums will be a
     Where, once again, familiar formulations for independence and Bayes' rule can be easily derived.
 \end{definition}
 
+\begingroup\belowdisplayskip=-0pt
 \begin{definition}[Conditional expectation]
     Given two joint CRVs $(X,Y)$, the \textbf{conditional expectation} of $Y$ given $X=x$ is defined as, \[
         \E(Y|X=x):=\int_{-infty}^{infty}yf_{Y|X}(y|x)dy \quad
@@ -1165,5 +1185,6 @@ Throughout this section, unless otherwise specified, all infinite sums will be a
         \int_{\{x:f_X(x)>0\}}\E(Y|X=x)f_X(x)dx\textcolor{black}{.}
     \]
 \end{theorem}
+\endgroup
 
 \end{document}
