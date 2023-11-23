@@ -1,1 +1,75 @@
+\def\module{MATH40005B Statistic}
+\def\lecturer{Dr. Dean Bodenham}
+\def\term{Spring 2023}
+\def\cover{\vspace{1in}
+$$
+\begin{tikzcd}[ampersand replacement=\&, column sep=tiny]
+\& \qquad \& \& \& L \arrow[dash, dashed]{dddd} \& \& \& \& \& \& \\
+K\br{\alpha} \arrow[dash]{urrrr} \arrow[dash, dashed]{dddd} \& \& K\br{\alpha'} \arrow[dash]{urr} \arrow[dash, dashed]{dddd} \& \& \& K\br{\beta, \gamma} \arrow[dash]{ul} \arrow[dash, dashed]{dddd} \& \& \& K\br{\delta} \arrow[dash]{ullll} \arrow[dash, dashed]{dddd} \& \& K\br{\delta'} \arrow[dash]{ullllll} \arrow[dash, dashed]{dddd} \\
+\& \& \& K\br{\beta} \arrow[crossing over, dash]{ulll} \arrow[dash]{ul} \arrow[crossing over, dash]{urr} \arrow[dash, dashed]{dddd} \& \& \& K\br{\beta\gamma} \arrow[crossing over, dash]{ul} \arrow[dash, dashed]{dddd} \& \& \& K\br{\gamma} \arrow[crossing over, dash]{ullll} \arrow[crossing over, dash]{ul} \arrow[crossing over, dash]{ur} \arrow[dash, dashed]{dddd} \& \\
+\& \& \& \& \& \& \& K \arrow[crossing over, dash]{ullll} \arrow[crossing over, dash]{ul} \arrow[crossing over, dash]{urr} \arrow[dash, dashed]{dddd} \& \& \& \\
+\& \qquad \& \& \& \abr{e} \& \& \& \& \& \& \\
+\abr{\tau} \arrow[dash]{urrrr} \& \& \abr{\sigma^2\tau} \arrow[dash]{urr} \& \& \& \abr{\sigma^2} \arrow[dash]{ul} \& \& \& \abr{\sigma\tau} \arrow[dash]{ullll} \& \& \abr{\sigma^3\tau} \arrow[dash]{ullllll} \\
+\& \& \& \abr{\sigma^2, \tau} \arrow[dash]{ulll} \arrow[dash]{ul} \arrow[dash]{urr} \& \& \& \abr{\sigma} \arrow[dash]{ul} \& \& \& \abr{\sigma^2, \sigma\tau} \arrow[dash]{ullll} \arrow[dash]{ul} \arrow[dash]{ur} \& \\
+\& \& \& \& \& \& \& G \arrow[dash]{ullll} \arrow[dash]{ul} \arrow[dash]{urr} \& \& \&
+\end{tikzcd}
+$$
+$$ G = \Gal\br{L / K} \cong \DDD_8 $$
+}
+\def\syllabus{Basic set theory and combinatorics, Kolmogorov probability axioms, Conditional probability and independence, DRVs, CRVs, Transformations, Expectaction, Variance, Multivariate calculus, Joint Distributions, LOTUS, pgfs, mgfs, conditional distribution}
+\def\syllabus{Measures of central tendancy and dispersion, Hypothesis testing, Covariance, Correlation, Statistical models, Likelihood, Linear regression, Bayesian inference, Conjugate pair distributions, Empirical distribution, Bootstrap}
+\def\thm{subsection}
 
+\input{../style/header}
+
+\begin{document}
+
+\input{../style/cover}
+
+\section{Introduction}
+
+\lecture{1}{Thursday}{10/01/19}
+
+The following are references.
+\begin{itemize}
+\item E Artin, Galois theory, 1994
+\item A Grothendieck and M Raynaud, Rev\^etements \'etales et groupe fondamental, 2002
+\item I N Herstein, Topics in algebra, 1975
+\item M Reid, Galois theory, 2014
+\end{itemize}
+
+\begin{notation*}
+If $ K $ is a field, or a ring, I denote
+$$ K\sbr{X} = \cbr{a_0 + \dots + a_nX^n \st a_i \in K}, $$
+the \textbf{ring of polynomials} with coefficients in $ K $.
+\end{notation*}
+
+\section{Central tendency and dispersion}
+\subsection{Mean, variance and moments}
+\subsection{Parameter estimation}
+\subsection{Other measures of central tendency}
+\subsection{Sampling from normal RVs}
+\section{Hypothesis testing}
+\subsection{Introduction}
+\subsection{Single sample hypothesis testing}
+\subsection{Distribution of p-values}
+\subsection{Errors}
+\subsection{Two sample hypothesis testing}
+\subsection{Multiple hypothesis testing}
+\section{Covariance and Correlations}
+\subsection{Covariance}
+\subsection{Correlation}
+\section{Statistical models}
+\subsection{Definitions}
+\subsection{Likelihood}
+\subsection{Linear regression}
+\section{Bayesian inference}
+\subsection{Definitions}
+\subsection{Conjugate pair distributions}
+\subsection{Intractable posteriors}
+\subsection{Choosing a prior}
+\section{Bootstrap}
+\subsection{Empirical distribution}
+\subsection{Bootstrap procedure}
+
+\end{document}
