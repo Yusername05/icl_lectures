@@ -1,7 +1,9 @@
 # icl_lectures
 ## info
 ### description
-Lecture notes from all courses taken during 2023/24 entry Msci Mathematics at Imperial College London. Most of the clever formatting and latex was lifted from https://github.com/Multramate/IC-GANT. None of these notes are full copies of any official course material provided by imperial college london. Some of these are empty if the course was short like IUM or particularly sparse of notes like computation
+Lecture notes* from all courses taken during 2023/24 entry Msci Mathematics at Imperial College London. Most of the clever formatting and latex was lifted from https://github.com/Multramate/IC-GANT. None of these notes are full copies of any official course material provided by imperial college london. Some of these are empty if the course was short like IUM or particularly sparse of notes like computation.
+
+\* Despite this being referred to as "Lecture notes", a more reflective title would perhaps be "Examined competencies" that happen to be listed in the same order as they were given in lectures, the main cause for my reluctance to call these "Lecture notes" is the omittance of all proofs throughout the document.
 ### contact info
 yu.coughlin23@imperial.ac.uk unlikely to respond or do anything as this is more just personal note storage than a project.
 
