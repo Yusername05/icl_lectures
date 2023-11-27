@@ -569,4 +569,135 @@ Throughout this subsection let $V$ be an $n$-dimensional $\FF$-vector space and 
 \section{Eigen-things}
 The prefix ``eigen" comes from the German word ``eigen" which can be roughly translated to mean ``proper" or ``characteristic".
 
+\subsection{Eigenvectors and eigenvalues}
+
+\begin{definition}[Eigenvectors and eigenvalues]
+    Given the finite dimensional $\FF$-vector space, $V$, and the linear transformation $T:V\rightarrow V$, we say $v\in V\setminus{\{0_V\}}$ is an \textbf{eigenvector} of $T$ if it satisfies the equation $T(v)=\lambda v$ for some $\lambda \in \FF$, we call $\lambda$ the corresponding \textbf{eigenvalue}.
+\end{definition}
+
+\begin{definition}[Eigenspace]
+    The \textbf{eigenspace} of an eigenvalue of a given linear transformation $T:V\rightarrow V$ is the set of eigenvectors that correspond to said eigenvalue. The eigenspace of any eigenvalue $\lambda$  of $T$ is a subspace of $V$.
+\end{definition}
+
+\begin{remark}
+    The eigenvectors, eigenvalues and eigenspaces of a matrix are defined obviously and do not depend on which basis the linear transformation is respresented in.
+\end{remark}
+
+\subsection{Characteristic polynomial}
+
+\begin{theorem}
+    If $D$ is a square diagonal matrix, $D^k$ is $D$ with its entries raised to the power of $k$.
+\end{theorem}
+
+\begin{definition}[Characteristic polynomial]
+    Given the finite dimensional $\FF$-vector space $V$ with basis $B$ and the linear transformation $T:V\rightarrow V$, we define the \textbf{characteristic polynomial} of $T$, $\chi_T:\FF\rightarrow\FF$ by $\chi_T(\lambda):= \text{det}(\lambda I_n-T_B)$.
+\end{definition}
+
+\begin{theorem}
+    The characteristic polynomial of a linear transformation is independent of the basis it is represented in.
+\end{theorem}
+
+\begin{remark}
+    Therefore, the characteristic polynomial of a matrix can be defined as the characteristic polynomial of the linear transformation it represents.
+\end{remark}
+
+\subsection{Diagonalisation}
+\begin{definition}[Diagonalisability]
+    Given a finite dimensional $\FF$-vector space $V$, a linear transformation $T:V\rightarrow V$ is \textbf{diagonalisable} if there exists a basis for $V$ consisting of eigenvectors of $T$. Similarly the matrix $A\in M_n(\FF)$ is \textbf{diagonalisable} if there exists a basis to $\FF^n$ as eigenvectors of $A$.
+\end{definition}
+
+\begin{theorem}
+    If $V$ is a n-dimensional vector space and $T:V\rightarrow V$ has $n$ distince eigenvalues, $T$ is diagonalisable.
+\end{theorem}
+
+\begin{theorem}
+    If a matrix $A\in M_n(\FF)$ is diagonalisably,  let $P$ be the matrix with columns as eigenvectors of $A$ and $D$ be the diagonal matrix with $ii$th entry as the corresponding eigenvalue for the $i$th column of $P$, then $A=PDP^{-1}$.
+\end{theorem}
+
+\section{Orthogonality}
+
+\subsection{Inner product spaces*}
+
+\begin{definition}[Inner product]
+    Let $V$ be an $n$-dimensional $\FF$-vector space, a \textbf{inner product} on $V$ is a bilinear map $\langle\cdot,\cdot\rangle: V \times V \rightarrow \FF$ satisfying the following: \begin{itemize}
+        \item $\langle u,v \rangle=\langle v,u \rangle$ for all $u,v\in V$ (Symmetry),
+        \item $\langle u+v,w \rangle=\langle u,w \rangle+\langle v,w \rangle$ and $\langle \lambda u,v \rangle=\lambda\langle u,v \rangle$ for all $u,v,w\in V$ and $\lambda\in\FF$ (Bilinearity),
+        \item $\langle v,v \rangle\geq 0$ for all $v\in V$ with equality when $v=0_V$ (Positive-definite).
+    \end{itemize}
+    Bilinearity must hold in both arguments however it can be derived from a single argument with the symmetry propoerty.
+\end{definition}
+
+\begin{definition}[Norm]
+    Given a real-vector space $V$ with an inner product $\langle\cdot,\cdot\rangle$ the \textbf{norm} induced by the inner product of $v\in V$ is: \[
+        ||v|| := \sqrt{\langle v,v\rangle}
+    \]
+\end{definition}
+
+\begin{definition}[Orthogonality]
+    Two vectors $u,v$ in an real or complex vector space $V$  with inner product $\langle\cdot,\cdot\rangle$ are \textbf{orthogonal} iff: $\langle u, v\rangle=0$.
+\end{definition}
+
+\subsection{Orthonormal sets}
+Throughout the remainder of this section we will assume all vectors spaces are over the real or complex numbers and will use the dot product as our inner product with its induced norm.
+
+\begin{definition}[Orthogonal sets]
+    A set of vectors $\{v_1,v_2,\ldots,v_n\}$ in a vector space is \textbf{orthogonal} if it is pariwise orthogonal.
+\end{definition}
+
+\begin{definition}[Orthonormal sets]
+    A set of vectors $\{v_1,v_2,\ldots,v_n\}$ in a vector space is \textbf{orthonormal} if it orthogonal and satisfies $||u_i||=1$ for all $i\in[1,n]$.
+\end{definition}
+
+\begin{theorem}
+    The columns of an orthogonal matrix $P\in M_n(\RR)$ form an orthonormal set.
+\end{theorem}
+
+\subsection{Gramm-Schmidt process}
+The Gramm-Shmidt process is a method of producing orthonormal bases from bases that aren't necessarily orthonormal
+\begin{algorithm}[Gramm-Shmidt process]
+    Given a LI set $\{v_1,v_2,\ldots,v_r\} \in \RR^n$ the \textbf{Gramm-Shmidt process} will produce the set of vectors $\{w_1,w_2,\ldots,w_r\} \in \RR^n$ by the following:
+    \begin{enumerate}
+        \item[] $\displaystyle w_1 = v_1$,
+        \item[] $\displaystyle w_2 = v_2 - \frac{w_1\cdot v_2}{||w_1||^2}w_1$,
+        \item[] $\displaystyle w_3 = v_3 - \left(\frac{w_1\cdot v_3}{||w_1||^2}w_1 + \frac{w_2\cdot v_3}{||w_2||^2}w_2\right)$,
+        \item[] $\hspace{16.5pt}\vdots$
+        \item[] $\displaystyle w_r = v_r - \sum_{j=1}^{r-1}\frac{w_j\cdot v_r}{||w_j||^2}w_j$.
+    \end{enumerate}
+    Note that each vector is the original vector $v_i$ with its projection along all of the previous $w_j$s subtracted and therefore $\{w_1,w_2,\ldots,w_r\}$ is orthogonal. Finally, $\{u_1,u_2,\ldots,u_r\}$, where $\displaystyle u_i = \frac{w_i}{||w_i||}$ for all $i\in[1,r]$, is an orthonormal set with $\text{Span}(\{u_1,u_2,\ldots,u_r\}) = \text{Span}(\{v_1,v_2,\ldots,v_r\})$.
+\end{algorithm}
+
+\begin{corollary}
+    Given some vector $u\in\RR^n$ there exists an orthogonal matrix in $M_n(\RR)$ with $u$ as its first column.
+\end{corollary}
+
+\section{Real symmetric matrices}
+Throughout this section, unsurprisingly, all matrices will be assumed to be real.
+\subsection{Introduction}
+
+\begin{definition}[Self-adjoint matrices]
+    If a matrix $A\in M_n(\RR)$ is symmetric and satisfies $A(u\cdot v) = (Au)\cdot v$ for all vectors $u,v\in\RR^n$, we say $A$ is \textbf{self-adjoint} w.r.t. the usual scalar product.
+\end{definition}
+
+\begin{theorem}
+    If $A\in M_n(\RR)$ is symmetric with $\lambda\in\CC$ a root of $\chi_A(x)=0$, $\lambda\in\RR$.
+\end{theorem}
+
+\begin{corollary}
+    Real symmetric matrices have at least 1 real eigenvalue.
+\end{corollary}
+
+\begin{theorem}
+    If $A\in M_n(\RR)$ is symmetric with discrete eigenvalues $\lambda,\mu\in\RR$, their corresponding eigenvectors $u,v\in\RR^n$ satisyf $u\cdot v=0$.
+\end{theorem}
+
+\subsection{Spectral theorem}
+    
+\begin{theorem}[Spectral theorem]
+    If $A\in M_n(\RR)$ is symmetric, then there exists an orthonormal matrix $P$ such that $P^{-1}AP$ is diagonal.
+\end{theorem}
+
+\begin{corollary}
+    Appropriately scale eigenvectors of a symmetric matrix $A\in M_n(\RR)$ form an orthonormal basis for $\RR^n$.
+\end{corollary}
+
 \end{document}
