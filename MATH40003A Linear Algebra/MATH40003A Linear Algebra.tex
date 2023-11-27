@@ -93,19 +93,19 @@ the \textbf{ring of polynomials} with coefficients in $ K $.
 
 \subsection{Matrix algebra}
 \begin{definition}[Matrix by elements]
-    An $m\times n$ matrix written as $\textbf{A} = [a_{ij}]_{m\times n}$ has the element $a_{ij}$ in the $i$th row and $j$th column.
+    An $m\times n$ matrix written as $A = [a_{ij}]_{m\times n}$ has the element $a_{ij}$ in the $i$th row and $j$th column.
 \end{definition}
 
 \begin{definition}[Matrix addition]
-    If $\textbf{A} = [a_{ij}]_{m\times n}$ and $\textbf{B} = [b_{ij}]_{m\times n}$ then $\textbf{A + B} := [a_{ij} + b_{ij}]_{m\times n}$.
+    If $A = [a_{ij}]_{m\times n}$ and $B = [b_{ij}]_{m\times n}$ then $A+B := [a_{ij} + b_{ij}]_{m\times n}$.
 \end{definition}
 
 \begin{definition}[Scalar multiplication]
-    If $\textbf{A} = [a_{ij}]_{m\times n}$ then $\lambda\textbf{A} := [\lambda a_{ij}]_{m\times n}$.
+    If $A = [a_{ij}]_{m\times n}$ then $\lambda A := [\lambda a_{ij}]_{m\times n}$.
 \end{definition}
 
 \begin{definition}[Matrix multiplication]
-    If $\textbf{A} = [a_{ij}]_{p\times q}$ and $\textbf{B} = [b_{ij}]_{q\times r}$ then $\textbf{AB} := \textbf{C} = [c_{ij}]_{p\times r}$ where $c_{ij} = \sum\limits_{k=1}^qa_{ik}b_{kj}$.
+    If $A = [a_{ij}]_{p\times q}$ and $B = [b_{ij}]_{q\times r}$ then $AB := C = [c_{ij}]_{p\times r}$ where $c_{ij} = \sum\limits_{k=1}^qa_{ik}b_{kj}$.
 \end{definition}
 
 \begin{theorem}
@@ -157,7 +157,7 @@ the \textbf{ring of polynomials} with coefficients in $ K $.
 \end{definition}
 
 \begin{definition}
-    A square matrix ($\textbf{A} = [a_{ij}]_{n\times n}$) is: \begin{enumerate*}
+    A square matrix ($A = [a_{ij}]_{n\times n}$) is: \begin{enumerate*}
         \item \textbf{Upper triangular} iff $i>j \implies a_{ij}=0$.
         \item \textbf{Lower triangular} iff $i<j \implies a_{ij}=0$.
         \item \textbf{Diagonal} iff $i\neq j \implies a_{ij}=0$ .
@@ -165,7 +165,7 @@ the \textbf{ring of polynomials} with coefficients in $ K $.
 \end{definition}
 
 \begin{definition}[Identity matrix]
-    The \textbf{identity matrix} of size $n$ written $\textbf{I}_{n}$, is the square diagonal matrix of size $n$ with all diagonal entries equal $1$.
+    The \textbf{identity matrix} of size $n$ written $\I_{n}$, is the square diagonal matrix of size $n$ with all diagonal entries equal $1$.
 \end{definition}
 
 \begin{definition}[Elementary matrix]
@@ -173,7 +173,7 @@ the \textbf{ring of polynomials} with coefficients in $ K $.
 \end{definition}
 
 \begin{definition}[Inverse]
-    For a square matrix $\textbf{B}$ if there exists a matrix $\textbf{B}^{-1}$ such that $\textbf{BB}^{-1} = I = \textbf{B}^{-1}\textbf{B}$ then $\textbf{B}^{-1}$ is the \textbf{inverse} of $\textbf{B}$ and vice versa.
+    For a square matrix $B$ if there exists a matrix $B^{-1}$ such that $\textbf{BB}^{-1} = I = B^{-1}B$ then $B^{-1}$ is the \textbf{inverse} of $B$ and vice versa.
 \end{definition}
 
 \begin{definition}[Singular]
@@ -185,23 +185,23 @@ the \textbf{ring of polynomials} with coefficients in $ K $.
 \end{theorem}
 
 \begin{definition}
-    A \textbf{transpose} of the matrix $\textbf{A} = [a_{ij}]_{m\times n}$ is  $\textbf{A}^\T := [a_{ji}]_{n\times m}$.
+    A \textbf{transpose} of the matrix $A = [a_{ij}]_{m\times n}$ is  $A^\T := [a_{ji}]_{n\times m}$.
 \end{definition}
 
 \begin{theorem}
-    If the matrix $A$ has an inverse then its transpose has an inverse with $(\textbf{A}^\T)^{-1}=(\textbf{A}^{-1})^\T$.
+    If the matrix $A$ has an inverse then its transpose has an inverse with $(A^\T)^{-1}=(A^{-1})^\T$.
 \end{theorem}
 
 \begin{theorem}
-    If a matrix $\textbf{A}\in M_{m\times n}$ can be reduced to $\textbf{I}_n$ by a sequence of EROs then $\textbf{A}$ is inevitable with $\textbf{A}^{-1}$ given by applying the same sequence of EROs to $\textbf{I}_n$.
+    If a matrix $A\in M_{m\times n}$ can be reduced to $\I_n$ by a sequence of EROs then $A$ is inevitable with $A^{-1}$ given by applying the same sequence of EROs to $\I_n$.
 \end{theorem}
 
 \begin{definition}
-    A matrix $A$ is \textbf{orthogonal} if it has an inverse with $\textbf{A}^{-1}=\textbf{A}^\T$.
+    A matrix $A$ is \textbf{orthogonal} if it has an inverse with $A^{-1}=A^\T$.
 \end{definition}
 
 \begin{theorem}
-    An orthogonal matrix $\textbf{A}$ satisfies the condition $(Ax) \cdot (Ay) = x \cdot y$, where $\cdot$ is the dot product.
+    An orthogonal matrix $A$ satisfies the condition $(Ax) \cdot (Ay) = x \cdot y$, where $\cdot$ is the dot product.
 \end{theorem}
 
 \section{Vector Spaces}
@@ -383,8 +383,12 @@ Again, assume $V$ is an $\FF$-vector space throughout this section.
 \begin{definition}[Linear transformation]
     Given $\FF$-vector spaces $V$ and $W$, let $T:V \rightarrow W$ be a function, $T$ is a \textbf{linear transformation} iff the following two properties hold: \begin{enumerate}
         \item $T$ \textbf{preservers vector addition}: $\forall v_1,v_2\in V$ we have $T(v_1 +_V v_2) = T(v_1) +_W T(v_2)$,
-        \item $T$ \textbf{preservers scalar multiplication}:$\forall v\in V$ and  $\forall \lambda \in \FF$ we have $\lambda T(v) = T(\lambda v)$.
+        \item $T$ \textbf{preservers scalar multiplication}: $\forall v\in V$ and  $\forall \lambda \in \FF$ we have $\lambda T(v) = T(\lambda v)$.
     \end{enumerate} 
+\end{definition}
+
+\begin{definition}[Identity transformation]
+    The \textbf{identity transformation} of the vector space $V$ is the linear transformation $\text{Id}_V: V\rightarrow V$ with $\text{Id}_V(v):=v$ for all $v\in V$.
 \end{definition}
 
 \begin{definition}[Linear transformation of a matrix]
@@ -402,7 +406,7 @@ Again, assume $V$ is an $\FF$-vector space throughout this section.
 Throughout, assume $T:V\rightarrow W$ is a linear transformation and $V,W$ are $\FF$-vector spaces
 \begin{definition}[Image]
     We define the \textbf{image} of $T$, denoted $\text{Im }T$, as \[
-        \text{Im}T := \{w\in W: \exists v\in V, T(v)=W\}
+        \text{Im }T := \{w\in W: \exists v\in V, T(v)=W\}
         \textcolor{black}{,}
     \]
     with $\text{Im }T$ being a subspace of $W$.
@@ -436,5 +440,133 @@ Throughout, assume $T:V\rightarrow W$ is a linear transformation and $V,W$ are $
     \textcolor{black}{.}
     \]
 \end{theorem}
+
+\section{Representations}
+
+\subsection{Representations}
+
+\subsection{Matrices of transformations}
+Throughout this subsection let $V$ be an $n$-dimensional $\FF$-vector space and $B=\{e_1, e_2, \ldots, e_n\}$ be a basis for $V$.
+
+\begin{definition}[Reperesentation of a vector]
+    Given some $v\in V$ with $v = \lambda_1v_1 + \lambda_2v_2 + \dots + \lambda_nv_n$ for $\lambda_i\in\FF$, we define the $v$ \textbf{with respect to} (\textbf{w.r.t.}) $B$ as \[
+     [v]_B := \begin{pmatrix}
+         \lambda_1 \\
+         \lambda_2 \\
+         \vdots \\
+         \lambda_n
+     \end{pmatrix} \in \FF^n
+     \textcolor{black}{.}
+    \]
+\end{definition}
+
+\begin{remark}
+    This must be well defined as all vectors have a unique representation in terms of every basis.
+\end{remark}
+
+\begin{definition}[Linear isomorphism]
+    A \textbf{linear isomorphism} is a bijective linear transformation.
+\end{definition}
+
+\begin{theorem}
+    The linear transformation $T:V\rightarrow\FF^n$ given by $T(v):= [v]_B$ is a linear isomorphism.
+\end{theorem}
+
+\subsection{Matrices of transformations}
+\begin{definition}[Representation of a linear transformation]
+    Given finite dimensional $\FF$-vector spaces $V$ and $W$ with bases $B = \{v_1,v_2,\ldots,v_n\}$, $C = \{w_1,w_2,\ldots,w_n\}$ respectively, the \textbf{matrix of $T$ w.r.t. $B$ and $C$} denoted $_C[T]_B$ is $m\times n$ matrix with the $i$th column given by $[T(v_i)]_C$. $_B[T]_B$ is often shortened to $[T]_B$.
+\end{definition}
+
+\begin{remark}
+    $_C[T]_B[v]_B = [T(v)]_C$, for all $v\in V$.
+\end{remark}
+
+\begin{theorem}
+    Given a finite dimensional $\FF$-vector space $V$ with bases $B = \{v_1,v_2,\ldots,v_n\}$ and $C = \{w_1,w_2,\ldots,w_n\}$, if $v_i = \lambda_{1i}w_1 + \lambda_{2i}w_2 + \ldots + \lambda_{ni}w_n$ and $P$ is the matrix given by $P=[\lambda_{ij}]_{n\times n}$, we have: \begin{itemize}
+        \item $P=[X]_C$ where $X$ is the unique linear transformation given by $X(w_i)=v_i$ for all $i\in[1,n]$,
+        \item $P([v]_B) = [v]_C$ for all $v\in V$,
+        \item $P= {}_C[\text{Id}_V]_B$.
+    \end{itemize}
+    $P$ is often also called the \textbf{change of basis matrix} from $B$ to $C$.
+\end{theorem}
+
+\begin{corollary}
+    $P$ is invertible with $(P)^{-1}= ({}_C[\text{Id}_V]_B)^{-1} = {}_B[\text{Id}_V]_C$. 
+\end{corollary}
+
+\begin{theorem}
+    If $T:V\rightarrow V$ is a linear transformation $[T]_C = ({}_C[\text{Id}_V]_B)[T]_B({}_B[\text{Id}_V]_C)$.
+\end{theorem}
+
+\section{Determinants}
+
+\subsection{Definition}
+
+\begin{definition}[Minor of matrix]
+    Given a matrix $A\in M(\FF)_n$ the \textbf{$ij$th-minor} of the matrix $A$, $A_{ij}\in M(\FF)_n$, is $A$ with row $i$ and column $j$ removed.
+\end{definition}
+
+\begin{definition}[Determinant]
+    The \textbf{determinant} of the matrix $A$ is defined recursively by \[
+    \text{det}(A) := 
+    \begin{dcases}
+    \omit\hfil $a_{11}$\hfil & \textcolor{black}{\text{if }} A \textcolor{black}{\text{ is a matrix with a single row and column }}\\
+    \sum_{j=1}^n (-1)^{j+1} a_{1j} \text{det}(A_{1j}) & \textcolor{black}{\text{otherwise.}}
+    \end{dcases} 
+    \textcolor{black}{.}
+    \]
+    The determinant is only a function on square matrices.
+\end{definition}
+
+\begin{theorem}
+    If a matrix $A$ is singular, $\text{det}(A)=0$.
+\end{theorem}
+
+\begin{theorem}
+    If $A$ is invertible then the columns of $A$ are LI.
+\end{theorem}
+
+\subsection{Properties}
+
+\begin{definition}[EROs]
+    The three ERO's on the matrix $A$ to form $A'$ have the following effects on the determinant: \begin{itemize}
+        \item multiplying a row by $\lambda\neq0$, $\text{det}(A') = \lambda\text{det}(A)$;
+        \item swapping two rows, $\text{det}(A') = -\text{det}(A)$;
+        \item adding a scalar multiple of one row to another, $\text{det}(A') = \text{det}(A)$.
+    \end{itemize}
+\end{definition}
+
+\begin{definition}[Other miscellaneous properties] For obvious types:
+\begin{itemize}
+    \item If $A$, $B$ and $C$ all only differ in the $i$th row with the $i$th row of $C$ being the sum of the $i$th row of $A$ and $B$, $\text{det}(C) = \text{det}(A) + \text{det}(B)$,
+    \item if a matrix $A$ has two identical rows, $\text{det}(A)=0$,
+    \item $\text{det}(AB)=\text{det}(A)\text{det}(B)$,
+    \item $\text{det}(A^\T) = \text{det}(A)$,
+    \item $\text{det}(I_n)=1$.
+\end{itemize}
+\end{definition}
+
+\begin{definition}[Cofactor]
+    The $ij$th cofactor of a matrix $A$ is defined as, \[
+        c_{ij} := (-1)^{i+j}\text{det}(A_{ij})
+        \textcolor{black}{.}
+    \]
+    The \textbf{matrix of cofactors} of $A$ is defined as $C=[c_{ij}]_{n\times n}$ where $c_{ij}$ is the $ij$th cofactor of $A$.
+\end{definition}
+
+\begin{theorem}
+    For a matrix $A$ with matrix of cofactors $C$, $C^\T A = \text{det}(A)\I_n$.
+\end{theorem}
+
+\begin{theorem}[Cramer's Rule]
+    ugh
+\end{theorem}
+
+\begin{definition}
+    The \textbf{determinant} of a linear transformation $T:V\rightarrow V$ where $B$ is a basis for $T$, $\text{det}(T) = \text{det}([T]_B)$. This definition says, rather importantly, that the determinant of the matrix of linear transformation is independent of the basis that linear transformation is represented in.
+\end{definition}
+
+\section{Eigen-things}
+The prefix ``eigen" comes from the German word ``eigen" which can be roughly translated to mean ``proper" or ``characteristic".
 
 \end{document}
