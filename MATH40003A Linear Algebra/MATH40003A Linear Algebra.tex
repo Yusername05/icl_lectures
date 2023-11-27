@@ -1,6 +1,6 @@
 \def\module{MATH40003A Linear Algebra}
 \def\lecturer{Dr Charlotte Kestner}
-\def\term{Autumn 2023}
+\def\term{Autumn \& Spring 2023}
 \def\cover{\vspace{1in}
 $$
 \begin{tikzcd}[ampersand replacement=\&, column sep=tiny]
@@ -16,7 +16,7 @@ K\br{\alpha} \arrow[dash]{urrrr} \arrow[dash, dashed]{dddd} \& \& K\br{\alpha'} 
 $$
 $$ G = \Gal\br{L / K} \cong \DDD_8 $$
 }
-\def\syllabus{Systems of linear equations, Matrices, Augmented matrices, Elementary matrices, EROs, REF \& rREF, Linear maps, Fields, Vector Spaces, Subspaces, Spanning, Linear independence, Bases, Rank Nullity, Representations}
+\def\syllabus{Systems of linear equations, Matrices, Augmented matrices, Elementary matrices, EROs, REF \& rREF, Linear maps, Fields, Vector Spaces, Subspaces, Spanning, Linear independence, Bases, Rank Nullity, Representations of bases, Determinants, Eigenvalues and eigenvectors, characteristic polynomial, diagonisability, orthogonality, Gramm-Schmidt process, symmetric matrices, spectral theorem}
 \def\thm{subsection}
 
 \input{../style/header}
@@ -108,6 +108,10 @@ the \textbf{ring of polynomials} with coefficients in $ K $.
     If $\textbf{A} = [a_{ij}]_{p\times q}$ and $\textbf{B} = [b_{ij}]_{q\times r}$ then $\textbf{AB} := \textbf{C} = [c_{ij}]_{p\times r}$ where $c_{ij} = \sum\limits_{k=1}^qa_{ik}b_{kj}$.
 \end{definition}
 
+\begin{theorem}
+    Matrix multiplication is associative.
+\end{theorem}
+
 \begin{remark}
     Matrix multiplication is not commutative.
 \end{remark}
@@ -135,11 +139,15 @@ the \textbf{ring of polynomials} with coefficients in $ K $.
 \end{definition}
 
 \begin{definition}[Row echelon form / Echelon form/ REF]
-    
+    A matrix is in \textbf{row echelon form} if it satisifes the following: \begin{enumerate}
+        \item All of the zero rows are at the bottom of the matrix,
+        \item The first non-zero entry in any row is $1$,
+        \item The first non-zer entru in row is stricly to the left of the first non-zero entry in row $i+1$.
+    \end{enumerate}
 \end{definition}
 
 \begin{definition}[Reduced row echelon form / Row reduced echelon form / rREF]
-    
+    A matrix is im \textbf{reduced row echelon form} if it is in REF and the first non-zero entry in a row is the only non-zero entry in its column.
 \end{definition}
 
 \subsection{Matirces of note}
@@ -173,7 +181,260 @@ the \textbf{ring of polynomials} with coefficients in $ K $.
 \end{definition}
 
 \begin{theorem}
-    The inverse of a matrix is unique
+    The inverse of a matrix is unique.
+\end{theorem}
+
+\begin{definition}
+    A \textbf{transpose} of the matrix $\textbf{A} = [a_{ij}]_{m\times n}$ is  $\textbf{A}^\T := [a_{ji}]_{n\times m}$.
+\end{definition}
+
+\begin{theorem}
+    If the matrix $A$ has an inverse then its transpose has an inverse with $(\textbf{A}^\T)^{-1}=(\textbf{A}^{-1})^\T$.
+\end{theorem}
+
+\begin{theorem}
+    If a matrix $\textbf{A}\in M_{m\times n}$ can be reduced to $\textbf{I}_n$ by a sequence of EROs then $\textbf{A}$ is inevitable with $\textbf{A}^{-1}$ given by applying the same sequence of EROs to $\textbf{I}_n$.
+\end{theorem}
+
+\begin{definition}
+    A matrix $A$ is \textbf{orthogonal} if it has an inverse with $\textbf{A}^{-1}=\textbf{A}^\T$.
+\end{definition}
+
+\begin{theorem}
+    An orthogonal matrix $\textbf{A}$ satisfies the condition $(Ax) \cdot (Ay) = x \cdot y$, where $\cdot$ is the dot product.
+\end{theorem}
+
+\section{Vector Spaces}
+The notion of a vector space is a structure designed to generalise that of real vectors, so before developing them we must first produce a generalisation of the real numbers.
+\subsection{Fields}
+\begin{definition}[Field]
+    A \textbf{field} is a set $\FF$ equipped with the binary operations \textbf{addition} $+:\FF\times\FF\rightarrow\FF$ and \textbf{multiplication} $\cdot:\FF\times\FF\rightarrow\FF$ satisfying the follow axioms:
+    \begin{enumerate}
+        \item[A1] $\forall x,y \in \FF: x+y=y+x$ (commutativity of addition),
+        \item[A2] $\forall x,y,z \in \FF: x+(y+z)=(x+y)+z$ (associativity of addition),
+        \item[A3] $\exists 0_\FF \in \FF$ such that $\forall x\in\FF: x + 0_\FF = x$, (additive identity element),
+        \item[A4] $\forall x\in\FF, \ \exists (-x)\in\FF$ such that $x+(-x)=0_\FF$, (additive inverse);
+        
+        \item[M1] $\forall x,y \in \FF: x\cdot y=y\cdot x$ (commutativity of multiplication),
+        \item[M2] $\forall x,y,z \in \FF: x\cdot (y\cdot z)=(x\cdot y)\cdot z$ (associativity of multiplication),
+        \item[M3] $\exists 1_\FF \in \FF$ such that $\forall x\in\FF: x \cdot  1_\FF = x$, (multiplicative identity element),
+        \item[M4] $\forall x\in\FF\setminus\{0_\FF\}, \ \exists x^{-1}\in\FF$ such that $x\cdot x^{-1}=1_\FF$, (multiplicative inverse);
+
+        \item[D] $\forall x,y,z \in \FF: x\cdot(y+z)=x\cdot y+x\cdot z$ (distributivity of multiplication over addition).
+    \end{enumerate}
+    The field $(\FF,+,\cdot)$ is often referred to as just $\FF$.
+\end{definition}
+
+\begin{example}
+    The familiar sets $\RR, \QQ, \CC$ are all fields.
+\end{example}
+
+\begin{theorem}
+    If $p\in\NN$ is prime with $\FF_p = \{0,1,\ldots,p-1\}$ then $(\FF_p,+_p,\cdot_p)$ is a field.
+\end{theorem}
+
+\subsection{Vector spaces}
+\begin{definition}[Vector space]
+    A \textbf{vector space} over a field $\FF$ is a set $V$ equipped with the binary operations \textbf{vector addition} $\oplus:V\times V\rightarrow V$ and \textbf{scalar multiplication} $\odot:\FF\times V\rightarrow V$ satisfying the follow axioms:
+    \begin{enumerate}
+        \item[A1] $\forall u,v,w \in V: u\oplus(v\oplus w)=(u\oplus v)\oplus w$ (associativity of addition),
+        \item[A2] $\forall u,v \in V: u\oplus v=v\oplus u$ (commutativity of vector addition),
+        \item[A3] $\exists 0_V \in V$ such that $\forall v\in V: v + 0_V = v$, (vector additive identity element),
+        \item[A4] $\forall v\in V, \ \exists (-v)\in v$ such that $v+(-v)=0_V$, (vector additive inverse),
+
+        \item[A5] $\forall x \in \FF, \ \forall u,v\in V: x \odot (u\oplus v) =(x\odot u) \oplus (x\odot v)$ (vector distributivity 1),
+        \item[A6] $\forall x,y \in \FF, \ \forall v\in V: x\cdot (x+y)\odot v =(x\odot v) \oplus (y\odot v)$ (vector distributivity 2),
+        \item[A7] $\forall x,y \in \FF, \ \forall v\in V: (x\cdot y)\odot v = x\odot (y\odot v)$ (scalar multiplication associativity),
+        \item[A8] $\forall v\in V: 1_F\odot v = v$, (scalar multiplication identity element).
+    \end{enumerate}
+    If $V$ is a vector space over $\FF$ we say $V$ is an $\FF$-vector space with $v\in V$ a \textbf{vector} and $x\in\FF$ a \textbf{scalar}.
+\end{definition}
+
+\subsection{Subspaces}
+\begin{definition}[Subspace]
+    A subset $W\subseteq V$ is a \textbf{subspace} of $V$, denoted $W\leq V$ iff:
+    \begin{enumerate}
+        \item[S1] $W\neq \emptyset$,
+        \item[S2] $\forall w_1, w_2 \in W: w_1 \oplus w_2\in W$,
+        \item[S3] $\forall x\in\FF, \  \forall w\in W: x\odot w\in W$.
+    \end{enumerate}
+    If $W=\{0_V\}$ then $W$ is the \textbf{trivial subspace}.
+\end{definition}
+
+\begin{theorem}
+    Every subspace of V contains $0_V$.
+\end{theorem}
+
+\begin{theorem}
+    If $U$ and $W$ are subspaces of $V$, $U\cap W$ is a subspace of $V$.
+\end{theorem}
+
+\section{Spanning and Linear Independence}
+Throughout this section, assume $V$ is an $\FF$-vector space.
+\subsection{Spanning}
+\begin{definition}[Span]
+    Given some set $\{v_1,v_2,\ldots,v_n\}\subseteq V$ define the \textbf{span} by, \[
+    \text{Span}(\{v_1,v_2,\ldots,v_n\}):=\{u\in V: u = \sum_{i=1}^n\alpha_i v_i \ \text{\textcolor{black}{ with }}\alpha_i\in\FF\}\textcolor{black}{.}
+    \]
+    Note that the span of a subset of $V$ is always a subspace of $V$.
+\end{definition}
+
+\begin{remark}
+    If $S\subseteq V$ is infinite, $\text{Span}(S)$ is the set of all \textbf{finite} linear combinations of elements of $S$.
+\end{remark}
+
+\begin{definition}[Spanning sets]
+    If $S\subseteq V$ and $\text{Span}(S)=V$, we say $S$ \textbf{spans} $V$ or $S$ is a \textbf{spanning set} for $V$.
+\end{definition}
+
+\subsection{Linear independence}
+\begin{definition}
+    The set $\{v_1,v_2,\ldots,v_n\}\subseteq V$ is \textbf{linearly independent} in $V$ iff: \[
+        \sum_{i=1}^n\alpha_i v_i = 0_V \iff \alpha_i=0_\FF \ \text{\textcolor{black}{ for all }}\i\in[1,n]\textcolor{black}{.}
+    \]
+\end{definition}
+
+\begin{theorem}
+    If $S = \{v_1,v_2,\ldots,v_n\}\subseteq V$ is linearly independent in $V$ with $v_{n+1}\in V\setminus \text{Span}(S)$ then $S\cup\{v_{n+1}\}$ is also linearly independent in $V$. 
+\end{theorem}
+
+\section{Bases}
+
+\subsection{Definition}
+Again, assume $V$ is an $\FF$-vector space throughout this section.
+\begin{definition}[Bases]
+    A \textbf{basis} for $V$ is linearly independent, spanning set of $V$. If $V$ has a finite bases then $V$ is said to be a \textbf{finite dimensional} vector space.
+\end{definition}
+
+\begin{theorem}
+    Any $S\subseteq V$ is a basis for $V$ iff every vector in $V$ can be uniquely expressed as a linear combination of the elements of $S$.
+\end{theorem}
+
+\begin{theorem}
+    If $V$ is non-trivial and $S$ is a finite spanning set of $V$ then $S$ contains a basis for $V$.
+\end{theorem}
+
+\begin{lemma}[Steinitz Echange Lemma]
+    Given some $X\subseteq V$ with $u\in \text{Span}(X)$ but $u\not\in \text{Span}(X\setminus \{v\})$ for some $v\in X$, let $Y=(X\setminus \{v\})\cup \{u\}$ then $\text{Span}(X) = \text{Span}(Y)$.
+\end{lemma}
+
+\begin{theorem}
+    Given a LI $S\subseteq V$ and spanning set $T\subseteq V$, $|S|\leq|V|$.
+\end{theorem}
+
+\begin{corollary}
+    If $S$ and $T$ are both bases for $V$, $|S|=|T|$.
+\end{corollary}
+
+\subsection{Dimension}
+
+\begin{definition}[Dimension of a vector space]
+    If $V$ is finite dimensional then the \textbf{dimension} of $V$, $\text{dim}V$, is the size of any basis of $V$.
+\end{definition}
+
+\begin{definition}[Notable subspaces]
+    Let $U$ and $W$ both be subspaces of $V$, the \textbf{intersection} of $U$ and $W$: \[
+        U\cup W := \{v\in V: v\in U  \ \text{\textcolor{black}{ and }} v\in W\}
+    \]
+    is a subspace of $V$, and the \textbf{sum} of $U$ and $W$: \[
+        U + W := \{u + W: u\in U, w\in W\}
+    \]
+    is also a subspace of $V$.
+\end{definition}
+
+\begin{theorem}
+    Let $U$ and $W$ both be subspaces of $V$, we have: \[
+        \text{dim}(U+W)=\text{dim}U+\text{dim}W-\text{dim}(U\cap W)
+    \textcolor{black}{.}
+    \]
+\end{theorem}
+
+\section{Matrix rank}
+\begin{definition}
+    Given a field $\FF$ and a matrix $A\in M_{m\times n}(\FF)$ we have: \begin{itemize}
+        \item the \textbf{row space} of $A$, $\text{RSp}(A)$, as the span of the rows of $A$, this is a subspace of $\FF^n$,
+        \item the \textbf{row rank} of $A$, is $\text{dim}(\text{RSp}(A))$,
+        \item the \textbf{column space} of $A$, $\text{CSp}(A)$, as the span of the columns of $A$, this is a subspace of $\FF^m$,
+        \item the \textbf{column rank} of $A$, is $\text{dim}(\text{CSp}(A))$.
+    \end{itemize}
+\end{definition}
+
+\begin{theorem}
+    For any matrix $A$, the row rank of $A$ is equal to the column rank of $A$.
+\end{theorem}
+
+\begin{definition}[Rank of a matrix]
+    The \textbf{rank} of a matrix $A$, $\text{rank}(A)$, is equal to the row/column rank of $A$.
+\end{definition}
+
+ \begin{theorem}
+     Given a field $\FF$ and a matrix $A\in M_{n\times n}(\FF)$ with $\text{rank}(A)=n$: \begin{itemize}
+         \item the rows of $A$ for a basis for $\FF^n$,
+         \item the columns of $A$ for a basis for $\FF^n$,
+         \item $A$ is invertible.
+     \end{itemize}
+ \end{theorem}
+
+
+\section{Linear transformations}
+
+\subsection{Definition}
+
+\begin{definition}[Linear transformation]
+    Given $\FF$-vector spaces $V$ and $W$, let $T:V \rightarrow W$ be a function, $T$ is a \textbf{linear transformation} iff the following two properties hold: \begin{enumerate}
+        \item $T$ \textbf{preservers vector addition}: $\forall v_1,v_2\in V$ we have $T(v_1 +_V v_2) = T(v_1) +_W T(v_2)$,
+        \item $T$ \textbf{preservers scalar multiplication}:$\forall v\in V$ and  $\forall \lambda \in \FF$ we have $\lambda T(v) = T(\lambda v)$.
+    \end{enumerate} 
+\end{definition}
+
+\begin{definition}[Linear transformation of a matrix]
+    If $A\in M_{m\times n}(\FF)$ then we can define $T:\FF^n \rightarrow \FF^m$ by $T(v):=Av$, $T$ is a linear transformation.
+\end{definition}
+
+\begin{theorem}
+    If $V$ and $W$ are $\FF$-vector space, $T(0_V) = 0_W$ and \[
+        v = \lambda_1v_1 + \ldots + \lambda_nv_n \iff T(v) = \lambda_1T(v_1) + \ldots + \lambda_nT(v_n)
+        \textcolor{black}{.}
+    \]
+\end{theorem}
+
+\subsection{Image and kernel}
+Throughout, assume $T:V\rightarrow W$ is a linear transformation and $V,W$ are $\FF$-vector spaces
+\begin{definition}[Image]
+    We define the \textbf{image} of $T$, denoted $\text{Im }T$, as \[
+        \text{Im}T := \{w\in W: \exists v\in V, T(v)=W\}
+        \textcolor{black}{,}
+    \]
+    with $\text{Im }T$ being a subspace of $W$.
+\end{definition}
+
+\begin{definition}[Kernel]
+    We define the \textbf{kernel} of $T$, denoted $\text{ker}T$, as \[
+        \text{ker }T := \{v\in V: T(v)=0_W\}
+        \textcolor{black}{,}
+    \]
+    with $\text{ker }T$ being a subspace of $V$.
+\end{definition}
+
+\begin{theorem}
+    If $v_1,v_2\in V$ then $T(v_1)=T(v_2) \iff v_1-v_2\in\text{ker }T$.
+\end{theorem}
+
+\begin{theorem}
+    If $\{v_1,v_2,\ldots,v_n\}$ is a basis for $V$, then $\text{Im }T = \text{Span}(\{T(v_1),T(v_2),\ldots,T(v_n)\})$.
+\end{theorem}
+
+\begin{remark}
+    If $T$ is the linear transformation for some matrix $A\in M_{m\times n}(\FF)$ then, $\text{ker} T$ is the set of solutions for $Av=0$, $\text{Im }T$ is the column space of $A$, and $\text{dim}(\text{Im }T)=\text{rank }A$
+\end{remark}
+
+\subsection{Rank nulity}
+
+\begin{theorem}[Rank Nulity Theorem]
+    If $V$ and $W$ are finite dimensional $\FF$-vector spaces and $T:V\rightarrow W$ is a linear transformation, we have: \[
+        \text{dim}(\text{Im }T) + \text{dim}(\text{ker }T) = \text{dim }V
+    \textcolor{black}{.}
+    \]
 \end{theorem}
 
 \end{document}

@@ -1031,7 +1031,7 @@ Throughout this section, unless otherwise specified, all infinite sums will be a
         \textcolor{black}{,}
     \]
     and define the \textbf{probability generating function} (\textbf{pgf}) of $X$ as the function $G_X:\SSS_X\rightarrow\RR$ given by, \[
-        G_X(s) = \E(s^X)=\sum_{x=0}^\infty s^x\P(X=x)\textcolor{black}{,}
+        G_X(s) := \E(s^X)=\sum_{x=0}^\infty s^x\P(X=x)\textcolor{black}{,}
     \]
     noting that the pgf is well defined for $|s|<1$ and $G_X(0)=\P(X=0)$ and $G_X(1)=1$.
 \end{definition}
@@ -1092,11 +1092,11 @@ Throughout this section, unless otherwise specified, all infinite sums will be a
 \end{definition}
 
 \begin{remark}
-    For a DRV $X$ with a moment generating function, $M_X(t)=\E(e^{tX})=G_X(e^t)$
+    If $X$ is a RV with a mgf, $M_X(t)=\E(e^{tX})=G_X(e^t)$
 \end{remark}
 
 \begin{theorem}
-    If $X$ is a RV with an mgf, the $k$th moment of $X$ is $\E(X^k)=M_X^{(k)}(0)$.
+    If $X$ is a RV with a mgf, the $k$th moment of $X$ is $\E(X^k)=M_X^{(k)}(0)$.
 \end{theorem}
 
 \begingroup\belowdisplayskip=-00pt
@@ -1173,7 +1173,7 @@ Throughout this section, unless otherwise specified, all infinite sums will be a
 \begingroup\belowdisplayskip=-0pt
 \begin{definition}[Conditional expectation]
     Given two joint CRVs $(X,Y)$, the \textbf{conditional expectation} of $Y$ given $X=x$ is defined as, \[
-        \E(Y|X=x):=\int_{-infty}^{infty}yf_{Y|X}(y|x)dy \quad
+        \E(Y|X=x):=\int_{-\infty}^{\infty}yf_{Y|X}(y|x)dy \quad
         \text{\textcolor{black}{ provided }}f_X(x)>0 \textcolor{black}{.}
     \]
 \end{definition}
