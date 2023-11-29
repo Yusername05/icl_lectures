@@ -1,1 +1,330 @@
+\def\module{MATH40003B Groups}
+\def\lecturer{Dr Michele Zordan}
+\def\term{Autumn 2023}
+\def\cover{\vspace{1in}
+$$
+\begin{tikzcd}[ampersand replacement=\&, column sep=tiny]
+\& \qquad \& \& \& L \arrow[dash, dashed]{dddd} \& \& \& \& \& \& \\
+K\br{\alpha} \arrow[dash]{urrrr} \arrow[dash, dashed]{dddd} \& \& K\br{\alpha'} \arrow[dash]{urr} \arrow[dash, dashed]{dddd} \& \& \& K\br{\beta, \gamma} \arrow[dash]{ul} \arrow[dash, dashed]{dddd} \& \& \& K\br{\delta} \arrow[dash]{ullll} \arrow[dash, dashed]{dddd} \& \& K\br{\delta'} \arrow[dash]{ullllll} \arrow[dash, dashed]{dddd} \\
+\& \& \& K\br{\beta} \arrow[crossing over, dash]{ulll} \arrow[dash]{ul} \arrow[crossing over, dash]{urr} \arrow[dash, dashed]{dddd} \& \& \& K\br{\beta\gamma} \arrow[crossing over, dash]{ul} \arrow[dash, dashed]{dddd} \& \& \& K\br{\gamma} \arrow[crossing over, dash]{ullll} \arrow[crossing over, dash]{ul} \arrow[crossing over, dash]{ur} \arrow[dash, dashed]{dddd} \& \\
+\& \& \& \& \& \& \& K \arrow[crossing over, dash]{ullll} \arrow[crossing over, dash]{ul} \arrow[crossing over, dash]{urr} \arrow[dash, dashed]{dddd} \& \& \& \\
+\& \qquad \& \& \& \abr{e} \& \& \& \& \& \& \\
+\abr{\tau} \arrow[dash]{urrrr} \& \& \abr{\sigma^2\tau} \arrow[dash]{urr} \& \& \& \abr{\sigma^2} \arrow[dash]{ul} \& \& \& \abr{\sigma\tau} \arrow[dash]{ullll} \& \& \abr{\sigma^3\tau} \arrow[dash]{ullllll} \\
+\& \& \& \abr{\sigma^2, \tau} \arrow[dash]{ulll} \arrow[dash]{ul} \arrow[dash]{urr} \& \& \& \abr{\sigma} \arrow[dash]{ul} \& \& \& \abr{\sigma^2, \sigma\tau} \arrow[dash]{ullll} \arrow[dash]{ul} \arrow[dash]{ur} \& \\
+\& \& \& \& \& \& \& G \arrow[dash]{ullll} \arrow[dash]{ul} \arrow[dash]{urr} \& \& \&
+\end{tikzcd}
+$$
+$$ G = \Gal\br{L / K} \cong \DDD_8 $$
+}
+\def\syllabus{This module provides a transition towards the way you will be thinking about, and doing, Mathematics during your degree. It will stress the importance of precise definitions and rigorous proofs, but also discuss their relationship to more informal styles of reasoning which are often encountered in applications of Mathematics. Topics to be covered will include an introduction to abstract sets, functions and relations, common proof strategies, the naturals, rationals and reals, and elementary vector operations and geometry.}
+\def\thm{subsection}
 
+\input{../style/header}
+
+\begin{document}
+
+\input{../style/cover}
+
+\section{Introduction}
+
+\lecture{1}{Thursday}{10/01/19}
+
+The following are references.
+\begin{itemize}
+\item E Artin, Galois theory, 1994
+\item A Grothendieck and M Raynaud, Rev\^etements \'etales et groupe fondamental, 2002
+\item I N Herstein, Topics in algebra, 1975
+\item M Reid, Galois theory, 2014
+\end{itemize}
+
+\begin{notation*}
+If $ K $ is a field, or a ring, I denote
+$$ K\sbr{X} = \cbr{a_0 + \dots + a_nX^n \st a_i \in K}, $$
+the \textbf{ring of polynomials} with coefficients in $ K $.
+\end{notation*}
+
+\section{Binary operations and groups}
+
+\begin{definition}[Binary operation]
+    Given a set $G$ a \textbf{binary operation} on $G$ is a mapping $\cdot: G\times G \rightarrow G$ written $\cdot(g,h) = g\cdot h$ (and sometimes $gh$) for all $g,h\in G$.
+\end{definition}
+
+\begin{definition}[Group]
+    A \textbf{group} is a pair $G=(G,\cdot)$, for some set $G$ and a binary operation $\cdot$, satisfying the following properties: \begin{enumerate}
+        \item[G1] $(a\cdot b)\cdot c = a \cdot (b\cdot c)$ for all $a,b,c\in G$ - the binary operation is \textbf{associative},
+        \item[G2] $\exists e\in G$ such that $\forall g\in G g\cdot e = e\cdot g = g $ - the is an \textbf{identity} element,
+        \item[G3] $\forall g\in G, \exists g^{-1} \in G$ such that $g\cdot g^{-1} = g^{-1}\cdot g = e$ - every element has an \textbf{inverse}.
+    \end{enumerate}
+    In some literature, the condition of \textbf{closure} is also required however this is given in the fact that $\cdot$ is a binary operation on $G$.
+\end{definition}
+
+\begin{theorem}[Uniqueness]
+    The identity element for some group $G$ is unique. The inverse, $g^{-1}$, of any element $g\in G$ is also unique.
+\end{theorem}
+
+\begingroup\belowdisplayskip=-10pt
+\begin{lemma}[Inverse of product]
+    Given a group $G$ and the elements $g_1,g_2,\ldots,g_n\in G$ we have, \[
+        (g_1g_2\dots g_n)^{-1} = g_n^{-1}g_{n-1}^{-1}\dots g_1^{-1}
+        \textcolor{black}{.}
+    \]
+\end{lemma}
+\endgroup
+
+\begin{definition}[Abelian Group]
+    If a group $G$ also satisfies the condition $g\cdot h = h\cdot g$ for all $g,h\in G$ - \textbf{commutativity}, then $G$ is said to be an \textbf{abelian group}.
+\end{definition}
+
+\begingroup\belowdisplayskip=-10pt
+\begin{definition}[Powers of elements]
+    Given a group $G$ and some $g\in G$ the $n$th \textbf{power} of $g$ in $G$ is defined recursively as, \[
+        g^n:= \begin{dcases}
+            \omit\hfil e  \hfil & \text{\textcolor{black}{if }} n=0 \\
+            g^{n-1}g & \text{\textcolor{black}{if }} n>0 \\
+            (g^{n})^{-1} & \text{\textcolor{black}{if }} n<0 \\
+        \end{dcases}
+    \textcolor{black}{.}
+    \]
+\end{definition}
+\endgroup
+
+\begin{definition}[Order of group]
+    The \textbf{order} of a group $G$, written $|G|$, is the cardinality of the underlying set of $G$.
+\end{definition}
+
+\begin{example}[Symmetric group]
+    The \textbf{symmetric group of size $n$}, denoted $S_n$, is the set of bijections on the interval $[1,n]$, for $n\in\NN$, under function composition.
+\end{example}
+
+\section{Subgroups}
+
+\subsection{Subgroups}
+
+\begin{definition}[Subgroup]
+    Given a group $(G,\cdot)$ and a subset $H\subseteq G$ we say $(H,\cdot)$ is a \textbf{subgroup} of $G$, written $H\leq G$, if $(H,\cdot)$ forms a group and \[
+    \forall h_1,h_2\in H: h_1\cdot h_2\in H
+    \textcolor{black}{.}
+    \]
+    A subgroup, $H$, is a \textbf{proper subgroup} if $H\neq G$. $\{e\}$ is the trivial subgroup.
+\end{definition}
+
+\begin{theorem}[Subgroup test]
+    Given a group $(G,\cdot)$, $(H,\cdot)$ is a subgroup iff: \begin{enumerate}
+        \item[S1] $H$ is non-empty - \textbf{existence},
+        \item[S2] for all $h_1,h_2\in H$ we have $h_1\cdot h_2\in H$ - \textbf{closure under group operation},
+        \item[S3] for all $h\in H$ we have $h^{-1}\in H$ - \textbf{closure under inverses}.
+    \end{enumerate}
+\end{theorem}
+
+\subsection{Cyclic groups and orders}
+
+\begin{definition}[Cyclic group]
+    We say a group $G$ is \textbf{cyclic} if there is an element $g\in G$ such that \[
+    G = \abr{g} := \{g^n:n\in\NN\} 
+    \textcolor{black}{.}
+    \]
+    We say that $G$ is \textbf{generated} by $g$ or $g$ is a \textbf{generator} of $G$.
+\end{definition}
+
+\begin{definition}[Order of elements]
+    Given a group $G$ and some $g\in G$, the \textbf{order} of $g$ in $G$, written $\text{ord }g$, is the smallest positive integer $n$ such that $g^n = e$ or $\infty$ if no such $n$ exists.
+\end{definition}
+
+\begin{theorem}
+    Suppose $G$ is a cyclic group generated by $g$ with $|G| = n$, $\text{ord }g = |\{e,g,g^2,\ldots,g^{n-1}\}| = |G| = n$.
+\end{theorem}
+
+\begin{theorem}
+    Suppose  $G$ is a cyclic group with $G = \abr{g}$, the three statements: \begin{enumerate}
+        \item $H\leq G \implies H$ is cyclic,
+        \item suppose $|G| = n$ and $m\in\ZZ$ with $f=\text{gcd}(m,n)$, \[
+            \abr{g^m} = \abr{g^d} \ \text{\textcolor{black}{ and }} |\abr{g^m}| = \frac{n}{d}
+            \textcolor{black}{.}
+        \] In particular, $\abr{g^m} = G$  \ \text{\textcolor{black}{ iff }} \text{gcd}(m,n)=1,
+        \item if $|G|=n$ and $k\leq n$, then $G$ has a subgroup of order $k$ iff $k|n$, this subgroup is $\abr{g^{n/k}}$.
+    \end{enumerate}
+\end{theorem}
+
+\begin{definition}[Euler totient]
+    The \textbf{Euler totient} function $\phi$ is defined as $\phi(n):=|\{k\in\NN: k\leq n$ and $\text{gcd}(k,n)=1\}|$.
+\end{definition}
+
+\begingroup\belowdisplayskip=-10pt
+\begin{corollary}
+    For $n\in\NN$: \[
+        \sum_{d|n}\phi(d) = n
+        \textcolor{black}{.}
+    \]
+\end{corollary}
+\endgroup
+
+\subsection{Cosets}
+
+\begin{definition}[Coset]
+    Given a group $G$ with $H\leq G$ and $g\in G$ then \[
+    gH := \{gh: h\in H\}
+    \textcolor{black}{,}
+    \]
+    is a \textbf{left coset} of $H$ in $G$ (the definition of a \textbf{right coset} follows clearly).
+\end{definition}
+
+\begin{note}
+    For the rest of this section, unless specified otherwise, a coset is assumed to be a left-coset.
+\end{note}
+
+\begin{theorem}
+    Given a group $G$ with $H\leq G$, all cosets of $H$ in $G$ have the same size.
+\end{theorem}
+
+\begin{theorem}
+    If $G$ is a finite group with $H\leq G$, the left cosets of $H$ for a partition of $G$.
+\end{theorem}
+
+\subsection{Lagrange's theorem}
+
+\begin{theorem}[Lagrange's theorem]
+    If $G$ is a finite group and $H\leq G$, $|H|$ divides $|G|$.
+\end{theorem}
+
+\begin{corollary}
+    Given a group $G$ with $H\leq G$, the relation $\sim$ on $G$ given by: $g\sim k$ iff $g^{-1}k\in H$, is an equivalence relation with equivalence classes given by cosets of $H$.
+\end{corollary}
+
+\begin{corollary}
+    Given a group $G$ of order $n$, for all $g\in G$, $\text{ord }g|n$ and $g^n=e$.
+\end{corollary}
+
+\begin{corollary}[Fermat's little theorem]
+    Let $p$ be prime. If $x\in\ZZ$ and $p\nmid x$, then $x^{p-1}\equiv 1 (\text{mod }p)$.
+\end{corollary}
+
+\subsection{Generating groups}
+
+\begin{definition}
+    Given a group $G$ with $S\subseteq G$, $S^{-1}:=\{g^{-1}\in G:g\in S\}$.
+\end{definition}
+
+\begin{definition}[Subgroup generated by a set]
+    Let $G$ be a group with non-empty $S\subseteq G$. The \textbf{subgroup generated by $S$} is defined as \[
+        \abr{S} := \{g_1g_2\ldots g_k\in G: k\in\NN \ \text{\textcolor{black}{and }} g_i\in S\cup S^{-1} \ \text{\textcolor{black}{for all }} i\in[1,k]\}
+        \textcolor{black}{.}
+    \]
+\end{definition}
+
+\begin{lemma}
+    Given a group $G$ with non-empty $S\subseteq G$, $\abr{S}\leq G$ and, $H\leq G, \ S\subseteq H \implies \abr{S} \leq H$. This is equivalent to saying ``$\abr{S}$ is the smallest subgroup of $G$ containing $S$".
+\end{lemma}
+
+\section{Group homomorphisms}
+
+\begin{definition}[Group homomorphism]
+    If $(G,\cdot)$ and $(H,\ast)$ are goups, $\phi:G\rightarrow H$ is a \textbf{group homomorphism} iff $\phi(g_1)\ast\phi(g_2) = \phi(g_1\cdot g_2)$ for all $g_1,g_2\in G$. If $\phi$ is bijective then it is called a \textbf{group isomorphism} with $G$ and $H$ being \textbf{isomorphic}, written $G\cong H$.
+\end{definition}
+
+\begin{example}
+    The \textbf{determinant} is a group homomorphism, suppose $\FF$ is a field:\[
+    \det: \GL(n,\FF)\rightarrow(\FF^*,\times)
+    \textcolor{black}{.}
+    \]
+\end{example}
+
+\begin{lemma}
+    If $G$,$H$ are groups with $\phi:G\rightarrow H$, \begin{enumerate}
+        \item $\phi(e_G) = e_H$,
+        \item $\phi(g^{-1}) (\phi(g))^{-1}$ for all $g\in G$.
+    \end{enumerate}
+\end{lemma}
+
+\begin{definition}[Image and kernel of group homomorphism]
+    If $G$,$H$ are groups with $\phi:G\rightarrow H$, the \textbf{image} of $\phi$ is: \[
+        \im{\phi} := \{h\in H:\exists g\in G, h = \phi(g)\}
+    \textcolor{black}{.}
+    \] and the \textbf{kernel} of $\phi$ is \[
+        \ker{\phi} := \{g\in G: \phi(g)=e_H\}
+    \textcolor{black}{.}
+    \]
+    These are each subgroups of $H$ and $G$ respectively.
+\end{definition}
+
+\begin{lemma}
+    A group homomorphism, $\phi:G\rightarrow H$, is injective iff $\ker\phi=\{e_H\}$.
+\end{lemma}
+
+\begin{theorem}
+    The composition of two compatible group homomorphisms is also a group homomorphism.
+\end{theorem}
+
+\begin{theorem}
+    All cyclic groups of the same order are isomorphic.
+\end{theorem}
+
+\section{Symmetric groups}
+
+\subsection{Disjoint cycle decomposition}
+
+\begin{definition}
+    If $f,g\in S_n$ and $x\in[1,n]$ then $f$ \textbf{fixes} $x$ if $f(x)=x$ and $f$ \textbf{moves} $x$ otherwise. 
+\end{definition}
+
+\begin{definition}
+    The \textbf{support} of $f\in S_n$ is the set of points $f$ moves, $\supp(f):=\{x\in[1,n]:f(x)\neq x\}$.
+\end{definition}
+
+\begin{definition}
+    If $f,g\in S_n$ satisfy $\supp(f)\cap\supp(g)=\emptyset$, $f$ and $g$ are \textbf{disjoint}.
+\end{definition}
+
+\begin{lemma}
+    If $f,g\in S_n$ are disjoint, $fg=gf$.
+\end{lemma}
+
+\begin{definition}[Cycles]
+    If $f\in S_n$ with $i_1,i_2,\ldots,i_r\in[1,n]$ for some $r\leq n$ such that, \[
+        f(i_s) = i_{s+1 \mod(r)} \ \text{\textcolor{black}{for all }} s\in[1,r]
+    \textcolor{black}{,}
+    \] with $f$ fixing all other elements of $[1,n]$, then $f$ is a \textbf{cycle of length $r$} or an \textbf{$r$-cycle} and we write $f=(i_1i_1\ldots i_r)$.
+\end{definition}
+
+\begin{theorem}[Disjoint cycle form]
+    if $f\in S_n$ then there exists $f_1,f_2,\ldots,f_k\in S_n$ all with disjoint supports such that $f=f_1f_2\ldots f_n$. If we further have, for all $i\in[1,k]$, both $f_i$ is not a $1$-cycle when $f\neq \id$ and $\supp(f_i)\subseteq\supp(f)$. We say $f$ is in \textbf{disjoint cycle form} or \textbf{d.c.f}.
+\end{theorem}
+
+\begin{theorem}[Uniqueness of disjoint cycles]
+    The disjoint cycle form of some $f\in S_n$ is unique up to rearrangement.
+\end{theorem}
+
+\begin{theorem}
+    If $f\in S_n$ is written in d.c.f as $f=f_1f_2\ldots f_k$ where $f_i$ is an $r_i$-cycle for $i\in[1,k]$ then, \begin{enumerate}
+        \item $f^m=\id$ iff $f_i^m=\id$ for all $i\in[1,k]$,
+        \item $\ord(f) = \lcm(r_1,r_2,\ldots r_k)$.
+    \end{enumerate}
+\end{theorem}
+
+\subsection{Alternating groups}
+
+\begin{theorem}
+    Every permutation in $S_n$ can be written as the product of $2$-cycles.
+\end{theorem}
+
+\begin{definition}[Sign of a permutation]
+    We define the \textbf{sign} of a permutation with the group homomorphism, $\sgn:S_n\rightarrow\{-1,1\}$ with $\sgn(i \ j) := -1$ for all $i,j\in[1,n]$ with $i\neq j$. This is defined over all permutations by the decomposition into $2$-cycles, the sign of a permutation is unique. We say $f\in S_n$ is \textbf{even} if $f\in\ker(\sgn)$ and \textbf{odd} otherwise.
+\end{definition}
+
+\begin{definition}[Alternating group]
+    The \textbf{alternating group} of size $n$ is $A_n := \ker(\sgn)$ with $A_n\leq S_n$.
+\end{definition}
+
+\subsection{Dihedral groups}
+
+\begin{definition}[Dihedral group]
+    The \textbf{dihedral group} of order $2n$, denoted $D_{2n}$, is the group of symmetries of a regular $n$-gon in $\RR^3$ centered at the origin, it is often written at \[
+        D_{2n} = \{e,r,r^2,\ldots,r^{n-1},s,sr,sr^2\ldots,sr^{n-1}\}
+    \textcolor{black}{,}
+    \] where $r$ is a rotation by $\frac{2\pi}{n}$ and $s$ is the reflection along the centre of the polygon and the first vertex.
+\end{definition}
+
+\begin{theorem}
+    The elements of $D_{2n}$ can be written as elements of $S_n$ giving $D_{2n}\leq S_n$. Specifically, $r = (1 \ 2 \ \ldots \ n)$ and $s = (1)(2 \ n)(3 \ n-1)\ldots$ or $(1 \ n)(2 \ n-1)\ldots$ if $n$ is odd or even respectively.
+\end{theorem}
+
+\end{document}

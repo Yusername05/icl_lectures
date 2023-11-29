@@ -461,7 +461,7 @@ throughout this subsection we will be considering the function $f:\XXX \rightarr
     For some subset $A \subseteq \XXX$ we define the \textbf{image} of $A$ under $f$ by, \[
         f(A) := \{y \in \YYY: \exists x \in A, y = f(x)\} = \{f(x): x \in A\} \textcolor{black}{.}
     \]
-When $A = \XXX$, $f(\XXX) = \text{Im}f$.
+When $A = \XXX$, $f(\XXX) = \im f$.
 \end{definition}
 
 \begin{definition}[Pre-image]
@@ -484,7 +484,7 @@ Despite the similar notation to the inverse function of $f$ they are not the sam
 \begin{definition}[Discrete random variable]
     A \textbf{discrete random variable} (\textbf{DRV}) on the probability space $(\Omega, \FFF, \P)$ is a function $X: \Omega \rightarrow \RR$ that satisfies the following properties:
     \begin{itemize}
-        \item $\text{Im}X = \{X(\omega): \omega \in \Omega\}$ must be a countable subset of $\RR$,
+        \item $\im X = \{X(\omega): \omega \in \Omega\}$ must be a countable subset of $\RR$,
         \item $X^{-1}(x) \in \FFF$ for all $x \in \RR$.
     \end{itemize}
 \end{definition}
@@ -503,9 +503,9 @@ Despite the similar notation to the inverse function of $f$ they are not the sam
 \begin{remark}
     Some useful propoerties of the pmf extending from the definition are:
     \begin{itemize}
-        \item $x \not\in \text{Im}X \implies p_X(x) = 0$,
-        \item For $x_1, x_2 \in \text{Im}X$ with $x_1 \neq x_2$, $X^{-1}(x_1) \cap X^{-1}(x_2) = \emptyset$,
-        \item $\sum\limits_{x\in\text{Im}X}p_X(x) = \sum\limits_{x\in\RR}p_X(x) = 1$.
+        \item $x \not\in \im X \implies p_X(x) = 0$,
+        \item For $x_1, x_2 \in \im X$ with $x_1 \neq x_2$, $X^{-1}(x_1) \cap X^{-1}(x_2) = \emptyset$,
+        \item $\sum\limits_{x\in\im X}p_X(x) = \sum\limits_{x\in\RR}p_X(x) = 1$.
     \end{itemize}
 \end{remark}
 
@@ -517,7 +517,7 @@ Despite the similar notation to the inverse function of $f$ they are not the sam
 All DRVs within this section will be considered over the probability space $(\Omega, \FFF, \P)$.
 \subsection{Bernoulli distribution}
 \begin{definition}[Bernoulli distribution]
-    A DRV $X$ is said to have \textbf{Bernoulli distribtuion} with parameter $p\in(0,1)$ if $\text{Im}X = \{0,1\}$ with $p_X(1)=p$. This is denoted by $X \sim \text{Bern}(p)$.
+    A DRV $X$ is said to have \textbf{Bernoulli distribtuion} with parameter $p\in(0,1)$ if $\im X = \{0,1\}$ with $p_X(1)=p$. This is denoted by $X \sim \text{Bern}(p)$.
 \end{definition}
 
 \begingroup\belowdisplayskip = -10pt
@@ -538,7 +538,7 @@ All DRVs within this section will be considered over the probability space $(\Om
 
 \subsection{Binomial distribution}
 \begin{definition}[Binomial distribution]
-    Consider a sequence of $n\in\NN$ iid Bernoulli trials with parameter $p$, count the number of successes and denote this by the random variable $X$ then $\text{Im}X = [0,n]$ and, \[p_X(x) = \binom{n}{x}p^x(1-p)^{n-x} \quad \text{\textcolor{black}{for }$x\in[0,n]$}\textcolor{black}{.}\]
+    Consider a sequence of $n\in\NN$ iid Bernoulli trials with parameter $p$, count the number of successes and denote this by the random variable $X$ then $\im X = [0,n]$ and, \[p_X(x) = \binom{n}{x}p^x(1-p)^{n-x} \quad \text{\textcolor{black}{for }$x\in[0,n]$}\textcolor{black}{.}\]
 We say $X$ follows a \textbf{binomial distribution} and this is denoted by $X \sim \text{Bin}(n,p)$.
 \end{definition}
 
@@ -547,7 +547,7 @@ As we have done previously, consider of urn of $N\in\NN$ balls with $K\in\NN$ of
 
 \begingroup\belowdisplayskip=0pt
 \begin{definition}[Hypergeometric distribution]
-    A DRV $X$ follows the \textbf{hypergeometric distribution} with three parameters $N\in\NN_0, K\in\NN,n\in[0,N]$ if $\text{Im}X = [0,\text{min}(n,K)]$ and, \[
+    A DRV $X$ follows the \textbf{hypergeometric distribution} with three parameters $N\in\NN_0, K\in\NN,n\in[0,N]$ if $\im X = [0,\text{min}(n,K)]$ and, \[
         p_X(x) = \frac{\binom{K}{x}\binom{N-K}{n-x}}{\binom{N}{n}} \quad \text{\textcolor{black}{for }$x\in[0,K]$}\textcolor{black}{.}
     \]
 \end{definition}
@@ -565,7 +565,7 @@ As we have done previously, consider of urn of $N\in\NN$ balls with $K\in\NN$ of
 \subsection{Discrete uniform distribution}
 \begingroup\belowdisplayskip=-10pt
 \begin{definition}[Discrete uniform distribution]
-    A DRV $X$ follows the \textbf{discrete uniform distribution} over a nonempty set of numbers $C$, denoted $X \sim \text{DUnif}(C)$, if $\text{Im}X = C$ and,
+    A DRV $X$ follows the \textbf{discrete uniform distribution} over a nonempty set of numbers $C$, denoted $X \sim \text{DUnif}(C)$, if $\im X = C$ and,
     \[
         p_X(x)=
         \begin{dcases}
@@ -581,7 +581,7 @@ The poisson distribution is commonly used for modelling the number of events occ
 
 \begingroup\belowdisplayskip=-10pt
 \begin{definition}[Poisson distribution]
-    A DRV $X$ follows the \textbf{poisson distribution} with parameter $\lambda\in\RR^{>0}$, denoted $X \sim \text{Poi}(\lambda)$, if $\text{Im}X = \NN_0$ and, \[
+    A DRV $X$ follows the \textbf{poisson distribution} with parameter $\lambda\in\RR^{>0}$, denoted $X \sim \text{Poi}(\lambda)$, if $\im X = \NN_0$ and, \[
         p_X(x) = \frac{\lambda^x}{x!}e^{-\lambda} \quad \text{\textcolor{black}{for }$x\in\NN_0$}\textcolor{black}{.}
     \]
 \end{definition}
@@ -589,7 +589,7 @@ The poisson distribution is commonly used for modelling the number of events occ
 
 \subsection{Geometric distribution}
 \begin{definition}[Geometric distribution]
-    A DRV $X$ follows the \textbf{geometric distribution} with parameter $p \in (0,1)$, denoted $X \sim \text{Geom}(p)$, if $\text{Im}X = \NN$ and, \[
+    A DRV $X$ follows the \textbf{geometric distribution} with parameter $p \in (0,1)$, denoted $X \sim \text{Geom}(p)$, if $\im X = \NN$ and, \[
         p_X(x) = (1-p)^xp \quad \text{\textcolor{black}{for }$x\in\NN$}\textcolor{black}{.}
     \]
 This can be seen as counting the number of Bernoulli trials with parameter $p$ that occur before a failure.
@@ -613,7 +613,7 @@ The generalised binomial coefficient as well as this lemma are necessary to have
 \end{lemma}
 
 \begin{definition}[Negative binomial distribution]
-    A DRV $X$ follows the \textbf{negative binomial distribution} with parameters $r\in\NN$ and $p \in (0,1)$, denoted $X \sim \text{NBin}(r,p)$, if $\text{Im}X = \NN_0$ and, \[
+    A DRV $X$ follows the \textbf{negative binomial distribution} with parameters $r\in\NN$ and $p \in (0,1)$, denoted $X \sim \text{NBin}(r,p)$, if $\im X = \NN_0$ and, \[
         p_X(x) = \binom{x+r-1}{r-1}p^r(1-p)^x \quad \text{\textcolor{black}{for }$x\in\NN_0$}\textcolor{black}{.}
     \]
 This is the distribution of the number of failed ii Bernoulli trials with parameter $p$ before $r$ successes have occurred.
@@ -823,7 +823,7 @@ These pdfs are getting tough.
 \begingroup\belowdisplayskip=-10pt
 \begin{theorem}
     Let $X$ be a DRV on $(\Omega,\FFF,\P)$ and let $g:\RR\rightarrow\RR$ be a deterministic function, then $Y=g(X)$ is a DRV with pmf: \[
-    p_Y(y)=\sum_{\{x\in\text{Im}X:g(x)=y\}}p_X(x) \quad \text{\textcolor{black}{if }$y\in\text{Im}Y$ \textcolor{black}{and }0 \textcolor{black}{ otherwise.}}
+    p_Y(y)=\sum_{\{x\in\im X:g(x)=y\}}p_X(x) \quad \text{\textcolor{black}{if }$y\in\im Y$ \textcolor{black}{and }0 \textcolor{black}{ otherwise.}}
     \]
 \end{theorem}
 \endgroup
@@ -845,7 +845,7 @@ Throughout this section, unless otherwise specified, all infinite sums will be a
 \begingroup\belowdisplayskip=-10pt
 \begin{definition}[Expectation of a DRV]
     Let $X$ be a DRV on $(\Omega,\FFF,\P)$ then the \textbf{expectation} of $X$ is defined by, \[
-        \E(X) := \sum_{x\in\text{Im}X}xp_X(x) \textcolor{black}{.}
+        \E(X) := \sum_{x\in\im X}xp_X(x) \textcolor{black}{.}
     \]
 \end{definition}
 \endgroup
@@ -862,7 +862,7 @@ Throughout this section, unless otherwise specified, all infinite sums will be a
 \begingroup\belowdisplayskip=-10pt
 \begin{theorem}[Discrete LOTUS]
     Let $X$ be a DRV on $(\Omega,\FFF,\P)$ and $g:\RR\rightarrow\RR$, we have, \[
-        \E(g(X)) = \sum_{x\in\text{Im}X}g(x)p_X(x) \textcolor{black}{.}
+        \E(g(X)) = \sum_{x\in\im X}g(x)p_X(x) \textcolor{black}{.}
     \]
 \end{theorem}
 \endgroup
@@ -980,7 +980,7 @@ Throughout this section, unless otherwise specified, all infinite sums will be a
 \begingroup\belowdisplayskip=-10pt
 \begin{theorem}[Discrete multivariate LOTUS]
     If $X_1,X_2,\ldots,X_n$ are DRVs on $(\Omega,\FFF,\P)$ and form the random vector $\textbf{X}$ with $g:\RR^n\rightarrow\RR$, then $Y=g(\textbf{X})$ is a DRV on $(\Omega,\FFF,\P)$ with expectation, \[
-    \E(g(\textbf{X}))=\mathop{\sum\dots\sum}_{x_i\in\text{Im}X_i}g(\textbf{X})\P(\textbf{X}=\textbf{x})
+    \E(g(\textbf{X}))=\mathop{\sum\dots\sum}_{x_i\in\im X_i}g(\textbf{X})\P(\textbf{X}=\textbf{x})
     \quad \text{\textcolor{black}{for all }$\textbf{x}=(x_1,x_2,\ldots,x_n)\in\RR^n$}
     \textcolor{black}{.}
     \]
@@ -1025,7 +1025,7 @@ Throughout this section, unless otherwise specified, all infinite sums will be a
 \section{Generating functions}
 \subsection{Probability generating functions}
 \begin{definition}[Probability generating functions]
-    Given a DRV $X$ with $\text{Im}(X)\subseteq\NN_0$, denote, \[
+    Given a DRV $X$ with $\im (X)\subseteq\NN_0$, denote, \[
         \SSS_X := \left\{s\in\RR:  \sum_{x=0}^\infty|s|^x\P(X=x)<\infty\right\}
         \textcolor{black}{,}
     \]
@@ -1046,7 +1046,7 @@ Throughout this section, unless otherwise specified, all infinite sums will be a
 \end{theorem}
 
 \begin{theorem}
-    Let $X,Y$ be independent DRVs with $\text{Im}X,\text{Im}Y\in\NN_0$, then \[
+    Let $X,Y$ be independent DRVs with $\im X,\im Y\in\NN_0$, then \[
     G_{X+Y}(s)=G_X(s)G_Y(s) \quad
     \text{\textcolor{black}{ for all }}s\in\SSS_X\cap\SSS_Y\textcolor{black}{.}
     \]
@@ -1062,7 +1062,7 @@ Throughout this section, unless otherwise specified, all infinite sums will be a
 \endgroup
 \begingroup\belowdisplayskip=-10pt
 \begin{theorem}[Moments]
-    Given a DRV $X$ with $\text{Im}X\subseteq\NN_0$, t he $k$th derivative of $X$, for $k\in\NN$ is given by, \[
+    Given a DRV $X$ with $\im X\subseteq\NN_0$, t he $k$th derivative of $X$, for $k\in\NN$ is given by, \[
         \frac{d^k}{ds^k}G_X(s)\bigg|_{s=1}
         =G_X^{(s)}(1)=\E[X(X-1)\ldots(X-k+1)]
         \textcolor{black}{.}
@@ -1123,7 +1123,7 @@ Throughout this section, unless otherwise specified, all infinite sums will be a
     \]
     \begingroup\belowdisplayskip=-0pt
     with the \textbf{conditional expectation} of $Y$ given $B$ defined as, \[
-    \E(Y|B) := \sum_{i\in\text{Im}Y}e\P(Y=y|B) \textcolor{black}{.}
+    \E(Y|B) := \sum_{i\in\im Y}e\P(Y=y|B) \textcolor{black}{.}
     \]
     \endgroup
 \end{definition}
@@ -1149,7 +1149,7 @@ Throughout this section, unless otherwise specified, all infinite sums will be a
 
 \begin{theorem}[Conditional expectation]
     Given two joint DRVs $(X,Y)$, the \textbf{conditional expectation} of $Y$ given $X=x$ is given by, \[
-        \E(Y|X=x)=\sum_{y\in\text{Im}Y}yp_{Y|X}(y|x)
+        \E(Y|X=x)=\sum_{y\in\im Y}yp_{Y|X}(y|x)
         \textcolor{black}{.}
     \]
     Independence, LOTUS and a Bayes' rule formulation all follow naturally from this as they do for the non-distribution settings.
