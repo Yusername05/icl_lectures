@@ -17,7 +17,7 @@ $$
 $$ G = \Gal\br{L / K} \cong \DDD_8 $$
 }
 \def\syllabus{Number systems, decimal expansions, sup and inf, sequences, series, convergence tests, power series, continuity, closure, compactness, uniform continuity, differentiation, integration}
-\def\thm{section}
+\def\thm{subsection}
 
 \input{../style/header}
 
@@ -45,20 +45,208 @@ the \textbf{ring of polynomials} with coefficients in $ K $.
 
 \section{Number systems}
 
+\subsection{Naturals, integers and rationals}
+
+\begin{definition}[Natural numbers]
+    As in IUM, we define the \textbf{natural numbers}, $\NN$, from the Peano axioms: \begin{enumerate}
+        \item[P1] $0$ is a natural number,
+        \item[P6] if $n$ is a natural number then $S(n)$ is a natural number where $S(n)$ is the successor of $n$,
+        \item[P9] the principle of mathematical induction.
+    \end{enumerate}
+    Clearly, there are many Peano axioms not included, these are however not particularly relevant to this course. Addition and multiplication is defined as expected and will descend to our other number systems
+\end{definition}
+
+\begin{definition}[Integers]
+    The \textbf{integers} are defined as $\ZZ := \NN\times\NN/\sim$ where $\sim$ is the equivalence relation given by $(a,b)\sim(c,d)$ iff $a+d = b+c$. Subtraction is defined as expected and will also descend to our other number systems.
+\end{definition}
+
+\begin{definition}[Rationals]
+    The \textbf{rationals} are defined as $\QQ := \ZZ\times\NN^{>0}/\sim$ where $\sim$ is the equivalence relation given by $(a,b)\sim(c,d)$ iff $ad=bc$. The equivalence class $(p,q)$ will be written as $\frac{p}{q}$. There is an element of each equivalence class $\frac{p'}{q'}$ with $\gcd(p',q')=1$, we say that $\frac{p'}{q'}$ is in \textbf{lowest terms}.
+\end{definition}
+
+\begin{theorem}[Axioms of the rationals]
+    With the usual operations descended from $\NN$ and $\ZZ$, $\QQ$ satisfies the following axioms with $a,b,c\in\QQ$ throughout: \begin{enumerate}
+        \item[Q1] $a+(b+c)=(a+b)+c$ ($+$ is associative),
+        \item[Q2] $\exists 0\in\QQ$ such that $a+0=a$ ($0$ is the additive identity of $\QQ$),
+        \item[Q3] $\forall a \in \QQ, \exists (-a)\in\QQ$ such that $a+ (-a) = 0$ ($\QQ$ is closed under additive inverses),
+        \item[Q4] $a+b = b+a$ ($+$ is commutative), \\
+        \item[Q5] $a\times(b\times c)=(a\times b)\times c$ ($\times$ is associative),
+        \item[Q6] $\exists 1\in\QQ$ such that $a\times1=a$ ($1$ is the multiplicative identity of $\QQ$),
+        \item[Q7] $a\times(b+c) = (a\times b) + (a\times c)$ ($\times$ is left distributive over $+$),
+        \item[Q8] $(a+b)\times c = (a\times c) + (b\times c)$ ($\times$ is right distributive over $+$),
+        \item[Q9] $a\times b = b\times a$ ($\times$ is commutative), \\
+        \item[Q10] $\forall a \in \QQ, \exists a^{-1}\in\QQ$ such that $a \times a^{-1} = 1$ ($\QQ$ is closed under multiplicative inverses), \\
+        \item[Q11] for all $a\in\QQ$ either $x<0$, $x=0$ or $x>=$ (Trichotomy),
+        \item[Q12] for all $x,y\in\QQ$ we have $x>0,y>0\implies x+y>0$,
+        \item[Q13] for all $x\in\QQ$ there exists a $n\in\NN$ such that $x<n$ (Archimedean axiom).
+    \end{enumerate} $1$-$4$ says $(\QQ,+)$ is an abelian group, $1$-$9$ says $(\QQ,+,\times)$ is a commutative ring, $1$-$10$ says $(\QQ,+,\times)$ is a field.
+\end{theorem}
+
+\subsection{Decimal expansions}
+\begin{definition}
+    For $a_0\in\NN$ and $a_i\in[1,9]$ for $i>0\in\NN$, define the \textbf{periodic decimal} \[
+        a_0.a_1a_2\ldots\overline{a_ia_{i+1}\ldots a_j}
+    \textcolor{black}{,}
+    \] to be equal to the rational number \[
+        a_0 + \frac{a_1}{10} + \frac{a_2}{100} + \ldots + \frac{a_i}{10^i} + \br{\frac{a_{i+1}a_{i+2}\ldots a_j}{10^j}}\br{\frac{1}{1-10^{i-j}}}
+    \textcolor{black}{.}
+    \]
+\end{definition}
+
+\begin{theorem}
+    If $x\in\QQ$ has $2$ decimal expansions, then they will be of the form \[
+        x=a_0.a_1a_2\ldots a_n\overline{9} = a_0.a_1a_2\ldots(a_n+1), a_n\in[0,8]
+    \textcolor{black}{.}    
+    \]
+\end{theorem}
+
+\begin{definition}[Real numbers]
+    The \textbf{real numbers}, $\RR$, can be defined as: \[
+        \RR:= \{a_0.a_1a_2\ldots : a_0\in\ZZ, a_i\in[0,9],\not\exists N\in\NN \ \text{\textcolor{black}{such that }} a_i=9 \ \forall i\geq N\}
+    \textcolor{black}{.}
+    \]
+\end{definition}
+
+\subsection{Countability}
+
+\begin{definition}[Countability]
+    A set $S$ is \textbf{countably infinite} iff there exists a bijection $f:\NN\rightarrow S$, a set is \textbf{countable} if it is finite or countable infinite.
+\end{definition}
+
+\begin{theorem}
+    All $S\subseteq\NN$ are countable, $\ZZ$ and $\QQ$ are both countable, $\RR$ is uncountable.
+\end{theorem}
+
 \section{Bounded sets}
+
+\subsection{Supremums and infinums}
+\begin{definition}[Maximum and minimum]
+    $s\in\RR$ is the \textbf{maximum} of a set $S\subset\RR$ iff $\forall s'\in S$, $s\geq s'$. \textbf{Minimums} are defined similarly. Maximums and minimums are unique.
+\end{definition}
+
+\begin{definition}[Bounded]
+    A non-empty set $S\subset\RR$ is \textbf{bounded above} if there exists some $M\in\RR$ such that $\forall s\in S$, $s\leq M$ with \textbf{bounded below} defined similarly. $S$ is \textbf{bounded} if it is both bounded above and bounded below.
+\end{definition}
+
+\begin{theorem}
+    If $S$ is bounded then $\exists R>0$ such that $|s|<\RR$ for all $s\in S$.
+\end{theorem}
+
+\begin{definition}[Supremum and infinum]
+    If $S\subset\RR$ is bounded above, we say $x\in\RR$ is the \textbf{least upper bound} or \textbf{supremum} iff $x$ is and upper bound for $S$ and for all $y\in\RR$ such that $y$ is an upper bound of $S$, $x\leq y$. The \textbf{infinum} is defined similarly.
+\end{definition}
+
+\subsection{Completeness}
+
+\begin{theorem}[Completeness axiom]
+    For all non-empty $S\subset\RR$, if $S$ is bounded above then $S$ has a supremum, and similarly for $S$ bounded below.
+\end{theorem}
+
+\subsection{Dedekind cuts}
+
+\begin{definition}[Dedekind cut]
+    A non-empty set $S\subset\QQ$ is a \textbf{Dedekind cut} if it satisfies: \begin{enumerate}
+        \item $s\in S$ and $s>t\in\QQ \implies t\in S$ ($S$ is a semi-infinite interval to the left),
+        \item $S$ is bounded above with no maximum.
+    \end{enumerate} Dedekind cuts are in the form $S_r:=(-\infty,r)\cap\QQ$.
+\end{definition}
+
+\begin{theorem}[Real numbers]
+    We can redefine the reals as the set of Dedekind cuts, $\RR:= \{S_r\subset\QQ\}$. All operations and orderings as well as the completeness axiom are held by this new Dedekind cut definition.
+\end{theorem}
+
+\begin{theorem}[Triangle innequality]
+    For all $a,b\in\RR$ we have $|a+b|\leq |a|+|b|$.
+\end{theorem}
 
 \section{Sequences}
 
+\subsection{Convergence}
+
+\subsection{Divergence}
+
+\subsection{Limits}
+
+\subsection{Monotone sequences}
+
+\subsection{Cauchy sequences}
+
+\subsection{Subsequences}
+
 \section{Series}
+
+\subsection{Convergence}
+
+\subsection{Convergence tests}
+
+\subsection{Rearrangement of series}
+
+\subsection{Power series}
+
+\subsection{Exponential series}
 
 \section{Continuity}
 
+\subsection{Limits}
+
+\subsection{Continuous functions}
+
+\subsection{Properties of continuity}
+
 \section{Properties of subsets}
+
+\subsection{Open sets}
+
+\subsection{Closed sets}
+
+\subsection{Compact sets}
 
 \section{Uniform continuity and convergence}
 
+\subsection{Uniform continuity}
+
+\subsection{Convergence of sequences of functions}
+
+\subsection{Convergence of series of functions}
+
 \section{Differentiation}
 
-\section{Integral}
+\subsection{Differentiability}
+
+\subsection{Operations on derivatives}
+
+\subsection{Local extrema and mean values}
+
+\subsection{L'Hôpital's rule}
+
+\subsection{Taylor's theorem}
+
+\subsection{Convexity}
+
+\subsection{Exchange of limits and derivatives}
+
+\subsection{Derivation of pi}
+
+\section{Integration}
+
+\subsection{Partitions}
+
+\subsection{Darboux sums}
+
+\subsection{Darboux integral}
+
+\subsection{Integrability}
+
+\subsection{Properties of integration}
+
+\subsection{Fundamental theorem of calculus}
+
+\subsection{Exchange of limits and integrals}
+
+\subsection{Improper integrals}
+
+\subsection{Lebesgue criterion}
+
+\subsection{Irrationality of pi}
 
 \end{document}
