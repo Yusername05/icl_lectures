@@ -83,6 +83,9 @@ the \textbf{ring of polynomials} with coefficients in $ K $.
 \end{theorem}
 
 \subsection{Decimal expansions}
+
+\begingroup\belowdisplayskip=-0pt
+
 \begin{definition}
     For $a_0\in\NN$ and $a_i\in[1,9]$ for $i>0\in\NN$, define the \textbf{periodic decimal} \[
         a_0.a_1a_2\ldots\overline{a_ia_{i+1}\ldots a_j}
@@ -92,6 +95,9 @@ the \textbf{ring of polynomials} with coefficients in $ K $.
     \textcolor{black}{.}
     \]
 \end{definition}
+
+\endgroup
+\begingroup\belowdisplayskip=-10pt
 
 \begin{theorem}
     If $x\in\QQ$ has $2$ decimal expansions, then they will be of the form \[
@@ -106,6 +112,8 @@ the \textbf{ring of polynomials} with coefficients in $ K $.
     \textcolor{black}{.}
     \]
 \end{definition}
+
+\endgroup
 
 \subsection{Countability}
 
@@ -161,7 +169,29 @@ the \textbf{ring of polynomials} with coefficients in $ K $.
 
 \section{Sequences}
 
+\begin{definition}[Real sequence]
+    A \textbf{real sequence} is a function $a:\NN\rightarrow\RR$ written $(a_n)$. Sequences of other number systems are defined similarly.
+\end{definition}
+
 \subsection{Convergence}
+
+\begin{definition}[Convergence]
+    A real sequence $(a_n)$ \textbf{converges} to some $a\in\RR$  as $n\rightarrow\infty$ iff \[
+    \forall \epsilon>0, \  \exists N_\epsilon \ \text{\textcolor{black}{such that }} \forall n\geq N_\epsilon, \ |a_n-a|<\epsilon
+    \textcolor{black}{.}
+    \] For complex series the definition is the same just with $|\cdot|$ referring to the modulus instead of the absolute value.
+\end{definition}
+
+\begin{customtheorem}[Yet Another Theorem][-10pt]
+This is a custom theorem with a different optional displayskip.
+\[
+E=mc^2
+\]
+\end{customtheorem}
+
+\begin{definition}
+    asdfawe
+\end{definition}
 
 \subsection{Divergence}
 
