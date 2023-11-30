@@ -1,5 +1,7 @@
 # icl_lectures
 ## info
+### forewarning
+No proofs, code or novel mathematics / information can be found in any of these documents. All information in here is publicly available mathematics :)
 ### description
 Lecture notes* from all courses taken during 2023/24 entry Msci Mathematics at Imperial College London. Most of the clever formatting and latex was lifted from https://github.com/Multramate/IC-GANT. None of these notes are full copies of any official course material provided by imperial college london. Some of these are empty if the course was short like IUM or particularly sparse of notes like computation.
 
