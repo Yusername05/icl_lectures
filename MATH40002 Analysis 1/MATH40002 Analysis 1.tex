@@ -1,6 +1,6 @@
 \def\module{MATH40002 Analysis 1}
 \def\lecturer{Dr Ajay Chandra}
-\def\term{Autumn 2023}
+\def\term{Autumn 2023 and Spring 2024}
 \def\cover{\vspace{1in}
 $$
 \begin{tikzcd}[ampersand replacement=\&, column sep=tiny]
@@ -633,7 +633,9 @@ Throughout this subsection $[0,\infty] := [0,\infty)\cup\{+\infty\}$.
 
 \begingroup\belowdisplayskip=-8pt
 \begin{theorem}[Weierstrass M-test]
-    Given continuous $(f_n):S\rightarrow\RR$ defined on $S\subset\RR$, \[
+    Given continuous $(f_n):S\rightarrow\RR$ defined on $S\subset\RR$, 
+    \vspace{-8pt}
+    \[
     \forall x\in S \ \text{\textcolor{black}{and }} \forall i\in\NN, \ \exists M_1,M_2,\ldots \in\RR \
 \text{\textcolor{black}{ such that }} |f_i(x)|\leq M_i \ \text{\textcolor{black}{and }} \displaystyle\sum_{i=1}^\infty M_i \ \text{\textcolor{black}{ converges }}\]\[ \implies \displaystyle\sum_{n=1}^\infty f_i(x) \ \text{\textcolor{black}{converges uniformly to some continuous }} g:S\rightarrow\RR
 \textcolor{black}{.}
@@ -641,7 +643,15 @@ Throughout this subsection $[0,\infty] := [0,\infty)\cup\{+\infty\}$.
 \end{theorem}
 \endgroup
 
+\vspace{-30pt}
+
+\begin{theorem}
+    If a power series $f(x)=\displaystyle\sum_{n=1}^\infty f_i(x)$ has radius of convergence $R>0$ then $f$ is continuous on $(-R,R)$.
+\end{theorem}
+
 \section{Differentiation}
+
+a
 
 \subsection{Differentiability}
 
