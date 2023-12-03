@@ -40,7 +40,6 @@ The following are references.
 
 \begin{notation*}
 If $ K $ is a field, or a ring, I denote
-$$ K\sbr{X} = \cbr{a_0 + \dots + a_nX^n \st a_i \in K}, $$
 the \textbf{ring of polynomials} with coefficients in $ K $.
 \end{notation*}
 
@@ -90,6 +89,8 @@ the \textbf{ring of polynomials} with coefficients in $ K $.
         \textcolor{black}{.}
     \]
 \end{notation}
+
+\vspace{-30pt}
 
 \subsection{Matrix algebra}
 \begin{definition}[Matrix by elements]
@@ -653,9 +654,10 @@ Throughout the remainder of this section we will assume all vectors spaces are o
 \end{theorem}
 
 \subsection{Gramm-Schmidt process}
-The Gramm-Shmidt process is a method of producing orthonormal bases from bases that aren't necessarily orthonormal
+The Gramm-Shmidt process is a method of producing orthonormal bases.
 \begin{algorithm}[Gramm-Shmidt process]
     Given a LI set $\{v_1,v_2,\ldots,v_r\} \in \RR^n$ the \textbf{Gramm-Shmidt process} will produce the set of vectors $\{w_1,w_2,\ldots,w_r\} \in \RR^n$ by the following:
+    \begin{samepage}
     \begin{enumerate}
         \item[] $\displaystyle w_1 = v_1$,
         \item[] $\displaystyle w_2 = v_2 - \frac{w_1\cdot v_2}{||w_1||^2}w_1$,
@@ -663,6 +665,7 @@ The Gramm-Shmidt process is a method of producing orthonormal bases from bases t
         \item[] $\hspace{16.5pt}\vdots$
         \item[] $\displaystyle w_r = v_r - \sum_{j=1}^{r-1}\frac{w_j\cdot v_r}{||w_j||^2}w_j$.
     \end{enumerate}
+    \end{samepage}
     Note that each vector is the original vector $v_i$ with its projection along all of the previous $w_j$s subtracted and therefore $\{w_1,w_2,\ldots,w_r\}$ is orthogonal. Finally, $\{u_1,u_2,\ldots,u_r\}$, where $\displaystyle u_i = \frac{w_i}{||w_i||}$ for all $i\in[1,r]$, is an orthonormal set with $\text{Span}(\{u_1,u_2,\ldots,u_r\}) = \text{Span}(\{v_1,v_2,\ldots,v_r\})$.
 \end{algorithm}
 
@@ -697,7 +700,7 @@ Throughout this section, unsurprisingly, all matrices will be assumed to be real
 \end{theorem}
 
 \begin{corollary}
-    Appropriately scale eigenvectors of a symmetric matrix $A\in M_n(\RR)$ form an orthonormal basis for $\RR^n$.
+    Appropriately scaled eigenvectors of a symmetric matrix $A\in M_n(\RR)$ form an orthonormal basis for $\RR^n$.
 \end{corollary}
 
 \end{document}

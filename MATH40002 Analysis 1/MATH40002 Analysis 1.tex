@@ -38,9 +38,6 @@ The following are references.
 \end{itemize}
 
 \begin{notation*}
-If $ K $ is a field, or a ring, I denote
-$$ K\sbr{X} = \cbr{a_0 + \dots + a_nX^n \st a_i \in K}, $$
-the \textbf{ring of polynomials} with coefficients in $ K $.
 \end{notation*}
 
 \section{Number systems}
@@ -651,44 +648,339 @@ Throughout this subsection $[0,\infty] := [0,\infty)\cup\{+\infty\}$.
 
 \section{Differentiation}
 
-a
-
 \subsection{Differentiability}
 
-\subsection{Operations on derivatives}
+\begin{definition}[Differentiability]
+    A function $f:\RR\rightarrow\RR$ is \textbf{differentiable} at $a\in\RR$, with \textbf{derivative} $f'(a) = \displaystyle\eval{\frac{d}{dx}f(x)}_a$ iff \[
+        \lim_{x\rightarrow a} \frac{f(x)-f(a)}{x-a} \ \text{\textcolor{black}{exists, which we set to}} \ f'(a)
+        \textcolor{black}{.}
+    \] $f$ is differentiable on $S\subseteq\RR$, with derivative $\displaystyle\frac{d}{dx}f = \frac{df}{dx} = f':\RR\rightarrow\RR$, if it is differentiable at every $x\in S$.
+\end{definition}
+
+\begin{examples}
+    The following functions are all differentiable, \begin{itemize}
+        \item $f(x)=x^n$, for $n\in\NN$ on $\RR$ with $f'(x)=nx^{n-1}$,
+        \item $f(x)=e^x$ on $\RR$ with $f'(x)=e^x$,
+        \item $f(x)=\ln x$ on $\RR^{>0}$ with $f'(x)=\frac{1}{x}$.
+    \end{itemize}
+\end{examples}
+
+\begin{theorem}
+    $f$ is differentiable $\implies$ $f$ is continuous.
+\end{theorem}
+
+\begin{theorems}[Operations on derivatives]
+    If $f,g:\RR\rightarrow\RR$ are both differentiable at $x=a\in\RR$ then, \begin{enumerate}
+        \item for all $c,d\in\RR$, $h(x):=c\cdot f(x)+d\cdot g(x)$ is differentiable at $x=a$ with $h'(a)=c\cdot f'(a)=d\cdot g'(a)$,
+        \item $p(x):=f(x)\cdot g(x)$ is differentiable at $x=a$ with $p'(a)=f(a)\cdot g'(a) + f'(a) \cdot g(a)$,
+        \item if $f(a)\neq0$, $\displaystyle q(x):=\frac{1}{f(a)}$ is differentiable at $x=a$ with $\displaystyle q'(a)=-\frac{f'(a)}{[f(a)]^2}$,
+        \item if $g(a)\neq0$ $\displaystyle r(x):=\frac{f(x)}{g(x)}$ is differentiable at $x=a$ with $\displaystyle r'(a)=\frac{f'(a)\cdot g(a)-f(a)\cdot g'(a)}{[g(a)]^2}$.
+    \end{enumerate}
+\end{theorems}
+
+\begin{theorem}[Chain rule]
+    If $g,f:\RR\rightarrow\RR$ are differentiable at $x=a\in\RR$ and $x=g(a)$ respectively then $s(x):=f\circ g(x)$ iss differentiable at $x=a$ with $s'(a)=g'(a)\cdot f'\circ g(a)$.
+\end{theorem}
 
 \subsection{Local extrema and mean values}
 
+\begin{definition}[Local extrema]
+    For a function $f:S\rightarrow\RR$, $f$ has a \textbf{local minimum} as $a\in\RR$ iff $\exists\delta>0$ such that $\forall y\in S$ with $|y-a|<\delta$, $f(y)\leq f(a)$, and similary for a \textbf{local maximum}. 
+\end{definition}
+
+\begin{theorem}
+    If $f:[a,b]\rightarrow\RR$ is differentiable on $(a,b)$ and has a local maximum or minimum at $c\in(a,b)$, $f'(c)=0$.
+\end{theorem}
+
+\begin{theorem}[Rolle's theorem]
+   If $f:[a,b]\rightarrow\RR$ is differentiable on $(a,b)$ with $f(a)=f(b)$, $\exists c\in(a,b)$ such that $f'(c)=0$.
+\end{theorem}
+
+\begin{theorem}[Mean value theorem]
+    If $f:[a,b]\rightarrow\RR$ is differentiable on $(a,b)$, $\exists c\in(a,b)$ such that $\displaystyle f'(c)=\frac{f(b)-f(a)}{b-a}$.
+\end{theorem}
+
+\begin{theorem}
+    If $f:[a,b]\rightarrow\RR$ is differentiable on $(a,b)$ with $f'(x)\geq0$ for all $x\in(a,b)$ then $f$ is monotone increasing. Similar holds for monotone/strictly increasing/decreasing or constant.
+\end{theorem}
+
+\begin{theorem}[Cauchy's MVT]
+    A similar but slightly more general statement than the MVT: if $f,g:[a,b]\rightarrow\RR$ are differentiable on $(a,b)$, $\exists c\in(a,b)$ with $(f(b)-f(a))g'(c)=(g(b)-g(a))f'(c)$.
+\end{theorem}
+
 \subsection{L'Hôpital's rule}
 
+\begin{theorem}[L'Hôpital's rule]
+    Given $f,g:[c,d]\rightarrow\RR$ are differentiable on $(c,d)$ except possibly at some $a\in(c,d)$ with $g'(x)\neq0$ on $(c,d)\setminus \{a\}$: \[
+    \text{\textcolor{black}{if }} \lim_{x\rightarrow a}f(x)=\lim_{x\rightarrow a}g(x)=0 \ \text{\textcolor{black}{or }} \infty \ \text{\textcolor{black}{and }} \lim_{x\rightarrow a}\frac{f'(x)}{g'(x)}=L \ \text{\textcolor{black}{then }}\lim_{x\rightarrow a}\frac{f(x)}{g(x)}=L
+    \textcolor{black}{.}
+    \] This also applies when taking $\lim\limits_{x\rightarrow\infty}$.
+\end{theorem}
+
+\begin{definition}[Higher derivatives]
+    \textbf{Higher derivatives} of $f:\RR\rightarrow\RR$ are defined inductively as \[
+        f^{(n)}(x) := \begin{dcases}
+            \ \hfil f(x)\hfil & \text{\textcolor{black}{if }} x=0\\
+            f^{(n-1)}{}'(x) & \text{\textcolor{black}{otherwise}}
+        \end{dcases}
+    \textcolor{black}{.}
+    \] The existence of the $n$th derivative of $f$ requires all lower order derivatives of $f$ also exist and be differentiable.
+\end{definition}
+
+\begin{theorem}[Second derivative test]
+    For a second differentiable function $f:\RR\rightarrow\RR$ with $f'(a)=0$ for some $a\in\RR$, \begin{itemize}
+        \item $f''(a)>0 \implies f$ has a local minimum at $x=a$,
+        \item $f''(a)<0 \implies f$ has a local maximum at $x=a$,
+        \item the test is inconclusive if $f''(a)=0$.
+    \end{itemize}
+\end{theorem}
+
+\begin{samepage}
 \subsection{Taylor's theorem}
+
+\begingroup\belowdisplayskip=-0pt
+\begin{definition}[Taylor polynomial of a function]
+    Given $f:[c,d]\rightarrow\RR$ has an order $n\in\NN_0$ derivative at $x=a\in(c,d)$, the \textbf{Taylor polynomial} of order $n$ at $x=a$ is \[
+        P_n(x) := \sum_{i=0}^n\frac{f^{(i)}(a)}{i!}(x-a)^i = f(a) + \frac{f'(a)}{1!}(x-a) + \frac{f''(a)}{2!}(x-a)^2 + \ldots + \frac{f^{(n)}(a)}{n!}(x-a)^n
+    \textcolor{black}{.}
+    \]
+\end{definition}
+\endgroup
+
+\begin{theorem}[Taylor's theorem]
+    Given $f:[c,d]\rightarrow\RR$ has an order $n+1$, for some $n\in\NN_0$, derivative for all $x\in(c,d)$. For $a,b\in[c,d]$ with $a\neq b$ there exists some $t$ between $a$ and $b$ such that, \[
+    f(b)=P_n(b)+\frac{f^{(n+1)}(t)}{(n+1)!}(b-a)^{n+1}
+    \textcolor{black}{.}
+    \] This is a further, massive generalisation of the MVT (the case when $n=0$).
+\end{theorem}
+
+\begin{definition}[Taylor series of a function]
+    The \textbf{Taylor series}, $P(x)$, for a function $f:\RR\rightarrow\RR$ at $x=a$ exists if $f^{(n)}(a)$ exists for all $n\in\NN$ and is given by \[
+    P(x) := \sum_{n=0}^\infty \frac{f^{(n)}(a)}{n!}(x-a)^n = f(a) + \frac{f'(a)}{1!}(x-a) + \frac{f''(a)}{2!}(x-a)^2 + \ldots
+    \]
+\end{definition}
+
+\begin{definition}[Analytic function]
+    A function $f:\RR\rightarrow\RR$ is \textbf{analytic} if it equals its Taylor series.
+\end{definition}
+\end{samepage}
 
 \subsection{Convexity}
 
+\begingroup\belowdisplayskip=-0pt
+\begin{definition}[Convexity of functions]
+    A function $f:[a,b]\rightarrow\RR$ is \textbf{convex} iff \[
+    \forall c,t,d\in[a,b] \ \text{\textcolor{black}{with}} \ c<t<d, f(c)+\frac{f(d)-f(c)}{d-c}(t-c)\geq f(t)
+    \textcolor{black}{.}
+    \]
+\end{definition}
+\endgroup
+\begin{theorem}
+    Given the function $f:[a,b]\rightarrow\RR$ with $f''(x)$ existing on $(a,b)$, $f$ is convex $\iff$ $f''(x)$ non-negative on $(a,b)$.
+\end{theorem}
+
 \subsection{Exchange of limits and derivatives}
 
-\subsection{Derivation of pi}
+\begin{theorem}[Criteria for exchange of limits and derivatives]
+    Given $(f_n)$ is a sequence of functions with $f_n:[a,b]\rightarrow\RR$ differentiable, if $\lim\limits_{n\rightarrow\infty}f_n(c)$ exists for some $c\in[a,b]$ and $(f_n'(x))$ converges uniformly on $[a,b]$: $(f_n)$ converges uniformly to some differentiable $f$ satisfying $f'(x)=\lim\limits_{n\rightarrow\infty}f_n'(x)$.
+\end{theorem}
+
+\begin{theorem}[Derivatives of power series]
+    Given a power series $\displaystyle f(x)=\sum_{n=0}^\infty a_nx^n$ with radius of convergence $R>0$, $f$ has a continuous derivative on $(-R,R)$ with $\displaystyle f'(x)=\sum_{n=0}^\infty na_nx^{n-1}$.
+\end{theorem}
+
+\begin{corollary}
+    Given a power series $\displaystyle f(x)=\sum_{n=0}^\infty a_nx^n$ with radius of convergence $R>0$, the Taylor series of $f$ centered at $x=0$ is $\displaystyle\sum_{n=0}^\infty a_nx^n$.
+\end{corollary}
+
+\subsection{Trigonometric properties}
+
+\begin{definition}[$\pi$]
+    Let $S=\{y>0:\sin(y)=0\}$, $\pi:=\inf S$.
+\end{definition}
+
+\begin{definition}[Periodic function]
+    A function $f:\RR\rightarrow\RR$ is \textbf{$2L$-periodic} iff $f(x+2L) = f(x)$ for all $x\in\RR$.
+\end{definition}
+
+\begin{theorem}
+    $\sin$ and $\cos$ satisfy the following important properties: \begin{enumerate*}
+        \item $\sin(x)$ is odd,
+        \item $\cos(x)$ is even,
+        \item $\cos^2(x) + \sin^2(x)=1$ for all $x\in\RR$,
+        \item $\sin$ and $\cos$ are $2\pi$-periodic functions.
+    \end{enumerate*}
+\end{theorem}
 
 \section{Integration}
 
 \subsection{Partitions}
 
+\begin{definition}[Partition]
+    A \textbf{partition}, P, of the interval $[a,b]\subset\RR$ is a finite collection of points $x_0,x_1,\ldots,x_n\in[a,b]$ such that $a=x_0<x_1<\ldots<x_n=b$. A partition naturally splits the domain $[a,b]$ into finitely many closed intervals.
+\end{definition}
+
+\begin{definition}[Refinement]
+    Given partitions $Q,P$, $Q$ is a \textbf{refinement} of $P$, written $Q\prec P$, iff every point of $P$ is also in $Q$.
+\end{definition}
+
+\begin{definition}[Common refinement]
+    Given paritions $P,Q$ the \textbf{common refinement} of $P$ and $Q$ is the partition $R$ containing all points in $P$ or $Q$. $R\prec P$ and $R\prec Q$.
+\end{definition}
+
 \subsection{Darboux sums}
+
+\begin{definition}[Darboux sums]
+    Given the bounded function $f:[a,b]\rightarrow\RR$ and the partition $P=\{x_0,x_1,\ldots,x_n\}$ of $[a,b]$, we will assign to each subintervals generated by $P$:  \begin{itemize}
+        \item a length, $\Delta x_i:=x_{i+1}-x_i$,
+        \vspace{-1pt}
+        \item an infinum, $m_i := \inf\limits_{x_i\leq t\leq x_{i+1}}f(t)$,
+        \vspace{-7pt}
+        \item a supremum, $M_i := \sup\limits_{x_i\leq t\leq x_{i+1}}f(t)$.
+    \end{itemize}
+    Now define the \textbf{lower Darboux sum} and \textbf{upper Darboud sum} of $f$ w.r.t. $P$ as: \[
+    L(f,P) := \sum_{i=0}^{n-1}m_i\Delta x_i\textcolor{black}{,} \qquad U(f,P) := \sum_{i=0}^{n-1}M_i\Delta x_i \qquad  \ \text{\textcolor{black}{ respectively.}}
+    \] If $f:[a,b]\rightarrow\RR$ is continuous then $L(f,P)$ and $U(f,p)$ exist. $L(f,P)$ is always less than or equal to $U(f,P)$.
+\end{definition}
+
+\begin{theorem}[Boundedness of refined Darboux sums]
+    If $f:[a,b]\rightarrow\RR$ is bounded with $Q\prec P$ partitions of $[a,b]$, $L(f,P)\leq L(f,Q) \leq U(f,Q) \leq U(f,P)$.
+\end{theorem}
+
+\begin{theorem}
+    Given some bounded $f:[a,b]\rightarrow\RR$, the set $\{L(f,P): P \ \text{\textcolor{black}{ is a partition of }} [a,b] \}$ is bounded above by any upper Darboux sum on $[a,b]$ w.r.t. $f$.
+\end{theorem}
 
 \subsection{Darboux integral}
 
-\subsection{Integrability}
+\begin{definition}[Darboux integrals]
+    Given a bounded function $f:[a,b]\rightarrow\RR$, the \textbf{lower Darboux integral} and \textbf{upper Darboux integral} are: \[
+    \lintd{a}{b}{f(x)}{x} := \sup_PL(f,P) \text{\textcolor{black}{,}} \qquad \uintd{a}{b}{f(x)}{x} := \inf_PU(f,P) \qquad \text{\textcolor{black}{respectively.}}
+\]
+\end{definition}
+
+\begin{definition}[Darboux integrability]
+    If the upper and lower Darboux integral of a bounded function $f:[a,b]\rightarrow\RR$ are equal, $f$ is \textbf{Darboux integrable} on $[a,b]$ with \[
+    \intd{a}{b}{f(x)}{x} := \lintd{a}{b}{f(x)}{x} = \uintd{a}{b}{f(x)}{x}
+    \textcolor{black}{.}
+    \] We will now refer to Darboux integrable functions simply as \textbf{integrable}.
+\end{definition}
+
+\begin{theorem}
+    A bounded function $f:[a,b]\rightarrow\RR$ is integrable iff $\forall\epsilon>0$ there exists a partition $P$ with $U(f,P)-L(f,P)<\epsilon$. Furthermore, given a sequence of paritions $(P_n)$ if $\lim\limits_{n\rightarrow\infty}(U(f,P_n)-L(f,P_n))=0$ then \[
+    \intd{a}{b}{f(x)}{x}=\lim_{n\rightarrow\infty}(L(f,P_n)=\lim_{n\rightarrow\infty}(U(f,P_n)
+    \textcolor{black}{.}
+    \]
+\end{theorem}
+
+\begin{remark}
+  For a bounded function $f:[a,b]\rightarrow\RR$, $f$ is integrable if it is, continuous, differentiable, monotone, or discontinuous at finitely many points.
+\end{remark}
 
 \subsection{Properties of integration}
 
-\subsection{Fundamental theorem of calculus}
+\begin{theorem}[Monotonicity]
+    If $f,g:[a,b]\rightarrow\RR$ are integrable with $f(x)\leq g(x)$ for all $x\in\RR$, \[
+        \text{\textcolor{black}{(1)}} \quad \intd{a}{b}{f(x)}{x} \leq \intd{a}{b}{g(x)}{x}\text{\textcolor{black}{.}} \qquad 
+        \text{\textcolor{black}{(2)}} \quad m\cdot(b-a)\leq \intd{a}{b}{f(x)}{x} \leq M\cdot(b-a)\text{\textcolor{black}{.}}
+    \]
+\end{theorem}
 
-\subsection{Exchange of limits and integrals}
+\begin{theorem}[Boundedness]
+    If $f:[a,b]\rightarrow\RR$ is integrable with $m\leq f(x)\leq M$ for all $x\in\RR$,
+\end{theorem}
+
+\begin{theorem}[Linearity]
+    If $f,g:[a,b]\rightarrow\RR$ are integrable, for all $c,d\in\RR$, \[
+        \text{\textcolor{black}{(3)}} \quad \intd{a}{b}{(cf(x)+dg(x))}{x} = c\intd{a}{b}{f(x)}{x} + d\intd{a}{b}{g(x)}{x}\text{\textcolor{black}{.}} \qquad 
+        \text{\textcolor{black}{(4)}} \quad \intd{a}{b}{f(x)}{x} = \intd{a}{c}{f(x)}{x} + \intd{c}{b}{f(x)}{x}\text{\textcolor{black}{.}}
+    \]
+\end{theorem}
+
+\begin{theorem}[Integrability on subdomains]
+    $f:[a,b]\rightarrow\RR$ is integrable iff $\forall c\in[a,b]$, $f$ is integrable on $[a,c]$ and $[c,b]$ with,
+\end{theorem}
+
+\begin{theorem}[Composition]
+    If $f:[a,b]\rightarrow[m,M]\subset\RR$, $g:[m,M]\rightarrow\RR$ are integrable and continuous respectively, $h(x):=g\circ f(x)$ is integrable on $[a,b]$.
+\end{theorem}
+
+\begin{theorem}[Triangle innequality]
+    If $f:[a,b]\rightarrow\RR$ is integrable then $|f|$ is integrable on $[a,b]$ with, \[
+        \text{\textcolor{black}{(6)}} \quad \abs{\intd{a}{b}{f(x)}{x}} \leq \intd{a}{b}{|f(x)|}{x}\text{\textcolor{black}{.}} \qquad 
+        \text{\textcolor{black}{(7)}} \quad \intd{a}{b}{f(x)}{x} = \intd{a}{b}{g(x)}{x}\text{\textcolor{black}{.}}
+    \]
+\end{theorem}
+
+\begin{theorem}[Finite point differences]
+    If $f,g:[a,b]\rightarrow\RR$ are integrable with $f(x) = g(x)$ except at finitely many points,
+\end{theorem}
+
+\begin{theorem}[Products]
+    If $f,g:[a,b]\rightarrow\RR$ are integrable then $f\cdot g:[a,b]\rightarrow\RR$ is integrable.
+\end{theorem}
+
+\begin{theorem}[Maxima and minima]
+    If $f,g:[a,b]\rightarrow\RR$ are integrable then $\max(f,g),\min(f,g):[a,b]\rightarrow\RR$ are integrable.
+\end{theorem}
+
+\subsection{Fundamental theorems of calculus}
+
+\begin{theorem}[Fundamental theorem of calculus 1]
+    Given continuous $f:[a,b]\rightarrow\RR$, have $F:[a,b]\rightarrow\RR$ with $\displaystyle F(x):=\intd{a}{x}{f(t)}{t}$. $F$ is continuous on $[a,b]$ and differentiable on $(a,b)$. $F'(x)=f(x)$ for all $x\in[a,b]$.
+\end{theorem}
+
+\begin{theorem}[Fundamental theorem of calculus 2]
+    Given continuous $f:[a,b]\rightarrow\RR$ with continuous derivative on $(a,b)$, $\displaystyle \intd{a}{b}{f'(x)}{x}=f(b)-f(a)$.
+\end{theorem}
+
+\subsection{Methods of integration}
+
+\begin{theorem}[MVT]
+    If $f:[a,b]\rightarrow\RR$ is continuous, $\exists c\in[a,b]$ such that $\displaystyle \intd{a}{b}{f(x)}{x} = f(c)(b-a)$.
+\end{theorem}
+
+\begin{theorem}[Integration by parts]
+    If $f,g:[a,b]\rightarrow\RR$ have continuous first derivatives, \[
+    \text{\textcolor{black}{(2)}} \quad \intd{a}{b}{f(x)g'(x)}{x} = \biggr[f(x)g(x)\biggr]_a^b - \intd{a}{b}{f'(x)g(x)}{x} \text{\textcolor{black}{.}} \qquad 
+    \text{\textcolor{black}{(3)}} \quad \intd{u(c)}{u(d)}{f(x)}{x} = \intd{c}{d}{f(u(x))u'(x)}{x} \text{\textcolor{black}{.}}
+    \]
+\end{theorem}
+
+\begin{theorem}[Integration by substitution]
+    Given continuous $f:[a,b]\rightarrow\RR$ if $u:[a,b]\rightarrow[c,d]$ has a continuous derivative on $(c,d)$,
+\end{theorem}
+
+\subsection{Limits and integrals}
+
+\begin{theorem}[Exchanging limits and integrals]
+    If $f_n:[a,b]\rightarrow\RR$ is a sequence of integrable functions converging uniformly to $f:[a,b]\rightarrow\RR$, then $f$ is integrable with, \[
+        \intd{a}{b}{f(x)}{x} = \intd{a}{b}{\lim_{n\rightarrow\infty}f_n(x)}{x} = \lim_{n\rightarrow\infty}\intd{a}{b}{f_n(x)}{x}
+    \text{\textcolor{black}{.}}
+    \]
+\end{theorem}
+
+\begin{theorem}[Power series integration]
+    If the power series $\displaystyle f(x)=\sum_{n=0}^\infty a_nx^n$ has radius of convergence $R>0$, $f$ is integrable on all closed subintervals of $(-R,R)$ with \[
+        \intd{0}{x}{f(t)}{t} = \sum_{n=0}^\infty\frac{a_n}{n+1}x^{n+1} \ 
+        \text{\textcolor{black}{ for all }} x\in(-R,R) \text{\textcolor{black}{.}}
+    \]
+\end{theorem}
 
 \subsection{Improper integrals}
 
-\subsection{Lebesgue criterion}
+\begin{definition}[Improper integral]
+    Given $f:(a,b]\rightarrow\RR$ integrable on all $[c,b]\subset(a,b]$, the \textbf{improper integral}, 
+    \[
+        \intd{a}{b}{f(x)}{x} = \lim_{c\downarrow a}\intd{c}{b}{f(x)}{x}
+    \text{\textcolor{black}{,}}
+    \]
+    if the limit exists, otherwise the integral \textbf{diverges}; and similarly for other non-closed intervals or those
+    with $\pm\infty$ as bounds.
+\end{definition}
 
-\subsection{Irrationality of pi}
+\begin{remark}
+    When integrating over intervals with multiple undefined points, the integral is split into sums of multiple integrals each with single undefined points on their boundaries.
+\end{remark}
 
 \end{document}
