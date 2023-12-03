@@ -69,13 +69,13 @@ the \textbf{ring of polynomials} with coefficients in $ K $.
         \item[Q1] $a+(b+c)=(a+b)+c$ ($+$ is associative),
         \item[Q2] $\exists 0\in\QQ$ such that $a+0=a$ ($0$ is the additive identity of $\QQ$),
         \item[Q3] $\forall a \in \QQ, \exists (-a)\in\QQ$ such that $a+ (-a) = 0$ ($\QQ$ is closed under additive inverses),
-        \item[Q4] $a+b = b+a$ ($+$ is commutative), \\
+        \item[Q4] $a+b = b+a$ ($+$ is commutative),\vspace{5pt}
         \item[Q5] $a\times(b\times c)=(a\times b)\times c$ ($\times$ is associative),
         \item[Q6] $\exists 1\in\QQ$ such that $a\times1=a$ ($1$ is the multiplicative identity of $\QQ$),
         \item[Q7] $a\times(b+c) = (a\times b) + (a\times c)$ ($\times$ is left distributive over $+$),
         \item[Q8] $(a+b)\times c = (a\times c) + (b\times c)$ ($\times$ is right distributive over $+$),
-        \item[Q9] $a\times b = b\times a$ ($\times$ is commutative), \\
-        \item[Q10] $\forall a \in \QQ, \exists a^{-1}\in\QQ$ such that $a \times a^{-1} = 1$ ($\QQ$ is closed under multiplicative inverses), \\
+        \item[Q9] $a\times b = b\times a$ ($\times$ is commutative),\vspace{5pt}
+        \item[Q10] $\forall a \in \QQ, \exists a^{-1}\in\QQ$ such that $a \times a^{-1} = 1$ ($\QQ$ is closed under multiplicative inverses),\vspace{5pt}
         \item[Q11] for all $a\in\QQ$ either $x<0$, $x=0$ or $x>=$ (Trichotomy),
         \item[Q12] for all $x,y\in\QQ$ we have $x>0,y>0\implies x+y>0$,
         \item[Q13] for all $x\in\QQ$ there exists a $n\in\NN$ such that $x<n$ (Archimedean axiom).
@@ -175,69 +175,471 @@ the \textbf{ring of polynomials} with coefficients in $ K $.
 
 \subsection{Convergence}
 
-\begin{definition}[Convergence]
+\begin{definition}[Convergence of sequences]
     A real sequence $(a_n)$ \textbf{converges} to some $a\in\RR$  as $n\rightarrow\infty$ iff \[
     \forall \epsilon>0, \  \exists N_\epsilon \ \text{\textcolor{black}{such that }} \forall n\geq N_\epsilon, \ |a_n-a|<\epsilon
     \textcolor{black}{.}
-    \] For complex series the definition is the same just with $|\cdot|$ referring to the modulus instead of the absolute value.
-\end{definition}
-
-\begin{customtheorem}[Yet Another Theorem][-10pt]
-This is a custom theorem with a different optional displayskip.
-\[
-E=mc^2
-\]
-\end{customtheorem}
-
-\begin{definition}
-    asdfawe
+    \] For complex series the definition is the same just with $|\cdot|$ referring to the modulus instead of the absolute value. This is written $a_n\rightarrow a$ (as $n\rightarrow\infty$).
 \end{definition}
 
 \subsection{Divergence}
 
+\begin{definition}[Divergence]
+    A sequence $(a_n)$ \textbf{diverges} iff it doesn't converge.
+\end{definition}
+
+\begin{definition}[Divergence to infinity]
+    A sequence $(a_n)$ \textbf{diverges to $\infty$} iff $\forall R>0, \ \exists N\in\NN$, such that $\forall n\geq N, a_n>R$. And similarly for a sequence diverging to $-\infty$.
+\end{definition}
+
 \subsection{Limits}
+
+\begin{theorem}[Uniqueness of limits]
+    Given a sequence $(a_n)$ if $a_n\rightarrow a$ and $a_n\rightarrow b$, $a=b$.
+\end{theorem}
+
+\begin{theorem}
+    If a sequence $(a_n)$ converges then $(a_n)$ is bounded.
+\end{theorem}
+
+\begin{theorem}[Algebra of limits]
+    Given two sequences $a_n\rightarrow a$ and $b_n\rightarrow b$ the following hold: \begin{itemize}
+        \item $a_n + b_n \rightarrow a + b$,
+        \item $a_nb_n \rightarrow ab$ (a special case of this is $ca_n\rightarrow ca$ for a constant $c$),
+        \item $\displaystyle{\frac{a_n}{b_n} \rightarrow \frac{a}{b}}$ given $b\neq0$.
+    \end{itemize}
+\end{theorem}
+
+\vspace{-15pt}
+
+\begin{theorem}
+    If $(a_n)$ is a positive sequence then $a_n\rightarrow0\iff\displaystyle{\frac{1}{a_n}\rightarrow+\infty}$, and similarly for negative sequences.
+\end{theorem}
+
+\begin{theorem}[Ratio test ]
+    If a sequence $(a_n)$ satisfies $\displaystyle \abs{\frac{a_{n+1}}{a_n}}\rightarrow L <1$ then $a_n\rightarrow0$.
+\end{theorem}
 
 \subsection{Monotone sequences}
 
+\begin{definition}[Monotonically increasing sequence]
+    A sequence, $(a_n)$, is \textbf{monotonically increasing} iff $\forall m,n\in\NN$ with $n>m$ we have $a_n\geq a_m$, and similarly for monotonically decreasing and their strict equivalents.
+\end{definition}
+
+\begin{theorem}[Monotone convergence]
+    If a sequence $(a_n)$ is monotone increasing and bounded above then $a_n\rightarrow a := \sup\{a_i:i\in\NN\}$ written $a_n\uparrow a$. This holds similarly for monotone decreasing sequences.
+\end{theorem}
+
 \subsection{Cauchy sequences}
+
+\begin{definition}[Cauchy sequence]
+   A sequence $(a_n)$ is a \textbf{Cauchy sequence} iff $\forall \epsilon>0\in\RR, \ \exists N\in\NN$ such that $\forall n,m<N, \ |a_n-a_m|<\epsilon$.
+\end{definition}
+
+\begin{theorem}[Cauchy convergence criterion]
+    A sequence $(a_n)$ converges iff it is a Cauchy sequence.
+\end{theorem}
 
 \subsection{Subsequences}
 
+\begin{definition}[Subsequence]
+    Given a strictly monotonically increasing function $n:\NN\rightarrow\NN$ and a sequence $(a_n)$, the  sequence $(b_n)$ defined by $b_i:=a_{n(i)}$ is a \textbf{subsequence} of $(a_n)$.
+\end{definition}
+
+\begin{theorem}
+    Given a subsequence of $(a_n)$, $(a_{n(i)})$, if $a_n\rightarrow a$ then $a_{n(i)}\rightarrow a$ as $i\rightarrow\infty$.
+\end{theorem}
+
+\begin{theorem}[Bolzano-Weierstrass]
+    If a sequence $(a_n)$ is bounded then it has a convergent subsequence.
+\end{theorem}
+
+\begin{note}[Sketch of the Bolzano-Weierstrass theorem proof]
+    The proof of the Bolzano-Weierstrass theorem is an equally valuable point as the statement of the theorem itself. The idea of the proof considers the ``peak points" of the sequence: if there are infinitely many peak points, then the peak points themselves form a monotonically decreasing subsequence; if there are finitely many, then the points after the final peak must have a monotonically decreasing subsequence bounded above by the final peak. By the monotone convergence theorem both of these subsequences must converge.
+\end{note}
+
 \section{Series}
+
+\begingroup\belowdisplayskip=-10pt
+\begin{definition}[Infinite series]
+    An \textbf{(infinite) series} is an expression of the form $\displaystyle \sum_{i=1}^\infty a_i$ of $a_1 + a_2 + \ldots$ 
+    
+    \vspace{-8pt}
+    for some sequence $(a_n)$. The sequence \textbf{partial sums} of the series $(S_n)$ is given by \[
+        S_n := \sum_{i=1}^n a_i = a_1 + a_2 + \ldots + a_n
+        \textcolor{black}{.}
+    \]
+\end{definition}
+\endgroup
 
 \subsection{Convergence}
 
-\subsection{Convergence tests}
+\begin{definition}[Convergence of series]
+    The series $\displaystyle \sum_{i=1}^\infty a_i$ of $(a_n)$ \textbf{converges} iff 
+    $S_n\rightarrow A\in\RR$, 
+        
+    \vspace{-10pt}
+    written $\displaystyle\sum_{n=1}^\infty a_n=A$.
+\end{definition}
+
+\vspace{-23pt}
+
+\begin{theorem}
+    For a sequence $(a_n)$, $\displaystyle\sum_{n=1}^\infty a_n$ converges if $a_n\rightarrow0$ (the converse is not true).
+\end{theorem}
+
+\vspace{-15pt}
+
+\begin{theorem}
+    Given a sequence non-negative sequence $(a_n)$, the convergence of the infinite series and the boundedness of $(S_n)$ are equivalent.
+\end{theorem}
+
+\begin{theorem}[Algebra of limits for series]
+    A similar algebra of limits for series can be established from the algebra of limits for sequences acting on the partial sums of the series.
+\end{theorem}
+
+\begin{theorem}[Comparison I test]
+    Given sequences $(a_n),(b_n)$ if $0\leq a_n \leq b_n$ then: \begin{itemize}
+        \item If $\displaystyle\sum_{n=1}^\infty a_n$ and $\displaystyle\sum_{n=1}^\infty b_n$ converge, $0\leq \displaystyle\sum_{n=1}^\infty a_n \leq \displaystyle\sum_{n=1}^\infty b_n$,
+        \item If $\displaystyle\sum_{n=1}^\infty a_n$ diverges, $\displaystyle\sum_{n=1}^\infty b_n$ also diverges.
+    \end{itemize}
+\end{theorem}
+
+\begin{theorem}[Comparison II test (Sandwich theorem)]
+    Given sequences $(a_n), (b_n), (c_n)$ with $a_n\leq b_n\leq c_n$, if $\displaystyle\sum_{n=1}^\infty a_n$ and $\displaystyle\sum_{n=1}^\infty c_n$ both converge, $\displaystyle\sum_{n=1}^\infty b_n$ converges.
+\end{theorem}
+
+\begin{theorem}
+    If $\alpha>1\in\RR$, $\displaystyle\sum_{n=1}^\infty \frac{1}{n^\alpha}$ converges.
+\end{theorem}
+
+\begin{definition}[Alternating sequence]
+    A sequence $(a_n)$ is \textbf{alternating} iff $a_{2n}\geq 0$ and $a_{2n-1}\leq0$ of vice versa for all $n\in\NN^{>0}$.
+\end{definition}
+
+\begin{theorem}
+    If $(a_n)$ is alternating with $|a_n|\downarrow 0$, $a_n$ converges and $\displaystyle\sum_{n=1}^\infty a_n$ converges.
+\end{theorem}
+
+\subsection{Absolute convergence}
+
+\begin{definition}[Absolute convergence]
+    Given a sequence $(a_n)$ the series $\displaystyle\sum_{n=1}^\infty a_n$ is \textbf{absolutely convergent} iff $\displaystyle\sum_{n=1}^\infty |a_n|$ converges.
+\end{definition}
+
+\begin{theorem}
+    Absolute convergence $\implies$ convergence.
+\end{theorem}
+
+\begin{theorem}[Comparison III test]
+    Given sequences $(a_n),(b_n)$ with $\displaystyle \frac{a_n}{b_n}\rightarrow L\in\RR$ if $\displaystyle\sum_{n=1}^\infty b_n$ is absolutely convergent then $\displaystyle\sum_{n=1}^\infty a_n$ is also absolutely convergent.
+\end{theorem}
+
+\begin{theorem}[Ratio test]
+    If the sequence $(a_n)$ is such that $\displaystyle\abs{\frac{a_{n+1}}{a_n}}\rightarrow r<1$ then $\displaystyle\sum_{n=1}^\infty a_n$ is absolutely convergent or divergent if $r>1$.
+\end{theorem}
+
+\begin{theorem}[Root test]
+    If the sequence $(a_n)$ is such that $\displaystyle\abs{a_n}^{\frac{1}{n}}\rightarrow r<1$ then $\displaystyle\sum_{n=1}^\infty a_n$ is absolutely convergent or divergent is $r>1$.
+\end{theorem}
+
+\begin{remark}
+    Both the ratio test and the root test are inconclusive if $r=1$.
+\end{remark}
 
 \subsection{Rearrangement of series}
+Sometimes, series are easier to deal with and have cancellations when their terms are rearranged. However, the rearrangement of terms will only preserve limits under certain conditions.
 
+\begin{definition}[Reordering]
+    Given a bijection $n:\NN\rightarrow\NN$ and a sequence $(a_n)$, the sequence $(b_n)$ with $b_i:=a_{n(i)}$ is a \textbf{rearrangement} or \textbf{reordering} of $(a_n)$.
+\end{definition}
+
+\begin{theorem}
+    If $(a_n)$ is a sequence satisying $a_n\rightarrow0$, $\displaystyle\sum_{n:a_n\geq0} a_n = \infty$ and $\displaystyle\sum_{n:a_n\leq0} a_n = -\infty$ then $\displaystyle\sum_{n=1}^\infty a_n$ can be rearranged to converge to any $r\in\RR$. 
+\end{theorem}
+
+\begin{theorem}
+    If $(a_n)$ is a sequence with absolutely convergent series, $\displaystyle\sum_{n:a_n\geq0} a_n = A$ and $\displaystyle\sum_{n:a_n\leq0} a_n = B$ with all arrangements of $(a_n)$ converging to $A+B$.
+\end{theorem}
+ 
 \subsection{Power series}
+Throughout this subsection $[0,\infty] := [0,\infty)\cup\{+\infty\}$.
+
+\begin{definition}[Power series]
+    For $z\in\CC$ and a complex sequence $(a_n)$, a \textbf{power series} is an expression in the form $\displaystyle\sum_{n=1}^\infty a_nz^n$.
+\end{definition}
+
+\begin{definition}[Radius of convergence]
+    Given the power series $\displaystyle\sum_{n=1}^\infty a_nz^n$, there exists some $R\in[0,\infty]$ such that: \begin{itemize}
+        \item $|z|<R \implies \displaystyle\sum_{n=1}^\infty a_nz^n$ converges,
+        \item $|z|>R \implies \displaystyle\sum_{n=1}^\infty a_nz^n$ diverges.
+    \end{itemize}
+    We cannot tell what happens when $|z|=R$ so this has to be checked separately. $R$ is the \textbf{radius of convergence} of the power series.
+\end{definition}
+
+\begin{corollary}
+    Given the same power series $\displaystyle\sum_{n=1}^\infty a_nz^n$, have $S:= \{|z|\in\RR^{\geq0}:a_nz^n\rightarrow0\}$ then \[
+    R := \begin{dcases}
+        \sup(S) & \text{\textcolor{black}{if }} S \ \text{\textcolor{black}{is bounded}} \\
+        \hfil\infty & \hfil\text{\textcolor{black}{otherwise}}
+    \end{dcases}
+    \textcolor{black}{.}
+    \] is the radius of convergence for the power series.
+\end{corollary}
+
+\begin{theorem}[Evaluating radius of convergence from tests]
+    For the power series $\displaystyle\sum_{n=1}^\infty a_nz^n$: \begin{itemize}
+        \item if $\ \displaystyle\abs{\frac{a_{n+1}}{a_n}}\rightarrow a\in[0,\infty]$ then $\displaystyle R=\frac{1}{a}$ is the radius of convergence for the power series,
+        \item if $\ \displaystyle\abs{a_n}^\frac{1}{n}\rightarrow a\in[0,\infty]$ then $\displaystyle R=\frac{1}{a}$ is the radius of convergence for the power series,
+    \end{itemize}
+\end{theorem}
+
+\begin{definition}[Cauchy product]
+    Given two series $\displaystyle\sum_{n=1}^\infty a_n$, $\displaystyle\sum_{n=1}^\infty b_n$; their \textbf{Cauchy product} is the series $\displaystyle\sum_{n=0}^\infty\sum_{i=0}^n a_ib_{n-i}$.
+\end{definition}
+
+\begin{remark}
+     If $(a_n)$, $(b_n)$ are the coefficients for a power series, then the Cauchy product of their series will be the coefficients of the product of the power series.
+\end{remark}
+
+\begin{theorem}
+    If $\displaystyle\sum_{n=1}^\infty a_n$, $\displaystyle\sum_{n=1}^\infty b_n$ are absolutely convergent their Cauchy product converges absolutely to $\displaystyle\br{\sum_{n=1}^\infty a_n}\br{\sum_{n=1}^\infty b_n}$.
+\end{theorem}
+
+\begin{theorem}
+    If the power series $\displaystyle\sum_{n=1}^\infty a_nz^n$, $\displaystyle\sum_{n=1}^\infty b_nz^n$ have radii of convergence $R_a,R_b$ respectively then their Cauchy product has radius of convergence $R_c\geq\min(R_a,R_b)$.
+\end{theorem}
 
 \subsection{Exponential series}
 
+\begin{definition}
+    For $z\in\CC$, its \textbf{exponential series} is \[
+    E(z) := \sum_{n=}^\infty \frac{z^n}{n!} = 1 + z + \frac{z^2}{2!} + \frac{z^3}{3!} + \ldots
+    \textcolor{black}{,}
+    \] with $E(z)$ converging absolutely for all $z\in\CC$.
+\end{definition}
+
+\begin{theorem}[Properties of exponential series]
+    For all $z,w \in \CC$: \\ \begin{enumerate*}
+        \item $E(z)E(w)=E(z+w)$,
+        \item $\displaystyle\frac{1}{E(z)}=E(-z)$,
+        \item $E(z)\neq0$.
+    \end{enumerate*}
+\end{theorem}
+
+\begin{theorem}
+    For all $x\in\QQ$, $E(x)=e^x$, with $e:=E(1)$.
+\end{theorem}
+
 \section{Continuity}
 
-\subsection{Limits}
-
 \subsection{Continuous functions}
+\begin{definition}[Limit of real functions]
+    For a function $f:\RR\rightarrow\RR$ and some $a,b\in\RR$ we have \textbf{$f(x)\rightarrow b$ as $x\rightarrow a$} of \textbf{$\lim\limits_{x\rightarrow a}f(x)=b$} iff: \[
+        \forall\epsilon>0, \ \exists\delta>0 \ \text{\textcolor{black}{such that }} |x-a|<\delta \impliedby |f(x)-b|<\epsilon
+        \textcolor{black}{.}
+    \]
+\end{definition}
+
+\begin{definition}[Continuity of real functions]
+    Given the function $f:\RR\rightarrow\RR$\begin{enumerate}
+        \item $f$ is \textbf{continuous at a point $a\in\RR$} iff $\lim\limits_{x\rightarrow a}f(x) = f(a)$,
+        \item $f$ is \textbf{continuous (on $\RR$)} iff $f$ is continuous at all $a\in\RR$.
+    \end{enumerate}
+\end{definition}
+
+\begin{definition}[Discontinuity of real functions]
+    The function $f:\RR\rightarrow\RR$ is \textbf{discontinuous} at a point if it is not continuous at that point.
+\end{definition}
+
+\begin{definition}[Sequential continuity]
+    The function $f:\RR\rightarrow\RR$ is continuous at $a\in\RR \iff f(a_n)\rightarrow f(a)$ as $n\rightarrow\infty$ for all sequences $(a_n)$ converging to $a$.
+\end{definition}
+
+\begin{remark}
+    The definition for limits and continuity of complex functions is similar with $|\cdot|$ being the modulus instead of the absolute values. The same definitition also applies for functions that are continuous on certain subsets of $\RR$ or $\CC$.
+\end{remark}
+
+\begin{theorem}
+    $E:\CC\rightarrow\CC$ given by $\displaystyle E(z):=\sum_{n=}^\infty \frac{z^n}{n!}$ is continuous on $\CC$.
+\end{theorem}
+
+\begin{theorem}[Properties of the real exponential function]
+    Given the exponential function $E:\RR\rightarrow(0,\infty)$: \begin{enumerate}
+        \item for all $x\in\RR$, $E(x)>0$,
+        \item $x>0\implies E(x)>1$,
+        \item $E(x)$ is a strictly increasing function,
+        \item For $|x|<1$, $\displaystyle |E(x)-1|\leq \frac{|x|}{1-|x|}$,
+        \item $E$ is a continuous bijection.
+    \end{enumerate}
+\end{theorem}
+
+\begin{theorem}
+    The inverse of $E(x)=e^x$ is the \textbf{natural logarithm} function $\ln:(0,\infty)\rightarrow\RR$ satisfying $y=\ln x \iff x = e^y$ for all $x,y\in\RR$.
+\end{theorem}
+
+\begin{definition}[Exponentiation of positive bases]
+    For $a\in(0,\infty)$, for all $x\in\RR$ define $a^x:=E(x\ln a)$.
+\end{definition}
+
+\begin{definition}[Trigonomentric functions]
+    The \textbf{sine} and \textbf{cosine} functions are defined as: \[
+    \sin(\theta):=\Im[E(i\theta)] \textcolor{black}{,} \qquad \cos(\theta):=\Re[E(i\theta)]
+    \textcolor{black}{.}
+    \] and are both continuous functions from $\RR\rightarrow[-1,1]$.
+\end{definition}
+
+\begin{theorem}[Continuity of piecewise functions]
+    For $a,c\in\RR$ with functions $f_1:(-\infty,a)\rightarrow\RR$ and $f_2:(a,\infty)\rightarrow\RR$, the \textbf{piecewise function} $f:\RR\rightarrow\RR$, defined as, \[
+        f(x) := \begin{dcases}
+            f_1(x) & \text{\textcolor{black}{if }} x<a \\
+            \ \hfil c\hfil & \text{\textcolor{black}{if }} x=a \\
+            f_2(x) & \text{\textcolor{black}{if }} x>a \\
+        \end{dcases}
+    \] is continuous on $\RR$ iff both $f_1$ and $f_2$ are continuous on their respective domains and 
+    \begingroup\belowdisplayskip=-15pt
+    \[
+    \lim_{x\uparrow a}f_1(x) = \lim_{x\downarrow a}f_2(x) = c
+    \textcolor{black}{.}
+    \]
+    \endgroup
+\end{theorem}
 
 \subsection{Properties of continuity}
+
+\begin{theorem}
+    For $f,g:\RR\rightarrow\RR$ continuous at $a\in\RR$ the following functions are also continuous at $a$: \\ \begin{enumerate*}
+        \item $\alpha f$ for all $\alpha\in\RR$; \hspace{100pt}
+        \item $f+g, f \cdot g$; \hspace{100pt}
+        \item $\displaystyle\frac{f}{g}$, given $g(a)\neq0$.
+    \end{enumerate*}
+\end{theorem}
+
+\begin{samepage}
+\begin{theorem}
+    The following functions (all by their well known definitions) are continuous: \begin{enumerate}
+        \item $f(x)=x^n$, for $n\in\NN_0$ (\textbf{monomials});
+        \item $\displaystyle p(x)=\sum_{i=1}^na_ix^i$, given $(a_n)$ is a real sequence (\textbf{polynomials});
+        \vspace{-10pt}
+        \item $\displaystyle \frac{p(x)}{q(x)}$  at $a\in\RR$ given $p,q$ are polynomials with $q(a)\neq 0$ (\textbf{rational functions});
+        \item $\sin(x)$, $\cos(x)$ on $\RR$ and $\tan(x)$ whenever $\cos(x)\neq0$, plus their reciprocals under similar conditions;
+        \item $f\circ g$ at $a\in\RR$ when $g$ is continuous at $a$ and $f$ is continuous at $g(a)$.
+        \end{enumerate}
+\end{theorem}
+\end{samepage}
+
+\begin{theorem}[Intermediate value theorem]
+    Given $a,b\in\RR$ with $a\leq b$, if $f:[a,b]\rightarrow\RR$ is continuous, then for all $c$ between $f(a)$ and $f(b)$ there exists some $x\in[a,b]$ such that $f(x)=c$.
+\end{theorem}
+
+\begin{definition}[Boundedness of real functions]
+    Given some $S\subseteq\RR$ a function $f:S\rightarrow\RR$ is \textbf{bounded above} iff $\exists M\in\RR$ such that $f(x)\leq M$ for all $x\in\RR$. The definitions for \textbf{bounded below} and \textbf{bounded} extend naturally from this.
+\end{definition}
+
+\begin{theorem}[Extreme value theorem]
+    Given $a,b\in\RR$ with $a\leq b$, if $f:[a,b]\rightarrow\RR$ is continuous then $f$ is bounded.
+\end{theorem}
 
 \section{Properties of subsets}
 
 \subsection{Open sets}
 
-\subsection{Closed sets}
+\begin{definition}[Open sets]
+    A set $S\subset\RR$ is \textbf{open} iff $\forall x\in S, \ \exists\delta$ such that $(x-\delta,x+\delta)\subset S$.
+\end{definition}
 
-\subsection{Compact sets}
+\begin{theorem}[Union of open sets]
+    For a collection of open sets in $\RR$, $\{S_i\}$, given the indexing set $\III$ (could be countable or uncountable), $\bigcup\limits_{i\in\III}S_i$ is open in $\RR$.
+\end{theorem}
+
+\begin{theorem}[Finite intersections of open sets]
+    The intersection of finitely many open sets in $\RR$ is open in $\RR$.
+\end{theorem}
+
+\subsection{Closed and compact sets}
+
+\begin{definition}[Closed sets]
+    A set $S\subset\RR$ is \textbf{closed} in $\RR$ if all convergent subsequences of $S$ have a limit in $S$.
+\end{definition}
+
+\begin{definition}[Compact sets]
+    A set $S\subset\RR$ is \textbf{compact} in $\RR$ if it is closed and bounded in $\RR$.
+\end{definition}
+
+\begin{theorem}
+    The complement of an open set is closed.
+\end{theorem}
+
+\begin{remark}
+    Not every set in $\RR$ is either open or closed. Half-open intervals are neither open nor closed while $\RR$ and $\emptyset$ are both open and closed.
+\end{remark}
+
+\begin{theorem}
+    The finite union or any intersection of closed sets in $\RR$ is closed.
+\end{theorem}
+
+\begin{theorem}
+    A set $S\subset\RR$ is compact iff every subsequence of $S$ has as convergent subsequence $x_{n(i)}\rightarrow x\in S$.
+\end{theorem}
+
+\begin{theorem}[Extreme value theorem for compact sets]
+    If $S\subset\RR$ is compact with $f:S\rightarrow\RR$ continuous, there exists some $c,d\in S$ with $f(c)=\inf\limits_{x\in S} f(x)$ and $f(d)=\sup\limits_{x\in S} f(x)$.
+\end{theorem}
 
 \section{Uniform continuity and convergence}
 
 \subsection{Uniform continuity}
 
+\begin{definition}[Uniform continuity]
+    A fuction $f:S\rightarrow\RR$ is \textbf{uniformly continuous} iff \[
+        \forall\epsilon>0, \ \exists\delta>0 \ \text{\textcolor{black}{such that }} \forall x,y\in S, |x-y|<\delta\implies|f(x)-f(y)|<\epsilon
+        \textcolor{black}{.}
+    \] Uniform continuity is a more powerful notion that continuity with $f$ is uniformly continuous $\implies$ $f$ is continuous.
+\end{definition}
+
+\begin{theorem}
+    If $S\subset\RR$ is compact and $f:S\rightarrow\RR$ continuous then $f$ is uniformly continuous.
+\end{theorem}
+
 \subsection{Convergence of sequences of functions}
 
+\begin{definition}[Pointwise convergence]
+    For some $S\subset\RR$ with the sequence $f_1,f_2,\ldots:S\rightarrow \RR$, $f_n$ \textbf{converges pointwise} to some $f:S\rightarrow\RR$ if \[
+        \forall x\in S,\ \forall\epsilon>0, \  \exists N\in\NN \ \text{\textcolor{black}{such that }}  \forall n\geq N, \ |f(x)-f_n(x)|<\epsilon
+    \textcolor{black}{.}
+    \] Written $\forall x\in S, \lim\limits_{n\rightarrow\infty}f_n(x)=f(x)$.
+\end{definition}
+
+\begin{definition}[Uniform convergence]
+    For some $S\subset\RR$, the sequence $f_1,f_2,\ldots:S\rightarrow \RR$ \textbf{uniformly converges} to some $f:S\rightarrow\RR$ if\[
+        \forall\epsilon>0, \ \exists N\in\NN  \ \text{\textcolor{black}{such that }} \forall x\in S, \ \text{\textcolor{black}{and }} \forall n>N, |f(x)-f_n(x)|<\epsilon
+    \textcolor{black}{.}
+    \]
+\end{definition}
+
+\begin{theorem}
+    If a sequence of (uniformly) continuous functions converges uniformly to a function $f$ then $f$ is (uniformly) continuous.
+\end{theorem}
+
+\begin{theorem}
+    If, given $S\subset\RR$, $(f_n):S\rightarrow\RR$ is a uniformly convergent sequence of continuous functions with $a\in S$ open in $S$, $\lim\limits_{n\rightarrow\infty}\lim\limits_{x\rightarrow a}f_n(x)=\lim\limits_{x\rightarrow a}\lim\limits_{n\rightarrow\infty}f_n(x)$.
+\end{theorem}
+
 \subsection{Convergence of series of functions}
+
+\begin{definition}[Convergence of series of functions]
+    Given $(f_n):S\rightarrow\RR$ defined on $S\subset\RR$, the series $\displaystyle\sum_{n=1}^\infty f_n(x)$ \textbf{converges (uniformly)} iff the sequence of partial sums $S_n(x)=\displaystyle\sum_{n=1}^n f_n(x)$ converges (uniformly).
+\end{definition}
+
+\begingroup\belowdisplayskip=-8pt
+\begin{theorem}[Weierstrass M-test]
+    Given continuous $(f_n):S\rightarrow\RR$ defined on $S\subset\RR$, \[
+    \forall x\in S \ \text{\textcolor{black}{and }} \forall i\in\NN, \ \exists M_1,M_2,\ldots \in\RR \
+\text{\textcolor{black}{ such that }} |f_i(x)|\leq M_i \ \text{\textcolor{black}{and }} \displaystyle\sum_{i=1}^\infty M_i \ \text{\textcolor{black}{ converges }}\]\[ \implies \displaystyle\sum_{n=1}^\infty f_i(x) \ \text{\textcolor{black}{converges uniformly to some continuous }} g:S\rightarrow\RR
+\textcolor{black}{.}
+\]
+\end{theorem}
+\endgroup
 
 \section{Differentiation}
 

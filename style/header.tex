@@ -48,29 +48,7 @@
 
 % Environments
 
-\newlength{\mytheoremdisplayskip}
 \newcommand{\setmytheoremdisplayskip}[1]{\setlength{\belowdisplayskip}{#1}}
-
-\newtheoremstyle{mytheoremstyle}
-  {\topsep} % Space above
-  {\topsep} % Space below
-  {} % Body font
-  {} % Indent amount
-  {\bfseries} % Theorem head font
-  {.} % Punctuation after theorem head
-  {.5em} % Space after theorem head
-  {\thmname{#1}\thmnumber{ #2}\if\relax\detokenize{#3}\relax\else\thmnote{ (#3)}\fi} % Theorem head spec
-
-\theoremstyle{mytheoremstyle}
-\newtheorem{mytheorem}[n]{Theorem}
-
-\NewDocumentEnvironment{customtheorem}{O{} O{0pt}}{%
-  \if\relax\detokenize{#2}\relax\else\setmytheoremdisplayskip{#2}\fi%
-  \begin{mytheorem}[#1]
-  \end{mytheorem}
-  \if\relax\detokenize{#2}\relax\else\vspace*{\mytheoremdisplayskip}\fi%
-}
-
 
 \theoremstyle{definition}
 \newtheorem{aim}[n]{Aim}
@@ -436,7 +414,6 @@
 \newoperator{PSL}   % Projective special linear
 \newoperator{rad}   % Radical
 \newoperator{ran}   % Range
-\newoperator{Re}    % Real
 \newoperator{Res}   % Residue
 \newoperator{rgd}   % Right global dimension
 \newoperator{rk}    % Rank
