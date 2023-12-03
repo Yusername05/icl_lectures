@@ -12,7 +12,7 @@ yu.coughlin23@imperial.ac.uk unlikely to respond or do anything as this is more 
 ## contents
 ### [Year 1 (September 2023 - March 2024)](https://www.imperial.ac.uk/media/imperial-college/faculty-of-natural-sciences/department-of-mathematics/public/study/Mathematics-Undergraduate-Programme-Handbook-2022-23.pdf)
 - [x] [MATH40001 Introduction to University Mathematics](https://github.com/Yusername05/icl_lectures/tree/main/MATH40001%20Introduction%20to%20University%20Mathematics)  
-- [ ] [MATH40002 Analysis 1](https://github.com/Yusername05/icl_lectures/tree/main/MATH40002%20Analysis%201)  
+- [x] [MATH40002 Analysis 1](https://github.com/Yusername05/icl_lectures/tree/main/MATH40002%20Analysis%201)  
 - [x] [MATH40003A Linear Algebra](https://github.com/Yusername05/icl_lectures/tree/main/MATH40003%20Linear%20Algebra%20and%20Groups)  
 - [x] [MATH40003B Groups](https://github.com/Yusername05/icl_lectures/tree/main/MATH40003%20Linear%20Algebra%20and%20Groups)
 - [ ] [MATH40004A Calculus](https://github.com/Yusername05/icl_lectures/tree/main/MATH40004%20Calculus%20and%20Applications)
