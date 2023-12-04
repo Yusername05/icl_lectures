@@ -1,8 +1,11 @@
+\documentclass{article}
+\usepackage{import}
+\usepackage{../style/header}
 \def\module{MATH40002 Analysis 1}
 \def\lecturer{Dr Ajay Chandra}
 \def\term{Autumn 2023 and Spring 2024}
 \def\cover{\vspace{1in}
-$$
+\[
 \begin{tikzcd}[ampersand replacement=\&, column sep=tiny]
 \& \qquad \& \& \& L \arrow[dash, dashed]{dddd} \& \& \& \& \& \& \\
 K\br{\alpha} \arrow[dash]{urrrr} \arrow[dash, dashed]{dddd} \& \& K\br{\alpha'} \arrow[dash]{urr} \arrow[dash, dashed]{dddd} \& \& \& K\br{\beta, \gamma} \arrow[dash]{ul} \arrow[dash, dashed]{dddd} \& \& \& K\br{\delta} \arrow[dash]{ullll} \arrow[dash, dashed]{dddd} \& \& K\br{\delta'} \arrow[dash]{ullllll} \arrow[dash, dashed]{dddd} \\
@@ -13,13 +16,12 @@ K\br{\alpha} \arrow[dash]{urrrr} \arrow[dash, dashed]{dddd} \& \& K\br{\alpha'} 
 \& \& \& \abr{\sigma^2, \tau} \arrow[dash]{ulll} \arrow[dash]{ul} \arrow[dash]{urr} \& \& \& \abr{\sigma} \arrow[dash]{ul} \& \& \& \abr{\sigma^2, \sigma\tau} \arrow[dash]{ullll} \arrow[dash]{ul} \arrow[dash]{ur} \& \\
 \& \& \& \& \& \& \& G \arrow[dash]{ullll} \arrow[dash]{ul} \arrow[dash]{urr} \& \& \&
 \end{tikzcd}
-$$
-$$ G = \Gal\br{L / K} \cong \DDD_8 $$
+\]
 }
 \def\syllabus{Number systems, decimal expansions, sup and inf, sequences, series, convergence tests, power series, continuity, closure, compactness, uniform continuity, differentiation, integration}
 \def\thm{subsection}
 
-\input{../style/header}
+\usepackage{../style/header}
 
 \begin{document}
 

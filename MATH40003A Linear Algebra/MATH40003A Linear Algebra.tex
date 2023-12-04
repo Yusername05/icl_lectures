@@ -1,8 +1,11 @@
+\documentclass{article}
+\usepackage{import}
+\usepackage{../style/header}
 \def\module{MATH40003A Linear Algebra}
 \def\lecturer{Dr Charlotte Kestner}
 \def\term{Autumn \& Spring 2023}
 \def\cover{\vspace{1in}
-$$
+\[
 \begin{tikzcd}[ampersand replacement=\&, column sep=tiny]
 \& \qquad \& \& \& L \arrow[dash, dashed]{dddd} \& \& \& \& \& \& \\
 K\br{\alpha} \arrow[dash]{urrrr} \arrow[dash, dashed]{dddd} \& \& K\br{\alpha'} \arrow[dash]{urr} \arrow[dash, dashed]{dddd} \& \& \& K\br{\beta, \gamma} \arrow[dash]{ul} \arrow[dash, dashed]{dddd} \& \& \& K\br{\delta} \arrow[dash]{ullll} \arrow[dash, dashed]{dddd} \& \& K\br{\delta'} \arrow[dash]{ullllll} \arrow[dash, dashed]{dddd} \\
@@ -13,13 +16,11 @@ K\br{\alpha} \arrow[dash]{urrrr} \arrow[dash, dashed]{dddd} \& \& K\br{\alpha'} 
 \& \& \& \abr{\sigma^2, \tau} \arrow[dash]{ulll} \arrow[dash]{ul} \arrow[dash]{urr} \& \& \& \abr{\sigma} \arrow[dash]{ul} \& \& \& \abr{\sigma^2, \sigma\tau} \arrow[dash]{ullll} \arrow[dash]{ul} \arrow[dash]{ur} \& \\
 \& \& \& \& \& \& \& G \arrow[dash]{ullll} \arrow[dash]{ul} \arrow[dash]{urr} \& \& \&
 \end{tikzcd}
-$$
-$$ G = \Gal\br{L / K} \cong \DDD_8 $$
+\]
+\[ G = \Gal\br{L / K} \cong \DDD_8 \]
 }
 \def\syllabus{Systems of linear equations, Matrices, Augmented matrices, Elementary matrices, EROs, REF \& rREF, Linear maps, Fields, Vector Spaces, Subspaces, Spanning, Linear independence, Bases, Rank Nullity, Representations of bases, Determinants, Eigenvalues and eigenvectors, characteristic polynomial, diagonisability, orthogonality, Gramm-Schmidt process, symmetric matrices, spectral theorem}
 \def\thm{subsection}
-
-\input{../style/header}
 
 \begin{document}
 
