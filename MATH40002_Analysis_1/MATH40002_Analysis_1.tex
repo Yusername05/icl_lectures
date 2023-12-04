@@ -1,48 +1,41 @@
 \documentclass[../Year1/Year1.tex]{subfiles}
 \usepackage{import}
 \usepackage{../style/header}
-\def\module{MATH40002 Analysis 1}
-\def\lecturer{Dr Ajay Chandra}
-\def\term{Autumn 2023 and Spring 2024}
-\def\cover{\vspace{1in}
-\[
-\begin{tikzcd}[ampersand replacement=\&, column sep=tiny]
-\& \qquad \& \& \& L \arrow[dash, dashed]{dddd} \& \& \& \& \& \& \\
-K\br{\alpha} \arrow[dash]{urrrr} \arrow[dash, dashed]{dddd} \& \& K\br{\alpha'} \arrow[dash]{urr} \arrow[dash, dashed]{dddd} \& \& \& K\br{\beta, \gamma} \arrow[dash]{ul} \arrow[dash, dashed]{dddd} \& \& \& K\br{\delta} \arrow[dash]{ullll} \arrow[dash, dashed]{dddd} \& \& K\br{\delta'} \arrow[dash]{ullllll} \arrow[dash, dashed]{dddd} \\
-\& \& \& K\br{\beta} \arrow[crossing over, dash]{ulll} \arrow[dash]{ul} \arrow[crossing over, dash]{urr} \arrow[dash, dashed]{dddd} \& \& \& K\br{\beta\gamma} \arrow[crossing over, dash]{ul} \arrow[dash, dashed]{dddd} \& \& \& K\br{\gamma} \arrow[crossing over, dash]{ullll} \arrow[crossing over, dash]{ul} \arrow[crossing over, dash]{ur} \arrow[dash, dashed]{dddd} \& \\
-\& \& \& \& \& \& \& K \arrow[crossing over, dash]{ullll} \arrow[crossing over, dash]{ul} \arrow[crossing over, dash]{urr} \arrow[dash, dashed]{dddd} \& \& \& \\
-\& \qquad \& \& \& \abr{e} \& \& \& \& \& \& \\
-\abr{\tau} \arrow[dash]{urrrr} \& \& \abr{\sigma^2\tau} \arrow[dash]{urr} \& \& \& \abr{\sigma^2} \arrow[dash]{ul} \& \& \& \abr{\sigma\tau} \arrow[dash]{ullll} \& \& \abr{\sigma^3\tau} \arrow[dash]{ullllll} \\
-\& \& \& \abr{\sigma^2, \tau} \arrow[dash]{ulll} \arrow[dash]{ul} \arrow[dash]{urr} \& \& \& \abr{\sigma} \arrow[dash]{ul} \& \& \& \abr{\sigma^2, \sigma\tau} \arrow[dash]{ullll} \arrow[dash]{ul} \arrow[dash]{ur} \& \\
-\& \& \& \& \& \& \& G \arrow[dash]{ullll} \arrow[dash]{ul} \arrow[dash]{urr} \& \& \&
-\end{tikzcd}
-\]
-}
-\def\syllabus{Number systems, decimal expansions, sup and inf, sequences, series, convergence tests, power series, continuity, closure, compactness, uniform continuity, differentiation, integration}
-
-\usepackage{../style/header}
 
 \begin{document}
 
 \chapter{Analysis}
 \renewcommand*\thesection{\arabic{section}}
-
-%\input{../style/cover}
+\setcounter{section}{-1}
+\lhead{MATH40002 Analysis}
+Lectured by Dr Ajay Chandra \\ Typed by Yu Coughlin \\
+Autumn 2023 \& Spring 2024
 
 \section{Introduction}
 
 \lecture{1}{Thursday}{10/01/19}
 
-The following are references.
+The following are core reading:
 \begin{itemize}
-\item E Artin, Galois theory, 1994
-\item A Grothendieck and M Raynaud, Rev\^etements \'etales et groupe fondamental, 2002
-\item I N Herstein, Topics in algebra, 1975
-\item M Reid, Galois theory, 2014
+\item M W Liebeck, A concise intro to pure mathematics, 2016
+\item F M Hart, Guide to analysis, 2001
+\item D A Brannan, A first course in mathematical a analysis, 2006
+\item K G Binmore, Mathematical analysis: a straightforward approach, 1982
 \end{itemize}
 
-\begin{notation*}
-\end{notation*}
+The following are supplementary reading:
+\begin{itemize}
+\item S R Lay, Analysis with an introduction to proof, 1994
+\item S Abbott, Understandding Analysis, 2015
+\end{itemize}
+
+The following are advanced reading:
+\begin{itemize}
+\item M Spivak, Calculus, 2010
+\item T Tao, Analysis 1, 2022
+\end{itemize}
+
+\tableofcontents\pagebreak
 
 \section{Number systems}
 

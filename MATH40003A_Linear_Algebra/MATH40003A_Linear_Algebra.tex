@@ -1,49 +1,28 @@
 \documentclass[../Year1/Year1.tex]{subfiles}
 \usepackage{import}
 \usepackage{../style/header}
-\def\module{MATH40003A Linear Algebra}
-\def\lecturer{Dr Charlotte Kestner}
-\def\term{Autumn \& Spring 2023}
-\def\cover{\vspace{1in}
-\[
-\begin{tikzcd}[ampersand replacement=\&, column sep=tiny]
-\& \qquad \& \& \& L \arrow[dash, dashed]{dddd} \& \& \& \& \& \& \\
-K\br{\alpha} \arrow[dash]{urrrr} \arrow[dash, dashed]{dddd} \& \& K\br{\alpha'} \arrow[dash]{urr} \arrow[dash, dashed]{dddd} \& \& \& K\br{\beta, \gamma} \arrow[dash]{ul} \arrow[dash, dashed]{dddd} \& \& \& K\br{\delta} \arrow[dash]{ullll} \arrow[dash, dashed]{dddd} \& \& K\br{\delta'} \arrow[dash]{ullllll} \arrow[dash, dashed]{dddd} \\
-\& \& \& K\br{\beta} \arrow[crossing over, dash]{ulll} \arrow[dash]{ul} \arrow[crossing over, dash]{urr} \arrow[dash, dashed]{dddd} \& \& \& K\br{\beta\gamma} \arrow[crossing over, dash]{ul} \arrow[dash, dashed]{dddd} \& \& \& K\br{\gamma} \arrow[crossing over, dash]{ullll} \arrow[crossing over, dash]{ul} \arrow[crossing over, dash]{ur} \arrow[dash, dashed]{dddd} \& \\
-\& \& \& \& \& \& \& K \arrow[crossing over, dash]{ullll} \arrow[crossing over, dash]{ul} \arrow[crossing over, dash]{urr} \arrow[dash, dashed]{dddd} \& \& \& \\
-\& \qquad \& \& \& \abr{e} \& \& \& \& \& \& \\
-\abr{\tau} \arrow[dash]{urrrr} \& \& \abr{\sigma^2\tau} \arrow[dash]{urr} \& \& \& \abr{\sigma^2} \arrow[dash]{ul} \& \& \& \abr{\sigma\tau} \arrow[dash]{ullll} \& \& \abr{\sigma^3\tau} \arrow[dash]{ullllll} \\
-\& \& \& \abr{\sigma^2, \tau} \arrow[dash]{ulll} \arrow[dash]{ul} \arrow[dash]{urr} \& \& \& \abr{\sigma} \arrow[dash]{ul} \& \& \& \abr{\sigma^2, \sigma\tau} \arrow[dash]{ullll} \arrow[dash]{ul} \arrow[dash]{ur} \& \\
-\& \& \& \& \& \& \& G \arrow[dash]{ullll} \arrow[dash]{ul} \arrow[dash]{urr} \& \& \&
-\end{tikzcd}
-\]
-\[ G = \Gal\br{L / K} \cong \DDD_8 \]
-}
-\def\syllabus{Systems of linear equations, Matrices, Augmented matrices, Elementary matrices, EROs, REF \& rREF, Linear maps, Fields, Vector Spaces, Subspaces, Spanning, Linear independence, Bases, Rank Nullity, Representations of bases, Determinants, Eigenvalues and eigenvectors, characteristic polynomial, diagonisability, orthogonality, Gramm-Schmidt process, symmetric matrices, spectral theorem}
-\def\thm{subsection}
 
 \begin{document}
 
-%\input{../style/cover}
 \chapter{Linear Algebra}
 \renewcommand*\thesection{\arabic{section}}
+\setcounter{section}{-1}
+\lhead{MATH40003A Linear Algebra}
+Lectured by Dr Charlotte Kestner \\ Typed by Yu Coughlin \\
+Autumn 2023 \& Spring 2024
 
 \section{Introduction}
 
 \lecture{1}{Thursday}{10/01/19}
 
-The following are references.
+The following are supplementary reading:
 \begin{itemize}
-\item E Artin, Galois theory, 1994
-\item A Grothendieck and M Raynaud, Rev\^etements \'etales et groupe fondamental, 2002
-\item I N Herstein, Topics in algebra, 1975
-\item M Reid, Galois theory, 2014
+    \item S Lang, Linear algebra, 1987
+    \item G Strang, Introduction to linear algebra, 2023
+    \item S Axler, Linear Algebra Done Right, 2015
 \end{itemize}
 
-\begin{notation*}
-If $ K $ is a field, or a ring, I denote
-the \textbf{ring of polynomials} with coefficients in $ K $.
-\end{notation*}
+\tableofcontents\pagebreak
 
 \section{Linear Systems and matrices}
 \subsection{Linear systems}
@@ -618,8 +597,16 @@ The prefix ``eigen" comes from the German word ``eigen" which can be roughly tra
 \end{theorem}
 
 \begin{theorem}
-    If a matrix $A\in M_n(\FF)$ is diagonalisably,  let $P$ be the matrix with columns as eigenvectors of $A$ and $D$ be the diagonal matrix with $ii$th entry as the corresponding eigenvalue for the $i$th column of $P$, then $A=PDP^{-1}$.
+    If a matrix $A\in M_n(\FF)$ is diagonalisable,  let $P$ be the matrix with columns as eigenvectors of $A$ and $D$ be the diagonal matrix with $ii$th entry as the corresponding eigenvalue for the $i$th column of $P$, then $A=PDP^{-1}$.
 \end{theorem}
+
+\begin{theorem}[Precursor of Cayley-Hamilton]
+    If a matrix $A\in M_n(\FF)$ is diagonasiable, $\chi_A(A)=0$ where $0$ is the zero-matrix in $M_n(\FF)$.
+\end{theorem}
+
+\begin{note}
+    The full \textbf{Cayley-Hamilton theorem}, which applies to all $A\in M_n(\FF)$, requires more advanced reasoning, this simpler version only requires the expansion of the polynomial and diagonalisation.
+\end{note}
 
 \section{Orthogonality}
 
