@@ -8,6 +8,8 @@ Lecture notes* from all courses taken during 2023/24 entry Msci Mathematics at I
 Clever latex formatting and templating https://github.com/Multramate/IC-GANT by David Kurniadi Angdinata, General information throughout first year https://imperialmathswiki.com particular sumaries by Carlos A.C.C. Perello, general info from https://blastzit.github.io/ by Bendit Chan.
 ### contact info
 yu.coughlin23@imperial.ac.uk unlikely to respond or do anything as this is more just personal note storage than a project.
+### note
+please take note of section 2.4 https://www.imperial.ac.uk/media/imperial-college/research-and-innovation/research-office/public/Intellectual-Property-Policy-ROP-07-Public-Access.pdf.
 
 ## contents
 ### [Year 1 (September 2023 - March 2024)](https://www.imperial.ac.uk/media/imperial-college/faculty-of-natural-sciences/department-of-mathematics/public/study/Mathematics-Undergraduate-Programme-Handbook-2022-23.pdf)
