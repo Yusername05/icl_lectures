@@ -1,11 +1,11 @@
-\documentclass{article}
+\documentclass[../Year1/Year1.tex]{subfiles}
 \usepackage{import}
 \usepackage{../style/header}
 \def\module{MATH40005A Probability}
 \def\lecturer{Professor Almut Veraart}
 \def\term{Autumn 2023}
 \def\cover{ 
-$$
+\[
 \begin{tikzpicture}[scale=1.3]
     \draw[black] (4,0) -- ({2*sqrt(2)},{-2*sqrt(2)});
     \draw[black] (0,4) arc (-37.5:-97.5:3.06);
@@ -59,7 +59,7 @@ $$
     \fill (0,-4) circle (0.05) node[below]{G};
     \fill ({2*sqrt(2)},{-2*sqrt(2)}) circle (0.05) node[below right]{H};
 \end{tikzpicture}
-$$
+\]
 
 \begin{center}
     A minimum vertex 5-Venn diagram.
@@ -69,8 +69,6 @@ $$
 \def\thm{subsection}
 
 \begin{document}
-
-\input{../style/cover}
 
 \section{Introduction}
 
@@ -85,8 +83,6 @@ The following are complementary reading for the course.
 \item G. Grimmett and D. Stirzaker, Probability and Random Processes, 2001
 \item G. Grimmett and D. Stirzaker, One Thousand Exercises in Probability, 2009
 \end{itemize}
-
-These notes are written assuming all material covered in ICL's \textbf{MATH40001}, \textbf{MATH40002}, \textbf{MATH40003A} and \textbf{MATH40004}.
 
 \begin{notation*}
     Common notation is all defined precisely in the aforementioned. The controversial and additional things are defined as such: $\NN = \{1,2,3,...\}$, $\NN_0 := \NN \cup \{0\}$, $\RR^{>0} := (0,\infty)$.
