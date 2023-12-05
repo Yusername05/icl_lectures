@@ -163,12 +163,94 @@ The following are suggested textbooks:
 
 \subsection{Trigonometric polynomials}
 
+\begin{definition}[Trigonometric polynomial]
+    A \textbf{trigonometric polynomial} is a function in the form \[
+        S_n(x) = \frac{1}{2}a_0 + \sum_{k=1}^n\br{a_k\cos(kx)+b_k\sin(kx)}
+    \]
+\end{definition}
 
+\begin{theorem}
+    Using euler's identity we can rewrite a trigonometric polynomial \[
+        S_n(x) = \frac{1}{2}a_0 + \sum_{k=1}^n\br{a_k\cos(kx)+b_k\sin(kx)} \ \text{\textcolor{black}{as }} \sum_{k=-n}^n\br{\gamma_ke^{ikx}} \ \text{\textcolor{black}{where }}
+        \gamma_k = \begin{dcases}
+            \hfil\frac{1}{2}a_0\hfil & \text{\textcolor{black}{if }} k=0 \\
+            \frac{1}{2}(a_k-ib_k) & \text{\textcolor{black}{if }} k\in[1,n] \\
+            \hfil\gamma_k^*\hfil & \text{\textcolor{black}{otherwise}} 
+        \end{dcases}
+    \]
+\end{theorem}
 
 \subsection{Fourier series}
+\begin{definition}[Fourier series]
+    If $f(x)$ is $2L$ periodic then its \textbf{Fourier series} is given by \[
+        f(x) := \frac{1}{2}a_0 + \sum_{n=1}^\infty\left[a_k\cos\br{\frac{n\pi x}{L}}+b_k\sin\br{\frac{n\pi x}{L}}\right] \ \text{\textcolor{black}{where }}\]\[ a_n := \frac{1}{\pi}\intd{-L}{L}{f(x)\cos\br{\frac{n\pi x}{L}}}{x}, \qquad b_n := \frac{1}{\pi}\intd{-L}{L}{f(x)\sin\br{\frac{n\pi x}{L}}}{x}
+    \]
+    
+\end{definition}
 
-\section{Plane curves}
+\begin{lemma}[Riemann-Lebesgue]
+    If the function $f(x)$ is integrable on $[a,b]$ then \[
+        I_\lambda := \intd{a}{b}{g(x)\sin(\lambda x)}{x}\rightarrow 0 \ \text{\textcolor{black}{as }}\lambda\rightarrow\infty
+    \]
+\end{lemma}
+
+\begin{theorem}[Paerseval's]
+    If $f(x)$ is periodic on $2\pi$ and is represented by its Fourier series, \[
+        \frac{1}{\pi}\intd{-\pi}{\pi}{f^2(x)}{x} = \frac{1}{2}a_0^2 + \sum_{n=0}^\infty(a_n^2+b_n^2)
+    \]
+\end{theorem}
 
 \section{Laplace transform}
+
+\subsection{Definition}
+
+\begin{definition}[Laplace transform]
+    The \textbf{Laplace transform} is a linear operator that when applied to a function $f(x)$ gives \[
+        F(p) := \LLL[f(x)] := \intd{0}{\infty}{e^{-px}f(x)}{x}
+    \]
+\end{definition}
+
+\begin{theorem}[Common Laplace tranformations]
+    These are some common functions with their Laplace transforms and the conditions for which they converge:
+    \renewcommand{\arraystretch}{2}
+    \begin{center}
+        
+        \begin{tabular}{|c|c|c|}
+            \hline
+            $f(x) = 1$ & $\displaystyle F(p) = \frac{1}{p}$ & Converges for $p>0$ \\
+            $f(x) = x$ & $\displaystyle F(p) = \frac{1}{p^2}$ & Converges for $p>0$ \\
+            $f(x) = x^n$ & $\displaystyle F(p) = \frac{n!}{p^{n+1}}$ & Converges for $p>0$ \\
+            $f(x) = e^{ax}$ & $\displaystyle F(p) = \frac{1}{p-a}$ & Converges for $p>a$ \\
+            $f(x) = \sin(ax)$ & $\displaystyle F(p) = \frac{a}{p^2+a^2}$ & Converges for $p>0$ \\
+            $f(x) = \cos(ax)$ & $\displaystyle F(p) = \frac{p}{p^2+a^2}$ & Converges for $p>0$ \\
+            $f(x) = \sinh(ax)$ & $\displaystyle F(p) = \frac{a}{p^2-a^2}$ & Converges for $p>a$ \\
+            \rule[-12pt]{0pt}{0pt} $f(x) = \cosh(ax)$ & $\displaystyle F(p) = \frac{p}{p^2-a^2}$ & Converges for $p>a$ \\ \hline
+        \end{tabular}
+    \end{center}
+    
+\end{theorem}
+
+\begin{theorem}[Existence of Laplace transform]
+    The Laplace transform for a function $f(x)$ exists iff there exists constants $M,c\in\RR$ with $|f(x)|\leq Me^{cx}$ ($f(x)$ is of \textbf{exponential order}).
+\end{theorem}
+
+\begingroup\belowdisplayskip=-20pt
+\subsection{Differentiating}
+
+\begin{theorem}[Derivatives of Laplace transforms]
+    By performing DUTIS $n\in\NN$ times we have \[
+        F^{(n)}(p) = \LLL[(-1)^nx^nf(x)]
+    \]
+\end{theorem}
+
+\subsection{Convolution theorem}
+
+\begin{theorem}[Convolution theorem for Laplace transforms]
+    For integrable functions $f,g:\RR\rightarrow\RR$:
+    \[
+        \LLL\left[\intd{0}{x}{f(x-t)g(t)}{t}\right]=F(p)G(p)
+    \]
+\end{theorem}
+\endgroup
 
 \end{document}
