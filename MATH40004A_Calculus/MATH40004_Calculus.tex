@@ -135,12 +135,36 @@ The following are suggested textbooks:
     \] 
 \end{definition}
 
-\begin{definition}[Orthogonal system]
-    If $\SSS=\{\phi_0,\phi_1,\ldots\}$ is a collection of integrable real functions on $[a,b]$, if $\abr{\phi_n,\phi_m}=0$ for all $n\neq m$ then $\SSS$ is an \textbf{orthogonal} system on $[a,b]$.
+\begin{definition}[Orthogonal and orthonormal system]
+    If $\SSS=\{\phi_0,\phi_1,\ldots\}$ is a collection of integrable real functions on $[a,b]$, iff $\abr{\phi_n,\phi_m}=0$ for all $n\neq m$ then $\SSS$ is an \textbf{orthogonal system} on $[a,b]$. Furthermore, $\SSS$ is a \textbf{orthonormal system} on $[a,b]$ iff $||\phi_n||:=\abr{\phi_n,\phi_n}=1$ for all $n$.
 \end{definition}
 
+\begin{theorem}
+    The system \[
+        \SSS = \left\{ \frac{1}{\sqrt{2\pi}},\frac{\cos(x)}{\sqrt{2\pi}},\frac{\sin(x)}{\sqrt{2\pi}},\frac{\cos(2x)}{\sqrt{2\pi}},\frac{\sin(2x)}{\sqrt{2\pi}},\ldots\right\}
+    \] is orthonormal on all closed intervals of length $2\pi$.
+\end{theorem}
+
 \subsection{Periodic functions}
+
+\begin{definition}[Periodic function]
+    A function $f:\RR\rightarrow\RR$ is \textbf{periodic} with period $T$ iff $f(x+T)=f(x)$ for all $x\in\RR$.
+\end{definition}
+
+\begin{definition}[Discontinuity]
+    When periodically extending a function, if $\lim\limits_{x\rightarrow\xi+}f(x) \neq \lim\limits_{x\rightarrow\xi-}f(x)$, we set $\displaystyle f(\xi):=\frac{1}{2}\left[\lim_{x\rightarrow\xi+}f(x) + \lim_{x\rightarrow\xi-}f(x)\right]$
+\end{definition}
+
+\begin{theorem}[Integral over period]
+    If $f(x)$ is a $T$ periodic function, for all $a,b\in\RR$ we have \[
+        \intd{a+T}{b+T}{f(x)}{x} = \intd{a}{b}{f(x)}{x}
+    \]
+\end{theorem}
+
 \subsection{Trigonometric polynomials}
+
+
+
 \subsection{Fourier series}
 
 \section{Plane curves}
