@@ -22,19 +22,129 @@ The following are suggested textbooks:
     \item S Lang, Undergradute Analysis, 1997
     \item J Marsden and A Weinstein, Calculus I and Calculus II, 1985
 \end{itemize}
+\begin{note*}
+    The actual majority of MATH40004A Calculus was a less formal and more example / application based derivation of the entirety of MATH40002 Analysis. 
+    As all of this content can be found in the corresponding document for Analysis, it isn't included in here.
+\end{note*}
 
 \tableofcontents\pagebreak
 
-\section{Additions to analysis}
-\subsection{Differentiation}
-\subsection{Integration}
-\subsection{Lengths, volumes and surfaces}
-\subsection{Estimatins}
+\section{Lengths, volumes and surfaces}
+
+\subsection{Lengths}
+
+\begin{theorem}[Arc length]
+    The \textbf{arc length} of the curve $y=f(x)$ along $[a,b]$ is given by \[
+        \intd{a}{b}{\sqrt{1+(f'(x))^2}}{x}
+    \]
+\end{theorem}
+
+\begin{theorem}[Distance and velocity of parameterised curves]
+    If a curve is parameterised by $(x(t),y(t),z(t))$, the \textbf{distance travelled} from time $t_0$ to $t$ is given by: \[
+        L(t) = \intd{t_0}{t}{\sqrt{\br{\frac{\dif x}{\dif t}}^2+\br{\frac{\dif y}{\dif t}}^2+\br{\frac{\dif z}{\dif t}}^2}}{x}
+    \] which naturally leads to the velocity at $t$: \[
+        v(t) = \sqrt{\br{\frac{\dif x}{\dif t}}^2+\br{\frac{\dif y}{\dif t}}^2+\br{\frac{\dif z}{\dif t}}^2}
+    \]
+\end{theorem}
+
+\subsection{Volumnes and volumes of revolution}
+
+\begin{theorem}[Volume]
+    If the cross sectional area of a shape when cut by a plane at $x=x_0$ is given by $A(x_0)$ for all $x_0\in[a,b]$, the volume of the shape is given by \[
+        V = \intd{a}{b}{A(x)}{x}
+    \]
+\end{theorem}
+
+\begin{theorem}[Disk method]
+    The \textbf{volume of revolution} of $y=f(x)$ about the $x$-axis from $x=a$ to $x=b$ is given by, \[
+        V_x = \intd{a}{b}{\pi\br{f(x)^2}}{x}
+    \]
+\end{theorem}
+
+\begin{theorem}[Shell method]
+    The \textbf{volume of revolution} of $y=f(x)$ about the $y$-axis from $y=a$ to $y=b$ is given by, \[
+        V_y = \intd{a}{b}{\pi\br{f^{-1}(x)^2}}{y} = \intd{a}{b}{2\pi xf(x)}{x}
+    \]
+\end{theorem}
+
+\subsection{Surfaces}
+
+\begin{theorem}
+    The \textbf{surface area of revolution} of $y=f(x)$ about the $x$-axis from $x=a$ to $x=b$ is given by, \[
+        S_x = \intd{a}{b}{2\pi f(x)\sqrt{1+(f'(x))^2}}{x}
+    \]
+\end{theorem}
+
+\begin{theorem}
+    The \textbf{surface area of revolution} of $y=f(x)$ about the $y$-axis from $y=a$ to $y=b$ is given by, \[
+        S_y = \intd{a}{b}{2\pi x\sqrt{1+(f'(x))^2}}{x}
+    \]
+\end{theorem}
+
+\subsection{Centres of mass}
+
+\begin{theorem}[1D discrete case]
+    If we have a system of $n$ particles each with mass $m_k$ and position $x_k$ we can define the \textbf{centre of mass} at $\bar{x}$ by \[
+        \bar{x} = \frac{\displaystyle\sum_{k=1}^nm_kx_k}{\displaystyle\sum_{k=1}^nm_k}
+    \]
+\end{theorem}
+
+\begin{theorem}[2D continuous case]
+    If we have a region limited by $f(x)$ and $g(x)$, give $g(x)\leq f(x)$ for all $x\in[a,b]$, with uniform mass, the coordinates of the \textbf{centre of mass}, $(\bar{x},\bar{y})$ is \[
+        \bar{x} = \frac{\displaystyle\intd{a}{b}{x(f(x)-g(x))}{x}}{\displaystyle\intd{a}{b}{f(x)-g(x)}{x}} \qquad
+        \bar{y} = \frac{\displaystyle\intd{a}{b}{f(x)^2-g(x)^2}{x}}{\displaystyle2\intd{a}{b}{f(x)-g(x)}{x}}
+    \]
+\end{theorem}
+
+\begin{theorem}[Pappu's theorem]
+    If $R$ is a reigon with area $A$ lying on one side of the line $l$, $V=Ad$ is the volume abtained by rotation $R$ about $l$, where $d$ is the distance travelled by the \textbf{com} when $R$ is rotated about $l$.
+\end{theorem}
+
+\subsection{Moments of inertia}
+
+\begin{theorem}
+    Given a curve $y=f(x)$ in the interval $[a,b]$, this is representing a wire in a given shape, and have the density per unit lenght of the wire at a given $x$ be $\rho(x)$, the \textbf{moment of inertia} of the curve about the $x$ and $y$ axis respectively is given by \[
+        I_x = \intd{a}{b}{\rho(x)f(x)^2\sqrt{1+f'(x)^2}}{x} \qquad I_y = \intd{a}{b}{\rho(x)x^2\sqrt{1+f'(x)^2}}{x}
+    \]
+\end{theorem}
+
+\subsection{Polar coordinates}
+
+\begin{definition}[Polar coordinates]
+    A parameterisation of $x,y$ is $r,\theta$ with $x=r\cos(\theta)$ and $y=r\sin(\theta)$.
+\end{definition}
+
+\begin{theorem}[Polar arc length]
+    The arc length of a curve, $r=f(\theta)$ in polar coordinates between angles $\alpha,\beta$ is given by \[
+        L = \intd{\alpha}{\beta}{\sqrt{\br{\frac{\dif r}{\dif \theta}}^2 + r^2}}{\theta}
+    \]
+\end{theorem}
+
+\begin{theorem}[Polar area]
+    The area of a polar curve, $r=f(\theta)$ between angles $\alpha,\beta$ is given by \[
+        A = \frac{1}{2}\intd{\alpha}{\beta}{f(\theta)^2}{\theta}
+    \]
+\end{theorem}
 
 \section{Fourier series}
 \subsection{Orthogonal and orthonormal function spaces}
+
+\begin{definition}[Inner product of functions]
+    If $f,g:[a,b]\rightarrow\RR$ are integrable on $[a,b]$, the their \textbf{inner product} is defined as \[
+        \abr{f,g} := \intd{a}{b}{f(x)g(x)}{x}
+    \] 
+\end{definition}
+
+\begin{definition}[Orthogonal system]
+    If $\SSS=\{\phi_0,\phi_1,\ldots\}$ is a collection of integrable real functions on $[a,b]$, if $\abr{\phi_n,\phi_m}=0$ for all $n\neq m$ then $\SSS$ is an \textbf{orthogonal} system on $[a,b]$.
+\end{definition}
+
 \subsection{Periodic functions}
 \subsection{Trigonometric polynomials}
 \subsection{Fourier series}
+
+\section{Plane curves}
+
+\section{Laplace transform}
 
 \end{document}
