@@ -13,7 +13,7 @@ please take note of section 2.4 https://www.imperial.ac.uk/media/imperial-colleg
 
 ## contents
 ### [Year 1 (September 2023 - March 2024)](https://www.imperial.ac.uk/media/imperial-college/faculty-of-natural-sciences/department-of-mathematics/public/study/Mathematics-Undergraduate-Programme-Handbook-2022-23.pdf)
-- [x] [MATH40001 Introduction to University Mathematics](https://github.com/Yusername05/icl_lectures/tree/main/MATH40001_Introduction_to_University_Mathematics)  
+- [ ] [MATH40001 Introduction to University Mathematics](https://github.com/Yusername05/icl_lectures/tree/main/MATH40001_Introduction_to_University_Mathematics)  
 - [x] [MATH40002 Analysis 1](https://github.com/Yusername05/icl_lectures/tree/main/MATH40002_Analysis_1)  
 - [x] [MATH40003A Linear Algebra](https://github.com/Yusername05/icl_lectures/tree/main/MATH40003A_Linear_Algebra)  
 - [x] [MATH40003B Groups](https://github.com/Yusername05/icl_lectures/tree/main/MATH40003B_Groups)
