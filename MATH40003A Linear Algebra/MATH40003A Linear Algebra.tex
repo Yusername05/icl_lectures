@@ -119,7 +119,7 @@ the \textbf{ring of polynomials} with coefficients in $ K $.
 
 \subsection{EROs}
 \begin{definition}[Elementary row operations]
-    The three \textbf{elementary row operations (EROs)} that can be performed on augmented matrixes are as follows:
+    The three \textbf{elementary row operations (EROs)} that can be performed on augmented matrices are as follows:
     \begin{enumerate}
         \item Multiply a row by a non-zero scalar.
         \item Swap two rows.
@@ -140,15 +140,15 @@ the \textbf{ring of polynomials} with coefficients in $ K $.
 \end{definition}
 
 \begin{definition}[Row echelon form / Echelon form/ REF]
-    A matrix is in \textbf{row echelon form} if it satisifes the following: \begin{enumerate}
+    A matrix is in \textbf{row echelon form} if it satisfies the following: \begin{enumerate}
         \item All of the zero rows are at the bottom of the matrix,
         \item The first non-zero entry in any row is $1$,
-        \item The first non-zer entru in row is stricly to the left of the first non-zero entry in row $i+1$.
+        \item The first non-zero entry in row is strictly to the left of the first non-zero entry in row $i+1$.
     \end{enumerate}
 \end{definition}
 
 \begin{definition}[Reduced row echelon form / Row reduced echelon form / rREF]
-    A matrix is im \textbf{reduced row echelon form} if it is in REF and the first non-zero entry in a row is the only non-zero entry in its column.
+    A matrix is in \textbf{reduced row echelon form} if it is in REF and the first non-zero entry in a row is the only non-zero entry in its column.
 \end{definition}
 
 \subsection{Matirces of note}
@@ -170,7 +170,7 @@ the \textbf{ring of polynomials} with coefficients in $ K $.
 \end{definition}
 
 \begin{definition}[Elementary matrix]
-    An \textbf{elementary matrix} is a matrix that can be achieved by appling a single ERO to the identity matrix.
+    An \textbf{elementary matrix} is a matrix that can be achieved by applying a single ERO to the identity matrix.
 \end{definition}
 
 \begin{definition}[Inverse]
@@ -315,7 +315,7 @@ Again, assume $V$ is an $\FF$-vector space throughout this section.
     If $V$ is non-trivial and $S$ is a finite spanning set of $V$ then $S$ contains a basis for $V$.
 \end{theorem}
 
-\begin{lemma}[Steinitz Echange Lemma]
+\begin{lemma}[Steinitz Exchange Lemma]
     Given some $X\subseteq V$ with $u\in \text{Span}(X)$ but $u\not\in \text{Span}(X\setminus \{v\})$ for some $v\in X$, let $Y=(X\setminus \{v\})\cup \{u\}$ then $\text{Span}(X) = \text{Span}(Y)$.
 \end{lemma}
 
@@ -372,7 +372,7 @@ Again, assume $V$ is an $\FF$-vector space throughout this section.
      Given a field $\FF$ and a matrix $A\in M_{n\times n}(\FF)$ with $\text{rank}(A)=n$: \begin{itemize}
          \item the rows of $A$ for a basis for $\FF^n$,
          \item the columns of $A$ for a basis for $\FF^n$,
-         \item $A$ is invertible.
+         \item $A$ is inevitable.
      \end{itemize}
  \end{theorem}
 
@@ -433,9 +433,9 @@ Throughout, assume $T:V\rightarrow W$ is a linear transformation and $V,W$ are $
     If $T$ is the linear transformation for some matrix $A\in M_{m\times n}(\FF)$ then, $\text{ker} T$ is the set of solutions for $Av=0$, $\text{Im }T$ is the column space of $A$, and $\text{dim}(\text{Im }T)=\text{rank }A$
 \end{remark}
 
-\subsection{Rank nulity}
+\subsection{Rank nullity}
 
-\begin{theorem}[Rank Nulity Theorem]
+\begin{theorem}[Rank Nullity Theorem]
     If $V$ and $W$ are finite dimensional $\FF$-vector spaces and $T:V\rightarrow W$ is a linear transformation, we have: \[
         \text{dim}(\text{Im }T) + \text{dim}(\text{ker }T) = \text{dim }V
     \textcolor{black}{.}
@@ -449,7 +449,7 @@ Throughout, assume $T:V\rightarrow W$ is a linear transformation and $V,W$ are $
 \subsection{Matrices of transformations}
 Throughout this subsection let $V$ be an $n$-dimensional $\FF$-vector space and $B=\{e_1, e_2, \ldots, e_n\}$ be a basis for $V$.
 
-\begin{definition}[Reperesentation of a vector]
+\begin{definition}[Representation of a vector]
     Given some $v\in V$ with $v = \lambda_1v_1 + \lambda_2v_2 + \dots + \lambda_nv_n$ for $\lambda_i\in\FF$, we define the $v$ \textbf{with respect to} (\textbf{w.r.t.}) $B$ as \[
      [v]_B := \begin{pmatrix}
          \lambda_1 \\
@@ -492,7 +492,7 @@ Throughout this subsection let $V$ be an $n$-dimensional $\FF$-vector space and 
 \end{theorem}
 
 \begin{corollary}
-    $P$ is invertible with $(P)^{-1}= ({}_C[\text{Id}_V]_B)^{-1} = {}_B[\text{Id}_V]_C$. 
+    $P$ is invertable with $(P)^{-1}= ({}_C[\text{Id}_V]_B)^{-1} = {}_B[\text{Id}_V]_C$. 
 \end{corollary}
 
 \begin{theorem}
@@ -524,7 +524,7 @@ Throughout this subsection let $V$ be an $n$-dimensional $\FF$-vector space and 
 \end{theorem}
 
 \begin{theorem}
-    If $A$ is invertible then the columns of $A$ are LI.
+    If $A$ is inevitable then the columns of $A$ are LI.
 \end{theorem}
 
 \subsection{Properties}
@@ -581,7 +581,7 @@ The prefix ``eigen" comes from the German word ``eigen" which can be roughly tra
 \end{definition}
 
 \begin{remark}
-    The eigenvectors, eigenvalues and eigenspaces of a matrix are defined obviously and do not depend on which basis the linear transformation is respresented in.
+    The eigenvectors, eigenvalues and eigenspaces of a matrix are defined obviously and do not depend on which basis the linear transformation is represented in.
 \end{remark}
 
 \subsection{Characteristic polynomial}
@@ -608,11 +608,11 @@ The prefix ``eigen" comes from the German word ``eigen" which can be roughly tra
 \end{definition}
 
 \begin{theorem}
-    If $V$ is a n-dimensional vector space and $T:V\rightarrow V$ has $n$ distince eigenvalues, $T$ is diagonalisable.
+    If $V$ is a n-dimensional vector space and $T:V\rightarrow V$ has $n$ distrinct eigenvalues, $T$ is diagonalisable.
 \end{theorem}
 
 \begin{theorem}
-    If a matrix $A\in M_n(\FF)$ is diagonalisably,  let $P$ be the matrix with columns as eigenvectors of $A$ and $D$ be the diagonal matrix with $ii$th entry as the corresponding eigenvalue for the $i$th column of $P$, then $A=PDP^{-1}$.
+    If a matrix $A\in M_n(\FF)$ is diagonalisable,  let $P$ be the matrix with columns as eigenvectors of $A$ and $D$ be the diagonal matrix with $ii$th entry as the corresponding eigenvalue for the $i$th column of $P$, then $A=PDP^{-1}$.
 \end{theorem}
 
 \section{Orthogonality}
@@ -625,7 +625,7 @@ The prefix ``eigen" comes from the German word ``eigen" which can be roughly tra
         \item $\langle u+v,w \rangle=\langle u,w \rangle+\langle v,w \rangle$ and $\langle \lambda u,v \rangle=\lambda\langle u,v \rangle$ for all $u,v,w\in V$ and $\lambda\in\FF$ (Bilinearity),
         \item $\langle v,v \rangle\geq 0$ for all $v\in V$ with equality when $v=0_V$ (Positive-definite).
     \end{itemize}
-    Bilinearity must hold in both arguments however it can be derived from a single argument with the symmetry propoerty.
+    Bilinearity must hold in both arguments however it can be derived from a single argument with the symmetry property.
 \end{definition}
 
 \begin{definition}[Norm]
@@ -642,7 +642,7 @@ The prefix ``eigen" comes from the German word ``eigen" which can be roughly tra
 Throughout the remainder of this section we will assume all vectors spaces are over the real or complex numbers and will use the dot product as our inner product with its induced norm.
 
 \begin{definition}[Orthogonal sets]
-    A set of vectors $\{v_1,v_2,\ldots,v_n\}$ in a vector space is \textbf{orthogonal} if it is pariwise orthogonal.
+    A set of vectors $\{v_1,v_2,\ldots,v_n\}$ in a vector space is \textbf{orthogonal} if it is pairwise orthogonal.
 \end{definition}
 
 \begin{definition}[Orthonormal sets]
