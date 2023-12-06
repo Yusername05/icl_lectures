@@ -858,7 +858,7 @@ Throughout this section, unless otherwise specified, all infinite sums will be a
     (All finite subfamilies of the family of random variables is independent by the natural definition)
 \end{definition}
 
-\subsection{Multivariate DRVs}
+\subsection{Multivariate DRVs*}
 \begin{definition}[Joint probability mass functions]
     Let $X_1,X_2,\ldots,X_n$ all be DRVs on $(\Omega,\FFF,\P)$ that form the random vector $\textbf{X}$, their \textbf{joint probability mass function}, $p_{\textbf{X}}:\RR^n\rightarrow[0,1]$ is defined as, \[
         p_{\textbf{X}}(x_1,x_2,\ldots,x_n) := 
@@ -883,7 +883,7 @@ Throughout this section, unless otherwise specified, all infinite sums will be a
     \textcolor{black}{.}\]
 \end{definition}
 \endgroup
-\subsection{Multivariate CRVs}
+\subsection{Multivariate CRVs*}
 
 \begin{definition}[Continuous random vector]
     The random vector $\textbf{X}=(X_1,X_2,\ldots X_n)$ is a \textbf{continuous random vector} iff, \[
@@ -905,7 +905,7 @@ Throughout this section, unless otherwise specified, all infinite sums will be a
 \end{definition}
 \endgroup
 
-\subsection{Transformations of random vector}
+\subsection{Transformations of random vector*}
 \begin{definition}[Transformation]
     We are going to \textbf{transform} the random vector $\textbf{X}$ with joint pdf $f_\textbf{X}$ to $\textbf{U}=(u_1(\textbf{X}),u_2(\textbf{X}),\ldots,u_n(\textbf{X}))$ with $u_i: \RR^n \rightarrow \RR^n$ for all $i\in[1,n]$. Firstly, define $T:\RR^n\rightarrow\RR^n$ by $T(\textbf{x})=(u_1(\textbf{x}),u_2(\textbf{x}),\ldots,u_n(\textbf{x}))$ and assume $T$ is bijective on $D=\{\textbf{x}\in\RR^n:f_\textbf{X}(\textbf{x})>0\}$ with range $S\subseteq\RR^n$. Secondly, have the Jacobian determinant of $T^{-1}:S\rightarrow D$, $J(\textbf{u})=\text{det}([a_{ij}]_{m\times n})$ with $a_{ij}=\frac{\partial x_i}{\partial u_j}$. Finally, define: \[
         f_\textbf{U}(\textbf{u}) := \begin{dcases}
@@ -914,7 +914,7 @@ Throughout this section, unless otherwise specified, all infinite sums will be a
         \end{dcases}\textcolor{black}{.}
     \]
 \end{definition}
-\subsection{Multivariate LOTUS}
+\subsection{Multivariate LOTUS*}
 \begingroup\belowdisplayskip=-10pt
 \begin{theorem}[Discrete multivariate LOTUS]
     If $X_1,X_2,\ldots,X_n$ are DRVs on $(\Omega,\FFF,\P)$ and form the random vector $\textbf{X}$ with $g:\RR^n\rightarrow\RR$, then $Y=g(\textbf{X})$ is a DRV on $(\Omega,\FFF,\P)$ with expectation, \[

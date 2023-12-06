@@ -13,7 +13,7 @@
  \geometry{
  a4paper,
  total={170mm,257mm},
- left=20mm,
+ left=10mm,
  top=20mm,
  }
 \usepackage{graphicx}
@@ -47,8 +47,6 @@
 \def\thm{subsubsection}
 
 % Environments
-
-\newcommand{\setmytheoremdisplayskip}[1]{\setlength{\belowdisplayskip}{#1}}
 
 \theoremstyle{definition}
 \newtheorem{aim}[subsubsection]{Aim}
@@ -149,7 +147,7 @@
   \def\protect\numberline{%
   \hskip-\parindent%
   \global\let\protect\numberline\protect\mtnumberline%
-  \protect\llap{\normalfont\normalsize Lecture #1 }%
+  \protect\llap{\normalfont\normalsize L#1 }%
   \hskip\parindent\protect\mtnumberline}}%
 }
 
@@ -184,9 +182,11 @@
 
 % Brackets
 
+\renewcommand{\mod}[1]{\ (\mathrm{mod}\ #1)}
 \renewcommand{\eval}[1]{\left. #1 \right|}                        % Evaluation
 \newcommand{\br}{\del}                                            % Brackets
 \newcommand{\abr}[1]{\left\langle #1 \right\rangle}               % Angle brackets
+\newcommand{\aabr}[1]{\left|\left\langle #1 \right\rangle\right|}
 \newcommand{\fbr}[1]{\left\lfloor #1 \right\rfloor}               % Floor brackets
 \newcommand{\intd}[4]{\int_{#1}^{#2} #3 \dif #4}            % Single integral
 \newcommand{\iintd}[4]{\iint_{#1} #2 \dif #3 \dif #4}    % Double integral
@@ -491,6 +491,10 @@
 \newcommand{\x}{\mathrm{x}}   % Roman x
 \newcommand{\y}{\mathrm{y}}   % Roman y
 \newcommand{\z}{\mathrm{z}}   % Roman z
+
+\renewcommand\iff{\DOTSB\;\Leftrightarrow\;}
+\renewcommand\implies{\DOTSB\;\Rightarrow\;}
+\renewcommand\impliedby{\DOTSB\;\Leftarrow\;}
 
 % Tikz
 

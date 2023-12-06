@@ -31,49 +31,64 @@ The following are supplementary reading:
 
 \begin{definition}[Group]
     A \textbf{group} is a pair $G=(G,\cdot)$, for some set $G$ and a binary operation $\cdot$, satisfying the following properties: \begin{enumerate}
-        \item[G1] $(a\cdot b)\cdot c = a \cdot (b\cdot c)$ for all $a,b,c\in G$ - the binary operation is \textbf{associative},
-        \item[G2] $\exists e\in G$ such that $\forall g\in G g\cdot e = e\cdot g = g $ - the is an \textbf{identity} element,
-        \item[G3] $\forall g\in G, \exists g^{-1} \in G$ such that $g\cdot g^{-1} = g^{-1}\cdot g = e$ - every element has an \textbf{inverse}.
+        \item[(G1)] $(a\cdot b)\cdot c = a \cdot (b\cdot c)$ for all $a,b,c\in G$ (the binary operation is \textbf{associative}),
+        \item[(G2)] $\exists e\in G$ such that $\forall g\in G g\cdot e = e\cdot g = g $ (there is an \textbf{identity} element),
+        \item[(G3)] $\forall g\in G, \exists g^{-1} \in G$ such that $g\cdot g^{-1} = g^{-1}\cdot g = e$ (every element has an \textbf{inverse}).
     \end{enumerate}
     In some literature, the condition of \textbf{closure} is also required however this is given in the fact that $\cdot$ is a binary operation on $G$.
 \end{definition}
 
-\begin{theorem}[Uniqueness]
+\begin{theorem}[Uniqueness of identity]
     The identity element for some group $G$ is unique. The inverse, $g^{-1}$, of any element $g\in G$ is also unique.
 \end{theorem}
+
+\begin{proof}
+    Given identities $e_1,e_2\in\G$, $e_1 = e_1\cdot e_2 = e_2$.
+\end{proof}
 
 \begingroup\belowdisplayskip=-10pt
 \begin{lemma}[Inverse of product]
     Given a group $G$ and the elements $g_1,g_2,\ldots,g_n\in G$ we have, \[
-        (g_1g_2\dots g_n)^{-1} = g_n^{-1}g_{n-1}^{-1}\dots g_1^{-1}
+        {(g_1g_2\dots g_n)}^{-1} = g_n^{-1}g_{n-1}^{-1}\dots g_1^{-1}
         \textcolor{black}{.}
     \]
 \end{lemma}
 \endgroup
 
+\begin{proof}
+    $(g_1g_2\ldots g_n)(g_n^{-1}\ldots g_2^{-1}g_1^{-1}) = e$ clearly, so ${(g_1g_2\dots g_n)}^{-1} = g_n^{-1}g_{n-1}^{-1}\dots g_1^{-1}$.
+\end{proof}
+
+\begin{lemma}[Uniquess of inverses]
+    The inverse of an element $g\in G$ is unique.
+\end{lemma}
+
+\begin{proof}
+    Suppose $a,b$ are inversers of $g\in G$, $ag=e=bg\implies a=b$.
+\end{proof}
+
 \begin{definition}[Abelian Group]
-    If a group $G$ also satisfies the condition $g\cdot h = h\cdot g$ for all $g,h\in G$ - \textbf{commutativity}, then $G$ is said to be an \textbf{abelian group}.
+    If a group $G$ also satisfies the condition $g\cdot h = h\cdot g$ for all $g,h\in G$ (\textbf{commutativity}), then $G$ is an \textbf{abelian group}.
 \end{definition}
 
-\begingroup\belowdisplayskip=-10pt
 \begin{definition}[Powers of elements]
     Given a group $G$ and some $g\in G$ the $n$th \textbf{power} of $g$ in $G$ is defined recursively as, \[
         g^n:= \begin{dcases}
             \omit\hfil e  \hfil & \text{\textcolor{black}{if }} n=0 \\
             g^{n-1}g & \text{\textcolor{black}{if }} n>0 \\
-            (g^{n})^{-1} & \text{\textcolor{black}{if }} n<0 \\
+            {(g^{n})}^{-1} & \text{\textcolor{black}{if }} n<0 \\
         \end{dcases}
     \textcolor{black}{.}
     \]
 \end{definition}
-\endgroup
+\vspace{-20pt}
 
 \begin{definition}[Order of group]
-    The \textbf{order} of a group $G$, written $|G|$, is the cardinality of the underlying set of $G$.
+    The \textbf{order} of a group $G$, written $|G|$, is the cardinality of the set of $G$.
 \end{definition}
 
 \begin{example}[Symmetric group]
-    The \textbf{symmetric group of size $n$}, denoted $S_n$, is the set of bijections on the interval $[1,n]$, for $n\in\NN$, under function composition.
+    The \textbf{symmetric group of size $n$}, denoted $S_n$, is the set of bijections on the interval $[1,n]$, for $n\in\NN$, under function composition. In generarl, given a set $X$, $\Sym(X)$ is the group of permutations of $X$.
 \end{example}
 
 \section{Subgroups}
@@ -81,20 +96,20 @@ The following are supplementary reading:
 \subsection{Subgroups}
 
 \begin{definition}[Subgroup]
-    Given a group $(G,\cdot)$ and a subset $H\subseteq G$ we say $(H,\cdot)$ is a \textbf{subgroup} of $G$, written $H\leq G$, if $(H,\cdot)$ forms a group and \[
-    \forall h_1,h_2\in H: h_1\cdot h_2\in H
-    \textcolor{black}{.}
-    \]
-    A subgroup, $H$, is a \textbf{proper subgroup} if $H\neq G$. $\{e\}$ is the trivial subgroup.
+    Given a group $(G,\cdot)$ and a subset $H\subseteq G$ we say $(H,\cdot)$ is a \textbf{subgroup} of $G$, written $H\leq G$, if $(H,\cdot)$ is a group. H is a \textbf{proper subgroup} iff $H\neq G$.
 \end{definition}
 
 \begin{theorem}[Subgroup test]
     Given a group $(G,\cdot)$, $(H,\cdot)$ is a subgroup iff: \begin{enumerate}
-        \item[S1] $H$ is non-empty - \textbf{existence},
-        \item[S2] for all $h_1,h_2\in H$ we have $h_1\cdot h_2\in H$ - \textbf{closure under group operation},
-        \item[S3] for all $h\in H$ we have $h^{-1}\in H$ - \textbf{closure under inverses}.
+        \item[(S1)] $H$ is non-empty (\textbf{existence}),
+        \item[(S2)] for all $h_1,h_2\in H$ we have $h_1\cdot h_2\in H$ (\textbf{closure under group operation}),
+        \item[(S3)] for all $h\in H$ we have $h^{-1}\in H$ (\textbf{closure under inverses}).
     \end{enumerate}
 \end{theorem}
+ 
+\begin{proof}
+    ($\Leftarrow$) is simple. For ($\Rightarrow$): group axioms $\Rightarrow$ (S1) and (S2), as $H$ is a group, $h$ must have an inverse $h'\in H$, inverses are unique $\implies$ (S3).
+\end{proof}
 
 \subsection{Cyclic groups and orders}
 
@@ -110,33 +125,56 @@ The following are supplementary reading:
     Given a group $G$ and some $g\in G$, the \textbf{order} of $g$ in $G$, written $\text{ord }g$, is the smallest positive integer $n$ such that $g^n = e$ or $\infty$ if no such $n$ exists.
 \end{definition}
 
-\begin{theorem}
-    Suppose $G$ is a cyclic group generated by $g$ with $|G| = n$, $\text{ord }g = |\{e,g,g^2,\ldots,g^{n-1}\}| = |G| = n$.
+\begin{theorem}\label{cyclic order}
+    Suppose $G$ is a group with $g\in G$ having finite order $n$, $\abr{g} = \{e,g,g^2,\ldots,g^{n-1}\}$.
 \end{theorem}
+
+\begin{lemma}
+    For $a,b\in\ZZ$, $g^a=g^b\iff a\equiv b \mod{n}$
+\end{lemma}
+
+\begin{proof}
+    ($\Leftarrow$) is simple. For ($\Rightarrow$), $g^a=g^b \implies g^{a-b}=e$, by division algorithm $\implies e=g^{qn+r}={(g^n)}^q\cdot g^r = g^r$ so $r=0$ and $n|a-b$.
+\end{proof}
+
+\begin{proof}[Proof of~\ref{cyclic order}]
+    All $m\in\ZZ$ are congruent to one of $0,1,\ldots,n-1 \mod{n}$ so $\abr{g} =\{g^m:m\in\ZZ\}=\{e,g,\ldots,g^{n-1}\}$.
+\end{proof}
 
 \begin{theorem}
     Suppose  $G$ is a cyclic group with $G = \abr{g}$, the three statements: \begin{enumerate}
         \item $H\leq G \implies H$ is cyclic,
-        \item suppose $|G| = n$ and $m\in\ZZ$ with $f=\text{gcd}(m,n)$, \[
-            \abr{g^m} = \abr{g^d} \ \text{\textcolor{black}{ and }} |\abr{g^m}| = \frac{n}{d}
+        \item suppose $|G| = n$ and $m\in\ZZ$ with $d=\text{gcd}(m,n)$, \[
+            \abr{g^m} = \abr{g^d} \ \text{\textcolor{black}{ and }} \aabr{g^m} = \frac{n}{d}
             \textcolor{black}{.}
-        \] In particular, $\abr{g^m} = G$  \ \text{\textcolor{black}{ iff }} \text{gcd}(m,n)=1,
+        \] In particular, $\abr{g^m} = G$  iff $\text{gcd} (m,n)=1$,
         \item if $|G|=n$ and $k\leq n$, then $G$ has a subgroup of order $k$ iff $k|n$, this subgroup is $\abr{g^{n/k}}$.
     \end{enumerate}
 \end{theorem}
+
+\begin{proof}
+    \begin{enumerate}
+        \item  Have $H\neq\{e\}$, consider $d:=\min\{n\in\NN:g^n\in H\}$, clearly $\abr{g^d}\leq H$. For all $h=g^m\in H$, $g^m=g^{pd+r}={(g^d)}^p\cdot g^r\implies g^r=h{(g^d)}^{-p}\in H$ therefore $r=0$ so $h\in\abr{g^d}$ and $H=\abr{g^d}$.
+        \item ($\subseteq$) $g^d=g^{km}\in\abr{g^m}$. ($\supseteq$) Have $d=am+bn$ (Bézout's identity), $g^d = g^{am+bn}=g^{am}g^{bn}={(g^m)}^a\in\abr{g^d}$.
+        \item ($\implies$) 1. ($\impliedby$) 2.
+    \end{enumerate}
+\end{proof}
 
 \begin{definition}[Euler totient]
     The \textbf{Euler totient} function $\phi$ is defined as $\phi(n):=|\{k\in\NN: k\leq n$ and $\text{gcd}(k,n)=1\}|$.
 \end{definition}
 
-\begingroup\belowdisplayskip=-10pt
+\vspace{-5pt}
+
 \begin{corollary}
-    For $n\in\NN$: \[
-        \sum_{d|n}\phi(d) = n
-        \textcolor{black}{.}
-    \]
+    For $n\in\NN$: \hfil $\displaystyle\sum_{d|n}\phi(d) = n$.
 \end{corollary}
-\endgroup
+
+\vspace{-15pt}
+
+\begin{proof}
+    Consider the cyclic group of order $n$, $G$. If $d|n$, $\abr{g^{n/k}}$ is the subgroup with all elements of order $d$ with $\phi(d)$ elements of order $d$. By summing this for $d|n$ (orders of elements in $G$) we count all of the $n$ elements of $G$ by their order.
+\end{proof}
 
 \subsection{Cosets}
 
@@ -145,20 +183,27 @@ The following are supplementary reading:
     gH := \{gh: h\in H\}
     \textcolor{black}{,}
     \]
-    is a \textbf{left coset} of $H$ in $G$ (the definition of a \textbf{right coset} follows clearly).
+    is a \textbf{left coset} of $H$ in $G$ (similarly for a \textbf{right cosets}). We will now assume all \textbf{cosets} to be left cosets.
 \end{definition}
 
-\begin{note}
-    For the rest of this section, unless specified otherwise, a coset is assumed to be a left-coset.
-\end{note}
-
-\begin{theorem}
+\begin{lemma}
     Given a group $G$ with $H\leq G$, all cosets of $H$ in $G$ have the same size.
-\end{theorem}
+\end{lemma}
 
-\begin{theorem}
-    If $G$ is a finite group with $H\leq G$, the left cosets of $H$ for a partition of $G$.
-\end{theorem}
+\begin{proof}
+    Lemma~\ref{bijection from element} $\implies |H|=|gH|$ for all $g\in G$.
+\end{proof}
+
+\begin{lemma}
+    If $G$ is a finite group with $H\leq G$, the  cosets of $H$ form a partition of $G$.
+\end{lemma}
+
+\begin{proof}
+    \begin{enumerate}
+        \item If $g_1\in g_2H$ (by $h$), for some $g_1h'\in g_1H$, $g_1h'=g_2(hh')\in g_2H$, $g_2=g_1h^{-1}\in g_1H$.
+        \item If $x\in g_1H\cap g_2H$ ($g_1H\cap g_2H\neq\emptyset$), apply 1. twice to get $g_1 H= xH = g_2 H$.
+    \end{enumerate}
+\end{proof}
 
 \subsection{Lagrange's theorem}
 
@@ -166,17 +211,41 @@ The following are supplementary reading:
     If $G$ is a finite group and $H\leq G$, $|H|$ divides $|G|$.
 \end{theorem}
 
+\begin{proof}
+    Partition $G$ into the $n\in\NN$ distinct cosets of $H$ all with size $|H|$, $|G|=n|H|$. Have $n:=[G:H]$.
+\end{proof}
+
 \begin{corollary}
     Given a group $G$ with $H\leq G$, the relation $\sim$ on $G$ given by: $g\sim k$ iff $g^{-1}k\in H$, is an equivalence relation with equivalence classes given by cosets of $H$.
 \end{corollary}
 
-\begin{corollary}
-    Given a group $G$ of order $n$, for all $g\in G$, $\text{ord }g|n$ and $g^n=e$.
+\begin{proof}
+    $g\sim k\implies k\in gH$ equivalence relation from partition (IUM part 1) given by cosets of $G$ by $H$.
+\end{proof}
+
+\begin{corollary}\label{lagrange for elements}
+    Given a group $G$ of order $n$, for all $g\in G$, $\ord{g}|n$ and $g^n=e$.
 \end{corollary}
+
+\begin{proof}
+    Apply Lagrange's theorem with $H=\abr{g}$, $g^n = {(g^{\ord{g}})^{n/\ord{g}}}=e^{n/\ord{g}}=e$ (due to first part).
+\end{proof}
 
 \begin{corollary}[Fermat's little theorem]
     Let $p$ be prime. If $x\in\ZZ$ and $p\nmid x$, then $x^{p-1}\equiv 1 (\text{mod }p)$.
 \end{corollary}
+
+\begin{proof}
+    Let $G={(\ZZ/p\ZZ)}^*$, $|G|=p-1$ and (by Corollary~\ref{lagrange for elements}) $[x^{p-1}]={[x]}^{p-1}=[1]$ for all $[x]\in G$.
+\end{proof}
+
+\begin{corollary}
+    If a group $G$ is of prime order, $G$ is cyclic and $\abr{g}=G$ for all $(g\neq e)\in G$.
+\end{corollary}
+
+\begin{proof}
+    By Lagrange's Theorem $\aabr{g}$ divides $p$, as $g\neq e$, $\aabr{g}=p\implies \abr{g}=G$.
+\end{proof}
 
 \subsection{Generating groups}
 
@@ -191,8 +260,10 @@ The following are supplementary reading:
     \]
 \end{definition}
 
+\vspace{-30pt}
+
 \begin{lemma}
-    Given a group $G$ with non-empty $S\subseteq G$, $\abr{S}\leq G$ and, $H\leq G, \ S\subseteq H \implies \abr{S} \leq H$. This is equivalent to saying ``$\abr{S}$ is the smallest subgroup of $G$ containing $S$".
+    Given a group $G$ with non-empty $S\subseteq G$, $\abr{S}\leq G$ and, $H\leq G, \ S\subseteq H \implies \abr{S} \leq H$. This is equivalent to saying ``$\abr{S}$ is the smallest subgroup of $G$ containing $S$''.
 \end{lemma}
 
 \section{Group homomorphisms}
@@ -201,19 +272,29 @@ The following are supplementary reading:
     If $(G,\cdot)$ and $(H,\ast)$ are goups, $\phi:G\rightarrow H$ is a \textbf{group homomorphism} iff $\phi(g_1)\ast\phi(g_2) = \phi(g_1\cdot g_2)$ for all $g_1,g_2\in G$. If $\phi$ is bijective then it is called a \textbf{group isomorphism} with $G$ and $H$ being \textbf{isomorphic}, written $G\cong H$.
 \end{definition}
 
-\begin{example}
+\begin{example}[determinant]
     The \textbf{determinant} is a group homomorphism, suppose $\FF$ is a field:\[
     \det: \GL(n,\FF)\rightarrow(\FF^*,\times)
     \textcolor{black}{.}
     \]
 \end{example}
 
+\vspace{-30pt}
+
 \begin{lemma}
     If $G$,$H$ are groups with $\phi:G\rightarrow H$, \begin{enumerate}
         \item $\phi(e_G) = e_H$,
-        \item $\phi(g^{-1}) (\phi(g))^{-1}$ for all $g\in G$.
+        \item $\phi(g^{-1}) {(\phi(g))}^{-1}$ for all $g\in G$.
     \end{enumerate}
 \end{lemma}
+
+\begin{lemma}[Isomorphism from group operation]\label{bijection from element}
+    Given $g$ in the group $G$, $\phi_g:G\rightarrow G$ given by $\phi_g:x\mapsto gx$ is an isomorphism (same for right multiplication).
+\end{lemma}
+
+\begin{proof}
+    injectivity: $\phi_g(x)=\phi_g(y)\implies gx=gy \implies x=y$, \qquad surjectivity: given $x\in G$, $\phi_g(g^{-1}x)=x$.
+\end{proof}
 
 \begin{definition}[Image and kernel of group homomorphism]
     If $G$,$H$ are groups with $\phi:G\rightarrow H$, the \textbf{image} of $\phi$ is: \[
@@ -306,5 +387,22 @@ The following are supplementary reading:
 \begin{theorem}
     The elements of $D_{2n}$ can be written as elements of $S_n$ giving $D_{2n}\leq S_n$. Specifically, $r = (1 \ 2 \ \ldots \ n)$ and $s = (1)(2 \ n)(3 \ n-1)\ldots$ or $(1 \ n)(2 \ n-1)\ldots$ if $n$ is odd or even respectively.
 \end{theorem}
+
+\section{Group-like objects*}
+
+\begin{definition}[Group-like objects]
+    There are multiple axioms in the defintion of a group, sometimes we are interested in objects which lack some / all of these axioms; the names of said objects are:
+    \[
+        \begin{tikzcd}
+            \text{Magma} \arrow[rr, "\text{associativity}"] \arrow[rd, "\text{divisibility}"] \arrow[dd, "\text{identity}"] & & \text{Semigroup} \arrow[rd] \arrow[dd] \\
+            & \text{Quasigroup} \arrow[rr, crossing over] & & \text{Inverse semigroup} \arrow[dd]\\
+            \text{Unital magma} \arrow[rr] \arrow[rd, "\text{inverses}"] & & \text{Monoid} \arrow[rd] \arrow[dd]\\
+            & \text{Loop} \arrow[from=uu, crossing over] \arrow[rr, crossing over] & & \text{Group} \arrow[dd, "\text{commutativity}"]\\
+            & & \text{Commutative Monoid} \arrow[rd] \\
+            & & & \text{Abelian Group}
+        \end{tikzcd}
+    \textcolor{black}{.}
+    \]
+\end{definition}
 
 \end{document}
