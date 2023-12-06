@@ -1,7 +1,7 @@
 # icl_lectures
 ## info
 ### description
-Lecture notes* from all courses taken during 2023/24 entry Msci Mathematics at Imperial College London. None of these notes are full copies of any official course material provided by imperial college london. Some of these are empty if the course was short like IUM or particularly sparse of notes like computation.
+Lecture notes* from all courses taken during 2023/24 entry Msci Mathematics at Imperial College London (and all other significantish mathematics i've doen during said time). None of these notes are full copies of any official course material provided by imperial college london. Some of these are empty if the course was short like IUM or particularly sparse of notes like computation.
 
 \* Despite this being referred to as "Lecture notes", a more reflective title would perhaps be "Examined competencies" that happen to be listed in the same order as they were given in lectures, the main cause for my reluctance to call these "Lecture notes" is the omittance of all proofs throughout the document.
 ### acknowledgements
@@ -13,7 +13,7 @@ please take note of section 2.4 https://www.imperial.ac.uk/media/imperial-colleg
 
 ## contents
 ### [Year 1 (September 2023 - March 2024)](https://www.imperial.ac.uk/media/imperial-college/faculty-of-natural-sciences/department-of-mathematics/public/study/Mathematics-Undergraduate-Programme-Handbook-2022-23.pdf)
-- [x] [MATH40001 Introduction to University Mathematics](https://github.com/Yusername05/icl_lectures/tree/main/MATH40001_Introduction_to_University_Mathematics)  
+- [ ] [MATH40001 Introduction to University Mathematics](https://github.com/Yusername05/icl_lectures/tree/main/MATH40001_Introduction_to_University_Mathematics)  
 - [x] [MATH40002 Analysis 1](https://github.com/Yusername05/icl_lectures/tree/main/MATH40002_Analysis_1)  
 - [x] [MATH40003A Linear Algebra](https://github.com/Yusername05/icl_lectures/tree/main/MATH40003A_Linear_Algebra)  
 - [x] [MATH40003B Groups](https://github.com/Yusername05/icl_lectures/tree/main/MATH40003B_Groups)
