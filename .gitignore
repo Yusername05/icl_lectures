@@ -1,4 +1,4 @@
-## vscopde stuff
+## vscode stuff
 .vscode/*
 .vscode/settings.json
 .vscode/tasks.json
@@ -11,6 +11,9 @@
 
 # Built Visual Studio Code Extensions
 *.vsix
+
+## specific choices
+Template/Template.pdf
 
 ## Core latex/pdflatex auxiliary files:
 *.aux
