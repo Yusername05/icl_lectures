@@ -129,7 +129,7 @@ The following are supplementary reading:
     Suppose $G$ is a group with $g\in G$ having finite order $n$, $\abr{g} = \{e,g,g^2,\ldots,g^{n-1}\}$.
 \end{theorem}
 
-\begin{lemma}
+\begin{lemma}\label{lemma}
     For $a,b\in\ZZ$, $g^a=g^b\iff a\equiv b \mod{n}$
 \end{lemma}
 
@@ -292,6 +292,13 @@ The following are supplementary reading:
     \end{enumerate}
 \end{lemma}
 
+\begin{proof}
+    \begin{enumerate}
+        \item $\phi(e_G)=\phi(e_G e_G)=\phi(e_G)\phi(e_G)\implies \phi(e_G)=e_H$. 
+        \item $e_H=\phi(e_G)=\phi(gg^{-1})=\phi(g)\phi(g^{-1})$.\vspace{-15pt}
+    \end{enumerate}
+\end{proof}
+
 \begin{lemma}[Isomorphism from group operation]\label{bijection from element}
     Given $g$ in the group $G$, $\phi_g:G\rightarrow G$ given by $\phi_g:x\mapsto gx$ is an isomorphism (same for right multiplication).
 \end{lemma}
@@ -315,13 +322,28 @@ The following are supplementary reading:
     A group homomorphism, $\phi:G\rightarrow H$, is injective iff $\ker\phi=\{e_H\}$.
 \end{lemma}
 
+\begin{proof}
+    \begin{itemize}
+        \item[($\implies$)]$\phi(g)=e_H=\phi(e_G)$ so $g=e_G$ and $\ker\phi=\{e_G\}$.
+        \item[($\impliedby$)] Supposing $\phi(g_1)=\phi(g_2)$, $\phi(g_1g_2^{-1})=e_H\implies g_1g_2^{-1}\in\ker\phi = \{e_G\}$ therefore $g_1=g_2$. \vspace{-15pt}
+    \end{itemize}
+\end{proof}
+
 \begin{theorem}
     The composition of two compatible group homomorphisms is also a group homomorphism.
 \end{theorem}
 
+\begin{proof}
+    Have groups $G,H,J$ with homomorphisms $\phi:G\rightarrow H, \psi:H\rightarrow J$, $\psi(\phi(g_1g_2))=\psi(\phi(g_1)\phi(g_2))=\psi(\phi(g_1))\psi(\phi(g_2))$.
+\end{proof}
+
 \begin{theorem}
     All cyclic groups of the same order are isomorphic.
 \end{theorem}
+
+\begin{proof}
+    Have $G=\abr{g}$ and $H=\abr{h}$ both order $n$ with $\phi:G\rightarrow H$, $\phi:g^k\mapsto h^j$, one can be clearly show, with Lemma~\ref{lemma}, $\phi$ is an isomorphism.
+\end{proof}
 
 \section{Symmetric groups}
 
@@ -343,6 +365,10 @@ The following are supplementary reading:
     If $f,g\in S_n$ are disjoint, $fg=gf$.
 \end{lemma}
 
+\begin{proof}
+    For all $x\in[1,n]$ if $x$ is fixed by both $f$ and $g$ we are done, otherwise wlog have $f$ fix $x\implies x\neq g(x)\neq g(g(x))$ so $g(x)\in\supp(g)\implies g(x)\not\in\supp(f)$ giving $f(g(x))=g(x)=g(f(x))$.
+\end{proof}
+
 \begin{definition}[Cycles]
     If $f\in S_n$ with $i_1,i_2,\ldots,i_r\in[1,n]$ for some $r\leq n$ such that, \[
         f(i_s) = i_{s+1 \mod(r)} \ \text{\textcolor{black}{for all }} s\in[1,r]
@@ -354,9 +380,17 @@ The following are supplementary reading:
     if $f\in S_n$ then there exists $f_1,f_2,\ldots,f_k\in S_n$ all with disjoint supports such that $f=f_1f_2\ldots f_n$. If we further have, for all $i\in[1,k]$, both $f_i$ is not a $1$-cycle when $f\neq \id$ and $\supp(f_i)\subseteq\supp(f)$. We say $f$ is in \textbf{disjoint cycle form} or \textbf{d.c.f}.
 \end{theorem}
 
+\begin{proof}
+    We use strong induction on $m:=|\supp(f)|$. If $m=0$: $f=\id$. If, instead, $m\geq1$: have some $i_1\in\supp(f)$ and set $f(i_1)=i_2,f(i_2)=i_3,\ldots$ with $i_r$ being the first satisfying $f(i_r)\in\{i_1,i_2,\ldots i_{r-1}\}$, due to bijectivity of $f$, $f(i_r)=i_1$ we can now have $f=gf_1$ where $f_1=(i_1i_2\ldots i_r)$ with $|\supp(g)|<m$ so, inductively, $f$ can be decomposed into disjoint cycles.
+\end{proof}
+
 \begin{theorem}[Uniqueness of disjoint cycles]
     The disjoint cycle form of some $f\in S_n$ is unique up to rearrangement.
 \end{theorem}
+
+\begin{proof}
+    Have $f\in S_n$ with $g_1g_2\ldots g_k=f=h_1h_2\ldots h_l$ by rearring $f$ and individul cycles have $i_1\in f_k$ and $i_1\in h_l$ with $r\in\NN$ the minimum value with $f^r(i_1)=i_1$. $g_k=(i,f(i),f^2(i),\ldots,f^{r-1}(i))=h_l \implies g_1g_2\ldots g_{k-1}=h_1h_2\ldots h_{l-1}$ so, by induction, $l=k$ and $g_i=h_i$ for all $i\in[1,k]$  $\therefore$ dcf is unique. 
+\end{proof}
 
 \begin{theorem}
     If $f\in S_n$ is written in d.c.f as $f=f_1f_2\ldots f_k$ where $f_i$ is an $r_i$-cycle for $i\in[1,k]$ then, \begin{enumerate}
@@ -365,11 +399,22 @@ The following are supplementary reading:
     \end{enumerate}
 \end{theorem}
 
+\begin{proof}
+    \begin{enumerate}
+        \item ($\implies$) $f_1^m f_2^m\ldots f_k^m=id$ and $f_i^m$ having disjoint supports $\implies f_i^m(x)=x$ so $f_i^m=\id$. ($\impliedby$) product of identites is the identity.
+        \item $f^m=\id\iff f_i^m=\id\iff r_i|m$, the least $m$ satisfying this for all $r_i$ is $\lcm(r_1,r_2,\ldots,r_i)$.\vspace{-10pt}
+    \end{enumerate}
+\end{proof}
+
 \subsection{Alternating groups}
 
 \begin{theorem}
     Every permutation in $S_n$ can be written as the product of $2$-cycles.
 \end{theorem}
+
+\begin{proof}
+    $(a_1a_2\ldots a_n) = (a_1a_2)(a_2a_3)\cdots(a_{n-1}a_n)$.
+\end{proof}
 
 \begin{definition}[Sign of a permutation]
     We define the \textbf{sign} of a permutation with the group homomorphism, $\sgn:S_n\rightarrow\{-1,1\}$ with $\sgn(i \ j) := -1$ for all $i,j\in[1,n]$ with $i\neq j$. This is defined over all permutations by the decomposition into $2$-cycles, the sign of a permutation is unique. We say $f\in S_n$ is \textbf{even} if $f\in\ker(\sgn)$ and \textbf{odd} otherwise.
@@ -391,6 +436,10 @@ The following are supplementary reading:
 \begin{theorem}
     The elements of $D_{2n}$ can be written as elements of $S_n$ giving $D_{2n}\leq S_n$. Specifically, $r = (1 \ 2 \ \ldots \ n)$ and $s = (1)(2 \ n)(3 \ n-1)\ldots$ or $(1 \ n)(2 \ n-1)\ldots$ if $n$ is odd or even respectively.
 \end{theorem}
+
+\begin{proof}
+    Given in definition.
+\end{proof}
 
 \section{Group-like objects*}
 
