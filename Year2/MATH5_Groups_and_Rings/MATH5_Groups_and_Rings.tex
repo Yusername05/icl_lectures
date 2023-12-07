@@ -4,7 +4,7 @@
 
 \begin{document}
 
-\chapter{Title}
+\chapter{Groups and Rings}
 \renewcommand*\thesection{\arabic{section}}
 \lhead{MATH50005 Groups and Rings}
 Lectured by Someone \\ Typed by Yu Coughlin \\
@@ -24,8 +24,163 @@ The following are complementary reading for the course.
 
 \tableofcontents\pagebreak
 
-\lecture{1}{Monday}{30/10/2023}
+\section{Quotient groups}
 
-\section{Introduction}
+\subsection{Group homomorphisms}
+
+\begin{definition}[Group isomorphism]
+    Given groups $G,H$, a function $f:G\rightarrow H$ is a \textbf{group isomorphism} if it is a bijective group homomorphism. If there exists an isomorphism between groups, $G$ is \textbf{isomorphic} to $H$ written $G\cong H$.
+\end{definition}
+
+\begin{definition}[Group automorphism]
+    Given $G$ a group, an isomorphism $f:G\xrightarrow{\sim}\textcolor{red}{G}$ is a \textbf{group automorphism}.
+\end{definition}
+
+\begin{theorem}
+    $\Aut G$ (the set of automorphisms of a group $G$) is a group under function composition.
+    \begin{proof}
+    \end{proof}
+\end{theorem}
+
+\begin{theorem}
+    Given groups $G,H$, if $f:G\xrightarrow{\sim}\textcolor{red}{H}$ then $f^{-1}:H\xrightarrow{\sim}\textcolor{red}{G}$.
+\end{theorem}
+
+\begin{proof}
+    
+\end{proof}
+
+\subsection{Normal subgroups}
+
+\begin{definition}[Normal subgroup]
+    A sugroup $N$ of $G$ is \textbf{normal}, written $N\unlhd G$, if it satisfies any of these equal properties: \begin{enumerate}
+        \item[(N1)] $N$ is the kernel of some homomorphism,
+        \item[(N2)] $N$ is stable under conjugations ($\forall n\in N$ and $g\in G$, $gng^{-1}\in N$),
+        \item[(N3)] for all $g\in G$ $gN=Ng$.
+    \end{enumerate}
+    \begin{proof}[Proof of equivalence]
+        
+    \end{proof}
+\end{definition}
+
+\subsection{Quotient groups}
+
+\begin{definition}[Quotient groups]
+    Let $N\unlhd G$, the \textbf{quotient group} of $G$ modulo $N$, written $G/N$, is the group with elements as left cosets of $N$ in $G$ with $(g_1N)\cdot(g_2N) = (g_1g_2N)$.
+
+    \begin{proof}
+        One can easily check this satisfies all of the group axioms. 
+    \end{proof}
+\end{definition}
+
+\begin{remark}
+    By Lagrange's theorem $|G/N| = |G|/|N|$.
+\end{remark}
+
+\begin{definition}[Simple group]
+    A group $G$ is \textbf{simple} if it has no normal subgroups except $\{e_G\}$ and $G$.
+\end{definition}
+
+\subsection{Isomorphism theorems}
+
+\begin{theorem}[First isomorphism theorem]\label{iso1}
+    If $f:G\rightarrow H$ is a group homomorphism, $G/\ker f\cong \im f$.
+
+    \begin{proof}
+        Have $\phi:G/\ker f\rightarrow \im f$ with $\phi:g\ker f\mapsto f(g)$.
+    \end{proof}
+\end{theorem}
+
+\begin{theorem}[Universal property of quotients]
+    Let $N\unlhd G$ and $f:G\rightarrow H$ be a group homomorphism such that $N\subseteq \ker f$. There exists a \textit{unique} homomorphism $\tilde{f}:G/N\rightarrow H$ such that the diagram \[
+        \begin{tikzcd}
+            G \arrow[d, swap, "\pi"] \arrow[rd, "\phi"]\\
+            G/N \arrow[r, dashed, swap, "\tilde{\phi}"] & H
+        \end{tikzcd}
+    \] commutes, (here $\pi:G\rightarrow G/N$ is the projection map with $\pi:g\rightarrow gN$)
+
+    \begin{proof}
+        The proof follows Theorem~\ref{iso1} with $H=\im f$.
+    \end{proof}
+\end{theorem}
+
+\subsection{Centres}
+
+\begin{definition}[Inner automorphisms]
+    Given the group $G$ the conjugations by elements of $G$ form the group $\Inn G\unlhd\Aut G$.
+    \begin{proof}
+        
+    \end{proof}
+\end{definition}
+
+\begin{definition}[Centre of group]
+    Given the group $G$ the elements of $G$ that commute with all other elements form the \textbf{centre} of $G$, $Z(G)\unlhd G$.
+    \begin{proof}
+        Have $\phi:G\rightarrow\Aut G$ with $\phi:g\mapsto$ conjugation by $g$, $\ker \phi = Z(G)$.
+    \end{proof}
+\end{definition}
+
+\begin{theorem}
+    If $G/Z(G)$ is cyclic, $G$ is Abelian.
+    \begin{proof}
+         
+    \end{proof}
+\end{theorem}
+
+\subsection{Commutators}
+
+\subsection{$p$-primary subgroups}
+
+\subsection{Generators}
+
+\section{Group actions}
+
+\subsection{Actions}
+
+\subsection{Orbit-stabiliser theorem}
+
+\subsection{$p$-groups}
+
+\subsection{Jordan's theorem}
+
+\section{Finitely generated Abelian groups}
+
+\subsection{Smith normal form}
+
+\subsection{Classification of finitely generated Abelian groups}
+
+\section{Rings}
+
+\subsection{Rings}
+
+\subsection{Ring homomorphisms}
+
+\subsection{Ideals}
+
+\section{Integral domains}
+
+\subsection{Integral domains}
+
+\subsection{Charateristic}
+
+\subsection{Vector spaces}
+
+\section{PIDs and UFDs}
+
+\subsection{Polynomial rings}
+
+\subsection{Euclidian domains}
+
+\subsection{Principal ideal domains}
+
+\subsection{Unique factorisation domains}
+
+\section{Fields}
+
+\subsection{Field extensions}
+
+\subsection{Constructing fields}
+
+\subsection{Existence of finite fields}
 
 \end{document}
