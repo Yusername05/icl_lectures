@@ -1,0 +1,25 @@
+\documentclass{report}
+\usepackage{import}
+\usepackage{../style/header}
+
+\usepackage{subfiles}
+
+\def\module{MATH50000}
+
+\title{A second year mathematics degree}
+\author{Yu Coughlin}
+\date{ }
+
+\begin{document}
+\pagenumbering{roman}
+
+\maketitle
+
+\tableofcontents
+\let\tableofcontents\relax
+
+\clearpage
+\pagenumbering{arabic}
+\subfile{MATH5_Groups_and_Rings/MATH5_Groups_and_Rings.tex}
+
+\end{document}
