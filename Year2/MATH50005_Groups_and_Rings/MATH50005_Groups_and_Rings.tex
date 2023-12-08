@@ -44,25 +44,30 @@ The following are complementary reading for the course.
 \end{theorem}
 
 \begin{theorem}
-    Given groups $G,H$, if $f:G\xrightarrow{\sim}\textcolor{red}{H}$ then $f^{-1}:H\xrightarrow{\sim}\textcolor{red}{G}$.
+    Given groups $G,H$, if $f:G\xrightarrow{\sim}\textcolor{red}{H}$ then $f^{-1}:H\xrightarrow{\sim}\textcolor{red}{G}$. 
+    \begin{proof}
+        $f^{-1}(f(g_1))f^{-1}(f(g_2))=g_1g_2=f^{-1}(f(g_1g_2))=f^{-1}(f(g_1)g(g_2))$ is sufficient as $f$ is surjective.
+    \end{proof}
 \end{theorem}
-
-\begin{proof}
-    
-\end{proof}
 
 \subsection{Normal subgroups}
 
 \begin{definition}[Normal subgroup]
     A sugroup $N$ of $G$ is \textbf{normal}, written $N\unlhd G$, if it satisfies any of these equal properties: \begin{enumerate}
-        \item[(N1)] $N$ is the kernel of some homomorphism,
+        \item[(N1)] $N$ is the kernel of some group homomorphism $\phi$,
         \item[(N2)] $N$ is stable under conjugations ($\forall n\in N$ and $g\in G$, $gng^{-1}\in N$),
         \item[(N3)] for all $g\in G$ $gN=Ng$.
     \end{enumerate}
     \begin{proof}[Proof of equivalence]
-        
-    \end{proof}
+        \begin{enumerate}
+            \item[] (N1$\implies$N2): $\phi(gng^{-1}) = \phi(g)\phi(n)\phi(g^{-1})=\phi(g)\phi(g)^{-1}=e_H$.
+            \item[] (N2$\implies$N3): $gng^{-1}\in N\implies gn\in Ng$ by $g^{-1}$ so $gN\subseteq Ng$, similarly for $Ng\subseteq gN$ with $g^{-1}$ replacing $g$.
+            \item[] (N3$\implies$N2): The set of left and right cosets of $G$ by $N$ are isomorphic with $N$ as the kernel.
+        \end{enumerate}
+        \vspace{-12pt}
+    \end{proof} 
 \end{definition}
+\vspace{-10pt}
 
 \subsection{Quotient groups}
 
@@ -88,7 +93,13 @@ The following are complementary reading for the course.
     If $f:G\rightarrow H$ is a group homomorphism, $G/\ker f\cong \im f$.
 
     \begin{proof}
-        Have $\phi:G/\ker f\rightarrow \im f$ with $\phi:g\ker f\mapsto f(g)$.
+        Have $\phi:G/\ker f\rightarrow \im f$ with $\phi:g\ker f\mapsto f(g)$. \begin{enumerate}
+            \item[]well defined: if $g\ker f=h\ker f$, $gh^{-1}\ker f= \ker f \implies f(g)=f(gh^{-1}h)=f(gh^{-1})f(h)=f(h)$.
+            \item[]homomorphism: $\phi((g\ker f)(h\ker f)) = \phi(gh\ker f) = f(gh)=f(g)f(h)=\phi(g\ker f)\phi(h\ker f)$.
+            \item[]surjective: any $h=f(g)\in\im f$ is clearly $\phi(g\ker f)$ for any $g\in G$.
+            \item[]injective: if $\phi(g\ker f)=e_H$, $f(g)=e_H\implies g\in\ker f$ so $\ker f = \{\ker \phi\} = \{e_{G/\ker \phi}\}$. By a lemma from \textit{Linear algebra and groups}, we now have $\phi$ injective.
+        \end{enumerate}
+        \vspace{-20pt}
     \end{proof}
 \end{theorem}
 
@@ -101,7 +112,22 @@ The following are complementary reading for the course.
     \] commutes, (here $\pi:G\rightarrow G/N$ is the projection map with $\pi:g\rightarrow gN$).
 
     \begin{proof}
-        The proof follows Theorem~\ref{iso1} with $H=\im f$.
+        The proof is essentially that of Theorem~\ref{iso1} with $H=\im f$.
+    \end{proof}
+\end{theorem}
+
+\begin{lemma}
+    If $N\unlhd G$ and $N\leq H\leq G$ then $N\unlhd H$.
+    \begin{proof}
+        $gN=Ng$ for all $g\in G$ so also for all $g\in H$.
+    \end{proof}
+\end{lemma}
+
+\begin{theorem}[Second isomorphism theorem]
+    Let $K,L\unlhd G$ with $K\leq L$, $G/L\cong (G/K)/(L/K)$
+
+    \begin{proof}
+        Have $f:G/K\rightarrow G/L$, via same arguments  in Theorem~\ref{iso1}, $f$ is a surjective group homomorphism, $gK\in \ker f\implies f(gK)=gL=L$ so $g\in L$ and $\ker f = L/K$. By Theorem~\ref{iso1}, $(G/K)/(\ker  f) = (G/K)/(L/K)\cong (G/L)$. 
     \end{proof}
 \end{theorem}
 
@@ -116,11 +142,15 @@ The following are complementary reading for the course.
 \begin{lemma}
     Given $H,N\leq G$ a group, $N$ is normal $\implies$ $HN\leq G$ and $N,H$ normal $\implies HN\unlhd G$.
     \begin{proof}
-        
+        \begin{enumerate}
+            \item $HN$ is nonempty with $(h_1n_1)(h_2n_2)=(n_1n_3)(h_1h_2)\in NH$ for some $n_3\in N$ and $(hn)^{-1}=n^{-1}h^{-1}\in Nh^{-1} = h^{-1}N\subseteq HN$.
+            \item $gHNg^{-1} = gHg^{-1} \cdot gNg^{-1} = HN$.
+        \end{enumerate}
+    \vspace{-15pt}
     \end{proof}
 \end{lemma}
 
-\begin{theorem}[Second isomorphism theorem]\label{iso2}
+\begin{theorem}[Third isomorphism theorem]\label{iso2}
     If $H\leq G$ and $N\unlhd G$, $H/(H\cap N)\cong (HN)/N$. This is ometimes called the \textit{diamond theorem} due to the shape of the subgroup lattice it produces: \[
         \begin{tikzcd}[cramped, column sep=small]
             & G \arrow[d]& \\
@@ -130,10 +160,13 @@ The following are complementary reading for the course.
             & \{e_G\}& 
         \end{tikzcd}
     \] where arrows point to subgroups.
+    \begin{proof}
+        Have $\phi:H\rightarrow G/N$ be the canonical map, $\ker\phi = H\cap N$ as $hN=N$ iff $h\in N$, $\im \phi = \{hN:h\in H\}=HN/N$, Theorem~\ref{iso1} on $\phi$ gives the result.
+    \end{proof}
 \end{theorem}
 
 \begin{note}
-    There are third and fourth isomorphism theorems that will not appear in this module.
+    The naming of the group isomorphism theorems throughout literatue is very inconsistent.
 \end{note}
 
 \subsection{Centres}
