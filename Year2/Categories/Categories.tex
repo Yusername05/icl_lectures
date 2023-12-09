@@ -81,8 +81,8 @@ The following are complementary reading for the course.
     A \textbf{contravariant functor} from $\CCC$ to $\DDD$ is a covariant functor from $\CCC^{op}$ to $\DDD$.
 \end{definition}
 
-\begin{definition}[Full]
-    A functor $F:\CCC\rightarrow\DDD$ is \textbf{full} if the map 
+\begin{definition}[Hom-functor]
+    The \textbf{hom-functor} for a given category $\CCC$ is $\Hom_\CCC:\CCC^{op}\times\CCC\rightarrow\text{Set}$ sending a pair of elements $c,d\in\CCC$ to $\Hom_\CCC(c,d)$.
 \end{definition}
 
 \subsection{Natural transformations}
@@ -124,5 +124,44 @@ The following are complementary reading for the course.
 \begin{theorem}
     If $F,G$ form an equivalence of the categories $\CCC,\DDD$ then $F,G$ are an adjunction.
 \end{theorem}
+
+\begin{examples}[Adjunctions in group theory]
+    Consider the \textbf{forgetful functor} $F:\text{Ab}\rightarrow\text{Grp}$ which simply forgets the Abelian property of a group. We also have the \textbf{abeliantisation functor} ${(-)}^{\ab}:\text{Grp}\rightarrow\text{Ab}$ which maps $G\mapsto G^{\ab}:=G/[G,G]$. $F$ and ${(-)}^{\ab}$ for an adjuction between $\text{Grp}$ and $\text{Ab}$.
+\end{examples}
+
+\subsection{Representable functors}
+
+\begin{definition}[Yoneda functor]
+    Given some $x$ in a category $\CCC$, there is a functor $\Hom_\CCC(-,x):\CCC^{op}\rightarrow\text{Set}$ which satisfies the required properties to have the \textbf{Yoneda functor}: \[
+        Y:\CCC\rightarrow\Fun(\CCC^{op},\text{Set})
+        \black{.}
+    \] Which sends an element $y\in\CCC$ to the functor from objects in $\CCC^{op}$ to the set of morphisms from these objects to $y$. 
+\end{definition}
+
+\begin{lemma}
+    The Yoneda functor and the hom-functor form an adjunction in $\text{Cat}$.
+\end{lemma}
+
+\begin{definition}[Representable]
+    A functor $F\in\text{Fun}(\CCC^{op},\text{Set})$ is \textbf{representable} if $F\cong Y(c)$ for some $c\in\CCC$.
+\end{definition}
+
+\begin{example}
+    Consider the functor $F:\text{Set}^{(op)}\rightarrow \text{Set}$ sending a set to its powerset. $F$ is clearly isomorphic the functor $\Hom(-,\{0,1\})$ from subsets to indicator functions on $X$. This is the image of the Yoneda functor so $F$ is representable.
+\end{example}
+
+\subsection{Yoneda lemma}
+
+\begin{theorem}[Yoneda lemma]
+    Given some $x\in\CCC$ and $F\in\Fun(\CCC^{op},\text{Set})$ we have \[
+        \Hom_{\Fun(\CCC^{op},\text{Set})}(Y(x),F)\cong F(x)
+        \black{.}\]
+\end{theorem}
+
+\vspace{-25pt}
+
+\begin{remark}
+    This is a generalisation of Cayley's theorem which shows that we can study a group by instead studying the permutations of its underlying set.
+\end{remark}
 
 \end{document}
