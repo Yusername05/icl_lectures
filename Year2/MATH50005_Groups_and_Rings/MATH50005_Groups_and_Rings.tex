@@ -174,7 +174,7 @@ The following are complementary reading for the course.
 \begin{definition}[Inner automorphisms]
     Given the group $G$ the conjugations by elements of $G$ form the group $\Inn G\unlhd\Aut G$.
     \begin{proof}
-        
+        Have $\phi:G\rightarrow \Aut(G)$ assigning to each element in $g\in G$ the conjugation map by $G$, $\Inn(G) = \im \phi \subset \Aut(G)$. 
     \end{proof}
 \end{definition}
 
@@ -185,20 +185,12 @@ The following are complementary reading for the course.
     \end{proof}
 \end{definition}
 
-\begin{theorem}
+\begin{proposition}
     If $G/Z(G)$ is cyclic, $G$ is Abelian.
     \begin{proof}
-         
+         $G/Z(G)=\abr{aZ(G)}$ for some $a\in G$, for all $g\in G$ $gZ(G)={[aZ(G)]}^m=a^m Z(G)$ for some $m\in\NN$ therefore $a^{-m}g=z\in Z(G)$ so $g=a^m z$ and for all $g,h\in G$ we have $gh=a^n z_g a^m z_h = a^{n+m}z_g z_h = a^m z_h a^n z_g=hg$.
     \end{proof}
-\end{theorem}
-
-\begin{definition}[$p$-group]
-    A finite group $G$ is a \textbf{$p$-group} is the order of $G$ is a power of prime $p$.
-\end{definition}
-
-\begin{theorem}
-    Let $G$ be a $p$-group, $Z(G)\neq \{e_G\}$.
-\end{theorem}
+\end{proposition}
 
 \subsection{Commutators}
 
@@ -307,8 +299,12 @@ The following are complementary reading for the course.
     Given a group $G$ acting on a set $X$, the \textbf{stabiliser} of $x\in X$ is \[
         \Stab_G(x):= \{g\in G: g\cdot x = x\} \subseteq G
         \black{.}
-    \] Stabilisers also partition $G$.
-\end{definition}
+        \] Stabilisers also partition $G$.
+    \end{definition}
+    
+\begin{remark}[Conjugacy classes]
+    When $G$ acts on itself by conjugations, orbits of $G$ are the \textbf{conjugacy classes}, $x^G$ of $G$ and the stabilisers of $G$ are the centralisers of $G$.
+\end{remark}
 
 \begin{lemma}
     Given a group $G$ acting on a set $X$, $\Stab_G(g\cdot x)=g\Stab_G(x)g^{-1}$
@@ -334,6 +330,17 @@ The following are complementary reading for the course.
 \begin{corollary}[Cauchy's theorem]
     Let $G$ be a finite group of order $n$ and let $p$ be a prime factor of $n$. Then $G$ contains an element of order $p$.
 \end{corollary}
+
+\begin{definition}[$p$-group]
+    A finite group $G$ is a \textbf{$p$-group} is the order of $G$ is a power of prime $p$.
+\end{definition}
+
+\begin{theorem}
+    Let $G$ be a $p$-group, $Z(G)\neq \{e_G\}$.
+    \begin{proof}
+        
+    \end{proof}
+\end{theorem}
 
 \subsection{Jordan's theorem}
 
