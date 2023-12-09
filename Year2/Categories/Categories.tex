@@ -21,12 +21,108 @@ The following are complementary reading for the course.
     \item G. Grimmett and D. Stirzaker, Probability and Random Processes, 2001
     \item G. Grimmett and D. Stirzaker, One Thousand Exercises in Probability, 2009
 \end{itemize}
-This is certainly not a module taken during my second year, but a piece of very primitive self study deemed to be a helpful underpinning for 3rd year pure mathematics.
 
 \tableofcontents\pagebreak
 
-\lecture{1}{Monday}{30/10/2023}
+\section{Basic definitions}
 
-\section{Introduction}
+\subsection{Categories}
+
+\begin{definition}[Category]
+    A catgeory $\CCC$ contains the following data: \begin{enumerate}
+        \item a \textit{collection} of objects, $\Ob(\CCC)$,
+        \item for every $x,y\in\Ob(\CCC)$ a collection of morphisms $\Hom_\CCC(x,y)$ from $x$ to $y$,
+        \item an identity morphism $\id_x\in\Hom_\CCC(x,x)$ for all $x\in\Ob(\CCC)$,
+        \item a composition map of morphisms, $\circ:\Hom_\CCC(y,z)\times\Hom_\CCC(x,y)\rightarrow\Hom_\CCC(x,z)$ for all $x,y,z\in\Ob(\CCC)$.
+    \end{enumerate} Which satisfy the two axioms: \begin{enumerate}
+        \item for all $f\in\Hom_\CCC(x,y)$ with $x,y\in\Ob(\CCC)$ we have $f\circ\id_x = f = \id_y\circ f$,
+        \item for compatible morphisms $f,g,h$ we have $f\circ (g\circ h) = (f\circ g) \circ h$.
+    \end{enumerate}
+    We will use the shorthand $x\in\CCC$ for $x\in\Ob{\CCC}$, $\Hom(x,y)$ for $\Hom_\CCC(x,y)$ when $\CCC$ is obvious and $\End(x)$ for $\Hom(x,x)$.
+\end{definition}
+
+\begin{note}
+    Note that in our definition the term \textit{collection} is used instead of set, this is commonplace and necessary to prevent paradoxes when constructing the category of sets.
+\end{note}
+
+\begin{examples}
+    The following are all categories:
+    \begin{enumerate}
+        \item $\text{Set}$ with sets as objects and functions as their morphisms,
+        \item $\text{Grp}$ with groups as objects and their homomorphisms as morphisms,
+        \item $\text{Ab}$, $\text{Grp}$ restricted to abelian groups,
+        \item for a field $k$, $\text{Vect}_k$ with $k$-vector spaces as objects and linear transformations as morphisms,
+        \item $\text{Cat}$ with categories as objects and soon to be defined \textbf{functors} as morphisms,
+        \item $\text{Top}$, $\text{Rng}$, $\text{Meas}$, $\text{Poset}$, $\text{Man}$ with their objects and morphisms all defined similarly
+        \item Given a category $\CCC$, $\CCC^{op}$ wich has the same opjects as $\CCC$ but $\Hom_{\CCC^{op}}(x,y)=\Hom_\CCC(y,x)$ for all $x,y\in\CCC$,
+        \item Any set $X$ with objects as elements in $X$ and no morphisms except the identities
+        \item $(\RR,\leq)$ with objects as $\RR$ and a morphisms from $x$ to $y$ iff $x\leq y$ for all $x,y\in\RR$.
+    \end{enumerate}
+\end{examples}
+
+\begin{definition}[Isomorphism]
+    A morphism $f\in\Hom(x,y)$ is an \textbf{isomorphism} iff there is a morphism $f^{-1}\in\Hom(y,x)$ with $f\circ f^{-1} = \id_y$ and $f^{-1}\circ f = \id_x$.
+\end{definition}
+
+\subsection{Functors}
+
+\begin{definition}[(Covariant) Functor]
+    Given categories $\CCC,\DDD$ a \textbf{(covariant) functor} $F:\CCC\rightarrow\DDD$ is the following data: \begin{enumerate}
+        \item a map $\Ob(\CCC)\rightarrow\Ob(\DDD)$ (also denoted $F$),
+        \item for any two objects $x,y\in\CCC$ a map $\Hom_\CCC(x,y)\rightarrow\Hom_\DDD(F(x),F(y))$ (also also denoted $F$)
+    \end{enumerate}
+    satisfying the properties: \begin{enumerate}
+        \item for all $x\in\CCC$, $F(\id_x)=\id_{F(x)}$,
+        \item for all $x,y,z$ with $f,g$ in $\Hom_\CCC(y,z), \Hom_\CCC(x,y)$, $F(f \circ g) = F(f)\circ F(g)$.
+    \end{enumerate}
+\end{definition}
+
+\begin{definition}[Contravariant functor]
+    A \textbf{contravariant functor} from $\CCC$ to $\DDD$ is a covariant functor from $\CCC^{op}$ to $\DDD$.
+\end{definition}
+
+\begin{definition}[Full]
+    A functor $F:\CCC\rightarrow\DDD$ is \textbf{full} if the map 
+\end{definition}
+
+\subsection{Natural transformations}
+
+\begin{definition}[Natural transformation]
+    Given categories $\CCC,\DDD$ with functors $F,G:\CCC\rightarrow\DDD$, a \textbf{natural transformation} $\eta:F\rightarrow G$ consists of morphisms $\eta_x$ for all $x\in\CCC$ such that the diagram, \[
+        \begin{tikzcd}
+            F(x)\arrow[r, "F(f)"] \arrow[d, "\eta_x"] & F(y) \arrow[d, "\eta_y"]\\
+            G(x)\arrow[r, "G(f)"]  & G(y)
+        \end{tikzcd}
+    \] commutes for all $x,y\in \CCC$ and $f\in\Hom_\CCC(x,y)$.
+\end{definition}
+
+\begin{remark}
+    By constructing the category of functors from $\CCC$ to $\DDD$, denoted $\text{Fun}(\CCC,\DDD)$, morphisms are natural transformations. \textbf{Natural isomorphisms} are defined as isomorphisms in this category.
+\end{remark}
+
+\subsection{Equivalence of categories}
+
+\begin{definition}[Equivalence]
+    Given categories $\CCC,\DDD$ an \textbf{equivalence of categories} is a pair of functors $F:\CCC\rightarrow\DDD$ and $G:\DDD\rightarrow\CCC$ with natural isomorphisms $FG\xrightarrow{\sim}\textcolor{red}{\id_\DDD}$ and $\id_\CCC\xrightarrow{\sim}\textcolor{red}{GF}$.
+\end{definition}
+
+\begin{definition}[Adjunction]
+    An \textbf{adjuction} between categories $\CCC,\DDD$ is a pair of functors $F:\CCC\rightarrow\DDD$ and $G:\DDD\rightarrow\CCC$ such that for all $x\in\CCC$ and $y\in\DDD$, there exists an $\eta_{x,y}:\Hom_\CCC(x,G(y))\xrightarrow{\sim}\textcolor{red}{\Hom_\DDD(F(x),y)}$ such that the diagram 
+    \vspace{-10pt}
+    \[
+        \begin{tikzcd}
+            \Hom_\DDD(F(x'),y) \arrow[d, leftrightarrow, "\eta_{x',y}"] \arrow[r, "\circ F(f)"] & 
+            \Hom_\DDD(F(x),y) \arrow[d, leftrightarrow, "\eta_{x,y}"] \arrow[r, "g\circ"] & 
+            \Hom_\DDD(F(x),y') \arrow[d, leftrightarrow, "\eta_{x,y'}"] \\
+            \Hom_\CCC(x',G(y)) \arrow[r, "\circ f"] & 
+            \Hom_\CCC(x,G(y)) \arrow[r, "G(g)\circ"] & 
+            \Hom_\CCC(x,G(y'))
+        \end{tikzcd}
+    \] commutes for all $x,x'\in\CCC$; $y,y'\in\DDD$; $f:x\rightarrow x'$ and $g:y\rightarrow y'$.
+\end{definition}
+
+\begin{theorem}
+    If $F,G$ form an equivalence of the categories $\CCC,\DDD$ then $F,C$ are an adjuction.
+\end{theorem}
 
 \end{document}
