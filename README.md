@@ -1,7 +1,7 @@
 # icl_lectures
 ## info
 ### description
-Lecture notes* from all courses taken during 2023/24 entry Msci Mathematics at Imperial College London (and all other significantish mathematics i've doen during said time). None of these notes are full copies of any official course material provided by imperial college london. Some of these are empty if the course was short like IUM or particularly sparse of notes like computation.
+Lecture notes* from and around the various modules taken during 2023/24 entry Msci Mathematics at Imperial College London (and all other significantish mathematics i've doen during said time). None of these notes are full copies of any official course material provided by imperial college london.
 
 \* Despite this being referred to as "Lecture notes", a more reflective title would perhaps be "Examined competencies" that happen to be listed in the same order as they were given in lectures, the main cause for my reluctance to call these "Lecture notes" is the omittance of all proofs throughout the document.
 ### acknowledgements
