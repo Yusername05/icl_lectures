@@ -33,17 +33,17 @@ The following are supplementary reading:
     The follow are all equivalent notation for the same linear system:
     \[
         \begin{matrix}
-        a_{11}x_1 & + & a_{12}x_2 & + & \dots & + & a_{1n}x_n & = & b_1\\
-        a_{21}x_1 & + & a_{22}x_2 & + & \dots & + & a_{2n}x_n & = & b_2\\
+        a_{11}x_1 & + & a_{12}x_2 & + & \ldots & + & a_{1n}x_n & = & b_1\\
+        a_{21}x_1 & + & a_{22}x_2 & + & \ldots & + & a_{2n}x_n & = & b_2\\
         \vdots & & \vdots & & \ddots & & \vdots & & \vdots\\
-        a_{m1}x_1 & + & a_{m2}x_2 & + & \dots & + & a_{mn}x_n & = & b_m\\
+        a_{m1}x_1 & + & a_{m2}x_2 & + & \ldots & + & a_{mn}x_n & = & b_m\\
         \end{matrix}
         \iff
         \begin{pmatrix}
-        a_{11} & a_{12} & \dots & a_{1n}\\
-        a_{21} & a_{22} & \dots & a_{2n}\\
+        a_{11} & a_{12} & \ldots & a_{1n}\\
+        a_{21} & a_{22} & \ldots & a_{2n}\\
         \vdots & \vdots & \ddots & \vdots\\
-        a_{m1} & a_{m2} & \dots & a_{mn}\\
+        a_{m1} & a_{m2} & \ldots & a_{mn}\\
         \end{pmatrix}
         \begin{pmatrix}
             x_1 \\
@@ -91,6 +91,12 @@ The following are supplementary reading:
 
 \begin{theorem}
     Matrix multiplication is associative.
+    \begin{proof}
+        We will be considering the $ij$th element of the matrix which is the product of $m\times n, n\times p,p\times q$, matrices respectively: $[A{(BC)}_{ij}]=$\vspace{-10pt}\[
+            \sum_{k=1}^n a_{ik}{[BC]}_{kj} = \sum_{k=1}^n a_{ik}\br{\sum_{t=1}^p b_{kt}c_{tj}} = \sum_{k=1}^n\sum_{t=1}^p a_{ik}b_{kt}c_{tj} 
+            = \sum_{t=1}^p\br{\sum_{k=1}^n a_{ik}b_{kt}}c_{tj} = \sum_{t=1}^p{[AB]}_{it}c_{tj}=[(AB)C_{ij}]
+        \]\vspace{-10pt}
+    \end{proof}
 \end{theorem}
 
 \begin{remark}
@@ -163,6 +169,9 @@ The following are supplementary reading:
 
 \begin{theorem}
     The inverse of a matrix is unique.
+    \begin{proof}
+        Suppose we have $AB=I=BA$ and $AC=I=CA$: $B = BI = B(AC) = (BA)C = IC = C$.
+    \end{proof}
 \end{theorem}
 
 \begin{definition}
@@ -170,11 +179,16 @@ The following are supplementary reading:
 \end{definition}
 
 \begin{theorem}
-    If the matrix $A$ has an inverse then its transpose has an inverse with $(A^\T)^{-1}=(A^{-1})^\T$.
+    If the matrix $A$ has an inverse then its transpose has an inverse with $(A^\T)^{-1}=(A^{-1})^\T$. \begin{proof}
+        $AA^{-1}=I \implies I^\T = \br{AA^{-1}}^\T=A^\T\br{A^{-1}}^\T$ and similarly for the left inverse.
+    \end{proof}
 \end{theorem}
 
 \begin{theorem}
     If a matrix $A\in M_{m\times n}$ can be reduced to $\I_n$ by a sequence of EROs then $A$ is inevitable with $A^{-1}$ given by applying the same sequence of EROs to $\I_n$.
+    \begin{proof}
+        Consider the ERO matrices applied to $A$, $E_r\ldots E_2E_1A=I_n$, as all elementary matrices are invertible we have $A^{-1}=E_r\ldots E_2E_1$ hence $A$ is invertible.
+    \end{proof}
 \end{theorem}
 
 \begin{definition}
@@ -212,6 +226,9 @@ The notion of a vector space is a structure designed to generalise that of real 
 
 \begin{theorem}
     If $p\in\NN$ is prime with $\FF_p = \{0,1,\ldots,p-1\}$ then $(\FF_p,+_p,\cdot_p)$ is a field.
+    \begin{proof}
+        A1-A4, M1-M3, D are all clear from the properties of $\NN$. From IUM we know there exists some $s,t\in\ZZ$ such that $sx+tp=1$ for all $0\leq x<p$, have $x^{-1}\equiv s \mod{p}$.
+    \end{proof}
 \end{theorem}
 
 \subsection{Vector spaces}
@@ -244,6 +261,9 @@ The notion of a vector space is a structure designed to generalise that of real 
 
 \begin{theorem}
     Every subspace of V contains $0_V$.
+    \begin{proof}
+        As $W$ non-empty, multiply an element of $W$ by $0_\FF$ to get $0_V$.
+    \end{proof}
 \end{theorem}
 
 \begin{theorem}
@@ -275,6 +295,8 @@ Throughout this section, assume $V$ is an $\FF$-vector space.
     \]
 \end{definition}
 
+\vspace{-20pt}
+
 \begin{theorem}
     If $S = \{v_1,v_2,\ldots,v_n\}\subseteq V$ is linearly independent in $V$ with $v_{n+1}\in V\setminus \text{Span}(S)$ then $S\cup\{v_{n+1}\}$ is also linearly independent in $V$. 
 \end{theorem}
@@ -297,10 +319,13 @@ Again, assume $V$ is an $\FF$-vector space throughout this section.
 
 \begin{lemma}[Steinitz Echange Lemma]
     Given some $X\subseteq V$ with $u\in \text{Span}(X)$ but $u\not\in \text{Span}(X\setminus \{v\})$ for some $v\in X$, let $Y=(X\setminus \{v\})\cup \{u\}$ then $\text{Span}(X) = \text{Span}(Y)$.
+    \begin{proof}
+        Have $X=\{e_1,e_2,\ldots,v\}$ with $u=\alpha_1e_1+\alpha_2e_2+\ldots+\alpha_nv$. For any $x=\beta_1e_1+\beta_2e_2+\ldots+\beta_n v\in\text{Span}(X)$ we can write $x=\beta_1e_1+\beta_2e_2+\ldots+\frac{\beta_n}{\alpha_n}\br{u-\alpha_1e_1-\alpha_2e_2-\ldots}  \in\text{Span}(Y)$.
+    \end{proof}
 \end{lemma}
 
 \begin{theorem}
-    Given a LI $S\subseteq V$ and spanning set $T\subseteq V$, $|S|\leq|V|$.
+    Given a LI $S\subseteq V$ and spanning set $T\subseteq V$, $|S|\leq|T|$.
 \end{theorem}
 
 \begin{corollary}
@@ -386,8 +411,6 @@ Again, assume $V$ is an $\FF$-vector space throughout this section.
 \begin{theorem}
     If $V$ and $W$ are $\FF$-vector spaces, $\Hom(V,W)$ is the set of linear transormations from $V$ to $W$, with pointwise addition and scalar multiplication $\Hom(V,W)$ is a $\FF$-vector space.
 \end{theorem}
-
-
 
 \subsection{Image and kernel}
 Throughout, assume $T:V\rightarrow W$ is a linear transformation and $V,W$ are $\FF$-vector spaces
