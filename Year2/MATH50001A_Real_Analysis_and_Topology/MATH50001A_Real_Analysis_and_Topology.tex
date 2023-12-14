@@ -4,7 +4,7 @@
 
 \begin{document}
 
-\chapter{Real Analysis and Topology}
+\chapter*{Real Analysis and Topology}
 \renewcommand*\thesection{\arabic{section}}
 \lhead{MATH50001A Real Analysis and Topology}
 Lectured by Someone \\ Typed by Yu Coughlin \\
@@ -30,6 +30,7 @@ The following are complementary reading for the course.
 
 \lecture{1}{Monday}{30/10/2023}
 
+
 \section{Euclidean spaces}
 
 \begin{definition}[$\RR^n$]
@@ -46,7 +47,8 @@ The following are complementary reading for the course.
         ||\cdot||:\RR^n\rightarrow[0,\infty) \ \black{with } ||x||=\sqrt{\abr{x,x}}\black{.}
     \]
 \end{definition}
-\vspace{-30pt}
+
+\vspace{-20pt}
 
 \begin{proposition}[Properties of the Euclidean norm]
     The Euclidean norm satisfies the following properties: \begin{enumerate}
@@ -187,29 +189,336 @@ The following are complementary reading for the course.
 
 \begin{theorem}
     If $\Omega\subset\RR^n$ is open with $f:\Omega\rightarrow\RR$ with all partial derivatives existing for all $x\in\Omega$. If the map $x\mapsto D_i f(x)$ is continuous at $p\in\Omega$ for all partial derivatives, then $f$ is differentiable at $p$.
+    \begin{proof}
+        
+    \end{proof}
 \end{theorem}
 
 \subsection{Higher order derivatives}
+
+\begin{definition}[Second order partial derivatives]
+    Let $\Omega\subset\RR^n$ be open with differentiable $f:\Omega\rightarrow\RR$ written as $(f^1,f^2,\ldots,f^n)^\T$, the \textbf{$ik$th second partial derivative} at $p$ is \[
+        D_k D_i f^j(p) := \lim_{t\rightarrow 0}\frac{D_i f^j(p+te_k)-D_i f^j(p)}{t} \black{.}
+    \] This can naturally be extended to $n$th order partial derivatives.
+\end{definition}
+
+\begin{theorem}
+    Given open $\Omega\subseteq\RR^n$ and $f:\Omega\rightarrow\RR^m$ differentiable on $\Omega$, consider the map: \[
+        \function[Df]{\Omega}{\LLL(\RR^n,\RR^m)\cong M_{n\times m}(\RR)\cong \RR^{m\times n}}{p}{Df(p)}\black{,}
+    \] which we can now show to be continuous or differentiable at $p\in\Omega$, when differentiable we can take $DDf(p)\in\LLL(\RR^n,\RR^m)$. The componenents of the corresponding matrix are give by: \[
+        [DDf(p)[h]]_{ij} = \sum_{k=1}^n D_k D_i f^j(p)h^k\black{.}
+    \]
+    \vspace{-10pt}
+    \begin{proof}
+        
+    \end{proof}
+\end{theorem}
+
+\begin{remark}
+    The condition of a function being $k$ times differentiable at a point $p$ can is often difficult to establish, instead the continuous existence of all $k-th$ partial derivatives in a neighbourhood of $p$ is a prefereable question which implies the former statement.
+\end{remark}
+
+\begin{theorem}[Schwartz's theorem]
+    Suppose $\Omega\subseteq\RR^n$ is open and $f:\Omega\rightarrow\RR^m$ is differentiable on $\Omega$ with $D_i D_j f(p),D_j D_i f(p)$ both exist continuous only $\Omega$; then we have \[
+        D_i D_j f(p) = D_j D_i f(p) \ \black{for all } p\in\Omega \black{.}
+    \]
+    \begin{proof}
+        
+    \end{proof}
+\end{theorem}
+
+\begin{notation}
+    We need the following necessary notation around an $n$-vector of non-negative integers, $\alpha=(\alpha_1,\alpha_2,\ldots,\alpha_n)\in{(\ZZ_{>0})}^n$ for some $n\in\ZZ_{>0}$, to easily express Taylor's theorem in multiple dimensions: \begin{enumerate}
+        \item $|\alpha| = \alpha_1+\alpha_2+\ldots+\alpha_n$,
+        \item $D^\alpha f={(D_1)}^{\alpha_1}{(D_2)}^{\alpha_2}\cdots{(D_n)}^{\alpha_n}$,
+        \item for some vector $h=(h^1,h^2,\ldots,h^n)\in\RR^n$, $h^\alpha = ({(h^1)}^{\alpha_1},{(h^2)}^{\alpha_2},\ldots,{(h^n)}^{\alpha_n})$,
+        \item $\alpha! = \alpha_1!\alpha_2!\cdots\alpha_n!$.
+    \end{enumerate}
+\end{notation}
+
+\begin{theorem}[Taylor's theorem]
+    Given $p\in\RR^n$ with $f:B_r(p)\rightarrow\RR$, for some $r>0$, $k$-times continuous differentiable on $B_r(p)$ and some $||h||<r$; we have: \[
+        f(p+h)=\sum_{|\alpha|\leq k-1}\frac{h^\alpha}{\alpha!}D^\alpha f(p) + R_k(p,h)\black{.}
+    \] Where the remainder term, $R_k(p,h)$ is given by: \[
+        R_k(p,h) = \sum_{|\alpha|=k}\frac{h^\alpha}{\alpha!}D^\alpha f(x)\black{.}
+    \]
+    \vspace{-10pt}
+    \begin{proof}
+        
+    \end{proof}
+\end{theorem}
 
 \section{Inverse and implicit function theorems}
 
 \subsection{Inverse function theorem}
 
+\begin{theorem}[Inverse function theorem]\label{inv}
+    Have $f:\RR^n\rightarrow \RR^n$ continuous differentiable on $\Omega\subseteq\RR^n$ and $Df(p)$ be invertible for a $p\in\Omega$. There exists open sets $U\in\Omega$ and $V\in\RR^n$ such that $f:U\rightarrow V$ is a bijection. Furthermore, $f^{-1}:V\rightarrow U$ is continuous differentiable on $V$ with: \[
+        Df^{-1}(y)={\left[Df(f^{-1}(y))\right]}^{-1}\black{.}
+    \]
+    \vspace{-20pt}
+\end{theorem}
+
+\begin{lemma}
+    
+\end{lemma}
+
+\begin{lemma}
+    
+\end{lemma}
+
+\begin{lemma}
+    
+\end{lemma}
+
+\begin{corollary}
+    
+\end{corollary}
+
+\begin{lemma}
+    
+\end{lemma}
+
+\begin{proof}[Proof of Theorem~\ref{inv}(Inverse function theorem)]
+    
+\end{proof}
+
 \subsection{Implicit function theorem}
+
+\begin{theorem}[Implicit function theorem]
+    Given $\Omega\subseteq\RR^n$ and $\Omega'\subseteq\RR^m$ both open with $f:\Omega\times\Omega'\rightarrow\RR^m$ continuous differentiable on $\Omega\times\Omega'$. If there is some $p\in\Omega\times\Omega'$ with $f(p)=0$ and $D_{n+j}f^i(p)$ invertible for $1\leq i, j\leq m$. Then, there are open sets $A\in\Omega$ and $B\in\Omega'$ containg $a$ and $b$ respectively such that for all $x\in A$ ther is a unique and differentiable $g(x)\in B$ with $f(x,g(x))=0$.
+    \begin{proof}
+        
+    \end{proof}
+\end{theorem}
 
 \section{Metric spaces}
 
 \subsection{Introduction}
 
+\begin{definition}[Metric]
+    A \textbf{metric} on some arbitrary set $X$ is a function: \[
+        d:X\times X\rightarrow\RR
+    \] that satisfies the following properties for all $x,y,z\in X$: \begin{enumerate}
+        \item[(M1)] $d(x,y)\geq 0$ with $d(x,y)=0$ iff $x=y$ (positibity),
+        \item[(M2)] $d(x,y)=d(y,x)$ (symmetry),
+        \item[(M3)] $d(x,y) \leq d(x,z) + d(z,y)$ (triangle innequality).
+    \end{enumerate}
+\end{definition}
+
+\begin{definition}[Metric space]
+    A \textbf{metric space} is a pair consisting of a set and a metric on said set, often denoted $M=(X,d)$. The elements of $X$ are called \textbf{points} and for any two points of $M$, $x,y$, their \textbf{distance (with respect to $d$)} is $d(x,y)$.
+\end{definition}
+
+\begin{definition}[Induced metric]
+    Given the metric space $(X,d)$ and some $Y\subset X$, we have $d_Y:Y\times Y\rightarrow\RR$ with $d_Y(x,y)=d(x,y)$ for all $x,y\in Y$ as the \textbf{induced metric} on $Y$. $(Y,d_Y)$ is a \textbf{metric subspace} of $(X,d)$.
+\end{definition}
+
 \subsection{Normed vector spaces}
 
-\subsection{Sets in metric spaces}
+\begin{definition}[Normed vector spaces]
+    Given a real-vector space $V$, a function $||\cdots||:V\rightarrow\RR$ is a \textbf{norm} on $V$ iff the following hold for all $u,v\in V$:\begin{enumerate}
+        \item[(N1)] $||v||\geq 0$ with $||v||=0$ iff $v=0_V$,
+        \item[(N2)] for all $\lambda\in\RR$, $||\lambda v|| = |\lambda|\cdot||v||$,
+        \item[(N3)] $||u+v||\leq||u||+||v||$.
+    \end{enumerate} A vector space together with a norm is a \textbf{normed vector space}.
+\end{definition}
 
-\subsection{Continuous maps of metric spaces}
+\begin{lemma}
+    If $(V,||\cdot||)$ is a normed vector space, $d_{||\cdot||}:V\times V\rightarrow\RR$ with $d_{||\cdot||}(u,v) = ||u-v||$ is a metric on $V$.
+    \begin{proof}
+        
+    \end{proof}
+\end{lemma}
+
+\subsection{Open and closed sets}
+
+\begin{definition}[$\epsilon$-ball]
+    Given a point $x$ in the metric space $(X,d)$ and a real $\epsilon>0$, the \textbf{ball} of radius $\epsilon$ centred at $x$ is the set, \[
+        B_\epsilon(x) := \{y\in X: d(x,y)<\epsilon\}\black{,}
+    \] which is sometimes referred to as a neighbourhood of $x$.
+\end{definition}
+
+\begin{definition}[Open sets]
+    Given metric space $(X,d)$ a set $U\subseteq X$ is \textbf{open} in $(X,d)$ iff, for all $\u\in U$ there exists some $\delta>0$ such that $B_\delta(u)\subseteq U$.
+\end{definition}
+
+\begin{proposition}
+    Have $\XXX=(X,d)$ a metric space, the follow hold true: \begin{enumerate}
+        \item $\emptyset$ and $\XXX$ are open in $\XXX$,
+        \item for all $x\in\XXX$ and $\epsilon>0$, $B_\epsilon(x)$ is open in $\XXX$,
+        \item the union of (up to uncountably many) open sets in $\XXX$ are open in $\XXX$,
+        \item the intersection of finitely many open sets in $\XXX$ is open in $\XXX$.
+    \end{enumerate}
+    \begin{proof}
+        
+    \end{proof}
+\end{proposition}
+
+\begin{definition}[Topological equivalence]
+    Two metrics $d,d'$ on $X$ are \textbf{topologically equivalent} iff $U\subseteq X$ is open in $(X,d)$ iff it is also open in $(X,d')$.
+\end{definition}
+
+\begin{definition}[Closed sets]
+    Given the metric space $(X,d)$ with $U\subseteq X$, $U$ is \textbf{closed} iff $X\setminus U$ is open.
+\end{definition}
+
+\begin{proposition}
+    A set $U\subseteq X$ with $(X,d)$ a metric spacpe is closed iff, every convergenct sequence in $V$ has a limit in $V$.
+    \begin{proof}
+        
+    \end{proof}
+\end{proposition}
+
+\begin{proposition}
+    The intersection of (up to ocuntable many) closed sets in a metric space is closed; the union of finitely many sets in a metric space is closed.
+    \begin{proof}
+        
+    \end{proof}
+\end{proposition}
+
+\subsection{Separable space}
+
+\begin{definition}[Interior, isolated, limits and boundary points]
+    We will have $(X,d)$ be a metric space with $V\subseteq X$ and $x\in X$: \begin{itemize}
+        \item $x$ is an \textbf{interor point} of $V$ if there is some $\delta>0$ with $B_\delta(x)\subseteq V$,
+        \item $x$ is an \textbf{isolated point} of $V$ if there is some $\delta>0$ such that $V\cap B_\delta(x)=\{x\}$,
+        \item $x$ is a \textbf{limit point} of $V$ if for all $\delta>0$, we have $(B_\delta(x)\cap V)\setminus\{x\}\neq\emptyset$, 
+        \item $x$ is a \textbf{boundary point} of $V$ if it is  a limit point, under the previous definition, and $B_\delta(x)\setminus V\neq \emptyset$.
+    \end{itemize}
+\end{definition}
+
+\begin{remark}
+    Interior and isolated points are necessarily in $V$, but limit points and boundary points need not be elements of $V$.
+\end{remark}
+
+\begin{definition}[Interior, closure and boundary]
+    Once again, we will have $(X,d)$ a metric space with $V\subseteq X$: \begin{itemize}
+        \item the \textbf{interior} of $V$ is the set of all $v\in V$ with $v$ an interior point of $V$, denoted $V^\circ$,
+        \item the \textbf{closure} of $V$ is the union of $V$ with the set of limit points of $V$, denoted $\overline{V}$,
+        \item the \textbf{boundary} of $V$ is the set of boundary points of $V$, denoted $\partial V$.
+    \end{itemize}
+\end{definition}
+
+\begin{proposition}
+    $\partial V=\overline{V}\setminus V^\circ$.
+    \begin{proof}
+        
+    \end{proof}
+\end{proposition}
+
+\begin{definition}[Dense set]
+    Have $(X,d)$ a metric space, $V\subseteq X$ is \textbf{dense} in $(X,d)$ iff $\overline{V}=X$.
+\end{definition}
+
+\begin{definition}[Separable space]
+    We say the metric space $(X,d)$ is \textbf{separable} if there is a countable, dense set in $X$.
+\end{definition}
+
+\section{Continuous maps in metric spaces}
+
+\subsection{Convergence}
+
+\begin{definition}[Convergence in metric spaces]
+    Let ${(x_n)}_{n\geq1}$ be a sequence in the metric space $(X,d)$. We say ${(x_n)}_{n\geq 1}$ \textbf{converges} in $(X,d)$ iff: \[
+        \exists x\in X \ \black{such that, } \forall\epsilon>0, \ \exists N\in\ZZ_{>0} \ \black{with } d(x_n,x)<\epsilon \ \black{for all } n\geq N\black{.}
+    \] And we say ${(x_n)}_{x\geq 1}$ converges to $x$ in $(X,d)$, or any other equivalent phrasing from analysis.
+\end{definition}
+
+\begin{definition}[Cauchy sequences]
+    A sequence ${(x_n)}_{n\geq 1}$ is \textbf{Cauchy} in $(X,d)$ iff \[
+        \forall\epsilon>0, \ \exists N\in\ZZ_{>0} \ \black{such that } \forall n,m\geq N,\  d(x_n,x_m)<\epsilon\black{.}
+    \]
+    \vspace{-20pt}
+\end{definition}
+
+\begin{lemma}[Uniqueness of limits]
+    If the sequence ${(x_n)}_{n\geq 1}$ converges to some $x$ in the metric space $(X,d)$ then this limit is unique.
+    \begin{proof}
+        
+    \end{proof}
+\end{lemma}
+
+\begin{theorem}
+    Given two topologically equivalent metrics $d,d'$ on $X$, the sequence ${(x_n)}_{n\geq 1}$ converges in $(X,d)$ iff it also converges in $(X,d')$.
+    \begin{proof}
+        
+    \end{proof}
+\end{theorem}
+
+\subsection{Continuity of maps}
+
+\begin{definition}[Continuous map]
+    Given the metric spaces $(X,d_X), (Y,d_Y)$ and $f:X\rightarrow Y$: \begin{enumerate}
+        \item $f$ is \textbf{continuous at} $x\in X$ iff for all $x'\in X$: \[
+            \forall\epsilon>0, \exists\delta>0 \ \black{such that } d_X(x,x')<\delta \implies d_X(f(x),f(x'))<\epsilon \black{,}
+        \] \vspace{-20pt}
+        \item $f$ is \textbf{continuous on} $U\subseteq X$ if $f$ is continuous at every $u\in U$,
+        \item $f$ is \textbf{uniformly continuous} on $U\subseteq X$ is $f$ is continuous on $U$ and $\delta=\delta(\epsilon)$ does not depend on $x$.
+    \end{enumerate}
+\end{definition}
+
+\begin{theorem}
+    Let $(X,d_X), (Y,d_Y)$ be metric spaces, a function $f:X\rightarrow Y$ is continuous iff the pre-image of any open $U\subseteq Y$ is open in $X$.
+    \begin{proof}
+        
+    \end{proof}
+\end{theorem}
+
+\begin{proposition}
+    If, similarly, $(X,d_X), (Y,d_Y)$ are metric spaces with $f:X\rightarrow Y$, the following are equivalent: \begin{enumerate}
+        \item $f$ is continuous at $x\in X$,
+        \item if a sequence ${(x_n)}_{n\geq 1}$ converges to $x\in X$ then ${(f(x_n))}_{n\geq 1}$ converges to $f(x)\in Y$.
+    \end{enumerate}
+    \begin{proof}
+        
+    \end{proof}
+\end{proposition}
+
+\subsection{Metric homeomorphisms}
+
+\begin{definition}[Homeomorphism]
+    Have $(X,d_X),(Y,d_Y)$ be metric spaces, a mapping $f:X\rightarrow Y$ is a \textbf{homeomorphism} if it is a bijection with $f,f^{-1}$ both continuous. Metric spaces with homeomorphisms between then are \textbf{homeomorphic}.
+\end{definition}
+
+\begin{definition}[Lipschitz]
+    Given metric spaces $(X,d_X),(Y,d_Y)$ and $f:X\rightarrow Y$ we say:\begin{enumerate}
+        \item  $f$ is \textbf{Lipschitz} if there is some $M>0$ with: 
+        \[ d_Y(f(x_1),f(x_2))\leq M\cdot d_X(x_1,x_2) \ \black{for all } x_1,x_2\in X\black{,}\]
+        \vspace{-20pt}
+        \item  $f$ is \textbf{bi-Lipschitz} if there is some $M_1,M_2>0$ with: 
+        \[ M_1\cdot d_X(x_1,x_2) \leq d_Y(f(x_1),f(x_2))\leq M_2\cdot d_X(x_1,x_2) \ \black{for all } x_1,x_2\in X\black{,}\]
+        \vspace{-20pt}
+        \item  $f$ is \textbf{isometric} if, 
+        \[ d_Y(f(x_1),f(x_2)) =  d_X(x_1,x_2) \ \black{for all } x_1,x_2\in X\black{.}\]
+        \vspace{-20pt}
+    \end{enumerate}
+\end{definition}
+
+\begin{remark}
+    An isometry between metric spaces is a bi-Lipschitz map with two unit constants.
+\end{remark}
 
 \section{Topological spaces}
 
 \subsection{Topologies and their spaces}
+
+\begin{definition}[Topology]
+    Given a non-emtpy set $X$, we say $\tau$, a collection of subsets of $X$, is a \textbf{topology} on $X$ if it satisfies the following conditions: \begin{enumerate}
+        \item[(T1)] $\emptyset,X\subseteq\tau$,
+        \item[(T2)] if $X_i\in\tau$ for all $i$ in a indexing set $\III$, $\displaystyle \bigcup_{i\in\III}X_i\in\tau$,
+        \vspace{-17pt}
+        \item[(T3)] if $X_1,X_2,\ldots,X_n\in\tau$, $\displaystyle \bigcap_{i=1}^m X_i\in\tau$.
+    \end{enumerate}
+    \vspace{-10pt}
+    The pair $(X,\tau)$ is called a \textbf{topological space} with elements of $X$ called \textbf{points} and elements of $\tau$ called open sets. If $x\in X$ and $x\in U\in\tau$, $U$ is a neighbourhood of $x$.
+\end{definition}
+
+\begin{examples}
+    These are some common examples of topological spaces: \begin{enumerate}
+        \item for any set $X$ have $\tau=\{\emptyset, X\}$,
+    \end{enumerate}
+\end{examples}
 
 \subsection{Convergence and Hausdorff property}
 
