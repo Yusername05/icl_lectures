@@ -132,7 +132,7 @@ The following are complementary reading for the course.
 \begin{theorem}
     Let $A\subseteq\RR^n$ and $B\subseteq\RR^m$ with $f:A\rightarrow B$ continuous at $p\in A$. Supporse $g:B\rightarrow\RR^l$ is continuous as $f(p)$, then $g\circ f:A\rightarrow\RR^l$ is cotninuous at $p$.
     \begin{proof}
-        
+        Given any $\epsilon>0$ have $||x-p||<\delta_f\circ\delta_g(\epsilon)\implies||f(x)-f(p)||<\delta_g(\epsilon)\implies||g\circ f(x)-g\circ f(p)||<\epsilon$.
     \end{proof}
 \end{theorem}
 
@@ -309,6 +309,17 @@ The following are complementary reading for the course.
 \begin{definition}[Metric space]
     A \textbf{metric space} is a pair consisting of a set and a metric on said set, often denoted $M=(X,d)$. The elements of $X$ are called \textbf{points} and for any two points of $M$, $x,y$, their \textbf{distance (with respect to $d$)} is $d(x,y)$.
 \end{definition}
+
+\begin{examples}
+    The following are common examples of metric spaces: \begin{enumerate}
+        \item have $X=\RR$ and $d_1:\RR\times\RR\rightarrow\RR$ by $d_1(x,y):=|x-y|$,
+        \item have $X=\RR^n$ and have $\displaystyle d(x,y):=\sqrt{\sum_{i=1}^n{(x^i-y^i)}^2}$,
+        \item for an arbitary non-empty set $X$ we have $d_\text{disc}:X\times X\rightarrow\RR$ by $d_\text{disc}(x,y):=0$ iff $x=y$ and $1$ otherwise (discrete metric),
+        \item have $X$ be the set of bounded real sequences, then we can have $d_\infty:\RR\times\RR\rightarrow\RR$ given by $d_\infty(x,y) := \sup\limits_{k\geq1}|x^k-y^k|$,
+        \vspace{-10pt}
+        \item let $X$ be the set of continuous real functions on $[a,b]$ with $\displaystyle d(f,g):=\intd{t=a}{b}{|f(t)-g(t)|}{t}$.
+    \end{enumerate}
+\end{examples}
 
 \begin{definition}[Induced metric]
     Given the metric space $(X,d)$ and some $Y\subset X$, we have $d_Y:Y\times Y\rightarrow\RR$ with $d_Y(x,y)=d(x,y)$ for all $x,y\in Y$ as the \textbf{induced metric} on $Y$. $(Y,d_Y)$ is a \textbf{metric subspace} of $(X,d)$.
@@ -507,28 +518,157 @@ The following are complementary reading for the course.
     Given a non-emtpy set $X$, we say $\tau$, a collection of subsets of $X$, is a \textbf{topology} on $X$ if it satisfies the following conditions: \begin{enumerate}
         \item[(T1)] $\emptyset,X\subseteq\tau$,
         \item[(T2)] if $X_i\in\tau$ for all $i$ in a indexing set $\III$, $\displaystyle \bigcup_{i\in\III}X_i\in\tau$,
-        \vspace{-17pt}
+        \vspace{-10pt}
         \item[(T3)] if $X_1,X_2,\ldots,X_n\in\tau$, $\displaystyle \bigcap_{i=1}^m X_i\in\tau$.
     \end{enumerate}
-    \vspace{-10pt}
     The pair $(X,\tau)$ is called a \textbf{topological space} with elements of $X$ called \textbf{points} and elements of $\tau$ called open sets. If $x\in X$ and $x\in U\in\tau$, $U$ is a neighbourhood of $x$.
 \end{definition}
 
 \begin{examples}
     These are some common examples of topological spaces: \begin{enumerate}
-        \item for any set $X$ have $\tau=\{\emptyset, X\}$,
+        \item for any set $X$ have $\tau=\{\emptyset, X\}$, the trivial topology on $X$,
+        \item instead have $\tau$ be the collection of subsets of $X$, the discrete topology on $X$,
+        \item if $(X,d)$ is a metric space, $\tau:=\{U\subseteq X: U \ \black{is open in } (X,d)\}$ the metric topology on $X$,
+        \item for a non-empty set $X$, $\tau=\{\emptyset,V,X\}$ for some non-empty $V\subset X$,
+        \item if $X=\{a,b\}$ and $\tau=\{\emptyset,\{a,b\},\{b\}\}$ is the smallest toplogical space that is neither trivial nor discrete (called the Sierpinski topology).
     \end{enumerate}
 \end{examples}
 
-\subsection{Convergence and Hausdorff property}
+\begin{definition}[Metrisability]
+    A topological space $(X,\tau)$ is \textbf{metrisable} iff it is the topology induced by some metric.
+\end{definition}
+
+\begin{definition}[Coarser and finer topologies]
+    Given two topologies $\tau_1,\tau_2$ both on $X$, we say $\tau_1$ is \textbf{coarser} than $\tau_2$, and equivalently $\tau_2$ is \textbf{finer} than $\tau_1$, iff $\tau_2\subseteq\tau_1$.
+\end{definition}
+
+\subsection{Bases}
+
+\begin{definition}[Basis]
+    Given a topological space $(X,\tau)$ we call a subfamily $B\subseteq\tau$ a \textbf{basis} for $\tau$ iff every open set in $\tau$ is the union of open sets in $B$.
+\end{definition}
 
 \subsection{Closed sets}
 
+\begin{definition}[Closed sets]
+    Given a topological space $(X,\tau)$, we say $V\subseteq X$ is \textbf{closed} iff $X\setminus V$ is open.
+\end{definition}
+
+\begin{proposition}
+    Closed sets in any given topological space $(X,\tau)$ satisfy the followoing: \begin{enumerate}
+        \item[(C1)] $X,\emptyset$ are closed,
+        \item[(C2)] if $C_1,C_2$ are closed, $C_1\cup C_2$ is closed,
+        \item[(C3)] the (up to uncountable) intersection of closed sets is closed.
+    \end{enumerate}
+    \begin{proof}
+        
+    \end{proof}
+\end{proposition}
+
+\begin{definition}[Closure]
+    Given an open set $U$ in the topological space $(X,\tau)$ the \textbf{closure} of $U$ in $(X_\tau)$ is given by: \[
+        \overline{U}:=\mathop{\bigcap_{V\subseteq X}}_{V  \black{closed}, A\subseteq V}V
+    \black{.}
+        \]
+\end{definition}
+
+\begin{definition}[Point of closure]
+    Given the topological space $\XXX$ with $A\subseteq\XXX$, $x\in\XXX$ is a \textbf{point of closure} of $A$ iff every open set $U$ with $x\in U$ has $U\cap A=\emptyset$.
+\end{definition}
+
+\begin{proposition}
+    $\overline{A}=\{x\in X: x \ \black{is a point of closure for} A\}$.
+    \begin{proof}
+        
+    \end{proof}
+\end{proposition}
+
+\subsection{Convergence and Hausdorff property}
+
+\begin{definition}[Convergence]
+    For a sequences ${(x_n)}_{n\geq 1}$ in a topological space $(X,\tau)$ we say ${(x_n)}_{n\geq 1}$ \textbf{converges} (in $(X,\tau)$) to $x\in X$ iff \[
+        \forall T\in\tau \ \black{with } x\in T, \ \exists N\in\ZZ_{>0} \ \black{such that } \forall n\geq N, \ x_n\in T\black{.}
+    \]\vspace{-20pt}
+\end{definition}
+
+\begin{definition}[Hausdorff]
+    A topological space $(X,\tau)$ is \textbf{Hausdorff} iff for all $x,y\in X$ with $x\neq y$ there are open sets $U,V$ containing $x,y$ respectively with $U\cap V=\emptyset$. With $U$ and $V$ \textbf{separating} $x$ and $y$.
+\end{definition}
+
+\begin{theorem}
+    Limits of convergent sequences in Hausdorff spaces are unique.
+    \begin{proof}
+        
+    \end{proof}
+\end{theorem}
+
+\begin{definition}[Regular spaces]
+    A topological space $(X,\tau)$ is \textbf{regular} iff for every closed subset $C\subseteq X$ with point $p\not\in C$ there are open sets $U,V\in\tau$ such that $p\in U$, $C\subseteq V$ and $U\cap V=\emptyset$.
+\end{definition}
+
 \subsection{Continuous maps}
+
+\begin{definition}[Continuous map]
+    Given two topological spaces $(X,\tau_X),(Y,\tau_Y)$ the map $f:X\rightarrow Y$ is \textbf{continuous} iff $f^{-1}(U)\in\tau_X$ for all $U\in\tau_Y$.
+\end{definition}
+
+\begin{definition}[Continuity at points]
+    The map $f:X\rightarrow Y$, with $(X,\tau_X),(Y,\tau_Y)$ topological spaces, is \textbf{continuous at} $x\in X$ iff $f^{-1}(U)\in\tau_X$ for all $U\in\tau_Y$ with $f(x)\in U$.
+\end{definition}
+
+\begin{definition}[Homeomorphism]
+    A \textbf{homeomorphism} between topolgical spaces is a bijection map, $f$, where both $f$ and $f^{-1}$ are continuous. Spaces with homeomorphisms between them are \textbf{topologically equivalent}.
+\end{definition}
+
+\subsection{Subspaces}
+
+\begin{definition}[Subspace]
+    If $(X,\tau)$ is a topological space and $A\subseteq X$, the \textbf{subspace topology} on $A$ is $\tau_A=\{A\cap U: U\in\tau\}$, $(A,\tau_A)$ is a topological space called the \textbf{supspace} of $(X,\tau)$.
+    \begin{proof}[Proof of topological space]
+        
+    \end{proof}
+\end{definition}
+
+\begin{proposition}[Universal property]
+    Given topological spaces $(X,\tau_X), (Y,\tau_Y)$ with $A\subseteq X$ with its supspace topology and $g:Y\rightarrow A$, $g$ is continuous iff $i\circ g$ is continuous, where $i$ is the inclusion map, \[
+        \begin{tikzcd}
+            & X \\
+            Y \arrow[ur, "i\circ g"] \arrow[r, swap, "g"] & A \arrow[u, swap, hook, "i"]
+        \end{tikzcd}
+        \black{.}
+    \]
+    \begin{proof}
+        
+    \end{proof}
+\end{proposition}
+
+\begin{theorem}
+    Given the topological space $(X,\tau)$ and $A\subseteq X$, the subspace topology is the only topology such that for all $(Y,\tau_Y)$, $g:Y\rightarrow A$ is continuous iff $(i\circ g)$ is continuous.
+    \begin{proof}
+        
+    \end{proof}
+\end{theorem}
+
+\begin{lemma}
+    If $B$ is a basis for the topological space $(X,\tau)$ and $A\subseteq X$, $B_A:=\{U\cap A:U\in B\}$ is a basis for $\tau_A$.
+    \begin{proof}
+        
+    \end{proof}
+\end{lemma}
+
+\begin{proposition}
+    For a metric space $(X,d)$ with $A\subseteq X$, the two canonical topologies on $A$, $\tau_{d_A}$ and $T_A$ are equal. \begin{proof}
+        
+    \end{proof}
+\end{proposition}
 
 \section{Connectedness}
 
 \subsection{Definition}
+
+\begin{definition}[Disconnected sets]
+    Let 
+\end{definition}
 
 \subsection{Continuous maps}
 
