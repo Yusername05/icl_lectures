@@ -303,7 +303,7 @@ The following are complementary reading for the course.
 
 \section{Metric spaces}
 
-\subsection{Introduction}
+\subsection{Metrics}
 
 \begin{definition}[Metric]
     A \textbf{metric} on some arbitrary set $X$ is a function: \[
@@ -519,6 +519,241 @@ The following are complementary reading for the course.
     An isometry between metric spaces is a bi-Lipschitz map with two unit constants.
 \end{remark}
 
+\section{Connectedness}
+
+\begin{definition}[Disconnected set]
+    Given $(X,d)$ a metric space, some subset $S\subseteq X$ is \textbf{disconnected} iff there exist open sets $U,V\subseteq X$ satisfying: \begin{enumerate}
+        \item[(D1)] $U\cap V \neq \emptyset$,
+        \item[(D2)] $S\subseteq U\cup V$,
+        \item[(D3)] $S\cap U \neq \emptyset$ and $S\cap V\neq\emptyset$.
+    \end{enumerate}
+    Which can be summarised as the existence of a surjective and continuous map $f:(X,d)\rightarrow(\{0,1\},d_{\text{disc}})$.
+\end{definition}
+
+\begin{definition}[Connected subset]
+    A set $S$ in a metric space $(X,d)$ is \textbf{connected} iff it is not disconnected. A metric space is said to be connected if its set is connected.
+\end{definition}
+
+\begin{examples} The following are common examples of connected and disconnected sets:
+    \begin{enumerate}
+        \item $\RR$ with its usual metric is connected,
+        \item $\QQ$ in $\RR$ is disconnected by taking $(-\infty,\pi)$ and $(\pi,\infty)$,
+        \item any interval in $\RR$ is connected,
+        \item $\RR^2$ without countable many points is connected,
+        \item $\RR^2$ without $\{(x,f(x):x\in\RR\}$ given $f:\RR\rightarrow\RR$ a continuous bijection, is disconnected,
+        \item any non-singleton set with the discrete metric is disconnected.
+    \end{enumerate}
+\end{examples}
+
+\subsection{Continuous maps}
+
+\begin{proposition}
+    Given $(X,d_X),(Y,d_Y)$ are metric spaces with $f:X\rightarrow Y$ continuous. If some $S\subseteq X$ is connected, $f(S)\subseteq Y$ is also connected. \begin{proof}
+        
+    \end{proof}
+\end{proposition}
+
+\begin{corollary}
+    Homeomophisms preserve connectivity.
+\end{corollary}
+
+\subsection{Path connected sets}
+
+\begin{definition}[Path connected]
+    Given a metric space $(X,d)$ and a pair of points $a,b\in X$ a \textbf{path} from $a$ to $b$ is a continuous map $f:[0,1]\rightarrow X$ with $f(0)=a$ and $f(1)=b$. A subset $S$ of a metric space is \textbf{path connected} iff there exists a path joining all pairs of points in $S$.
+\end{definition}
+
+\begin{theorem}
+    Path connectedness implies connectedness.
+\end{theorem}
+
+\begin{example}[Topologist's sine curve]
+    Consider $S\subseteq\RR^2$ given by: \[
+        S := \{(x,\sin\br{\frac{\pi}{x}})\in\RR^2: x\in(0,1]\} \cup \{(0,y)\in\RR^2: y\in[-1,1]\}
+        \black{.}
+    \] This set is connected but not path connected. \begin{proof}
+        
+    \end{proof}
+\end{example}
+
+\section{Compactness}
+
+\subsection{Covers}
+
+\begin{definition}[Cover]
+    Have $(X,d)$ a metric space with $Y\subseteq X$, a collection $\RRR$ of open subsets of $X$ is an \textbf{open cover} for $Y$ if $Y\displaystyle\subseteq \bigcup_{U\in\RRR}U$. An open cover is finite if it is a finite collection.
+\end{definition}
+
+\begin{definition}[Subcover]
+    Given $(X,d)$ a metric space with $\RRR$ an open cover for $Y\subseteq X$, $\CCC$ is a \textbf{subcover} for $\RRR$ if $\CCC$ is an open cover for $Y$ and $\CCC\subseteq\RRR$.
+\end{definition}
+
+\begin{definition}[Compact]
+    A subset of a metric space is \textbf{compact} if all open covers admit a finite subcover.
+\end{definition}
+
+\begin{proposition}
+    Have $(X,d)$ a metric space with $Y\subseteq X$: \begin{enumerate}
+        \item if $X$ is compact and $Y$ is closed, $Y$ is compact,
+        \item if $X$ is compact, $X$ is bounded,
+        \item if $Y$ is compact, $Y$ is closed.
+    \end{enumerate}
+    \begin{proof}
+        \begin{enumerate}
+            \item 
+        \end{enumerate}
+    \end{proof}
+\end{proposition}
+
+\begin{theorem}[Heine-Borel]
+    When considering $X\subseteq \RR^n)$ under the euclidean metric, $X$ is compact iff $X$ is closed and bounded.
+\end{theorem}
+
+\subsection{Sequential compactness}
+
+\begin{definition}[Sequentially compact]
+    The metric space $(X,d)$ is \textbf{sequentially compact} if every sequence in $X$ has a convergent subsequence to some $x\in X$.
+\end{definition}
+
+\begin{proposition}
+    If the sequence $(x_n)_{n\geq1}$ converges to $x$ in $(X,d)$ then for all $\epsilon>0$ there are infinitely many $i$ with $x_i\in B_\epsilon(x)$.
+\end{proposition}
+
+\begin{proposition}
+\begin{enumerate}
+    \item If a metric space is sequentially compact, it is bounded,
+    \item if a metric space is compact, then it is sequentially compact.
+\end{enumerate}
+\end{proposition}
+
+\begin{corollary}[Bolzano-Weierstrass in $\RR^n$]
+    Any bounded sequence in $\RR^n$ has a convergent subsequence.
+\end{corollary}
+
+\begin{theorem}\label{comp}
+    If a metric space is sequentially compact, it is compact.
+\end{theorem}
+
+\begin{lemma}
+    If $(x_n)_{n\geq1}$ is a sequence in the metric space $(X,d)$ then $(x_n)_{n\geq1}$ has a converging subsequence to $x\in X$ iff for all $\epsilon>0$, $B_\epsilon(x)$ contains infinitely many points in $(x_n)_{n\geq1}$.\begin{proof}
+        
+    \end{proof}
+\end{lemma}
+
+\begin{definition}[Lebesgue number]
+    Have $Y\subseteq(X,d)$ with open cover $\RRR=\{\RRR_i:i\in\III\}$, $\RRR$ has \textbf{Lebesgue number} $\epsilon>0$ iff for all $y\in Y$, $B_\epsilon(y)\subseteq\RRR_i$ for some $i\in\RRR$.
+\end{definition}
+
+\begin{lemma}
+    Any open cover of a sequentially compact metric space has a Lebesgue number.\begin{proof}
+        
+    \end{proof}
+\end{lemma}
+
+\begin{definition}[$\epsilon$-net]
+    Given $(X,d)$ a metric space and $\epsilon>0$, an \textbf{$\epsilon$-net} in X is a subset $S\subseteq X$ satisfying \[
+        \bigcup_{s\in S}B_\epsilon(s)=X \iff \{B_\epsilon(s): s\in S\} \ \black{is an open cover for } X \iff \sup_{x\in X, s\in S}d(x,s) \leq \epsilon \black{.}
+    \]
+\end{definition}
+
+\begin{lemma}
+    If $(X,d)$ is a sequentially compact metric space, for all $\epsilon>0$ there is a finite $S\subseteq X$ that is an $\epsilon$-net for $X$. \begin{proof}
+        
+    \end{proof}
+\end{lemma}
+
+\begin{proof}[Proof of Theorem~\ref{comp}]
+    
+\end{proof}
+
+\subsection{Continuous maps}
+
+\begin{proposition}
+    Have $(X,d_X)$ and $(Y,d_Y)$ metric spaces with $f:X\rightarrow Y$ a continuous map: \begin{enumerate}
+        \item if $Z\subseteq X$ is compact, then $f(Z)$ is compact,
+        \item if $f$ is also a homeomorphism, $X$ is compact iff $Y$ is compact.
+    \end{enumerate}
+    \begin{proof}
+        \begin{enumerate}
+            \item 
+        \end{enumerate}
+    \end{proof}
+\end{proposition}
+
+\begin{corollary}
+    A continuous map from a compact metric space is uniformly continuous.
+    \begin{proof}
+        
+    \end{proof}
+\end{corollary}
+
+\begin{corollary}[Extreme value theorem]
+    If $(X,d)$ is a compact metric space with $f:X\rightarrow\RR$ continuous then $f$ is bounded and attains both bounds.
+\end{corollary}
+
+\subsection{Arzelá-Ascoli theorem}
+
+\begin{definition}[Uniformly bounded]
+    Have $\CCC$ a collection of functions $f:[a,b]\rightarrow\RR$. $\CCC$ is \textbf{uniformly bounded} if there is some $M>0$ with $|f|<M$ for all $f\in\CCC$. $\CCC$ is \textbf{uniformly equi-continuous} if \[
+        \forall \epsilon>0 \ \exists\delta>0 \ \black{such that } \forall x_1,x_2\in[a,b] \ \black{with } |x_1-x_2|<\delta, \
+        |f(x_1)-f(x_2)|<\epsilon \black{.}
+    \]
+\end{definition}
+
+\vspace{-20pt}
+
+\begin{theorem}[Arzelá-Ascoli]
+    Have $\CCC$ a collection of continuous functions $f:[a,b]\rightarrow\RR$, if $\CCC$ is uniformly bounded and uniformly equi-continuous, every sequence in $\CCC$ has a subsequence converging in $(\CCC[a,b],d_\infty)$. \begin{proof}
+        
+    \end{proof}
+\end{theorem}
+
+\begin{corollary}
+    If $\CCC$ (under the same definition) is bounded and equi-continuous, $\overline{\CCC}$ is compact and $\CCC$ is called \textbf{pre-compact}. \begin{proof}
+        
+    \end{proof}
+\end{corollary}
+
+\section{Completeness}
+
+\begin{definition}[Complete metric space]
+    The metric space $(X,d)$ is \textbf{complete} if every Cauchy sequence in $X$ converges in $(X,d)$.
+\end{definition}
+
+\begin{definition}[Banach space]
+    A normed vector space is a \textbf{Banach space} if the norm induces a complete metric space.
+\end{definition}
+
+\begin{examples}
+    \begin{enumerate}
+        \item $(\QQ,d_1)$ is not complete,
+        \item $(\RR,d_1)$ is complete,
+        \item $(\RR^n,d_2)$ is complete,
+        \item $(\CCC[a,b],d_\infty)$ is complete,
+        \item $(\CCC[a,b],d_2)$ is not complete,
+    \end{enumerate}
+\end{examples}
+
+\begin{proposition}
+    If $(f_n:[a,b]\rightarrow\RR)_{n\geq1}$ is a uniformly convergent sequence of continuous functions converging to $f$, $f$ is continuous. \begin{proof}
+        
+    \end{proof}
+\end{proposition}
+
+\begin{proposition}
+    If $(X,d)$ is a compact metric space, $(X,d)$ is complete.
+\end{proposition}
+
+\subsection{Fixed point theorem}
+
+\begin{definition}[Constricting map]
+    Given $(X,d_X), (Y,d_Y)$ metric spaces, $f:X\rightarrow Y$ is \textbf{contracting} if it is Lipschitz with $M\in(0,1)$. 
+\end{definition}
+
+\begin{theorem}[Banach fixed-point]
+    Given $(X,d)$ a non-empty metric space with $f:X\rightarrow X$ a contracting map, there exists some $x\in X$ with $f(x)=x$/
+\end{theorem}
+
 \section{Topological spaces}
 
 \subsection{Topologies and their spaces}
@@ -670,29 +905,5 @@ The following are complementary reading for the course.
         
     \end{proof}
 \end{proposition}
-
-\section{Connectedness}
-
-\subsection{Definition}
-
-\subsection{Continuous maps}
-
-\subsection{Path connected sets}
-
-\section{Compactness}
-
-\subsection{Covers}
-
-\subsection{Sequential compactness}
-
-\subsection{Continuous maps}
-
-\subsection{Arzelá-Ascoli theorem}
-
-\section{Completeness}
-
-\subsection{Banach spaces}
-
-\subsection{Fixed point theorem}
 
 \end{document}

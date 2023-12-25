@@ -203,25 +203,38 @@ The following are complementary reading for the course.
 \end{remark}
 
 \begin{theorem}
-    Given $G$ a group, $[G,G]\unlhd G$ with its quotient in $G$ Abelian.
+    Given $G$ a group, $[G,G]\unlhd G$.
+    \begin{proof}
+        $g[a,b]=[gag^{-1},gbg^{-1}]g$ and similarly in reverse so $[G,G]\unlhd G$.
+    \end{proof}
 \end{theorem}
 
 \begin{theorem}
     Let $N\unlhd G$, $G/N$ is Abelian iff $[G,G]\subseteq N$.
+    \begin{proof}
+        $(xN)(yN)=(yN)(xN)=(yN)(xN)N\iff [xN,yN]=N\iff[x,y]N=N\iff[x,y]\in N$.
+    \end{proof}
 \end{theorem}
 
 \begin{theorem}
     Given a group $G$ with $A,B\unlhd G$, $A\cap B=\{e_G\}$ and $AB=G$; $A\times B\cong G$.
+    \begin{proof}
+        Have $\phi: A\times B \rightarrow G$ with $\phi:(a,b)\mapsto ab$:\begin{enumerate}
+            \item[](injectivity) $\phi(a,b)=\phi(c,d)\implies ab=cd \implies (c^{-1}a=db^{-1})=e\implies (a,b)=(c,d)$,
+            \item[](surjectivity) an immediate consequence from $AB=G$.
+        \end{enumerate}
+        \vspace{-19pt}
+    \end{proof}
 \end{theorem}
 
 \subsection{Torsion and $p$-primary subgroups}
 
 \begin{definition}[Torsion subgroup]
-    Given an abelian group $G$, the set of elemnts of $G$ with finite order form the \textbf{torsion subgroup} of $G$, denoted $G_{\tors}$. When $G=G_{\tors}$, we call $G$ a \textbf{torsion Abelian group}.
+    Given an abelian group $G$, the set of elements of $G$ with finite order form the \textbf{torsion subgroup} of $G$, denoted $G_{\tors}$. When $G=G_{\tors}$, we call $G$ a \textbf{torsion Abelian group}.
 \end{definition}
 
 \begin{definition}[$p$-primary subgroups]
-    Given an abelian group $G$, the set of elements of $g$ with order $p$ (a prime) is the \textbf{$p$-primary subgroup} of $G$, written $G\{p\}$. When $G=G_G\{p\}$, we call $G$ a \textbf{$p$-primary torsion Abelian group}.
+    Given an abelian group $G$, the set of elements of $g$ with order $p$ (a prime) is the \textbf{$p$-primary subgroup} of $G$, written $G\{p\}$. When $G=G\{p\}$, we call $G$ a \textbf{$p$-primary torsion Abelian group}.
 \end{definition}
 
 \begin{theorem}
@@ -290,9 +303,9 @@ The following are complementary reading for the course.
 
 \begin{definition}[Orbit]
     Given a group $G$ acting on a set $X$, the \textbf{$G$-orbit} of $x\in X$ is \[
-        G(x):=\{g\cdot x:g\in G\} \subseteq X
+        G(x)=G\cdot x:=\{g\cdot x:g\in G\} \subseteq X
     \black{.}
-    \] Orbits partition $X$ into $X/G$.
+    \] Alternatively, we can think or orbits as $X/\sim$ (sometimes $X/G$) with $x\sim y\iff x=g\cdot y$ for some $g\in G$, $G\cdot x=[x]_\sim$.
 \end{definition}
 
 \begin{definition}[Stabiliser]
@@ -307,7 +320,12 @@ The following are complementary reading for the course.
 \end{remark}
 
 \begin{lemma}
-    Given a group $G$ acting on a set $X$, $\Stab_G(g\cdot x)=g\Stab_G(x)g^{-1}$
+    Given a group $G$ acting on a set $X$, $\Stab_G(g\cdot x)=g\Stab_G(x)g^{-1}$.\begin{proof}
+        \begin{enumerate}
+            \item[($\supseteq$)] For all $h\in\Stab_G(x)$ we have $(ghg^{-1})\cdot(g\cdot x) = g\cdot (h\cdot x) = g\cdot x$.
+            \item[($\subseteq$)]  If $h\in\Stab_G(g\cdot x)$ then $(g^{-1}hg)\cdot x = g^{-1}\cdot(g\cdot x)=x$ so $g^{-1}hg\in\Stab_G(x) $ therefore $ h\in g\Stab_G(x)g^{-1}$.
+        \end{enumerate}
+    \end{proof}
 \end{lemma}
 
 \begin{theorem}[Orbit-stabiliser theorem]
