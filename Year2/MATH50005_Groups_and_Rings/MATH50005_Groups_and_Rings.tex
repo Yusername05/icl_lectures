@@ -39,7 +39,7 @@ The following are complementary reading for the course.
 \begin{theorem}
     $\Aut G$ (the set of automorphisms of a group $G$) is a group under function composition.
     \begin{proof}
-        By examining the defintion of $\Aut G$, taking $e=\id$ and showing association elementwise.
+        By examining the definition of $\Aut G$, taking $e=\id$ and showing association elementwise.
     \end{proof}
 \end{theorem}
 
@@ -127,7 +127,7 @@ The following are complementary reading for the course.
     Let $K,L\unlhd G$ with $K\leq L$, $G/L\cong (G/K)/(L/K)$
 
     \begin{proof}
-        Have $f:G/K\rightarrow G/L$, via same arguments  in Theorem~\ref{iso1}, $f$ is a surjective group homomorphism, $gK\in \ker f\implies f(gK)=gL=L$ so $g\in L$ and $\ker f = L/K$. By Theorem~\ref{iso1}, $(G/K)/(\ker  f) = (G/K)/(L/K)\cong (G/L)$. 
+        Have $f:G/K\rightarrow G/L$ defined naturally, by Theorem~\ref{iso1}, $f$ is a surjective group homomorphism, $gK\in \ker f\implies f(gK)=gL=L$ so $g\in L$ and $\ker f = L/K$. By Theorem~\ref{iso1}, $(G/K)/(\ker  f) = (G/K)/(L/K)\cong (G/L)$. 
     \end{proof}
 \end{theorem}
 
@@ -151,7 +151,7 @@ The following are complementary reading for the course.
 \end{lemma}
 
 \begin{theorem}[Third isomorphism theorem]\label{iso2}
-    If $H\leq G$ and $N\unlhd G$, $H/(H\cap N)\cong (HN)/N$. This is ometimes called the \textit{diamond theorem} due to the shape of the subgroup lattice it produces: \[
+    If $H\leq G$ and $N\unlhd G$, $H/(H\cap N)\cong (HN)/N$. This is sometimes called the \textit{diamond theorem} due to the shape of the subgroup lattice it produces: \[
         \begin{tikzcd}[cramped, column sep=small]
             & G \arrow[d]& \\
             & HN \arrow[ld] \arrow [rd]& \\
@@ -166,7 +166,7 @@ The following are complementary reading for the course.
 \end{theorem}
 
 \begin{note}
-    The naming of the group isomorphism theorems throughout literatue is very inconsistent.
+    The naming of the group isomorphism theorems throughout literature is very inconsistent.
 \end{note}
 
 \subsection{Centres}
@@ -174,7 +174,7 @@ The following are complementary reading for the course.
 \begin{definition}[Inner automorphisms]
     Given the group $G$ the conjugations by elements of $G$ form the group $\Inn G\unlhd\Aut G$.
     \begin{proof}
-        Have $\phi:G\rightarrow \Aut(G)$ assigning to each element in $g\in G$ the conjugation map by $G$, $\Inn(G) = \im \phi \subset \Aut(G)$. 
+        Have $\phi:G\rightarrow \Aut(G)$ assigning to each element in $g\in G$ the conjugation map by $g$, $\Inn(G) = \im \phi \subseteq \Aut(G)$. 
     \end{proof}
 \end{definition}
 
@@ -406,15 +406,22 @@ The following are complementary reading for the course.
 \end{definition}
 
 \begin{examples}
-    $\ZZ,\QQ,\RR,\CC$ are all rings with their normal operations. $\RR[x]$ is the set of real-valued polynomials and is also a ring.
+    The following are common examples of rings:
+    \begin{enumerate}
+        \item  $\ZZ,\QQ,\RR,\CC$ are all rings with their normal operations,
+        \item $n\ZZ$ and $\ZZ/n\ZZ$ with $n$ a positive integer, are both rings,
+        \item $\RR[x]$, informally the set of polynomials with real coefficients, and $\QQ[x]$ are rings,
+        \item given some set $X$ and a ring $R$ the set of functions $f:X\rightarrow R$ is a ring
+        \item given a ring $R$, $M_{n\times n}(R)$ is a ring.
+    \end{enumerate}
 \end{examples}
 
 \begin{definition}[Subring]
-    A subset of a ring wich is itself a ring under the same operators with the same $1$ is a \textbf{subring}.
+    A subset of a ring which is itself a ring under the same operators is a \textbf{subring}.
 \end{definition}
 
 \begin{definition}[Commutative ring]
-    A ring, $R$, is \textbf{commutative} iff $a+b=b+a$ for all $a,b\in\RR$.
+    A ring, $R$, is \textbf{commutative} iff $a\times b=b\times a$ for all $a,b\in R$.
 \end{definition}
 
 \begin{definition}[Invertible]
@@ -422,15 +429,19 @@ The following are complementary reading for the course.
 \end{definition}
 
 \begin{definition}[Division ring]
-    A ring $R$ is called a \textbf{division ring} if $R\setminus\{0\}$ is a group under multiplication with identity $1$.
+    A ring $R$ is called a \textbf{division ring} if every element of $R$ is invertible.
 \end{definition}
 
 \begin{remark}
     A commutative division ring is a field.
 \end{remark}
 
+\begin{definition}[Zero divisor]
+    An element $a$ of a ring $R$ is a \textbf{zero division} if there exists some $b\neq0\in R$ with $ab=0$.
+\end{definition}
+
 \begin{definition}[Integral domain]
-    A commutative ring $R$ is an integral domain iff $0\neq1$ and for all $a,b\in R$ $ab=0\implies a=0$ or $b=0$.
+    A ring with $1$, $R$, is an \textbf{integral domain} iff $R$ is commutative, has no zero divisors, and $0\neq 1$.
 \end{definition}
 
 \subsection{Ring homomorphisms}
@@ -441,11 +452,27 @@ The following are complementary reading for the course.
         \item $f(xy)=f(x)f(y)$ for all $x,y\in R$,
         \item $f(1_R)=1_S$.
     \end{enumerate}
+    A ring homomorphism $\phi:R\rightarrow S$ is an \textbf{isomorphism} if there exists some $\psi:R\rightarrow S$ with $\phi\circ\psi$ and $\psi\circ\phi$ both identity maps.
 \end{definition}
+
+\begin{examples}
+    The following are some common examples of ring homomorphisms: \begin{enumerate}
+        \item $\phi:\ZZ\rightarrow\ZZ/n\ZZ$ with $\phi(t)= t\mod{n}$, and $[0], [1]$ the identities,
+        \item $f:\CC\rightarrow\CC$ with $f(z)=\overline{z}$ is in fact a self-inverse ring isomorphism,
+        \item $\phi_\lambda:\RR[x]\rightarrow\RR$ which evaluates a polynomial at $\lambda\in\RR$,
+        \item structure preserving inclusions are also ring homomorphisms.
+    \end{enumerate}
+\end{examples}
 
 \begin{lemma}
     Given the ring homomorphism $f:R\rightarrow S$ the kernel of $f$ is a subgroup of $(R,+)$ which satisfies $xr,rx\in\ker f$ for all $x\in \ker f$ and $r\in R$.
 \end{lemma}
+
+\begin{theorem}[Generalised construction of rationals from integers]
+    Have $R$ an integral domain, there exists some field $K$ with a subring $R'\cong R$ with every element of $K$ expressible as $ab^{-1}$ for $a,b\neq0\in R$. \begin{proof}
+        
+    \end{proof}
+\end{theorem}
 
 \subsection{Ideals}
 
@@ -456,45 +483,68 @@ The following are complementary reading for the course.
     \end{enumerate} Similarly, for \textbf{right ideals}. A subset $I$ is a bi-ideal if it is both a left and right ideal.
 \end{definition}
 
+\begin{proposition}
+    
+\end{proposition}
+
 \begin{definition}[Quotient ring]
-    Given ring $R$ with proper ideal $I\subset R$, The quotient abelian group $R/I$, with natural multiplication, forms the \textbf{quotient ring} of $R$ by $I$.
-\end{definition}
-
-\begin{definition}[Principal ideal]
-    Given a commutative ring $R$ and some $a\in R$, $aR:= \{ax:x\in R\}$ is an ideal called a \textbf{principal ideal} with \textbf{generator} a.
-\end{definition}
-
-\begin{definition}
-    A bijective ring homomorphism is a \textbf{ring isomorphism}, a ring homomorphism $f:R\rightarrow R$ is a \textbf{ring endomorphism}, an isomorphic ring endomorphism is \textbf{ring automorphism}.
-\end{definition}
-
-\begin{proposition}
-    Given the ring homomorphism $f:R\rightarrow S$, $f(R)=\im R$ is a subring of $S$ which is isomorphic to $R/\ker f$.
-\end{proposition}
-
-\begin{proposition}
-    A commutative ring is a field iff its only proper ideal is the trivial / zero ideal.
-\end{proposition}
-
-\begin{proposition}
-    Given $f:R\rightarrow S$ a ring homomorphism with $J$ a left (or right or bi) ideal of $S$, $f^{-1}(J)$ is a left (respectively ) ideal of $R$.
-\end{proposition}
-
-\begin{definition}[Prime ideal]
-    Let $R$ be a commutative ring, a proper ideal $I\subset R$ is a \textbf{prime ideal} iff $ab\in I \ \black{for } a,b\in R \implies a\in I \ \black{or } b\in I$.
+    Given a ring $R$ with $I\lhd R$, have \textbf{cosets} of $R$ by $I$ be the subsets of $R$ in the form $r+I:=\{r+i:i\in I\}$, the set of these cosets, $R/I$ is the \textbf{quotient ring} of $R$ by $I$ under the operations $(r+I)+(s+I)=(r+s+I)$ and $(r+I)(s+I)=(rs+I)$.\begin{proof}
+        
+    \end{proof}
 \end{definition}
 
 \begin{theorem}
-    If $I\subset R$ is a prime ideal, $R/I$ is an integral domain
+    Have $\phi:R\rightarrow S$ a ring homomorphism:\begin{enumerate}
+        \item $\ker\phi$ is an ideal of $R$,
+        \item $\im\phi$ is a subring of $S$,
+        \item $\im\phi$ is naturally isomorphic to $R/\ker\phi$.
+    \end{enumerate}
+    \begin{proof}
+        Have $\psi:(r+I)\mapsto\phi(r)$
+    \end{proof}
+\end{theorem}
+
+\begin{proposition}
+    A commutative ring is a field iff its only proper ideal is the trivial / zero ideal.
+    \begin{proof}
+        
+    \end{proof}
+\end{proposition}
+
+\begin{proposition}
+    Given $f:R\rightarrow S$ a ring homomorphism with $J$ a left (or right or bi) ideal of $S$, $f^{-1}(J)$ is a left (respectively) ideal of $R$.
+    \begin{proof}
+        
+    \end{proof}
+\end{proposition}
+
+\begin{definition}[Prime ideal]
+    Let $R$ be a commutative ring, a proper ideal $I\subset R$ is a \textbf{prime ideal} iff $ab\in I$ for $a,b\in R \implies a\in I$ or $b\in I$.
+\end{definition}
+
+\begin{theorem}
+    If $I\subset R$ is a prime ideal, $R/I$ is an integral domain.
+    \begin{proof}
+        
+    \end{proof}
 \end{theorem}
 
 \begin{definition}[Maximal ideal]
-    A proper ideal $I$ in a commutative rign $R$ is \textbf{maximal} iff there are no other proper ideals $J$ with $I\subset J$.
+    A proper ideal $I$ in a commutative ring $R$ is \textbf{maximal} iff there are no other proper ideals $J$ with $I\subset J$.
 \end{definition}
 
 \begin{theorem}
     $I$ is a maximal ideal of $R$ iff $R/I$ is a field.
+    \begin{proof}
+        
+    \end{proof}
 \end{theorem}
+
+\begin{corollary}
+    Maximal ideals are prime in commutative rings. \begin{proof}
+        
+    \end{proof}
+\end{corollary}
 
 \section{Integral domains}
 Throughout this section we will always have $R$ be an integral domain.
@@ -517,21 +567,49 @@ Throughout this section we will always have $R$ be an integral domain.
 \end{theorem}
 
 \begin{remark}
-    The ring $\ZZ/n\ZZ$ is an integral domain iff it is a field $\iff$ n is prime.
+    The ring $\ZZ/n\ZZ$ is an integral domain $\iff$ it is a field $\iff$ n is prime.
 \end{remark}
 
 \begin{definition}[Unit]
     $r\in R$ is a \textbf{unit} if there exists some $y\in R$ with $x\times y=1_R$. We write  $R^\times$ for the group of units in $R$ under multiplication.
 \end{definition}
 
+\begin{examples}
+    Some common examples of units in rings: \begin{enumerate}
+        \item $\ZZ^\times = \{1,-1\}$,
+        \item $\ZZ[i]^\times=\{1,-1,i,-i\}$,
+        \item given $d<-1$, $\ZZ[\sqrt{d}]^\times=\{1,-1\}$,
+        \item given a field $F$, $F[x]^\times=F^\times$.
+    \end{enumerate}
+\end{examples}
+
+\begin{definition}[Associates]
+    If $x,y\in R$, $x$ and $y$ are \textbf{associates} iff $x=uy$ for some unit $u$.
+\end{definition}
+
+\begin{proposition}
+    Association is an equivalence relation on any integral domain.
+    \begin{proof}
+        
+    \end{proof}
+\end{proposition}
+
 \begin{definition}[Irreducible]
     $r\in R\setminus R^\times$ is \textbf{irreducible} if it cannot be written as the product of two elements of $R\setminus R^\times$.
 \end{definition}
 
-\subsection{Charateristic}
+\begin{examples}
+    Common examples of irreducible elements in rings: \begin{enumerate}
+        \item the irreducible elements of $\ZZ$ is all $\pm p$ for a prime $p$,
+        \item the irreducible elements of $\ZZ[i]$ are the set of associates of primes congruent to $3$ modulo $4$,
+        \item in $\RR[x]$ the polynomial $x^2+1$ is irreducible, however in $\CC[x]$, $x^2+1=(x+i)(x-i)$; and in fact by the fundamental theorem of algebra, irreducible elements in $\CC[x]$ are all order $1$ polynomials.
+    \end{enumerate}
+\end{examples}
+
+\subsection{Characteristic}
 
 \begin{lemma}
-    For any ring $S$ there is a uniqure ring homomorphism $f:\ZZ\rightarrow S$.
+    For any ring $S$ there is a unique ring homomorphism $f:\ZZ\rightarrow S$.
     \begin{proof}
         Have $f(0_R)=0$, $f(1)\rightarrow 1_S$ and inductively have $f(n)$ be the sum of $1_S$ $n$ times.
     \end{proof}
@@ -541,7 +619,7 @@ Throughout this section we will always have $R$ be an integral domain.
     The kernel of the unique homomorphism $\ZZ\rightarrow R$ is either $\{0\}$ or $p\ZZ$ for some prime $p$.
 \end{lemma}
 
-\begin{definition}[Charateristic]
+\begin{definition}[Characteristic]
     The \textbf{characteristic} of $R$ is the unique non-negative generator of the kernel of $\ZZ\rightarrow R$, denoted $\text{char}\ R$.
 \end{definition}
 
@@ -565,10 +643,10 @@ Throughout this section we will always have $R$ be an integral domain.
 
 \section{PIDs and UFDs}
 
-\subsection{Euclidian domains}
+\subsection{Euclidean domains}
 
-\begin{definition}[Euclidian domain]
-    An integral domain $R$ is a Euclidian domain if there exists some  $\phi:R^*\rightarrow\NN_0$ satsifying: \begin{enumerate}
+\begin{definition}[Euclidean domain]
+    An integral domain $R$ is a Euclidean domain if there exists some  $\phi:R^*\rightarrow\NN_0$ satsifying: \begin{enumerate}
         \item $\phi(ab)\leq\phi(a)$ for all $a,b\neq 0$,
         \item for all $a,b\in R$ there exists $q,r\in R$ with $a=qb+r$ with $r=0$ or $\phi(r)\leq\phi(b)$.
     \end{enumerate}
@@ -576,12 +654,12 @@ Throughout this section we will always have $R$ be an integral domain.
 
 \subsection{Principal ideal domains}
 
-\begin{definition}[Principal integral domain]
-    An integral domain $R$ is a \textbf{principal integral domain} iff every ideal of $R$ is principal.
+\begin{definition}[Principal ideal domain]
+    An integral domain $R$ is a \textbf{principal ideal domain} iff every ideal of $R$ is principal.
 \end{definition}
 
 \begin{theorem}
-    R is a Euclidian domain $\implies$ $R$ is a principal integral domain.
+    R is a Euclidian domain $\implies$ $R$ is a principal ideal domain.
     \begin{proof}
         
     \end{proof}

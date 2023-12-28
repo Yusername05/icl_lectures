@@ -1,0 +1,491 @@
+\documentclass{report}
+\usepackage{../../style/header}
+
+\begin{document}
+
+\renewcommand*\thesection{\arabic{section}}
+\lhead{Yu's confused ramblings}
+
+\tableofcontents\pagebreak
+
+\section{Rings}
+
+\begin{definition}[Ring]
+    A ring (with $1$) is a set $R$ with elements $0,1$ and binary operations $+,\times$ such that \begin{enumerate}
+        \item $(R,+)$ is an abelian group with identity $0$,
+        \item $(R,\times)$ is a semigroup with $1$ as the identity,
+        \item both left and right multiplication are distributive over addition.
+    \end{enumerate}
+\end{definition}
+
+\begin{examples}
+    The following are common examples of rings:
+    \begin{enumerate}
+        \item  $\ZZ,\QQ,\RR,\CC$ are all rings with their normal operations,
+        \item $n\ZZ$ and $\ZZ/n\ZZ$ with $n$ a positive integer, are both rings,
+        \item $\RR[x]$, informally the set of polynomials with real coefficients, and $\QQ[x]$ are rings,
+        \item given some set $X$ and a ring $R$ the set of functions $f:X\rightarrow R$ is a ring
+        \item given a ring $R$, $M_{n\times n}(R)$ is a ring.
+    \end{enumerate}
+\end{examples}
+
+\begin{definition}[Commutative ring]
+    A ring, $R$, is \textbf{commutative} iff $a\times b=b\times a$ for all $a,b\in R$.
+\end{definition}
+
+\begin{definition}[Subring]
+    A subset of a ring which is itself a ring under the same operators is a \textbf{subring}.
+\end{definition}
+
+\begin{lemma}\label{subring test}
+    If $R$ is a ring and $0_R,1_R,s,t\in S\subseteq R$ with $s+t,st,s-t\in S$ then $S$ is a subring of $R$.
+    \begin{proof}
+        The only non-obvious axiom is that $S$ is closed under additive inverses which is given by $s-t\in S$.
+    \end{proof}
+\end{lemma}
+
+\begin{example}
+    $\ZZ[\sqrt{n}]$ with $n\in\ZZ$ is a ring; and note $a+b\sqrt{n}=c+d\sqrt{n}$ iff $a=c$ and $b=d$. \begin{proof}
+        $\ZZ[\sqrt{d}]\subseteq\CC$ so by Lemma~\ref{subring test} take $r=a+b\sqrt{n}$ and $s=c+d\sqrt{n}$, and by simple manipulations have $r\pm s, rs\in \ZZ[\sqrt{n}]$. Arguing by contradiction that $\sqrt{d}$ is not rational gives the uniqueness.
+    \end{proof}
+\end{example}
+
+\begin{corollary}
+    The same argument extends to show $\QQ[\sqrt{n}]$ is a ring and in fact a field.\begin{proof}
+        Commutativity is inherited from $\QQ$, if $r=a+b\sqrt{n}\neq 0$, $\displaystyle r^{-1}=\frac{a-b\sqrt{n}}{a^2-b^2d}$ with $a^2-b^2d\neq0$ easily coming from the irrationality of $\sqrt{d}$.
+    \end{proof}
+\end{corollary}
+
+\begin{propositions}
+    Have $R$ a ring with $r,s,r_i,s_j\in R$ for $i\in[1,n]$ and $j\in[1,m]$ respectively:\begin{enumerate}
+        \item $r0=0r=0$,
+        \item $(-r)s=r(-s)=-(rs)$ and $(-r)(-s)=rs$,
+        \item $\displaystyle \br{\sum_{i=1}^nr_i}\sum_{j=1}^ms_j=\sum_{i=1}^n\sum_{j=1}^mr_is_j$,
+        \item if $rs=s$ then $r=1$,
+        \item if $0=1$ in $R$, $R=\{0\}$.
+    \end{enumerate}
+    \begin{proof}
+        \begin{enumerate}
+            \item $0+0=0\implies r(0+0)=r0\implies r0+r0=r0\implies r0=0$ and similarly for $0r$,
+            \item $r-r=0\implies (r-r)s=0s=0 \implies (-r)s + rs = 0 \implies (-r)s=-(rs)$ with $r(-s)$ and $(-r)(-s) = rs$ immediately following,
+            \item inducting on $m+n$ and distributivity,
+            \item $s=1$ is sufficient,
+            \item for any $r$, $r=r1=r0=0$, note $\{0\}$ is still a ring.
+        \end{enumerate}
+    \end{proof}
+\end{propositions}
+
+\begin{definition}[Invertible]
+    An element $x$ of a ring $R$ is \text{invertible} if there exists $y,z\in R$ with $yx=xz=1$.
+\end{definition}
+
+\begin{definition}[Division ring]
+    A ring $R$ is called a \textbf{division ring} if every element of $R$ is invertible.
+\end{definition}
+
+\begin{remark}
+    A commutative division ring is a field.
+\end{remark}
+
+\begin{definition}[Zero divisor]
+    An element $a$ of a ring $R$ is a \textbf{zero division} if there exists some $b\neq0\in R$ with $ab=0$.
+\end{definition}
+
+\begin{definition}[Integral domain]
+    A ring with $1$, $R$, is an \textbf{integral domain} iff $R$ is commutative, has no zero divisors, and $0\neq 1$.
+\end{definition}
+
+\begin{examples}
+    \begin{enumerate}
+        \item $\ZZ$ is an integral domain,
+        \item all fields are integral domains,
+        \item $\{0\}$ is not an integral domain,
+        \item a subring of an integral domain is also an integral domain,
+        \item $\ZZ/n\ZZ$ is an integral domain iff $n$ is prime.
+    \end{enumerate}
+    \begin{proof}[Proof of 5] $(\implies)$ If $n=1$ we have $\ZZ/1\ZZ=\{0\}$, otherwise take $n=ab$ then $ab=0$ in $\ZZ/n\ZZ$ so neither are an integral domain. $(\impliedby)$ By lifting $a$ and $b$ to the integers we have $a',b'<n$ prime so $a,b\nmid n$ hence $ab\nmid n$ therefore $ab\neq 0$ in $\ZZ/n\ZZ$ which is therefore an integral domain.
+    \end{proof}
+\end{examples}
+
+\begin{proposition}
+    There is non-zero cancellation in integral domains. \begin{proof}
+        Have $ar=as\implies a(r-s)=0 $ as $a$ is non-zero$ \implies r-s=0\implies r=s$
+    \end{proof}
+\end{proposition}
+
+\begin{lemma}
+    A finite integral domain is a field. \begin{proof}
+        Consider $a\in R$ an integral domain with $\phi_a:R\rightarrow R$ by $\phi_a(r)=ar$. By cancellation $\phi_a$ is injective and as $R$ is finite $\phi_a$ is therefore also surjective and hence bijective. Take $a^{-1}=\phi_a^{-1}(1)$.
+    \end{proof}
+\end{lemma}
+
+\begin{corollary}
+    $\ZZ/n\ZZ$ is a field iff $n$ is prime.
+\end{corollary}
+
+\begin{theorem}[Wedderburn]
+    A finite division ring is a field. \textit{Proof hard so left until later...}
+\end{theorem}
+
+\section{Ring homomorphisms}
+
+\begin{definition}[Ring homomorphism]
+    Let $R,S$ be rings, a function $f:R\rightarrow S$ is a \textbf{ring homomorphism} iff it satisfies \begin{enumerate}
+        \item $f:(R,+)\rightarrow (S,+)$ is a group homomorphism,
+        \item $f(xy)=f(x)f(y)$ for all $x,y\in R$,
+        \item $f(1_R)=1_S$.
+    \end{enumerate}
+    A ring homomorphism $\phi:R\rightarrow S$ is an \textbf{isomorphism} if there exists some $\psi:R\rightarrow S$ with $\phi\circ\psi$ and $\psi\circ\phi$ both identity maps.
+\end{definition}
+
+\begin{examples}
+    The following are some common examples of ring homomorphisms: \begin{enumerate}
+        \item $\phi:\ZZ\rightarrow\ZZ/n\ZZ$ with $\phi(t)= t\mod{n}$, and $[0], [1]$ the identities,
+        \item $f:\CC\rightarrow\CC$ with $f(z)=\overline{z}$ is in fact a self-inverse ring isomorphism,
+        \item $\phi_\lambda:\RR[x]\rightarrow\RR$ which evaluates a polynomial at $\lambda\in\RR$,
+        \item structure preserving inclusions are also ring homomorphisms.
+    \end{enumerate}
+\end{examples}
+
+\begin{definition}[Ideal]
+    For a ring $R$, a subset $I\subseteq R$ is a \textbf{left ideal}, denoted $I\unlhd R$ iff \begin{enumerate}
+        \item $(I,+)$ is a subgroups of $(R,+)$,
+        \item if $r\in R$ and $i\in I$, $ri\in R$.
+    \end{enumerate} Similarly, for \textbf{right ideals}. A subset $I$ is a bi-ideal if it is both a left and right ideal.
+\end{definition}
+
+\begin{examples}
+    \begin{enumerate}
+        \item For any ring $R$, $\{0\}$ and $R$ are always ideals,
+        \item $x\RR[x]$ is an ideal for $\RR[x]$,
+        \item $m\ZZ$ is an ideal for $\ZZ$ and in fact all ideals are of this form.
+    \end{enumerate}
+\end{examples}
+
+\begin{definition}[Quotient ring]
+    Given a ring $R$ with $I\lhd R$, have \textbf{cosets} of $R$ by $I$ be the subsets of $R$ in the form $r+I:=\{r+i:i\in I\}$, the set of these cosets, $R/I$ is the \textbf{quotient ring} of $R$ by $I$ under the operations $(r+I)+(s+I)=(r+s+I)$ and $(r+I)(s+I)=(rs+I)$.\begin{proof}
+        The structure of $R$ translates directly to $R/I$ so it is clearly a ring.
+    \end{proof}
+\end{definition}
+
+\begin{lemma}\label{iso1}
+    The kernel of a ring homomorphism $\phi:R\rightarrow S$ is an ideal. \begin{proof}
+        The kernel of $\phi$ is a subgroup of $R$ and $\phi(ir)=\phi(i)\phi(r)=0\phi(r)=0$ so $ir\in\ker\phi$ and similarly for $ir$ hence $\ker\phi$ is a bi-ideal.
+    \end{proof}
+\end{lemma}
+
+\begin{lemma}\label{iso2}
+    The image of a ring homomorphism $\phi:R\rightarrow S$ is a subring. \begin{proof}
+        By Lemma~\ref{subring test} and ring homomorphism axioms.
+    \end{proof}
+\end{lemma}
+
+\begin{theorem}\label{iso}
+    Have $\phi:R\rightarrow S$ a ring homomorphism, $\im\phi$ is naturally isomorphic to $R/\ker\phi$.
+    \begin{proof}
+        Have $\psi:R/\ker\phi\rightarrow\im\phi$ by $\psi(r+I)=\phi(r)$. \begin{enumerate}
+            \item[](well defined) $r+\ker\phi=r'+\ker\phi\implies r-r'\in\ker\phi\implies\phi(r)=\phi(r')$,
+            \item[](injective) the same argument but backwards,
+            \item[](subjective) any $\phi(r)$ for $r\in R$ is $\psi(r+I)$.\vspace{-20pt}
+        \end{enumerate}
+    \end{proof}
+\end{theorem}
+
+\begin{proposition}
+    A commutative ring is a field iff its only proper ideal is the trivial / zero ideal.
+    \begin{proof}
+        
+    \end{proof}
+\end{proposition}
+
+\begin{proposition}
+    Given $f:R\rightarrow S$ a ring homomorphism with $J$ a left (or right or bi) ideal of $S$, $f^{-1}(J)$ is a left (respectively) ideal of $R$.
+    \begin{proof}
+        
+    \end{proof}
+\end{proposition}
+
+\begin{definition}[Prime ideal]
+    Let $R$ be a commutative ring, a proper ideal $I\subset R$ is a \textbf{prime ideal} iff $ab\in I$ for $a,b\in R \implies a\in I$ or $b\in I$.
+\end{definition}
+
+\begin{theorem}
+    If $I\subset R$ is a prime ideal, $R/I$ is an integral domain.
+    \begin{proof}
+        
+    \end{proof}
+\end{theorem}
+
+\begin{definition}[Maximal ideal]
+    A proper ideal $I$ in a commutative ring $R$ is \textbf{maximal} iff there are no other proper ideals $J$ with $I\subset J$.
+\end{definition}
+
+\begin{theorem}
+    $I$ is a maximal ideal of $R$ iff $R/I$ is a field.
+    \begin{proof}
+        
+    \end{proof}
+\end{theorem}
+
+\begin{corollary}
+    Maximal ideals are prime in commutative rings. \begin{proof}
+        
+    \end{proof}
+\end{corollary}
+
+\section{Integral domains}
+Throughout this section we will always have $R$ be an integral domain.
+
+\subsection{Integral domains}
+
+\begin{theorem}
+    $ab=ac\implies b=c$ for all $a,b,c\in R$. (the cancellation law holds for all integral domains)
+\end{theorem}
+
+\begin{proposition}
+    For $a,b\in R$, $aR=bR$ iff $a=br$ for some $r\neq 0 \in R$.
+    \begin{proof}
+        
+    \end{proof}
+\end{proposition}
+
+\begin{theorem}
+    All fields are integral domains and all finite integral domains are fields.
+\end{theorem}
+
+\begin{remark}
+    The ring $\ZZ/n\ZZ$ is an integral domain $\iff$ it is a field $\iff$ n is prime.
+\end{remark}
+
+\begin{definition}[Unit]
+    $r\in R$ is a \textbf{unit} if there exists some $y\in R$ with $x\times y=1_R$. We write  $R^\times$ for the group of units in $R$ under multiplication.
+\end{definition}
+
+\begin{examples}
+    Some common examples of units in rings: \begin{enumerate}
+        \item $\ZZ^\times = \{1,-1\}$,
+        \item $\ZZ[i]^\times=\{1,-1,i,-i\}$,
+        \item given $d<-1$, $\ZZ[\sqrt{d}]^\times=\{1,-1\}$,
+        \item given a field $F$, $F[x]^\times=F^\times$.
+    \end{enumerate}
+\end{examples}
+
+\begin{definition}[Associates]
+    If $x,y\in R$, $x$ and $y$ are \textbf{associates} iff $x=uy$ for some unit $u$.
+\end{definition}
+
+\begin{proposition}
+    Association is an equivalence relation on any integral domain.
+    \begin{proof}
+        
+    \end{proof}
+\end{proposition}
+
+\begin{definition}[Irreducible]
+    $r\in R\setminus R^\times$ is \textbf{irreducible} if it cannot be written as the product of two elements of $R\setminus R^\times$.
+\end{definition}
+
+\begin{examples}
+    Common examples of irreducible elements in rings: \begin{enumerate}
+        \item the irreducible elements of $\ZZ$ is all $\pm p$ for a prime $p$,
+        \item the irreducible elements of $\ZZ[i]$ are the set of associates of primes congruent to $3$ modulo $4$,
+        \item in $\RR[x]$ the polynomial $x^2+1$ is irreducible, however in $\CC[x]$, $x^2+1=(x+i)(x-i)$; and in fact by the fundamental theorem of algebra, irreducible elements in $\CC[x]$ are all order $1$ polynomials.
+    \end{enumerate}
+\end{examples}
+
+\subsection{Characteristic}
+
+\begin{lemma}
+    For any ring $S$ there is a unique ring homomorphism $f:\ZZ\rightarrow S$.
+    \begin{proof}
+        Have $f(0_R)=0$, $f(1)\rightarrow 1_S$ and inductively have $f(n)$ be the sum of $1_S$ $n$ times.
+    \end{proof}
+\end{lemma}
+
+\begin{lemma}
+    The kernel of the unique homomorphism $\ZZ\rightarrow R$ is either $\{0\}$ or $p\ZZ$ for some prime $p$.
+\end{lemma}
+
+\begin{definition}[Characteristic]
+    The \textbf{characteristic} of $R$ is the unique non-negative generator of the kernel of $\ZZ\rightarrow R$, denoted $\text{char}\ R$.
+\end{definition}
+
+\subsection{Polynomial rings}
+
+\begin{definition}[Polynomial ring]
+    $R[t]$ is, formally, the set of infinite sequences of elements of $R$ with finitely many non-zero terms, but more helpfully: the set of polynomials in $t$ with coefficients in $R$.
+\end{definition}
+
+\begin{definition}[Polynomial degree]
+    The \textbf{degree} of a polynomial, $r_0 + r_1t + r_2t^2 + \ldots + r_i t^i + \ldots \in R[t]$, is the unique maximum $i\in\NN$ with $r_i\neq 0$ and $0$ otherwise.
+\end{definition}
+
+\begin{lemma}
+    Given $p(t),q(t)\in R$, $\deg(p(t)q(t))=\deg(p(t))+\deg(q(t))$, $R[t]$ is an integral domain and $R[t]^* = R^*$.
+\end{lemma}
+
+\begin{theorem}
+    If $k$ is a field with $a(t),b(t)\in k[t]$ with $b(t)\neq 0$, there exists $q(t),r(t)\in k[t]$ such that $a(t)=q(t)b(t)=r(t)$ with $\deg(r(t))<\deg(b(t))$ and $q(t),r(t)$ unique.
+\end{theorem}
+
+
+\subsection{Euclidean domains}
+
+\begin{definition}[Euclidean domain]
+    An integral domain $R$ is a Euclidean domain if there exists some  $\phi:R^*\rightarrow\NN_0$ satsifying: \begin{enumerate}
+        \item $\phi(ab)\leq\phi(a)$ for all $a,b\neq 0$,
+        \item for all $a,b\in R$ there exists $q,r\in R$ with $a=qb+r$ with $r=0$ or $\phi(r)\leq\phi(b)$.
+    \end{enumerate}
+\end{definition}
+
+\subsection{Principal ideal domains}
+
+\begin{definition}[Principal ideal domain]
+    An integral domain $R$ is a \textbf{principal ideal domain} iff every ideal of $R$ is principal.
+\end{definition}
+
+\begin{theorem}
+    R is a Euclidian domain $\implies$ $R$ is a principal ideal domain.
+    \begin{proof}
+        
+    \end{proof}
+\end{theorem}
+
+\begin{corollary}
+    $F$ is a field $\implies F[t]$ is a PID.
+\end{corollary}
+
+\subsection{Unique factorisation domains}
+
+\begin{definition}[Unique factorisation domain]
+    An integral domain $R$ is a \textbf{unique factorisation domain} iff every element of $R\setminus R^\times$ can be written as the product of a single unit and finitely many irreducibles in $R$ which is unique up to rearrangement.
+\end{definition}
+
+\begin{definition}[Division]
+    Given $a,b$ in the integral domain $R$, we say $a$ \textbf{divides} $b$, written $a|b$ iff $b=ra$ for some $r\in R$ and \textbf{properly divides} if $r\not\in R^\times$.
+\end{definition}
+
+\begin{lemma}\label{ufd1}
+    Given $p,a,b\in R$ a UFD, if $p$ is irreducible then $p|ab\implies p|a$ or $p|b$.
+\end{lemma}
+
+\begin{lemma}\label{ufd2}
+    There is no infinite sequence of non-zero $r_1,r_2,\ldots\in R$ a UFD such that $r_{n+1}$ properly divides $r$ for all $n\geq1$.
+\end{lemma}
+
+\begin{theorem}
+    The integral domain $R$ is a UFD iff the properties in Lemma~\ref{ufd1} and Lemma~\ref{ufd2} hold.
+\end{theorem}
+
+\begin{theorem}
+    Every principal ideal domain is a unique factorisation domain.
+\end{theorem}
+
+\section{Localisation}
+\section{Polynomials}
+\section{Modules}
+\section{Fields}
+
+\subsection{Vector spaces}
+Throughout this section let $k$ be a field.
+
+\begin{definition}[Vector space]
+    A $k$-vector space $V$ is an abelian group with an action of $k$ on the elements of $V$ satisfying \begin{enumerate}
+        \item $1_k v=v$ for all $v\in V$,
+        \item $(x+y)V = xv + yv$ for all $x,y\in k$ and $v\in V$,
+        \item $x(v+w) = xv + xw$ for all $x\in k$ and $v,w\in V$.
+    \end{enumerate}
+\end{definition}
+
+\begin{proposition}
+    If $\ch k=0$ then $k$ contains a unique subfield isomorphic to $\QQ$. Otherwise, if $\ch k = p$ then $k$ contains a unique subfield isomorphic to $\FF_p$.
+\end{proposition}
+
+\begin{theorem}
+    Every finite field has $p^n$ elements for some prime $p$ and $n\in\NN$.
+\end{theorem}
+
+\subsection{Field extensions}
+
+\begin{definition}[Field extension]
+    A \textbf{field extension} $F$ of $k$ is a $k$-vector space.
+\end{definition}
+
+\begin{proposition}
+    All homomorphisms between fields and rings are injective.
+    \begin{proof}
+        The only possible maps between fields are field extensions, the only proper ideal of a field is the zero ideal.
+    \end{proof}
+\end{proposition}
+
+\begin{definition}[Finite field extension]
+    An extension of the fields $k\subset K$ is \textbf{finite} iff $K$ is a finite dimensional vector space over $k$ with $\dim K$ the \textbf{degree} of the extension
+\end{definition}
+
+\begin{theorem}
+    If $k\subset F\subset K$ are field extensions, $K$ is a finite extension of $k$ iff $K$ is a finite extension of $F$ and $F$ is a finite extension of $k$. We then have $[K:k]=[K:F][F:k]$.
+\end{theorem}
+
+\begin{remark}
+    Degree $2$ and $3$ field extensions are called quadratics and cubics respectively.
+\end{remark}
+
+\subsection{Constructing fields}
+
+\begin{lemma}
+    Given $R$ a PID with $a\neq0\in R$, $aR$ is maximal iff $a$ is irreducible.
+    \begin{proof}
+        
+    \end{proof}
+\end{lemma}
+
+\begin{corollary}
+    Given $R$ a PID with reducible $a\in R$, $R/aR$ is a field.
+\end{corollary}
+
+\begin{theorem}
+    A polynomial $f(t)\in k[t]$ of degree $2$ or $3$ is irreducible iff it has no root in $k$.
+\end{theorem}
+
+\begin{definition}[Non-Square]
+    $a\in k$ is non-square if there is no element $b\in k$ with $b^2=a$.
+\end{definition}
+
+\begin{lemma}
+    Let $p$ be an odd prime. The field $\FF_p$ contins $(p-1)/2$ non-squares. For all non-square $a\in\FF_p$, $t^2-a$ is irreducible in $\FF_p[t]$.
+\end{lemma}
+
+\begin{theorem}
+    For all $p(t)\in k[t]$, there exists a finite field extension $k\subset K$ such that: \[
+        p(t)=c\prod_{i=1}^n(t-a_i)
+        \black{,}
+    \] for some $c\in k^\times$ and $a_i\in K$ for all $i\in[1,n]$.
+\end{theorem}
+
+\subsection{Existence of finite fields}
+
+\begin{theorem}
+    Let $k$ have characteristic $p\neq 0$, for all $x,y\in k$ and $m\in\ZZ^{\geq 0}$, \[
+        (x+y)^{p^m}=x^{p^m}+y^{p^m}
+        \black{.}
+    \]
+\end{theorem}
+
+\vspace{-30pt}
+
+\begin{definition}[Derivative]
+    Let $p(t)= a_0 + a_1t + \ldots + a_nt^n\in k[t]$, the \textbf{derivative} of $p(t)$ is \[
+        p'(t):= a_1 + 2a_2t + \ldots + na_nt^{n-1}
+        \black{.}
+    \]
+\end{definition}
+
+\begin{lemma}
+    Let $p(t)=(x-a_1)(x-a_2)\ldots(x-a_n)\in k[t]$, $a_i\neq a_j$ for all $i\neq j$ iff $p(t)$ and $p'(t)$ have no common roots.
+\end{lemma}
+
+\begin{theorem}
+    For all prime $p$ and natural $n$, there exists a field with $p^n$ elements.
+\end{theorem}
+
+\end{document}
