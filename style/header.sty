@@ -384,7 +384,7 @@
 \newoperator{Disc}  % Discriminant
 \newoperator{dom}   % Domain
 \newoperator{Eig}   % Eigenvalue
-\newoperator{Em}    % Embedding
+\newoperator{Emb}    % Embedding
 \newoperator{End}   % Endomorphism
 \newoperator{Ext}   % Ext
 \newoperator{fd}    % Flat dimension
@@ -499,7 +499,14 @@
 \newcommand{\w}{\mathrm{w}}   % Roman w
 \newcommand{\x}{\mathrm{x}}   % Roman x
 \newcommand{\y}{\mathrm{y}}   % Roman y
-\newcommand{\z}{\mathrm{z}}   % Roman z
+\newcommand{\z}{\mathrm{z}}   % Roman z 
+
+\newcommand{\cont}{
+    {\hbox{
+        \setbox0=\hbox{$\mkern-3mu{\times}\mkern-3mu$}
+        \setbox1=\hbox to0pt{\hss\copy0\hss}
+        \copy0\raisebox{0.5\wd0}{\copy1}\raisebox{-0.5\wd0}{\box1}\box0}}
+}
 
 % Tikz
 

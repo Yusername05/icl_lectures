@@ -6,7 +6,7 @@
 \renewcommand*\thesection{\arabic{section}}
 \lhead{Yu's confused ramblings on algebra}
 
-Roughly lecture notes from Kevin Buzzard's Algebra 3
+Roughly lecture notes from Kevin Buzzard's Algebra 3 and Alessio Corti's Galois theory
 
 \section{Rings}
 \setcounter{subsection}{1}
@@ -170,13 +170,13 @@ Roughly lecture notes from Kevin Buzzard's Algebra 3
 \end{definition}
 
 \begin{lemma}\label{iso1}
-    The kernel of a ring homomorphism $\phi:R\rightarrow S$ is an ideal. \begin{proof}
+    The kernel of a ring homomorphism $\phi:R\rightarrow S$ is an ideal.\begin{proof}
         The kernel of $\phi$ is a subgroup of $R$ and $\phi(ir)=\phi(i)\phi(r)=0\phi(r)=0$ so $ir\in\ker\phi$ and similarly for $ir$ hence $\ker\phi$ is a bi-ideal.
     \end{proof}
 \end{lemma}
 
 \begin{lemma}\label{iso2}
-    The image of a ring homomorphism $\phi:R\rightarrow S$ is a subring. \begin{proof}
+    The image of a ring homomorphism $\phi:R\rightarrow S$ is a subring.\begin{proof}
         By Lemma~\ref{subring test} and ring homomorphism axioms.
     \end{proof}
 \end{lemma}
@@ -193,9 +193,9 @@ Roughly lecture notes from Kevin Buzzard's Algebra 3
 \end{theorem}
 
 \begin{proposition}
-    A commutative ring $R$ is a field iff its only ideals are $\{0\}$ and $R$.
-    \begin{proof}
-        
+    A commutative ring $R$ is a field iff its only 2 ideals are $\{0\}$ and $R$.\begin{proof}
+        $(\implies)$ as $R$ a field $\{0\}\neq R$, if there is some other ideal $0\neq I\subseteq R$, $x\in R\implies 1={(x)}^{-1}x\in I \implies 1r = r \in I$ for general $r\in R$ so $I=R$. \\
+        $(\impliedby)$ given some $r\in R$ have $I=\{ar:a\in R\}$ clearly a non-empty ideal so $I=R$ therefore there exists some $a\in R$ with $ar=1$.
     \end{proof}
 \end{proposition}
 
@@ -551,6 +551,10 @@ Throughout this section we will always have $R$ be an integral domain.
     \] and say $f$ is \textbf{primitive} when $cont(f)=1$.
 \end{definition}
 
+\begin{remark}
+    Given $f=a_0+a_1 x + a_2 x^2 + \ldots + a_n x^n$, $cont(f)=\gcd(a_0,a_1,\ldots,a_n)$.
+\end{remark}
+
 \begin{lemma}
     $cont(f)\in R \iff f\in R[x]$, furthermore $f$ is primitive iff $f\in R[x]$ with the coefficients of $f$ having gcd $1$. \begin{proof}
         
@@ -600,6 +604,58 @@ Throughout this section we will always have $R$ be an integral domain.
 
 \subsection{Semisimple modules}
 
-\section{Fields}
+\newpage
+
+\section{Galois}
+\setcounter{subsection}{1}
+
+We will be working within the category of fields with objects fields and morphisms field homomorphisms.
+
+\begin{remark}
+    Every morphism $\sigma:K\rightarrow L$ is injective, leading to $\Hom(K,L)$ being denoted as $\Emb(K,L)$.\begin{proof}
+        Have $a\neq b\in K$, $\sigma(a)=\sigma(b)\implies\sigma(a-b)=0_L\implies 1_L=\sigma(a-b)\sigma({(a-b)}^{-1})=0_L$.\cont
+    \end{proof}
+    
+\end{remark}
+
+Often a \textit{ground field} $k$ is considered and it is assumed that all fields $K$ we have the extension $k\subset K$. We therefore find ourselves working in a modification of the category of fields where given our fixed ground field $k$, objects are extensions of $k$ and morphisms are embeddings over $k$.
+
+\begin{definition}[Embedding over $k$]
+    Given $k\subset K$ and $k\subset L$, the \textbf{embedding over $k$} from $K$ to $L$ is \[
+        \Emb_k(K,L):=\{f\in\Emb(K,L):\forall a\in k, f(a)=a\} \black{.} \]
+    Sometimes called $k$-embeddings of $K$ in $L$.
+\end{definition}
+
+\begin{remark}
+    If $K\subset L$ a field extension, $L$ is a $K$-vector space. \textit{Proof.} simple axiom checking. \qed
+\end{remark}
+
+\begin{definition}[Degree]
+    The \textbf{degree} of the extension $K\subset L$ is $[L:K]=\dim_K(L)$.
+\end{definition}
+
+\begin{proposition}
+    If $[L:K]=1$ then $L=K$.\begin{proof}
+        
+    \end{proof}
+\end{proposition}
+
+\begin{remark}
+    If $k\subset K$ is finite then every element of $\Emb_k(K,K)$ is surjective (directly from rank-nullity) so $\Emb_k(K,K)=\Aut_k(K,K)$ a group. Unless stated otherwise assume all extensions to be finite.
+\end{remark}
+
+\begin{theorem}[Tower Law]
+    Given a tower $K\subset L\subset M$ of extensions, $[M:K]=[M:L][L:K]$. \begin{proof}
+        
+    \end{proof}
+\end{theorem}
+
+\subsection{Axioms}
+
+\subsection{Fundamental theorem}
+
+\subsection{Proof of axioms}
+
+\subsection{Discriminants}
 
 \end{document}
